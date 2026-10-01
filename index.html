@@ -3,75 +3,286 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Home | YouthCraft</title>
-  <meta name="description" content="Home — YouthCraft wellness and scientific methodology.">
+  <title>YouthCraft | Craft Your Health. Craft Your Future.</title>
+  <meta name="description" content="YouthCraft turns everyday health habits into a clearer picture of wellbeing, small personalised missions, and progress you can follow over time.">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --yc-ink: #17332d;
+      --yc-muted: #5b706a;
+      --yc-green: #176b55;
+      --yc-green-dark: #104c3e;
+      --yc-mint: #e8f5ee;
+      --yc-lime: #d9f36a;
+      --yc-cream: #fbfaf5;
+      --yc-line: #dce8e1;
+      --yc-card: #ffffff;
+      --yc-shadow: 0 18px 48px rgba(21, 67, 53, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { color: var(--yc-ink); background: var(--yc-cream); }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+    .yc-hero { position: relative; overflow: hidden; padding: 82px 0 76px; background: radial-gradient(circle at 82% 20%, rgba(217,243,106,.3), transparent 27%), linear-gradient(135deg,#eff8f1 0%,#fbfaf5 62%,#e8f5ee 100%); }
+    .yc-hero:after { content: ""; position: absolute; width: 360px; height: 360px; right: -110px; bottom: -210px; border: 1px solid rgba(23,107,85,.14); border-radius: 50%; box-shadow: 0 0 0 35px rgba(23,107,85,.035),0 0 0 70px rgba(23,107,85,.025); pointer-events: none; }
+    .yc-hero-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(300px,.85fr); gap: 56px; align-items: center; position: relative; z-index: 1; }
+    .yc-eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--yc-green); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .yc-eyebrow:before { content: ""; width: 26px; height: 2px; background: var(--yc-green); }
+    .yc-hero h1 { max-width: 720px; margin: 18px 0; font-size: clamp(2.7rem,6vw,5.2rem); line-height: .99; letter-spacing: -.055em; }
+    .yc-hero h1 em { color: var(--yc-green); font-style: normal; }
+    .yc-hero-copy { max-width: 630px; color: var(--yc-muted); font-size: clamp(1.05rem,2vw,1.2rem); line-height: 1.75; }
+    .yc-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .yc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 50px; padding: 13px 22px; border: 1px solid var(--yc-green); border-radius: 999px; background: var(--yc-green); color: #fff !important; text-decoration: none; font-weight: 750; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+    .yc-btn:hover { transform: translateY(-2px); background: var(--yc-green-dark); box-shadow: 0 10px 24px rgba(23,107,85,.2); }
+    .yc-btn.secondary { background: transparent; color: var(--yc-green) !important; }
+    .yc-btn.secondary:hover { background: var(--yc-mint); box-shadow: none; }
+    .yc-small-note { margin-top: 14px; color: var(--yc-muted); font-size: .86rem; }
+    .yc-visual { padding: 20px; border: 1px solid rgba(255,255,255,.9); border-radius: 30px; background: rgba(255,255,255,.72); box-shadow: var(--yc-shadow); backdrop-filter: blur(8px); }
+    .yc-visual-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; }
+    .yc-mini-brand { font-weight: 850; letter-spacing: -.02em; }
+    .yc-status { padding: 6px 10px; border-radius: 99px; background: var(--yc-mint); color: var(--yc-green); font-size: .75rem; font-weight: 750; }
+    .yc-score-card { padding: 22px; border-radius: 22px; color: white; background: linear-gradient(140deg,#174f40,#1e8063); }
+    .yc-score-label { color: rgba(255,255,255,.75); font-size: .8rem; }
+    .yc-score-number { display: flex; align-items: baseline; gap: 7px; margin: 7px 0 15px; }
+    .yc-score-number strong { font-size: 3.4rem; line-height: 1; letter-spacing: -.06em; }
+    .yc-score-number span { color: rgba(255,255,255,.7); }
+    .yc-progress { height: 7px; overflow: hidden; border-radius: 10px; background: rgba(255,255,255,.2); }
+    .yc-progress span { display: block; width: 78%; height: 100%; border-radius: inherit; background: var(--yc-lime); }
+    .yc-domain-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+    .yc-domain { padding: 13px; border: 1px solid var(--yc-line); border-radius: 15px; background: #fff; }
+    .yc-domain small { display: block; color: var(--yc-muted); font-size: .76rem; }
+    .yc-domain strong { display: block; margin-top: 3px; font-size: 1.05rem; }
+    .yc-life-days { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 15px; border-radius: 15px; background: #f3f8dc; }
+    .yc-life-days strong { font-size: 1.1rem; }
+    .yc-life-days span { color: var(--yc-muted); font-size: .78rem; }
+    .yc-section { padding: 76px 0; }
+    .yc-section.alt { background: #f0f7f1; }
+    .yc-section.dark { color: #fff; background: #153f35; }
+    .yc-section-head { max-width: 740px; margin: 0 auto 38px; text-align: center; }
+    .yc-kicker { color: var(--yc-green); font-size: .77rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .yc-section.dark .yc-kicker { color: var(--yc-lime); }
+    .yc-section h2 { margin: 10px 0 14px; font-size: clamp(2rem,4vw,3.15rem); line-height: 1.08; letter-spacing: -.04em; }
+    .yc-section-head p { margin: 0; color: var(--yc-muted); font-size: 1.04rem; line-height: 1.75; }
+    .yc-section.dark .yc-section-head p { color: #d0e3d9; }
+    .yc-grid-3 { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+    .yc-grid-2 { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+    .yc-card { padding: 26px; border: 1px solid var(--yc-line); border-radius: 22px; background: var(--yc-card); box-shadow: 0 8px 24px rgba(21,67,53,.035); }
+    .yc-card h3 { margin: 13px 0 9px; font-size: 1.22rem; letter-spacing: -.02em; }
+    .yc-card p { margin: 0; color: var(--yc-muted); line-height: 1.7; }
+    .yc-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--yc-mint); color: var(--yc-green); font-size: 1.25rem; }
+    .yc-stat-row { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 30px; }
+    .yc-stat { padding: 24px; border: 1px solid rgba(255,255,255,.17); border-radius: 20px; background: rgba(255,255,255,.06); }
+    .yc-stat strong { display: block; color: var(--yc-lime); font-size: clamp(2rem,4vw,3rem); line-height: 1.1; letter-spacing: -.05em; }
+    .yc-stat span { display: block; margin-top: 8px; color: #d0e3d9; line-height: 1.5; }
+    .yc-journey { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; counter-reset: journey; }
+    .yc-step { position: relative; padding: 24px; border-top: 3px solid var(--yc-green); border-radius: 0 0 18px 18px; background: white; }
+    .yc-step:before { counter-increment: journey; content: "0" counter(journey); display: block; margin-bottom: 18px; color: var(--yc-green); font-size: .82rem; font-weight: 850; letter-spacing: .1em; }
+    .yc-step h3 { margin: 0 0 8px; }
+    .yc-step p { margin: 0; color: var(--yc-muted); line-height: 1.65; }
+    .yc-domain-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+    .yc-tag { padding: 10px 14px; border: 1px solid var(--yc-line); border-radius: 99px; background: #fff; color: var(--yc-ink); font-size: .9rem; }
+    .yc-horizon { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; }
+    .yc-horizon-item { padding: 19px 16px; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: rgba(255,255,255,.055); }
+    .yc-horizon-item strong { display: block; color: var(--yc-lime); font-size: 1.05rem; }
+    .yc-horizon-item span { display: block; margin-top: 8px; color: #d0e3d9; font-size: .88rem; line-height: 1.55; }
+    .yc-check-list { list-style: none; padding: 0; margin: 18px 0 0; }
+    .yc-check-list li { position: relative; margin: 11px 0; padding-left: 27px; color: var(--yc-muted); line-height: 1.65; }
+    .yc-check-list li:before { content: "✓"; position: absolute; left: 0; top: 1px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--yc-mint); color: var(--yc-green); font-size: .75rem; font-weight: 900; }
+    .yc-cta { padding: 64px 0; background: linear-gradient(120deg,#dff2e6,#f4f8d9); }
+    .yc-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .yc-cta h2 { max-width: 660px; margin: 0 0 10px; font-size: clamp(2rem,4vw,3rem); line-height: 1.08; letter-spacing: -.04em; }
+    .yc-cta p { max-width: 650px; margin: 0; color: var(--yc-muted); line-height: 1.7; }
+    .yc-notice { margin-top: 24px; padding: 17px 20px; border-left: 4px solid #d5b65d; border-radius: 0 12px 12px 0; background: #fff9e9; color: #635b43; font-size: .9rem; line-height: 1.65; }
+    .yc-footer-line { margin-top: 18px; color: var(--yc-muted); font-size: .83rem; }
+    @media (max-width: 850px) {
+      .yc-hero-grid, .yc-grid-2 { grid-template-columns: 1fr; }
+      .yc-hero-grid { gap: 34px; }
+      .yc-grid-3 { grid-template-columns: 1fr 1fr; }
+      .yc-journey { grid-template-columns: 1fr 1fr; }
+      .yc-horizon { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .yc-cta-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px,1160px); }
+      .yc-hero { padding: 56px 0 52px; }
+      .yc-section { padding: 54px 0; }
+      .yc-grid-3, .yc-stat-row, .yc-journey { grid-template-columns: 1fr; }
+      .yc-horizon { grid-template-columns: 1fr 1fr; }
+      .yc-visual { padding: 12px; border-radius: 22px; }
+      .yc-card { padding: 22px; }
+      .yc-actions .yc-btn { width: 100%; }
+    }
+  </style>
 </head>
 <body>
-
   <!-- Reusable Header Target -->
   <div id="site-header"></div>
 
-  <!-- Unique Page Content -->
-  <header class="hero">
-    <div class="wrap">
-      <div class="eyebrow">YouthCraft</div>
-      <h1>Craft a Younger You. Gain Active Years.</h1>
-      <p>See how everyday choices are shaping your health trajectory — and take one small, science-backed step at a time.</p>
+  <header class="yc-hero">
+    <div class="wrap yc-hero-grid">
+      <div>
+        <div class="yc-eyebrow">YouthCraft · Personal health companion</div>
+        <h1>Craft your health.<br><em>Craft your future.</em></h1>
+        <p class="yc-hero-copy">Your everyday habits shape your long-term wellbeing. YouthCraft helps you see the patterns, understand where small changes may matter, and turn insight into one achievable mission at a time.</p>
+        <div class="yc-actions">
+          <a class="yc-btn" href="onboarding.html">Start Your Onboarding <span aria-hidden="true">→</span></a>
+          <a class="yc-btn secondary" href="how-it-works.html">Discover How It Works</a>
+        </div>
+        <p class="yc-small-note">Designed for progress, not perfection. Your journey stays yours.</p>
+      </div>
+
+      <div class="yc-visual" aria-label="Illustrative YouthCraft dashboard preview">
+        <div class="yc-visual-top"><span class="yc-mini-brand">Your YouthCraft snapshot</span><span class="yc-status">Illustrative preview</span></div>
+        <div class="yc-score-card">
+          <div class="yc-score-label">Youth Score</div>
+          <div class="yc-score-number"><strong>78</strong><span>/ 100</span></div>
+          <div class="yc-progress" aria-hidden="true"><span></span></div>
+          <p style="margin:12px 0 0;color:rgba(255,255,255,.84);font-size:.88rem;line-height:1.5">A starting point for understanding lifestyle patterns and choosing your next focus.</p>
+        </div>
+        <div class="yc-domain-list">
+          <div class="yc-domain"><small>Sleep</small><strong>Build consistency</strong></div>
+          <div class="yc-domain"><small>Movement</small><strong>Keep momentum</strong></div>
+          <div class="yc-domain"><small>Nutrition</small><strong>Small choices add up</strong></div>
+          <div class="yc-domain"><small>Prevention</small><strong>Stay engaged</strong></div>
+        </div>
+        <div class="yc-life-days"><div><strong> L I F E&nbsp; D A Y S</strong><br><span>A motivational way to see daily progress</span></div><span aria-hidden="true" style="font-size:1.5rem">✦</span></div>
+      </div>
     </div>
   </header>
 
   <main>
-    <div class="wrap">
-      <section>
-        <div class="grid">
-          <div>
-            <span class="pill">Discover · Craft · Play & Share</span>
-            <h2>Craft a Younger You. Gain Active Years.</h2>
-            <p class="lead">YouthCraft helps people understand how everyday patterns relate to health and turn that understanding into small, actionable missions.</p>
-            <div class="actions">
-              <a class="btn" href="how-it-works.html">How It Works</a>
-              <a class="btn alt" href="science.html">Explore the Science</a>
-            </div>
-          </div>
-          <div class="card">
-            <h3>Your three core signals</h3>
-            <p><strong>Youth Score</strong> · 0–100 wellness index</p>
-            <p><strong>Biological Age Proxy</strong> · lifestyle-informed model output</p>
-            <p><strong>LIFE DAYS</strong> · motivational translation of model ΔY</p>
-          </div>
+    <section class="yc-section">
+      <div class="wrap">
+        <div class="yc-section-head">
+          <div class="yc-kicker">A clearer way to care for your future self</div>
+          <h2>Make the invisible visible.<br>Make the next step doable.</h2>
+          <p>Health information can feel fragmented, and long-term prevention can feel distant. YouthCraft is designed to connect a structured baseline with everyday habits—then translate the picture into practical, personal actions.</p>
         </div>
-      </section>
+        <div class="yc-grid-3">
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">◉</div><h3>Understand your patterns</h3><p>Build a baseline across lifestyle, biometrics, medical history, prevention and personal factors—with questions tailored to your age and circumstances.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">↗</div><h3>Focus on one next step</h3><p>Turn your biggest opportunity into a manageable mission, rather than trying to change everything at once.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">✦</div><h3>See progress over time</h3><p>Follow your Youth Score, domain trends and LIFE DAYS as motivational feedback on consistency and daily choices.</p></article>
+        </div>
+      </div>
+    </section>
 
-      <section>
-        <h2>From fragmented health data to one clear next step</h2>
-        <div class="grid3">
-          <div class="card">
-            <h3>Discover</h3>
-            <p>Build a structured baseline using age-aware questions and evidence-linked measures.</p>
-          </div>
-          <div class="card">
-            <h3>Craft</h3>
-            <p>Turn the largest opportunity into a practical mission.</p>
-          </div>
-          <div class="card">
-            <h3>Play & Share</h3>
-            <p>Track progress and optionally share selected information with people or partners you choose.</p>
-          </div>
+    <section class="yc-section dark">
+      <div class="wrap">
+        <div class="yc-section-head">
+          <div class="yc-kicker">Built around two connected layers</div>
+          <h2>A personal baseline.<br>A living daily picture.</h2>
+          <p>YouthCraft is designed to pair a deeper onboarding profile with a lighter recurring layer—so long-term context and day-to-day behaviour can inform the same experience.</p>
         </div>
-      </section>
+        <div class="yc-stat-row">
+          <div class="yc-stat"><strong>Up to 107</strong><span>onboarding questions across six major domains, staged so people can complete the profile or resume later</span></div>
+          <div class="yc-stat"><strong>Up to 77</strong><span>recurring daily and event metrics spanning sleep, activity, nutrition, medication, metabolic readings and more</span></div>
+          <div class="yc-stat"><strong>One mission</strong><span>a focused action to help turn insight into a manageable habit—not an overwhelming list of tasks</span></div>
+        </div>
+        <div class="yc-domain-tags" aria-label="Onboarding domains">
+          <span class="yc-tag">Demographics & Biometrics</span><span class="yc-tag">Lifestyle & Daily Habits</span><span class="yc-tag">Substance Use</span><span class="yc-tag">Medical History & Markers</span><span class="yc-tag">Age-Specific Function & Prevention</span><span class="yc-tag">Preferences & Engagement</span>
+        </div>
+      </div>
+    </section>
 
-      <section>
-        <div class="notice">
-          <strong>Scientific boundary</strong>YouthCraft is a wellness framework. Its model-derived scores and LIFE DAYS are not diagnoses or literal predictions of lifespan.
+    <section class="yc-section alt">
+      <div class="wrap">
+        <div class="yc-section-head">
+          <div class="yc-kicker">The YouthCraft journey</div>
+          <h2>Discover. Craft. Play. Share.</h2>
+          <p>A simple loop that supports reflection, action and continuity—while keeping participation and sharing under your control.</p>
         </div>
-      </section>
-    </div>
+        <div class="yc-journey">
+          <article class="yc-step"><h3>Discover</h3><p>Complete a structured health profile and receive a starting Youth Score, domain view and lifestyle-informed biological-age perspective.</p></article>
+          <article class="yc-step"><h3>Craft</h3><p>Choose a personalised mission connected to an opportunity area such as sleep consistency, movement, nutrition or prevention.</p></article>
+          <article class="yc-step"><h3>Play</h3><p>Log or sync habits, follow LIFE DAYS, build consistency streaks and review progress against a weekly goal.</p></article>
+          <article class="yc-step"><h3>Share</h3><p>Optionally share a selected score card or take part in a private, time-limited challenge. Nothing is shared publicly by default.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="yc-section">
+      <div class="wrap">
+        <div class="yc-section-head">
+          <div class="yc-kicker">A science-informed framework</div>
+          <h2>Designed to connect evidence with everyday life.</h2>
+          <p>The concept paper describes a scoring framework informed by established instruments and guideline-aligned measures. The goal is transparency: make the basis of questions and score contributions traceable, rather than hiding them behind a mystery number.</p>
+        </div>
+        <div class="yc-grid-2">
+          <article class="yc-card">
+            <div class="yc-icon" aria-hidden="true">⌁</div>
+            <h3>Evidence-linked domains</h3>
+            <p>Examples of scientific anchors in the framework include sleep-quality instruments, physical-activity guidance, mood and stress screens, alcohol and tobacco screening tools, clinical marker bands, frailty measures and diet-quality approaches.</p>
+            <ul class="yc-check-list">
+              <li>Domain scores help show where a pattern may need attention.</li>
+              <li>Option-level lookup logic is intended to make score contributions auditable.</li>
+              <li>Age-aware question paths keep the experience relevant across life stages.</li>
+            </ul>
+          </article>
+          <article class="yc-card">
+            <div class="yc-icon" aria-hidden="true">◎</div>
+            <h3>A biological-age view—with clear boundaries</h3>
+            <p>YouthCraft proposes a lifestyle-informed biological-age proxy based on domain year-deltas associated with health patterns. It is not presented as a laboratory epigenetic clock, medical test or clinical diagnosis.</p>
+            <ul class="yc-check-list">
+              <li>Youth Score: a composite wellness index out of 100.</li>
+              <li>Domain scores: a more detailed view of contributing areas.</li>
+              <li>LIFE DAYS: a motivational translation of modelled daily gains and losses.</li>
+            </ul>
+          </article>
+        </div>
+        <div class="yc-actions" style="justify-content:center;margin-top:28px"><a class="yc-btn secondary" href="science.html">Explore the Science & Methodology</a></div>
+      </div>
+    </section>
+
+    <section class="yc-section dark">
+      <div class="wrap">
+        <div class="yc-section-head">
+          <div class="yc-kicker">Progress at more than one pace</div>
+          <h2>From today’s actions to the bigger picture.</h2>
+          <p>Different time horizons serve different purposes. Daily and weekly feedback can guide action; monthly and quarterly views can reveal patterns; annual reflection can help you reset goals.</p>
+        </div>
+        <div class="yc-horizon">
+          <div class="yc-horizon-item"><strong>Daily</strong><span>Notice habits, complete a mission and see a day’s illustrative LIFE DAYS change.</span></div>
+          <div class="yc-horizon-item"><strong>Weekly</strong><span>Understand your goal gap and choose a realistic next action.</span></div>
+          <div class="yc-horizon-item"><strong>Monthly</strong><span>Look for trends across sleep, movement, adherence and mission completion.</span></div>
+          <div class="yc-horizon-item"><strong>Quarterly</strong><span>Review persistent patterns and consider a different mission or optional support.</span></div>
+          <div class="yc-horizon-item"><strong>Annual</strong><span>Reflect on engagement, trends and the goals you want to carry forward.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="yc-section">
+      <div class="wrap">
+        <div class="yc-section-head">
+          <div class="yc-kicker">Support that respects your choices</div>
+          <h2>Helpful by design. Yours by choice.</h2>
+          <p>YouthCraft is envisioned as a companion, not a judge. The experience is built around gentle motivation, privacy-conscious sharing and optional pathways to relevant support when patterns suggest that more help may be useful.</p>
+        </div>
+        <div class="yc-grid-3">
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">♡</div><h3>Partner, not judge</h3><p>Imperfect days are expected. The emphasis is on consistency, learning and getting back on track—not shame or perfection.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">⌂</div><h3>Support when relevant</h3><p>Conceptual pathways may include sleep support, cessation coaching, falls prevention, nutrition programmes or telehealth—only when the user chooses to proceed.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">♧</div><h3>Privacy and control</h3><p>The operating principles include data minimisation, explicit permissions, user-controlled sharing and the ability to revoke connected data access.</p></article>
+        </div>
+        <div class="yc-notice"><strong>Important:</strong> YouthCraft is a wellness and engagement concept, not a diagnostic medical device. Its scores, biological-age view and LIFE DAYS are model-derived motivational indicators—not diagnoses or literal predictions of lifespan. They do not replace professional medical advice, diagnosis, treatment or emergency care.</div>
+      </div>
+    </section>
+
+    <section class="yc-cta" id="get-started">
+      <div class="wrap yc-cta-inner">
+        <div>
+          <div class="yc-kicker">Your next chapter starts small</div>
+          <h2>Build a healthier future, one meaningful step at a time.</h2>
+          <p>Begin with your baseline. Discover the patterns you want to understand, choose a first mission, and shape a routine that can grow with you.</p>
+        </div>
+        <div class="yc-actions" style="margin-top:0;flex-shrink:0">
+          <a class="yc-btn" href="onboarding.html">Get Onboarded <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="wrap yc-footer-line">Craft your health. Craft your future. · #YouthCraft</div>
+    </section>
   </main>
 
   <!-- Reusable Footer Target -->
   <div id="site-footer"></div>
-
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,201 +1,107 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Your YouthCraft Journey | YouthCraft</title>
-  <meta name="description" content="Discover the YouthCraft journey: understand your health patterns, build small habits, track LIFE DAYS, and share progress on your terms.">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    :root { --yc-ink:#183b35; --yc-green:#176b55; --yc-mint:#eaf5ef; --yc-gold:#f2c66d; --yc-muted:#60736d; --yc-line:#dce8e1; }
-    body { color:var(--yc-ink); }
-    .journey-hero { position:relative; overflow:hidden; padding:clamp(3.5rem,8vw,6.5rem) 0; background:radial-gradient(circle at 85% 20%,rgba(242,198,109,.28),transparent 25%),linear-gradient(135deg,#eff8f2 0%,#f8fbf8 52%,#e4f2e9 100%); }
-    .journey-hero:after { content:""; position:absolute; width:290px;height:290px;border-radius:50%;border:1px solid rgba(23,107,85,.14);right:-90px;bottom:-140px;box-shadow:0 0 0 35px rgba(23,107,85,.035),0 0 0 70px rgba(23,107,85,.025); }
-    .journey-hero .wrap,.journey-main .wrap { position:relative; z-index:1; }
-    .eyebrow { display:inline-flex;align-items:center;gap:.5rem;text-transform:uppercase;letter-spacing:.13em;font-size:.76rem;font-weight:800;color:var(--yc-green); }
-    .eyebrow:before { content:"";display:inline-block;width:24px;height:2px;background:var(--yc-gold); }
-    .journey-hero h1 { max-width:850px;font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.04;letter-spacing:-.045em;margin:.8rem 0 1.25rem; }
-    .journey-hero p { max-width:720px;font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.75;color:#526a62; }
-    .actions { display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem; }
-    .btn { display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:.9rem 1.35rem;font-weight:750;background:var(--yc-green);color:white;border:1px solid var(--yc-green);transition:transform .2s,box-shadow .2s; }
-    .btn:hover { transform:translateY(-2px);box-shadow:0 8px 22px rgba(23,107,85,.18); }
-    .btn.alt { background:transparent;color:var(--yc-green); }
-    .journey-main section { padding:clamp(2.5rem,5vw,4.5rem) 0; }
-    .section-head { max-width:760px;margin-bottom:1.8rem; }
-    .section-head h2 { font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.13;letter-spacing:-.03em;margin:.55rem 0 .8rem; }
-    .section-head p,.lead { color:var(--yc-muted);font-size:1.08rem;line-height:1.75; }
-    .journey-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem; }
-    .step-card,.feature-card,.module-card,.trust-card,.data-panel { border:1px solid var(--yc-line);background:#fff;border-radius:20px;padding:1.35rem;box-shadow:0 8px 24px rgba(26,65,52,.045); }
-    .step-card { min-height:215px;position:relative;overflow:hidden; }
-    .step-no { display:inline-grid;place-items:center;width:40px;height:40px;border-radius:13px;background:var(--yc-mint);color:var(--yc-green);font-weight:850;margin-bottom:1rem; }
-    .step-card h3,.feature-card h3,.module-card h3,.trust-card h3 { margin:.15rem 0 .6rem;font-size:1.12rem; }
-    .step-card p,.feature-card p,.module-card p,.trust-card p,.data-panel p { color:var(--yc-muted);line-height:1.65;margin:0; }
-    .step-card:after { content:"";position:absolute;width:70px;height:70px;border-radius:50%;background:rgba(234,245,239,.7);right:-28px;bottom:-28px; }
-    .band { background:#f4f8f5; }
-    .score-layout { display:grid;grid-template-columns:1.05fr .95fr;gap:1.2rem;align-items:stretch; }
-    .score-visual { border-radius:24px;padding:clamp(1.4rem,4vw,2.2rem);background:linear-gradient(145deg,#174d40,#176b55);color:white;min-height:300px;display:flex;flex-direction:column;justify-content:space-between; }
-    .score-visual .mini-label { text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;color:#c7e4d5;font-weight:700; }
-    .score-number { font-size:clamp(4rem,8vw,6rem);font-weight:850;letter-spacing:-.07em;line-height:1;margin:.45rem 0; }
-    .score-number span { font-size:1.1rem;letter-spacing:0;font-weight:600;color:#c7e4d5; }
-    .score-meter { height:9px;background:rgba(255,255,255,.2);border-radius:99px;overflow:hidden;margin:1rem 0; }
-    .score-meter span { display:block;width:78%;height:100%;background:var(--yc-gold);border-radius:99px; }
-    .score-note { color:#d9eee2;font-size:.9rem;line-height:1.6; }
-    .signal-list { display:grid;gap:.8rem; }
-    .signal { display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.1rem;border:1px solid var(--yc-line);border-radius:16px;background:#fff; }
-    .signal-icon { width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;background:var(--yc-mint);font-size:1.2rem; }
-    .signal strong { display:block;margin-bottom:.25rem; }
-    .signal p { color:var(--yc-muted);margin:0;line-height:1.55;font-size:.95rem; }
-    .three-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem; }
-    .feature-icon { font-size:1.5rem;margin-bottom:.8rem; }
-    .data-layers { display:grid;grid-template-columns:1fr 1fr;gap:1rem; }
-    .data-panel { padding:1.6rem; }
-    .data-panel .tag { display:inline-block;padding:.35rem .65rem;background:var(--yc-mint);color:var(--yc-green);border-radius:99px;font-size:.78rem;font-weight:800;margin-bottom:.9rem; }
-    .data-panel h3 { margin:.1rem 0 .65rem;font-size:1.35rem; }
-    .metric-chips { display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem; }
-    .metric-chips span { border:1px solid var(--yc-line);border-radius:99px;padding:.4rem .65rem;font-size:.82rem;color:#46645a;background:#fbfdfb; }
-    .modules-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem; }
-    .module-card { min-height:170px; }
-    .module-card .module-mark { font-size:1.45rem;margin-bottom:.75rem; }
-    .trust-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem; }
-    .trust-card { display:flex;gap:1rem; }
-    .trust-card .trust-mark { flex:0 0 42px;height:42px;display:grid;place-items:center;border-radius:13px;background:var(--yc-mint);font-size:1.2rem; }
-    .closing-cta { border-radius:28px;padding:clamp(2rem,5vw,3.5rem);background:linear-gradient(135deg,#e9f5ed,#fbf7eb);border:1px solid #d9e9de;text-align:center; }
-    .closing-cta h2 { font-size:clamp(2rem,4vw,3rem);letter-spacing:-.035em;margin:.4rem auto .8rem;max-width:760px; }
-    .closing-cta p { color:var(--yc-muted);max-width:670px;margin:0 auto;line-height:1.75; }
-    .fine-print { font-size:.86rem;color:#687b74;line-height:1.65; }
-    @media(max-width:900px) { .journey-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .three-grid,.modules-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-    @media(max-width:620px) { .journey-grid,.three-grid,.modules-grid,.data-layers,.score-layout,.trust-grid { grid-template-columns:1fr; } .journey-hero { padding:3.5rem 0; } .step-card { min-height:auto; } .trust-card { padding:1.1rem; } }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How YouthCraft Works | YouthCraft</title>
+<meta name="description" content="Understand YouthCraft's one-time onboarding, recurring health data, scoring engine, LIFE DAYS, and time-based progress views.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39}
+body{background:var(--yc-paper);color:#243b33}.wrap{max-width:1160px;margin:auto;padding-left:22px;padding-right:22px}
+.hw-hero{background:radial-gradient(circle at 86% 16%,#d9eee2 0,transparent 28%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:76px 0 58px;border-bottom:1px solid var(--yc-line)}
+.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:800;color:var(--yc-green)}.hw-hero h1{font-size:clamp(2.5rem,5vw,4.3rem);line-height:1.04;max-width:850px;color:var(--yc-ink);margin:15px 0 20px;letter-spacing:-.04em}.hw-hero p{font-size:1.15rem;line-height:1.75;max-width:800px;color:#466157}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:999px;padding:13px 20px;font-weight:750;background:var(--yc-green);color:white;border:1px solid var(--yc-green)}.btn.alt{background:white;color:var(--yc-green);border-color:#bfd6c9}
+main{padding-top:34px;padding-bottom:72px}.intro-grid,.grid2,.grid3,.steps,.horizons{display:grid;gap:16px}.intro-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:28px}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}.steps{grid-template-columns:repeat(4,minmax(0,1fr))}.horizons{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card,.step,.data-card,.formula-card,.horizon{background:#fff;border:1px solid var(--yc-line);border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(24,59,50,.035)}.ico{width:44px;height:44px;display:grid;place-items:center;background:var(--yc-mint);border-radius:13px;font-size:1.3rem;margin-bottom:13px}.card h3,.step h3,.data-card h3,.formula-card h3,.horizon h3{color:var(--yc-ink);margin:0 0 9px}.card p,.step p,.data-card p,.formula-card p,.horizon p{color:var(--yc-muted);line-height:1.65;margin:0}.section{padding:38px 0}.section-head{margin:0 0 22px}.section-head h2{font-size:clamp(1.8rem,3vw,2.65rem);line-height:1.14;color:var(--yc-ink);letter-spacing:-.025em;margin:8px 0 10px}.section-head p{max-width:850px;line-height:1.7;color:var(--yc-muted);margin:0}.num{display:inline-grid;place-items:center;width:39px;height:39px;background:var(--yc-mint);color:var(--yc-green);font-weight:850;border-radius:12px;margin-bottom:13px}.band{background:#f0f6f1;border:1px solid var(--yc-line);border-radius:24px;padding:clamp(22px,4vw,38px);margin:20px 0}.tag{display:inline-block;font-size:.76rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--yc-green);background:var(--yc-mint);border-radius:999px;padding:6px 9px;margin-bottom:10px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.chips span{background:#fbfdfb;border:1px solid var(--yc-line);border-radius:99px;padding:7px 10px;font-size:.84rem;color:#46645a}.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:stretch;margin:22px 0}.flow-item{background:white;border:1px solid var(--yc-line);border-radius:15px;padding:16px;position:relative}.flow-item strong{display:block;color:var(--yc-ink);margin-bottom:7px}.flow-item p{font-size:.92rem;line-height:1.55;color:var(--yc-muted);margin:0}.flow-item:not(:last-child):after{content:'→';position:absolute;right:-14px;top:42%;z-index:2;color:var(--yc-green);font-weight:900;background:var(--yc-paper);padding:0 2px}.mathline{background:#183b32;color:white;border-radius:18px;padding:23px;line-height:1.7;font-size:1.03rem;overflow-wrap:anywhere}.mathline strong{color:#f2c66d}.muted{font-size:.9rem;color:var(--yc-muted);line-height:1.65}.table-scroll{overflow-x:auto;border:1px solid var(--yc-line);border-radius:14px;margin:18px 0;background:#fff}.domain-table{width:100%;border-collapse:collapse;font-size:.93rem}.domain-table th,.domain-table td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--yc-line)}.domain-table th{background:#f0f6f1;color:var(--yc-ink)}.domain-table td{color:#50665d;line-height:1.5}.callout{border-left:4px solid var(--yc-gold);background:#fff7e9;border-radius:0 14px 14px 0;padding:17px 19px;color:#624b2d;line-height:1.7;margin:18px 0}.good-callout{border-left:4px solid var(--yc-green);background:#edf6ef;border-radius:0 14px 14px 0;padding:17px 19px;color:#315748;line-height:1.7;margin:18px 0}.horizon{border-top:4px solid var(--yc-green)}.horizon:nth-child(2){border-top-color:#8eb99d}.horizon:nth-child(3){border-top-color:#c48a39}.horizon:nth-child(4){border-top-color:#7b9ba0}.footer-cta{background:var(--yc-ink);color:white;border-radius:22px;padding:30px;margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:20px}.footer-cta h2{margin:0 0 8px}.footer-cta p{margin:0;color:#d4e4dc;line-height:1.6}.footer-cta .btn{background:#fff;color:var(--yc-ink);border-color:#fff;flex-shrink:0}
+@media(max-width:850px){.intro-grid,.grid3,.steps,.horizons{grid-template-columns:repeat(2,minmax(0,1fr))}.flow{grid-template-columns:1fr}.flow-item:not(:last-child):after{content:'↓';right:50%;top:auto;bottom:-16px}.flow-item{padding:17px}}
+@media(max-width:620px){.intro-grid,.grid2,.grid3,.steps,.horizons{grid-template-columns:1fr}.hw-hero{padding:52px 0 42px}.footer-cta{align-items:flex-start;flex-direction:column}.domain-table{min-width:680px}}
+</style>
 </head>
 <body>
-  <!-- Shared site header, provided by script.js -->
-  <div id="site-header"></div>
-
-  <header class="journey-hero">
-    <div class="wrap">
-      <div class="eyebrow">The YouthCraft Journey</div>
-      <h1>Small daily actions.<br>More meaningful health years.</h1>
-      <p>YouthCraft turns evidence-informed lifestyle inputs into a clear picture of your health patterns, one achievable mission at a time. Discover where you are, build habits that fit your life, and watch your progress take shape.</p>
-      <div class="actions">
-        <a class="btn" href="onboarding.html">Start Your Onboarding <span aria-hidden="true">→</span></a>
-        <a class="btn alt" href="science.html">Explore the Science</a>
-      </div>
-      <p class="fine-print" style="margin-top:1rem;font-size:.9rem;">Your pace. Your goals. Your data, shared only with your permission.</p>
-    </div>
-  </header>
-
-  <main class="journey-main">
-    <div class="wrap">
-      <section>
-        <div class="section-head">
-          <div class="eyebrow">A simple, repeatable loop</div>
-          <h2>Your journey in seven steps</h2>
-          <p>Health change can feel complicated. YouthCraft breaks the experience into a sequence that is easy to understand and return to—without asking you to become your own clinician.</p>
-        </div>
-        <div class="journey-grid">
-          <article class="step-card"><div class="step-no">01</div><h3>Measure</h3><p>Build your baseline with an age-aware assessment of up to 107 questions, with optional wearable or health-data connections.</p></article>
-          <article class="step-card"><div class="step-no">02</div><h3>Discover</h3><p>See your Youth Score, lifestyle-age view, domain patterns and a meaningful opportunity to focus on first.</p></article>
-          <article class="step-card"><div class="step-no">03</div><h3>Improve</h3><p>Receive one small, achievable daily mission matched to an area where a change may be useful.</p></article>
-          <article class="step-card"><div class="step-no">04</div><h3>Score</h3><p>Track mission completion, streaks, Health Points and changes in your LIFE DAYS bank.</p></article>
-          <article class="step-card"><div class="step-no">05</div><h3>Share</h3><p>Create a result card highlighting the progress you choose to share with your circle or social channels.</p></article>
-          <article class="step-card"><div class="step-no">06</div><h3>Challenge</h3><p>Invite a friend, spouse, family member or colleague to join an optional, friendly weekly challenge.</p></article>
-          <article class="step-card"><div class="step-no">07</div><h3>Repeat</h3><p>Return tomorrow, keep building consistency, and review how your patterns change over time.</p></article>
-        </div>
-      </section>
-
-      <section class="band">
-        <div class="section-head">
-          <div class="eyebrow">Your progress, made visible</div>
-          <h2>More than a number. A clearer next step.</h2>
-          <p>YouthCraft brings different lifestyle signals together, then turns them into feedback that is easier to act on. The illustration below is a concept preview, not a live user score.</p>
-        </div>
-        <div class="score-layout">
-          <div class="score-visual">
-            <div><div class="mini-label">Illustrative Youth Score</div><div class="score-number">78<span> / 100</span></div><div class="score-meter"><span></span></div><div class="score-note">A snapshot of lifestyle patterns across relevant domains—not a diagnosis or a laboratory measurement of biological age.</div></div>
-            <div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.2);padding-top:1rem;"><div><div class="mini-label">Focus</div><strong>One mission at a time</strong></div><div><div class="mini-label">Progress</div><strong>LIFE DAYS</strong></div></div>
-          </div>
-          <div class="signal-list">
-            <div class="signal"><div class="signal-icon">🌙</div><div><strong>Youth Score & domain view</strong><p>Understand patterns across sleep, movement, nutrition, stress, health and prevention, and personal factors.</p></div></div>
-            <div class="signal"><div class="signal-icon">🧭</div><div><strong>Lifestyle Age view</strong><p>Explore a lifestyle-informed age proxy, clearly distinguished from a clinical or epigenetic age test.</p></div></div>
-            <div class="signal"><div class="signal-icon">🌱</div><div><strong>LIFE DAYS</strong><p>Translate modelled fractional gains and losses into a motivational progress currency—not literal days added to your lifespan.</p></div></div>
-            <div class="signal"><div class="signal-icon">🎯</div><div><strong>Your next achievable action</strong><p>Focus on a practical mission rather than a long list of instructions or overwhelming charts.</p></div></div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-head">
-          <div class="eyebrow">Designed for everyday life</div>
-          <h2>Features that help habits stick</h2>
-          <p>Gentle gamification is here to make consistency feel rewarding—not to shame imperfect days or turn health into a competition.</p>
-        </div>
-        <div class="three-grid">
-          <article class="feature-card"><div class="feature-icon">🎯</div><h3>Daily Missions</h3><p>One clear action at a time, with immediate feedback to make the next step feel manageable.</p></article>
-          <article class="feature-card"><div class="feature-icon">🔥</div><h3>Streaks & Health Points</h3><p>Celebrate repeatable actions and milestones as you build a routine that works for you.</p></article>
-          <article class="feature-card"><div class="feature-icon">🪪</div><h3>Health Personality</h3><p>A playful identity inspired by your habits, designed for reflection and optional self-expression.</p></article>
-          <article class="feature-card"><div class="feature-icon">🤝</div><h3>Friend Challenges</h3><p>Join short, opt-in challenges with people you choose, with a focus on encouragement.</p></article>
-          <article class="feature-card"><div class="feature-icon">📖</div><h3>Health Wrapped</h3><p>Look back on habits, streaks, milestones and progress in an annual personal story.</p></article>
-          <article class="feature-card"><div class="feature-icon">📈</div><h3>Progress over time</h3><p>Review daily feedback, weekly goals, monthly trends, quarterly course-corrections and an annual reflection.</p></article>
-        </div>
-      </section>
-
-      <section class="band">
-        <div class="section-head">
-          <div class="eyebrow">Two connected data layers</div>
-          <h2>A detailed starting point. A lighter daily rhythm.</h2>
-          <p>YouthCraft is designed to combine a structured baseline with ongoing signals, so you can begin with context and continue with less effort.</p>
-        </div>
-        <div class="data-layers">
-          <article class="data-panel"><span class="tag">LAYER A · BASELINE</span><h3>Onboarding profile</h3><p>Up to 107 questions establish a starting view across six domains. The assessment is staged, age-aware and designed to be completed in one sitting or resumed later.</p><div class="metric-chips"><span>Demographics & biometrics</span><span>Lifestyle & daily habits</span><span>Substance use</span><span>Medical history & markers</span><span>Age-specific function & prevention</span><span>Preferences & engagement</span></div></article>
-          <article class="data-panel"><span class="tag">LAYER B · RECURRING</span><h3>Daily and event metrics</h3><p>Up to 77 recurring metrics help reflect changes in everyday routines and relevant events. Use connected data where available or quick manual entry when it suits you.</p><div class="metric-chips"><span>Sleep</span><span>Movement</span><span>Sedentary time</span><span>Nutrition</span><span>Tobacco & alcohol</span><span>Medication</span><span>Vaccines</span><span>Metabolic readings</span><span>Illness & allergies</span><span>Incidents & mood</span></div></article>
-        </div>
-        <p class="fine-print" style="margin-top:1rem;">Potential capture methods described in the concept include wearable or health-platform integrations, screenshot reading with user confirmation, and one-tap manual entries. Availability depends on the implemented product integrations.</p>
-      </section>
-
-      <section>
-        <div class="section-head">
-          <div class="eyebrow">A wider wellness ecosystem</div>
-          <h2>Support for different parts of your day</h2>
-          <p>The walkthrough describes specialized modules that can complement the core YouthCraft journey.</p>
-        </div>
-        <div class="modules-grid">
-          <article class="module-card"><div class="module-mark">🥗</div><h3>Plate Doctor</h3><p>Nutrition and meal analysis to help make food choices easier to understand.</p></article>
-          <article class="module-card"><div class="module-mark">😴</div><h3>Sleep Recovery</h3><p>Bring sleep patterns and recovery habits into focus.</p></article>
-          <article class="module-card"><div class="module-mark">🚶</div><h3>Move</h3><p>Support activity tracking and achievable movement goals.</p></article>
-          <article class="module-card"><div class="module-mark">🗓️</div><h3>Prevent</h3><p>Keep screening and prevention reminders visible when relevant.</p></article>
-          <article class="module-card"><div class="module-mark">🪑</div><h3>ErgoBreak</h3><p>Encourage workplace ergonomics and breaks from prolonged sitting.</p></article>
-          <article class="module-card"><div class="module-mark">👨‍👩‍👧</div><h3>Family Health Circles</h3><p>Make room for supportive, user-controlled health engagement with family.</p></article>
-        </div>
-      </section>
-
-      <section class="band">
-        <div class="section-head">
-          <div class="eyebrow">Trust is part of the journey</div>
-          <h2>Science-informed. Privacy-conscious. Always your choice.</h2>
-          <p>YouthCraft's concept puts transparency, user control and clear wellness boundaries at the centre of the experience.</p>
-        </div>
-        <div class="trust-grid">
-          <article class="trust-card"><div class="trust-mark">🔬</div><div><h3>Science-first scoring</h3><p>Scoring rules are intended to map to published instruments and established guidelines, including PSQI, IPAQ, PHQ-2 and AUDIT-C where relevant.</p></div></article>
-          <article class="trust-card"><div class="trust-mark">🛡️</div><div><h3>Clear wellness boundary</h3><p>App scores, measured clinical values and medical findings are distinct. YouthCraft is not a diagnostic medical device and does not replace professional care.</p></div></article>
-          <article class="trust-card"><div class="trust-mark">🙌</div><div><h3>Optional partner pathways</h3><p>When patterns meet defined thresholds, relevant support options may be presented. You remain in control of whether to proceed or share information.</p></div></article>
-          <article class="trust-card"><div class="trust-mark">🔐</div><div><h3>Privacy and consent</h3><p>The design calls for data minimisation, explicit permissions and user-controlled sharing, with safeguards against workplace or third-party surveillance.</p></div></article>
-        </div>
-      </section>
-
-      <section>
-        <div class="closing-cta">
-          <div class="eyebrow">Your next chapter starts small</div>
-          <h2>Discover your baseline. Choose your first mission.</h2>
-          <p>You don't need to change everything at once. Start by understanding your patterns, then build from one achievable action to the next.</p>
-          <div class="actions" style="justify-content:center;"><a class="btn" href="onboarding.html">Get Onboarded <span aria-hidden="true">→</span></a><a class="btn alt" href="science.html">Read About the Science</a></div>
-        </div>
-        <p class="fine-print" style="margin-top:1.2rem;">Important: YouthCraft is a wellness and engagement concept, not a diagnostic service or emergency-care substitute. Lifestyle-age views and LIFE DAYS are model-derived motivational representations, not clinical measurements or literal predictions of lifespan. Seek qualified clinical care for medical decisions or emergencies.</p>
-      </section>
-    </div>
-  </main>
-
-  <!-- Shared site footer, provided by script.js -->
-  <div id="site-footer"></div>
-  <script src="script.js"></script>
+<div id="site-header"></div>
+<header class="hw-hero"><div class="wrap"><div class="eyebrow">YouthCraft · The operating model</div><h1>One thoughtful baseline.<br>A lighter daily rhythm.</h1><p>YouthCraft is designed around two connected data layers: a one-time onboarding profile that establishes a starting point, and a recurring layer that can capture many measures automatically—with confirmation or manual entry when needed. Together, they support a changing view of habits, health signals, Youth Score and LIFE DAYS.</p><div class="hero-actions"><a class="btn" href="onboarding.html">✦ Start onboarding</a><a class="btn alt" href="science.html">Explore the science →</a></div></div></header>
+<main class="wrap">
+<div class="intro-grid">
+<div class="card"><div class="ico">🧭</div><h3>1. Establish context</h3><p>Up to 107 onboarding questions capture the baseline, relevant health history, life stage and preferences.</p></div>
+<div class="card"><div class="ico">⌚</div><h3>2. Keep the signal current</h3><p>Up to 77 recurring daily or event metrics can be synced, extracted with confirmation, or entered quickly.</p></div>
+<div class="card"><div class="ico">🌱</div><h3>3. Turn data into action</h3><p>Scores and LIFE DAYS are translated into trends, achievable missions and optional support pathways.</p></div>
+</div>
+<section class="section"><div class="section-head"><div class="eyebrow">01 / The user journey</div><h2>How the two layers work together</h2><p>Onboarding is the context-setting layer; recurring capture is the continuity layer. They are related, but they do different jobs.</p></div>
+<div class="steps">
+<div class="step"><div class="num">01</div><h3>Build your profile</h3><p>Answer relevant questions about demographics, biometrics, lifestyle, substances, medical history, preventive care, function and preferences.</p></div>
+<div class="step"><div class="num">02</div><h3>Set the baseline</h3><p>Applicable responses are mapped to domain-level measures, scoring lookups and any reviewed safety-trigger rules.</p></div>
+<div class="step"><div class="num">03</div><h3>Connect or log</h3><p>Recurring measures arrive from approved integrations where available, from confirmed document extraction, or from quick manual input.</p></div>
+<div class="step"><div class="num">04</div><h3>Review and adjust</h3><p>Daily feedback and longer time windows show patterns, suggest one next action, and help users revise goals over time.</p></div>
+</div>
+<div class="good-callout"><strong>Important distinction:</strong> “mostly automatic” is the intended product experience, not a claim that every metric is available automatically on every device. Availability depends on integration permissions, the source app, device, metric and user consent. Some information will still need confirmation or manual entry.</div>
+</section>
+<section class="section"><div class="section-head"><div class="eyebrow">02 / Layer A</div><h2>One-time onboarding: up to 107 questions</h2><p>The onboarding profile establishes the user's starting context. The concept paper describes staged completion—typically designed for a 5–10 minute experience, with the option to resume later—and age- or cohort-relevant question blocks.</p></div>
+<div class="grid2">
+<div class="data-card"><span class="tag">Baseline inputs</span><h3>Six major domains</h3><div class="chips"><span>Demographics & biometrics</span><span>Lifestyle & daily habits</span><span>Substance use</span><span>Medical history & clinical markers</span><span>Age-specific function & prevention</span><span>Preferences & engagement</span></div><p style="margin-top:15px">Question applicability may differ by life stage. The profile can include measurements such as age, height, weight and waist-related measures; behaviour patterns; reported conditions; selected clinical readings; and functional or preventive items.</p></div>
+<div class="data-card"><span class="tag">What each answer can do</span><h3>Map responses to a defined rule</h3><p>In the framework, each item can be associated with a response option, a raw score or category, a domain, an instrument or guideline reference, cohort applicability, a proposed time-delta lookup, and optional medical-trigger flags.</p><p style="margin-top:12px">Preferences—such as mission style, notification frequency or willingness to connect labs—are intended to personalise the experience and are not supposed to distort biological-age calculations.</p></div>
+</div>
+<div class="section-head" style="margin-top:28px"><h2>What onboarding establishes</h2></div>
+<div class="grid3">
+<div class="card"><div class="ico">📍</div><h3>Starting Youth Score</h3><p>A baseline score out of 100 is described in the concept paper, with domain-level scores to make the overall signal easier to interpret.</p></div>
+<div class="card"><div class="ico">🧬</div><h3>Lifestyle-based age view</h3><p>A model-derived biological-age proxy combines chronological age with domain-level time deltas, subject to defined and validated scoring rules.</p></div>
+<div class="card"><div class="ico">🛡️</div><h3>Safety and relevance</h3><p>Potentially important responses can route to a reviewed trigger workflow, while age- or cohort-specific logic can determine which questions apply.</p></div>
+</div>
+</section>
+<section class="section"><div class="section-head"><div class="eyebrow">03 / Layer B</div><h2>Recurring capture: up to 77 daily and event metrics</h2><p>The recurring layer is designed to reduce repetitive questionnaires. Once connected and authorised, compatible sources can supply measurements in the background; users can review, correct or supplement them. Event-based information may still require a tap or a short confirmation.</p></div>
+<div class="table-scroll"><table class="domain-table"><thead><tr><th>Metric group</th><th>Items in concept framework</th><th>Illustrative recurring information</th><th>Potential capture route</th></tr></thead><tbody>
+<tr><td>Sleep</td><td>12</td><td>Sleep duration, timing and consistency</td><td>Wearable / health platform sync; manual correction</td></tr>
+<tr><td>Activity</td><td>9</td><td>Steps, movement and activity measures</td><td>Phone or wearable sync; manual entry where needed</td></tr>
+<tr><td>Sedentary time</td><td>5</td><td>Sitting or inactivity patterns</td><td>Supported device/app data or quick self-report</td></tr>
+<tr><td>Nutrition</td><td>9</td><td>Selected food and nutrition-related behaviours</td><td>Brief log or supported data source; not assumed fully automatic</td></tr>
+<tr><td>Tobacco</td><td>4</td><td>Use or smoke-free status</td><td>Quick daily/event log</td></tr>
+<tr><td>Alcohol</td><td>3</td><td>Consumption or relevant event flags</td><td>Quick log / confirmation</td></tr>
+<tr><td>Medication</td><td>6</td><td>Medication-related adherence information</td><td>Reminder interaction, connected source where available, or manual confirmation</td></tr>
+<tr><td>Vaccine</td><td>3</td><td>Vaccination-related status or events</td><td>Record import or user-confirmed entry</td></tr>
+<tr><td>Metabolic</td><td>8</td><td>Selected readings such as blood pressure or glucose, when available</td><td>Connected device, health app, lab/document extraction with confirmation, or manual entry</td></tr>
+<tr><td>Illness</td><td>5</td><td>Illness or symptom events</td><td>Short event check-in</td></tr>
+<tr><td>Allergy</td><td>3</td><td>Allergy-related events or flares</td><td>Short event check-in</td></tr>
+<tr><td>Incident</td><td>5</td><td>Events such as falls or other incidents</td><td>Event-based user report or supported record</td></tr>
+<tr><td>Other</td><td>5</td><td>Additional recurring items in the framework</td><td>Depends on the specific item and source</td></tr>
+</tbody></table></div>
+<p class="muted">The group counts above follow the concept paper and add to 77. They describe the proposed metric catalogue, not a guarantee that all metrics will be continuously available or auto-populated for every user.</p>
+<div class="grid3" style="margin-top:20px">
+<div class="card"><div class="ico">⌚</div><h3>Wearable / health platform</h3><p>With permission and a supported integration, compatible steps, sleep or activity data may be synced rather than re-entered.</p></div>
+<div class="card"><div class="ico">📄</div><h3>Screenshot or report OCR</h3><p>Data may be extracted from a screenshot or report, then presented for user confirmation before it is used.</p></div>
+<div class="card"><div class="ico">☑️</div><h3>One-tap or short manual log</h3><p>Useful for items that a device cannot observe reliably, including many symptoms, incidents, substance-use events and medication confirmations.</p></div>
+</div>
+</section>
+<section class="section"><div class="section-head"><div class="eyebrow">04 / Scoring engine</div><h2>From inputs to interpretable outputs</h2><p>The proposed engine converts applicable responses and recurring measures into domain contributions and time-based deltas. A key implementation principle is that every displayed result should be traceable to an input, a rule and a time window.</p></div>
+<div class="flow">
+<div class="flow-item"><strong>1. Validate input</strong><p>Identify source, timestamp, units, range and whether confirmation is required.</p></div>
+<div class="flow-item"><strong>2. Map to a band</strong><p>Match the response or reading to the defined category, threshold or option lookup.</p></div>
+<div class="flow-item"><strong>3. Apply scoring rule</strong><p>Use the relevant domain weight, year-delta or recurring contribution when specified.</p></div>
+<div class="flow-item"><strong>4. Check triggers</strong><p>Evaluate separately governed safety rules and route to appropriate reviewed messaging.</p></div>
+<div class="flow-item"><strong>5. Aggregate</strong><p>Summarise daily contributions into weekly, monthly, quarterly and annual views.</p></div>
+</div>
+<div class="grid2">
+<div class="formula-card"><span class="tag">Onboarding baseline</span><h3>Baseline age view</h3><div class="mathline">Chronological age <strong>±</strong> aggregated domain year-deltas<br><span style="font-size:.88rem;color:#d9eee2">= lifestyle-informed biological-age proxy</span></div><p style="margin-top:13px">This is the concept-level model description, not a clinical epigenetic clock. The exact aggregation, caps, cohort adjustments and calibrated coefficients must be explicitly specified before the result can be interpreted as a calibrated estimate.</p></div>
+<div class="formula-card"><span class="tag">Recurring update</span><h3>Daily LIFE DAYS</h3><div class="mathline">Daily gains <strong>−</strong> daily penalties<br><strong>±</strong> eligible trigger effects<br><strong>+</strong> optional mission / streak bonuses</div><p style="margin-top:13px">The concept paper describes recurring metrics as fractional time-deltas translated into LIFE DAYS. A sustained pattern may be damped into the baseline over longer periods so the longer-term view does not swing with every individual day.</p></div>
+</div>
+<div class="good-callout"><strong>Conversion convention in the framework:</strong> 1 biological year is represented as 365 LIFE DAYS; therefore, a specified year delta can be converted to LIFE DAYS by multiplying by 365. This is a motivational model convention, not a literal prediction of lifespan gained or lost.</div>
+<div class="section-head" style="margin-top:28px"><h2>One scoring language, several time horizons</h2><p>Higher horizons should summarise the same underlying daily records rather than invent new science or apply unrelated scoring logic.</p></div>
+<div class="horizons">
+<div class="horizon"><h3>Daily</h3><p>Immediate metric contributions, net LIFE DAYS, mission feedback and any reviewed trigger messages.</p></div>
+<div class="horizon"><h3>Weekly</h3><p>The main coaching window: progress toward the desired score or LIFE DAYS target, with a clear next action.</p></div>
+<div class="horizon"><h3>Monthly / quarterly</h3><p>Smooth day-to-day noise, show domain trends, recurring patterns and whether support may be useful.</p></div>
+<div class="horizon"><h3>Annual</h3><p>Reflect on total LIFE DAYS, score change, long-term trends, completed missions and the next baseline goal.</p></div>
+</div>
+</section>
+<section class="section"><div class="section-head"><div class="eyebrow">05 / Rules and guardrails</div><h2>Traceability matters more than a polished number</h2><p>For this concept to become a dependable product, the scoring engine needs a transparent rule catalogue and careful validation. The source framework identifies the intended structure, but it does not supply every operational coefficient.</p></div>
+<div class="grid2">
+<div class="card"><div class="ico">🧾</div><h3>What should be traceable</h3><ul style="color:var(--yc-muted);line-height:1.75;padding-left:20px"><li>Original input and capture source</li><li>Question / metric ID and domain</li><li>Response band, threshold and units</li><li>Applied weight or year-delta lookup</li><li>Date, missing-data handling and confidence</li><li>Score contribution and reason for any change</li></ul></div>
+<div class="card"><div class="ico">🔐</div><h3>What should be governed</h3><ul style="color:var(--yc-muted);line-height:1.75;padding-left:20px"><li>Consent, source permissions and data correction</li><li>Duplicate, stale, implausible or conflicting readings</li><li>Age/cohort applicability, caps and damping</li><li>Clinically reviewed trigger thresholds and escalation paths</li><li>Validation, versioning and audit trail for scoring changes</li><li>Clear explanation that outputs are not a diagnosis</li></ul></div>
+</div>
+<div class="callout"><strong>Scoring status:</strong> the science framework includes blank or unspecified YouthCraft year-delta values and some unfinished scoring entries. This page therefore explains the intended architecture and conversion convention, but does not invent missing weights, thresholds, coefficients or clinical cut-offs. Those values need to be completed, reviewed and validated before production scoring.</div>
+<div class="callout"><strong>Safety status:</strong> onboarding and recurring inputs may identify conditions for a support workflow, but a trigger should not be treated as a diagnosis. Each trigger requires an approved threshold, clinical owner, user-facing language, destination, privacy controls and a process for false positives and missed cases.</div>
+</section>
+<div class="footer-cta"><div><h2>Start with your baseline.</h2><p>Build a profile once, connect what you choose, and use the recurring layer to understand patterns over time.</p></div><a class="btn" href="onboarding.html">Begin onboarding →</a></div>
+</main>
+<div id="site-footer"></div>
+<script src="script.js"></script>
 </body>
 </html>

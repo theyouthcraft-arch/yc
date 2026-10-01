@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Baseline Questionnaire | YouthCraft</title>
+  <style>
+    :root {
+      --yc-ink: #183b32;
+      --yc-green: #176b55;
+      --yc-mint: #e8f3ed;
+      --yc-paper: #fbfaf6;
+      --yc-line: #dce7df;
+      --yc-muted: #5b7068;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--yc-paper);
+      color: #243b33;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .onboarding-container {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .progress-bar-container {
+      background: var(--yc-line);
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .progress-bar {
+      background: var(--yc-green);
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+    .step-indicator {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--yc-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+    .onboarding-card {
+      background: #ffffff;
+      border: 1px solid var(--yc-line);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(24, 59, 50, 0.04);
+    }
+    h2 {
+      color: var(--yc-ink);
+      margin-top: 0;
+    }
+    .lead {
+      color: var(--yc-muted);
+      margin-bottom: 28px;
+    }
+    fieldset.domain-section {
+      border: 1px solid var(--yc-line);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    fieldset.domain-section legend {
+      font-weight: 700;
+      color: var(--yc-green);
+      padding: 0 8px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--yc-ink);
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--yc-line);
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .domain-overview-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 24px 0;
+    }
+    .pill {
+      background: var(--yc-paper);
+      border: 1px solid var(--yc-line);
+      color: var(--yc-muted);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .pill.active {
+      background: var(--yc-mint);
+      border-color: var(--yc-green);
+      color: var(--yc-green);
+    }
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 32px;
+    }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-secondary {
+      background: var(--yc-line);
+      color: var(--yc-muted);
+    }
+    .btn-primary {
+      background: var(--yc-green);
+      color: #ffffff;
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="container onboarding-container">
+      <header class="onboarding-header">
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: 16%;"></div>
+        </div>
+        <div class="step-indicator">
+          <span>Step 1 of 6</span>
+          <span class="step-title">Demographics & Biometrics</span>
+        </div>
+      </header>
+
+      <div class="onboarding-card">
+        <h2>Welcome to YouthCraft</h2>
+        <p class="lead">Let's build your baseline health picture. This questionnaire takes 8–12 minutes. You can save your progress and return at any time.</p>
+
+        <form class="onboarding-form">
+          <!-- Domain 1: Demographics & Biometrics -->
+          <fieldset class="domain-section">
+            <legend>Demographics & Basic Biometrics</legend>
+            
+            <div class="form-group">
+              <label for="age">What is your chronological age?</label>
+              <input type="number" id="age" min="18" max="120" placeholder="e.g. 35" required>
+            </div>
+
+            <div class="form-group">
+              <label for="biological-sex">Biological Sex (for physiological baselines)</label>
+              <select id="biological-sex" required>
+                <option value="">Select an option</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="intersex">Intersex / Other</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="height">Height (cm)</label>
+                <input type="number" id="height" placeholder="175">
+              </div>
+              <div class="form-group">
+                <label for="weight">Weight (kg)</label>
+                <input type="number" id="weight" placeholder="70">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Preview of Domain Flow -->
+          <div class="domain-overview-pills">
+            <span class="pill active">1. Demographics & Biometrics</span>
+            <span class="pill">2. Lifestyle & Daily Habits</span>
+            <span class="pill">3. Substance Use</span>
+            <span class="pill">4. Medical History & Markers</span>
+            <span class="pill">5. Function & Prevention</span>
+            <span class="pill">6. Preferences & Focus</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" disabled>Previous</button>
+            <button type="submit" class="btn btn-primary">Save & Continue →</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Registry - Scientific Transparency | YouthCraft</title>
+  <style>
+    :root {
+      --yc-ink: #183b32;
+      --yc-green: #176b55;
+      --yc-mint: #e8f3ed;
+      --yc-paper: #fbfaf6;
+      --yc-line: #dce7df;
+      --yc-muted: #5b7068;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--yc-paper);
+      color: #243b33;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .page-header {
+      margin-bottom: 40px;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--yc-mint);
+      color: var(--yc-green);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: var(--yc-ink);
+      margin: 0 0 10px 0;
+      letter-spacing: -0.03em;
+    }
+    .lead {
+      font-size: 1.15rem;
+      color: var(--yc-muted);
+      margin: 0;
+    }
+    .content-body h2 {
+      font-size: 1.5rem;
+      color: var(--yc-ink);
+      border-bottom: 2px solid var(--yc-mint);
+      padding-bottom: 8px;
+      margin-top: 40px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--yc-line);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(24, 59, 50, 0.03);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: var(--yc-green);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--yc-line);
+    }
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--yc-line);
+    }
+    th {
+      background-color: var(--yc-mint);
+      color: var(--yc-ink);
+      font-weight: 700;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="container">
+      <header class="page-header">
+        <span class="badge">Scientific Transparency</span>
+        <h1>YouthCraft Model Registry</h1>
+        <p class="lead">Explore the algorithms, scoring rules, and reference standards powering your Youth Score, domain sub-scores, and LIFE DAYS calculations.</p>
+      </header>
+
+      <article class="content-body">
+        <h2>1. Overview & Architectural Principles</h2>
+        <p>YouthCraft operates on an open-model framework designed to bridge clinical evidence with daily behavioral tracking. All score outputs are deterministic calculations derived from user-reported questionnaires (up to 107 baseline inputs) and optional daily telemetry (up to 77 recurring metrics).</p>
+        
+        <ul>
+          <li><strong>Traceability:</strong> Every question option maps to an explicit numeric weight or year-delta range anchored in peer-reviewed literature.</li>
+          <li><strong>Non-Black-Box Model:</strong> We reject uninterpretable machine learning predictions in favor of explainable scoring trees and validated clinical screeners.</li>
+          <li><strong>Dynamic Normalization:</strong> Scores adjust according to age-specific and gender-specific baseline cohorts.</li>
+        </ul>
+
+        <h2>2. Core Scoring Modules</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Youth Score (0–100 Index)</h3>
+            <p>A weighted composite index aggregating six health domains. Normalization factors prevent individual outliers from distorting overall wellness trends.</p>
+          </div>
+          <div class="card">
+            <h3>Domain Year-Deltas (Δ-Years)</h3>
+            <p>Models biological age deviations (-5.0 to +5.0 years) per domain based on epidemiological hazard ratios and lifestyle impact studies.</p>
+          </div>
+          <div class="card">
+            <h3>LIFE DAYS Metric</h3>
+            <p>A motivational translation converting sustained positive daily choices into estimated fractional quality-adjusted days gained.</p>
+          </div>
+        </div>
+
+        <h2>3. Domain Weighting Architecture</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Primary Reference Standards</th>
+              <th>Youth Score Weight</th>
+              <th>Max Δ-Years Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sleep & Circadian</strong></td>
+              <td>PSQI (Pittsburgh Sleep Quality Index), SATED Scale</td>
+              <td>18%</td>
+              <td>± 2.5 Years</td>
+            </tr>
+            <tr>
+              <td><strong>Movement & Exercise</strong></td>
+              <td>WHO Physical Activity Guidelines, IPAQ</td>
+              <td>22%</td>
+              <td>± 3.2 Years</td>
+            </tr>
+            <tr>
+              <td><strong>Nutrition & Hydration</strong></td>
+              <td>MEDAS (Mediterranean Diet Adherence Screen), HEI</td>
+              <td>20%</td>
+              <td>± 3.0 Years</td>
+            </tr>
+            <tr>
+              <td><strong>Substance & Exposure</strong></td>
+              <td>AUDIT-C, WHO Tobacco Cessation Protocols</td>
+              <td>15%</td>
+              <td>± 4.0 Years</td>
+            </tr>
+            <tr>
+              <td><strong>Medical & Metabolic</strong></td>
+              <td>AHA Life's Essential 8, Framingham Risk Engine</td>
+              <td>15%</td>
+              <td>± 3.5 Years</td>
+            </tr>
+            <tr>
+              <td><strong>Prevention & Mind</strong></td>
+              <td>PHQ-2, GAD-2, Age-specific screening guidelines</td>
+              <td>10%</td>
+              <td>± 1.8 Years</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>4. Model Version History</h2>
+        <ul>
+          <li><strong>Version 1.0.0 (Current):</strong> Initial release featuring 107-question baseline profiling, 6-domain delta attribution, and static LIFE DAYS formula.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

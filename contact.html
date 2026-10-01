@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | YouthCraft</title>
+  <style>
+    :root {
+      --yc-ink: #183b32;
+      --yc-green: #176b55;
+      --yc-mint: #e8f3ed;
+      --yc-paper: #fbfaf6;
+      --yc-line: #dce7df;
+      --yc-muted: #5b7068;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--yc-paper);
+      color: #243b33;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: var(--yc-ink);
+      margin: 0 0 10px 0;
+    }
+    .lead {
+      font-size: 1.15rem;
+      color: var(--yc-muted);
+      margin: 0 0 40px 0;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+    }
+    .contact-info h2 {
+      color: var(--yc-ink);
+      margin-top: 0;
+    }
+    .info-item {
+      margin-top: 20px;
+    }
+    .info-item strong {
+      display: block;
+      color: var(--yc-ink);
+    }
+    .info-item a {
+      color: var(--yc-green);
+      text-decoration: none;
+    }
+    .info-item a:hover {
+      text-decoration: underline;
+    }
+    .contact-form {
+      background: #ffffff;
+      border: 1px solid var(--yc-line);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(24, 59, 50, 0.03);
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--yc-ink);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--yc-line);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--yc-green);
+    }
+    .btn-primary {
+      background: var(--yc-green);
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 999px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-primary:hover {
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="container">
+      <header class="page-header">
+        <h1>Get in Touch</h1>
+        <p class="lead">Have questions about our scientific framework, platform feedback, or collaboration opportunities? We'd love to hear from you.</p>
+      </header>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Reach Out</h2>
+          <p>YouthCraft is built as an open, evidence-first health companion concept. We welcome input from researchers, clinicians, developers, and users.</p>
+          
+          <div class="info-item">
+            <strong>GitHub Repository:</strong>
+            <p><a href="https://github.com/theyouthcraft-arch/yc" target="_blank" rel="noopener">theyouthcraft-arch/yc</a></p>
+          </div>
+          <div class="info-item">
+            <strong>Project Focus:</strong>
+            <p>Preventive health, lifestyle tracking, habits & longevity tools.</p>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Message submitted!');">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="category">Topic</label>
+            <select id="category">
+              <option>General Inquiry</option>
+              <option>Scientific & Scoring Methodology</option>
+              <option>Bug Report / Technical Issue</option>
+              <option>Partnership & Research</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" required placeholder="How can we help?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

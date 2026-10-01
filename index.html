@@ -4,33 +4,74 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Home | YouthCraft</title>
-  <meta name="description" content="Home — YouthCraft - Craft a Younger You !">
+  <meta name="description" content="Home — YouthCraft wellness and scientific methodology.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Header Placeholder -->
-  <div id="header-placeholder"></div>
+  <!-- Reusable Header Target -->
+  <div id="site-header"></div>
 
+  <!-- Unique Page Content -->
   <header class="hero">
-    ...
+    <div class="wrap">
+      <div class="eyebrow">YouthCraft</div>
+      <h1>Craft a Younger You. Gain Active Years.</h1>
+      <p>See how everyday choices are shaping your health trajectory — and take one small, evidence-informed step at a time.</p>
+    </div>
   </header>
 
   <main>
-    ...
+    <div class="wrap">
+      <section>
+        <div class="grid">
+          <div>
+            <span class="pill">Discover · Craft · Play · Share</span>
+            <h2>Craft a Younger You. Gain Active Years.</h2>
+            <p class="lead">YouthCraft helps people understand how everyday patterns relate to health and turn that understanding into small, actionable missions.</p>
+            <div class="actions">
+              <a class="btn" href="how-it-works.html">How It Works</a>
+              <a class="btn alt" href="science.html">Explore the Science</a>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Your three core signals</h3>
+            <p><strong>Youth Score</strong> · 0–100 wellness index</p>
+            <p><strong>Biological Age Proxy</strong> · lifestyle-informed model output</p>
+            <p><strong>LIFE DAYS</strong> · motivational translation of model ΔY</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>From fragmented health data to one clear next step</h2>
+        <div class="grid3">
+          <div class="card">
+            <h3>Discover</h3>
+            <p>Build a structured baseline using age-aware questions and evidence-linked measures.</p>
+          </div>
+          <div class="card">
+            <h3>Craft</h3>
+            <p>Turn the largest opportunity into a practical mission.</p>
+          </div>
+          <div class="card">
+            <h3>Play & Share</h3>
+            <p>Track progress and optionally share selected information with people or partners you choose.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="notice">
+          <strong>Scientific boundary</strong>YouthCraft is a wellness framework. Its model-derived scores and LIFE DAYS are not diagnoses or literal predictions of lifespan.
+        </div>
+      </section>
+    </div>
   </main>
 
-  <!-- Footer Placeholder -->
-  <div id="footer-placeholder"></div>   
+  <!-- Reusable Footer Target -->
+  <div id="site-footer"></div>
 
-  <script>
-    fetch('header.html') 
-      .then(response => response.text())
-      .then(data => document.getElementById('header-placeholder').innerHTML = data);
-    
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

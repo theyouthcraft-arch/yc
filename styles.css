@@ -26,7 +26,7 @@ a{color:var(--teal);text-decoration:none}a:hover{text-decoration:none}.wrap{max-
 .nav{min-height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:inline-flex;align-items:center;flex:0 0 auto;color:var(--deep);white-space:nowrap}
 .brand:hover{text-decoration:none}
-.brand img{display:block;width:226px;height:auto;max-height:82px;object-fit:contain}
+.brand img{display:block;width:240px;height:auto;max-height:110px;object-fit:contain}
 .primary-nav{display:flex;align-items:center;justify-content:flex-end;gap:5px;flex-wrap:wrap;min-width:0}
 
 .primary-nav{display:flex;align-items:center;justify-content:flex-end;gap:5px;flex-wrap:wrap}

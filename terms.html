@@ -4,153 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Service | YouthCraft</title>
-  <style>
-    :root {
-      --yc-ink: #183b32;
-      --yc-paper: #fbfaf6;
-      --yc-line: #dce7df;
-      --yc-muted: #5b7068;
-      --yc-green: #176b55;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--yc-paper);
-      color: #243b33;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* Header & Navigation Styles */
-    .site-header {
-      background: #ffffff;
-      border-bottom: 1px solid var(--yc-line);
-      padding: 16px 20px;
-    }
-    .header-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .site-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--yc-ink);
-      text-decoration: none;
-    }
-    .nav-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-    }
-    .nav-links a {
-      color: var(--yc-muted);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--yc-green);
-    }
-
-    /* Main Content Area */
-    main {
-      flex: 1;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: var(--yc-ink);
-      margin: 0 0 10px 0;
-    }
-    .lead {
-      font-size: 1rem;
-      color: var(--yc-muted);
-      margin: 0 0 30px 0;
-    }
-    .content-body h2 {
-      font-size: 1.35rem;
-      color: var(--yc-ink);
-      border-bottom: 1px solid var(--yc-line);
-      padding-bottom: 6px;
-      margin-top: 32px;
-    }
-    code {
-      background-color: var(--yc-line);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    li {
-      margin-bottom: 8px;
-    }
-
-    /* Footer Styles */
-    .site-footer {
-      background: #ffffff;
-      border-top: 1px solid var(--yc-line);
-      padding: 24px 20px;
-      margin-top: 60px;
-    }
-    .footer-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 0.9rem;
-      color: var(--yc-muted);
-    }
-    .footer-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 16px;
-    }
-    .footer-links a {
-      color: var(--yc-muted);
-      text-decoration: none;
-    }
-    .footer-links a:hover {
-      color: var(--yc-green);
-    }
-  </style>
+<link rel="stylesheet" href="styles.css">
+<style>
 </head>
 <body>
-
-  <!-- Site Header -->
-  <header class="site-header">
-    <div class="header-container">
-      <a href="index.html" class="site-logo">YouthCraft</a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="biological_age.html">Biological Age</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
+<div id="site-header"></div>
   <!-- Main Content -->
   <main>
     <section class="container">
@@ -181,18 +39,7 @@
     </section>
   </main>
 
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <p>&copy; 2026 YouthCraft. All rights reserved.</p>
-      <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="terms.html">Terms</a></li>
-        <li><a href="disclaimer.html">Disclaimer</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </footer>
-
+<div id="site-footer"></div>
+<script src="script.js"></script>
 </body>
 </html>

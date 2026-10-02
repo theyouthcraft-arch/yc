@@ -1,312 +1,705 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Onboarding Baseline Questionnaire | YouthCraft</title>
-  <meta name="description" content="Build your baseline health picture with YouthCraft's onboarding baseline questionnaire.">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    :root {
-      --yc-ink: #183b32;
-      --yc-green: #176b55;
-      --yc-mint: #e8f3ed;
-      --yc-paper: #fbfaf6;
-      --yc-line: #dce7df;
-      --yc-muted: #5b7068;
-      --yc-gold: #c48a39;
-      --yc-lilac: #eeeafb;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      background: var(--yc-paper);
-      color: #243b33;
-      font-family: inherit;
-    }
-    .wrap {
-      max-width: 1160px;
-      margin: auto;
-      padding: 0 22px;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Full Baseline Questionnaire | YouthCraft</title>
+<meta name="description" content="Complete YouthCraft's science-backed 107-question baseline assessment to discover your Youth Score and Biological Age delta.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
+.wrap{max-width:1160px;margin:auto;padding:0 22px}
 
-    /* Main Container */
-    .content {
-      padding-top: 40px;
-      padding-bottom: 72px;
-    }
-    .onboarding-container {
-      max-width: 750px;
-      margin: 0 auto;
-    }
+/* Questionnaire Header */
+.q-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:54px 0 36px;border-bottom:1px solid var(--yc-line)}
+.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
+.q-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.08;color:var(--yc-ink);margin:12px 0;letter-spacing:-.045em}
+.q-hero p{font-size:1.05rem;line-height:1.6;color:#466157;margin:0;max-width:760px}
 
-    /* Progress & Indicators */
-    .onboarding-header {
-      margin-bottom: 24px;
-    }
-    .progress-bar-container {
-      background: var(--yc-line);
-      height: 8px;
-      border-radius: 999px;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-    .progress-bar {
-      background: var(--yc-green);
-      height: 100%;
-      border-radius: 999px;
-      transition: width 0.3s ease;
-    }
-    .step-indicator {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      font-weight: 850;
-      color: var(--yc-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+/* Progress Section */
+.content{padding-top:36px;padding-bottom:72px}
+.q-container{max-width:860px;margin:0 auto}
 
-    /* Card Layout */
-    .onboarding-card {
-      background: #ffffff;
-      border: 1px solid var(--yc-line);
-      border-radius: 24px;
-      padding: 36px;
-      box-shadow: 0 8px 24px rgba(24, 59, 50, 0.035);
-    }
-    .onboarding-card h2 {
-      color: var(--yc-ink);
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin: 0 0 10px;
-      letter-spacing: -0.03em;
-    }
-    .lead {
-      color: var(--yc-muted);
-      font-size: 1.05rem;
-      line-height: 1.6;
-      margin-top: 0;
-      margin-bottom: 28px;
-    }
+.progress-header{margin-bottom:28px}
+.progress-bar-container{background:var(--yc-line);height:8px;border-radius:999px;overflow:hidden;margin-bottom:12px}
+.progress-bar{background:var(--yc-green);height:100%;border-radius:999px;transition:width .3s ease;width:16.6%}
+.step-indicator{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;font-weight:850;color:var(--yc-muted);text-transform:uppercase;letter-spacing:.05em}
 
-    /* Form & Sections */
-    fieldset.domain-section {
-      border: 1px solid var(--yc-line);
-      border-radius: 16px;
-      padding: 24px;
-      margin: 0 0 28px 0;
-      background: #fafcfb;
-    }
-    fieldset.domain-section legend {
-      font-weight: 800;
-      color: var(--yc-green);
-      padding: 0 10px;
-      font-size: 0.98rem;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    .form-group:last-child {
-      margin-bottom: 0;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 0.92rem;
-      font-weight: 750;
-      color: var(--yc-ink);
-    }
-    .form-control {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 1px solid var(--yc-line);
-      background: #ffffff;
-      color: var(--yc-ink);
-      font-size: 1rem;
-      font-family: inherit;
-      transition: border-color 0.18s, box-shadow 0.18s;
-    }
-    .form-control:focus {
-      outline: none;
-      border-color: var(--yc-green);
-      box-shadow: 0 0 0 3px rgba(23, 107, 85, 0.12);
-    }
-    select.form-control {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%20%235b7068' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 40px;
-      cursor: pointer;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+/* Domain Navigation Pills */
+.domain-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.domain-pill{background:white;border:1px solid var(--yc-line);color:var(--yc-muted);padding:8px 16px;border-radius:999px;font-size:.82rem;font-weight:750;cursor:pointer;transition:all .18s ease;user-select:none}
+.domain-pill:hover{border-color:var(--yc-green);color:var(--yc-green)}
+.domain-pill.active{background:var(--yc-mint);border-color:var(--yc-green);color:var(--yc-green)}
 
-    /* Domain Overview Pills */
-    .domain-overview-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 24px 0 32px;
-    }
-    .pill {
-      background: var(--yc-paper);
-      border: 1px solid var(--yc-line);
-      color: var(--yc-muted);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-    .pill.active {
-      background: var(--yc-mint);
-      border-color: var(--yc-green);
-      color: var(--yc-green);
-    }
+/* Question Cards & Sections */
+.q-card{background:white;border:1px solid var(--yc-line);border-radius:24px;padding:36px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
+.domain-step{display:none}
+.domain-step.active{display:block}
 
-    /* Form Actions & Buttons */
-    .form-actions {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      text-decoration: none;
-      border-radius: 999px;
-      padding: 13px 24px;
-      font-size: 0.98rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: transform 0.18s, box-shadow 0.18s;
-      border: 1px solid transparent;
-    }
-    .btn-secondary {
-      background: white;
-      border-color: var(--yc-line);
-      color: var(--yc-muted);
-    }
-    .btn-primary {
-      background: var(--yc-green);
-      color: #ffffff;
-      border-color: var(--yc-green);
-    }
-    .btn-primary:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(24, 59, 50, 0.12);
-    }
-    .btn:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      transform: none !important;
-      box-shadow: none !important;
-    }
+.domain-title-block{margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--yc-mint)}
+.domain-title-block h2{color:var(--yc-ink);font-size:1.6rem;margin:0 0 6px;letter-spacing:-.02em}
+.domain-title-block p{color:var(--yc-muted);margin:0;font-size:.96rem}
 
-    @media (max-width: 560px) {
-      .onboarding-card {
-        padding: 24px;
-        border-radius: 20px;
-      }
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+/* Individual Question Item */
+.q-item{margin-bottom:32px;padding-bottom:28px;border-bottom:1px solid var(--yc-line)}
+.q-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+
+.q-header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
+.q-meta{display:flex;align-items:center;gap:8px}
+.q-id{font-size:.78rem;font-weight:850;color:var(--yc-green);background:var(--yc-mint);padding:3px 8px;border-radius:6px;letter-spacing:.05em}
+
+/* Applies To Button/Badge */
+.applies-to-btn{background:var(--yc-paper);border:1px solid var(--yc-line);color:var(--yc-ink);font-size:.74rem;font-weight:750;padding:4px 10px;border-radius:999px;cursor:default;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.applies-to-btn::before{content:"👤 ";font-size:.75rem}
+
+.q-text{font-size:1.08rem;font-weight:750;color:var(--yc-ink);line-height:1.45;margin:0 0 6px}
+
+/* Fine Print Rationale */
+.q-rationale{font-size:.84rem;line-height:1.55;color:var(--yc-muted);margin:0 0 16px;font-style:normal;background:#fbfbf8;padding:8px 12px;border-left:3px solid #cbdcd0;border-radius:0 8px 8px 0}
+.q-rationale strong{color:#3d544b}
+
+/* Form Controls & Options Grid */
+.options-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.options-stack{display:flex;flex-direction:column;gap:10px}
+
+/* Custom Radio / Checkbox Tiles */
+.option-tile{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--yc-line);border-radius:12px;background:#fafcfb;cursor:pointer;transition:all .15s ease;user-select:none;font-size:.96rem;font-weight:600;color:var(--yc-ink)}
+.option-tile:hover{background:white;border-color:#b5d3c3;transform:translateY(-1px)}
+.option-tile input[type="radio"],.option-tile input[type="checkbox"]{accent-color:var(--yc-green);width:18px;height:18px;cursor:pointer}
+.option-tileHasChecked{background:var(--yc-mint);border-color:var(--yc-green)}
+
+/* Standard Inputs */
+.form-input-number,.form-select{width:100%;max-width:320px;padding:12px 16px;border-radius:12px;border:1px solid var(--yc-line);background:#fafcfb;color:var(--yc-ink);font-size:1rem;font-family:inherit}
+.form-input-number:focus,.form-select:focus{outline:none;border-color:var(--yc-green);background:white;box-shadow:0 0 0 3px rgba(23,107,85,.12)}
+
+.input-unit-wrap{display:flex;align-items:center;gap:10px}
+.input-unit-wrap span{font-size:.9rem;font-weight:700;color:var(--yc-muted)}
+
+/* Bottom Actions */
+.form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--yc-line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border-radius:999px;padding:13px 26px;font-size:.98rem;font-weight:800;cursor:pointer;transition:all .18s;border:1px solid transparent}
+.btn-secondary{background:white;border-color:var(--yc-line);color:var(--yc-muted)}
+.btn-secondary:hover:not(:disabled){border-color:var(--yc-green);color:var(--yc-green)}
+.btn-primary{background:var(--yc-green);color:white;border-color:var(--yc-green)}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 18px rgba(24,59,50,.15)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none !important;box-shadow:none !important}
+
+@media(max-width:640px){
+  .q-card{padding:22px;border-radius:18px}
+  .options-grid{grid-template-columns:1fr}
+  .q-header-row{flex-direction:column;align-items:flex-start}
+}
+</style>
 </head>
 <body>
 
-  <!-- Dynamic Header Slot -->
-  <div id="site-header"></div>
+<!-- Dynamic Header Slot -->
+<div id="site-header"></div>
 
-  <!-- Main Content Area -->
-  <main class="wrap content">
-    <div class="onboarding-container">
-      
-      <!-- Progress Bar Header -->
-      <header class="onboarding-header">
-        <div class="progress-bar-container">
-          <div class="progress-bar" style="width: 16%;"></div>
-        </div>
-        <div class="step-indicator">
-          <span>Step 1 of 6</span>
-          <span class="step-title">Demographics & Biometrics</span>
-        </div>
-      </header>
+<!-- Hero Section -->
+<header class="q-hero">
+  <div class="wrap">
+    <div class="eyebrow">✦ Baseline Assessment</div>
+    <h1>Scientific Health Questionnaire</h1>
+    <p>Complete all 6 domains to calibrate your Youth Score, estimate domain year-deltas, and unlock personalized micro-missions.</p>
+  </div>
+</header>
 
-      <!-- Main Form Card -->
-      <div class="onboarding-card">
-        <h2>Welcome to YouthCraft</h2>
-        <p class="lead">Let's build your baseline health picture. This questionnaire takes 8–12 minutes. You can save your progress and return at any time.</p>
+<!-- Main Questionnaire Content -->
+<main class="wrap content">
+  <div class="q-container">
 
-        <form class="onboarding-form" action="onboarding-step-2.html" method="POST">
-          
-          <!-- Domain 1: Demographics & Biometrics -->
-          <fieldset class="domain-section">
-            <legend>Demographics & Basic Biometrics</legend>
-            
-            <div class="form-group">
-              <label for="age">What is your chronological age?</label>
-              <input type="number" id="age" name="age" class="form-control" min="18" max="120" placeholder="e.g. 35" required>
+    <!-- Progress Indicator -->
+    <div class="progress-header">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <div class="step-indicator">
+        <span id="stepCounter">Domain 1 of 6</span>
+        <span id="stepTitle">Demographics &amp; Biometrics</span>
+      </div>
+    </div>
+
+    <!-- Domain Pills -->
+    <nav class="domain-pills" id="domainPills">
+      <button type="button" class="domain-pill active" onclick="goToDomain(1)">1. Demographics</button>
+      <button type="button" class="domain-pill" onclick="goToDomain(2)">2. Lifestyle &amp; Habits</button>
+      <button type="button" class="domain-pill" onclick="goToDomain(3)">3. Substance Use</button>
+      <button type="button" class="domain-pill" onclick="goToDomain(4)">4. Medical &amp; Labs</button>
+      <button type="button" class="domain-pill" onclick="goToDomain(5)">5. Age-Specific</button>
+      <button type="button" class="domain-pill" onclick="goToDomain(6)">6. Preferences</button>
+    </nav>
+
+    <!-- Questionnaire Form Card -->
+    <div class="q-card">
+      <form id="questionnaireForm" onsubmit="event.preventDefault(); submitAssessment();">
+
+        <!-- ==================== DOMAIN 1 ==================== -->
+        <div class="domain-step active" id="domainStep1">
+          <div class="domain-title-block">
+            <h2>Domain 1: Demographics &amp; Biometrics</h2>
+            <p>Establishes baseline actuarial life expectancy anchor curves and physical body metrics.</p>
+          </div>
+
+          <!-- C01 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">C01</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
             </div>
+            <div class="q-text">What is your exact chronological age?</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Establishes baseline actuarial life expectancy anchor curve (WHO / Social Security Actuarial Tables).</div>
+            <div class="input-unit-wrap">
+              <input type="number" id="C01" name="C01" class="form-input-number" min="13" max="120" placeholder="e.g. 35" required>
+              <span>years old</span>
+            </div>
+          </div>
 
-            <div class="form-group">
-              <label for="biological-sex">Biological Sex (for physiological baselines)</label>
-              <select id="biological-sex" name="biologicalSex" class="form-control" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-                <option value="intersex">Intersex / Other</option>
+          <!-- C02 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">C02</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Select your age group bracket:</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Selects appropriate cohort multiplier &amp; capping rules for adolescent vs adult vs senior calculations.</div>
+            <div class="options-grid">
+              <label class="option-tile"><input type="radio" name="C02" value="13-17"> 13–17</label>
+              <label class="option-tile"><input type="radio" name="C02" value="18-39" checked> 18–39</label>
+              <label class="option-tile"><input type="radio" name="C02" value="40-59"> 40–59</label>
+              <label class="option-tile"><input type="radio" name="C02" value="60-74"> 60–74</label>
+              <label class="option-tile"><input type="radio" name="C02" value="75+"> 75+</label>
+            </div>
+          </div>
+
+          <!-- C03 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">C03</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">What is your biological sex at birth?</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Accounts for sex-specific baseline life expectancy gaps (~4-5 yrs actuarial difference globally).</div>
+            <div class="options-grid">
+              <label class="option-tile"><input type="radio" name="C03" value="Female"> Female (+0.40 yrs baseline)</label>
+              <label class="option-tile"><input type="radio" name="C03" value="Male"> Male (0.00 yrs baseline)</label>
+            </div>
+          </div>
+
+          <!-- C04 & C05 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">C04 / C05</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Height &amp; Weight (BMI Calculation)</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Determines Body Mass Index (BMI). U-shaped mortality curve with optimal baseline at 18.5–24.9 kg/m².</div>
+            <div class="options-stack">
+              <div class="input-unit-wrap">
+                <input type="number" id="C04" name="C04" class="form-input-number" placeholder="Height in cm (e.g. 175)">
+                <span>cm</span>
+              </div>
+              <div class="input-unit-wrap" style="margin-top:10px">
+                <input type="number" id="C05" name="C05" class="form-input-number" placeholder="Weight in kg (e.g. 70)">
+                <span>kg</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- C06 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">C06</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Waist Circumference</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Waist-to-Height Ratio (WHtR) is a superior predictor of visceral adiposity &amp; cardiometabolic risk compared to BMI alone.</div>
+            <div class="input-unit-wrap">
+              <input type="number" id="C06" name="C06" class="form-input-number" placeholder="Waist circumference in cm (e.g. 80)">
+              <span>cm</span>
+            </div>
+          </div>
+
+          <!-- C07 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">C07</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Do you live alone?</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Social isolation marker; living alone increases all-cause mortality risk independently in epidemiologic models.</div>
+            <div class="options-grid">
+              <label class="option-tile"><input type="radio" name="C07" value="No"> No (Lives with family/housemates)</label>
+              <label class="option-tile"><input type="radio" name="C07" value="Yes"> Yes (-0.50 yrs impact)</label>
+            </div>
+          </div>
+
+          <!-- C08 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">C08</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Highest level of education completed?</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Socioeconomic status proxy strongly correlated with health literacy, cognitive reserve, and longevity.</div>
+            <div class="options-stack">
+              <label class="option-tile"><input type="radio" name="C08" value="Secondary or less"> Secondary / High School or less</label>
+              <label class="option-tile"><input type="radio" name="C08" value="Vocational / Some College"> Vocational / College diploma</label>
+              <label class="option-tile"><input type="radio" name="C08" value="University Degree or higher"> University Degree or Higher (+0.60 yrs impact)</label>
+            </div>
+          </div>
+
+          <!-- C09 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">C09</span></div>
+              <button type="button" class="applies-to-btn">Applies To: 18+</button>
+            </div>
+            <div class="q-text">Current employment / occupation activity level?</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Occupational physical exertion vs sedentary office posture impact on vascular health.</div>
+            <div class="options-stack">
+              <label class="option-tile"><input type="radio" name="C09" value="Sedentary Office"> Sedentary / Desk Work</label>
+              <label class="option-tile"><input type="radio" name="C09" value="Active / Standing / Manual"> Active / Standing / Physical Work (+0.30 yrs)</label>
+              <label class="option-tile"><input type="radio" name="C09" value="Retired / Unemployed"> Retired / Not Currently Employed</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== DOMAIN 2 ==================== -->
+        <div class="domain-step" id="domainStep2">
+          <div class="domain-title-block">
+            <h2>Domain 2: Lifestyle, Sleep &amp; Activity Habits</h2>
+            <p>Covers Sleep quality (PSQI), Aerobic &amp; Strength training (IPAQ/WHO), Nutrition (MEDAS), and Psychological stress (PHQ-2).</p>
+          </div>
+
+          <!-- L01 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">L01</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Average weeknight sleep duration:</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> SATED &amp; PSQI standards. Sleep &lt;6h or &gt;9h correlates with systemic neuro-inflammation and metabolic risk.</div>
+            <div class="options-stack">
+              <label class="option-tile"><input type="radio" name="L01" value="<5 hours"> Less than 5 hours (-1.50 yrs)</label>
+              <label class="option-tile"><input type="radio" name="L01" value="5-6 hours"> 5 to 6 hours (-0.50 yrs)</label>
+              <label class="option-tile"><input type="radio" name="L01" value="7-8 hours" checked> 7 to 8 hours Optimal (+1.20 yrs)</label>
+              <label class="option-tile"><input type="radio" name="L01" value=">9 hours"> More than 9 hours (-0.30 yrs)</label>
+            </div>
+          </div>
+
+          <!-- L02 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">L02</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Do you wake up feeling refreshed and restored?</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Subjective sleep quality assessment from the SATED scale.</div>
+            <div class="options-grid">
+              <label class="option-tile"><input type="radio" name="L02" value="Always / Usually"> Always / Usually (+0.50 yrs)</label>
+              <label class="option-tile"><input type="radio" name="L02" value="Sometimes"> Sometimes (0.00 yrs)</label>
+              <label class="option-tile"><input type="radio" name="L02" value="Rarely / Never"> Rarely / Never (-0.80 yrs)</label>
+            </div>
+          </div>
+
+          <!-- L03 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">L03</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Trouble falling or staying asleep (Insomnia screen)?</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Chronic sleep latency &gt;30 mins flags hyperarousal and elevates nocturnal cortisol levels.</div>
+            <div class="options-stack">
+              <label class="option-tile"><input type="radio" name="L03" value="Never / Rarely"> Never / Rarely</label>
+              <label class="option-tile"><input type="radio" name="L03" value="1-2 nights/week"> 1–2 nights per week</label>
+              <label class="option-tile"><input type="radio" name="L03" value="3+ nights/week"> 3+ nights per week (Triggers Sleep Partner Escalation)</label>
+            </div>
+          </div>
+
+          <!-- L04 & L05 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">L04 / L05</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Physical Exercise Routine (WHO Guidelines / IPAQ)</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> 150+ mins moderate aerobic activity + 2 days resistance training reduces all-cause mortality by 27–33%.</div>
+            <div class="options-stack">
+              <label class="q-text" style="font-size:.92rem">Aerobic Moderate/Vigorous Activity Days per Week:</label>
+              <div class="options-grid">
+                <label class="option-tile"><input type="radio" name="L04" value="0 days"> 0 days</label>
+                <label class="option-tile"><input type="radio" name="L04" value="1-2 days"> 1–2 days</label>
+                <label class="option-tile"><input type="radio" name="L04" value="3-4 days" checked> 3–4 days</label>
+                <label class="option-tile"><input type="radio" name="L04" value="5+ days"> 5+ days</label>
+              </div>
+              <label class="q-text" style="font-size:.92rem;margin-top:10px">Muscle Strength Training Days per Week:</label>
+              <div class="options-grid">
+                <label class="option-tile"><input type="radio" name="L05" value="0 days"> 0 days</label>
+                <label class="option-tile"><input type="radio" name="L05" value="1 day"> 1 day</label>
+                <label class="option-tile"><input type="radio" name="L05" value="2+ days" checked> 2+ days (+0.80 yrs)</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- L07 - L10 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">L07–L10</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Dietary Habits (Mediterranean Diet MEDAS Screen)</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> High Ultra-Processed Food (UPF) intake accelerates cellular aging, whereas 4+ servings veg/fruits reduces vascular risk.</div>
+            <div class="options-stack">
+              <label class="q-text" style="font-size:.92rem">Daily Fruit &amp; Vegetable Servings:</label>
+              <div class="options-grid">
+                <label class="option-tile"><input type="radio" name="L07" value="<2 servings"> &lt;2 servings</label>
+                <label class="option-tile"><input type="radio" name="L07" value="2-4 servings"> 2–4 servings</label>
+                <label class="option-tile"><input type="radio" name="L07" value="5+ servings"> 5+ servings (+1.10 yrs)</label>
+              </div>
+              <label class="q-text" style="font-size:.92rem;margin-top:10px">Ultra-Processed Food (UPF) Intake Frequency:</label>
+              <div class="options-grid">
+                <label class="option-tile"><input type="radio" name="L08" value="Daily / Multiple times"> Daily / High UPF (-1.20 yrs)</label>
+                <label class="option-tile"><input type="radio" name="L08" value="Few times a week"> 2–3 times a week</label>
+                <label class="option-tile"><input type="radio" name="L08" value="Rarely / Minimal"> Minimal / Whole foods focus (+0.60 yrs)</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- L11 Screeners PHQ-2 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">L11a / L11b</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">PHQ-2 Mood Screen (Over the past 2 weeks)</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Standard validated 2-item clinical depression screener. Score ≥3 triggers confidential telehealth mental health pathway.</div>
+            <div class="options-stack">
+              <label class="q-text" style="font-size:.92rem">1. Little interest or pleasure in doing things?</label>
+              <select name="L11a" class="form-select">
+                <option value="0">0 - Not at all</option>
+                <option value="1">1 - Several days</option>
+                <option value="2">2 - More than half the days</option>
+                <option value="3">3 - Nearly every day</option>
+              </select>
+
+              <label class="q-text" style="font-size:.92rem;margin-top:10px">2. Feeling down, depressed, or hopeless?</label>
+              <select name="L11b" class="form-select">
+                <option value="0">0 - Not at all</option>
+                <option value="1">1 - Several days</option>
+                <option value="2">2 - More than half the days</option>
+                <option value="3">3 - Nearly every day</option>
               </select>
             </div>
+          </div>
+        </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="height">Height (cm)</label>
-                <input type="number" id="height" name="height" class="form-control" placeholder="e.g. 175" required>
+        <!-- ==================== DOMAIN 3 ==================== -->
+        <div class="domain-step" id="domainStep3">
+          <div class="domain-title-block">
+            <h2>Domain 3: Substance &amp; Environmental Exposures</h2>
+            <p>Evaluates tobacco pack-years (Fagerström), alcohol intake (AUDIT-C), and recreational exposure risk.</p>
+          </div>
+
+          <!-- S01 - S03 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">S01–S03</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Tobacco &amp; Nicotine Exposure Status</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Single largest preventable driver of biological age acceleration (-4.0 to -8.0 yrs depending on pack-years).</div>
+            <div class="options-stack">
+              <label class="option-tile"><input type="radio" name="S01" value="Never Smoked" checked> Never Smoked (+0.00 yrs)</label>
+              <label class="option-tile"><input type="radio" name="S01" value="Former Smoker"> Former Smoker (Quit &gt;12 months ago)</label>
+              <label class="option-tile"><input type="radio" name="S01" value="Current Smoker"> Current Smoker (Triggers Cessation Partner Workflow)</label>
+              <label class="option-tile"><input type="radio" name="S01" value="Vape / E-Cigarettes Only"> Daily E-Cigarette / Vaping</label>
+            </div>
+          </div>
+
+          <!-- S04 - S06 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">S04–S06</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Alcohol Consumption (AUDIT-C Clinical Screener)</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> AUDIT-C score derived from drinking frequency, typical units, and heavy episodic binge days.</div>
+            <div class="options-stack">
+              <label class="q-text" style="font-size:.92rem">How often do you have a drink containing alcohol?</label>
+              <select name="S04" class="form-select">
+                <option value="Never">Never</option>
+                <option value="Monthly or less">Monthly or less</option>
+                <option value="2-4 times a month">2–4 times a month</option>
+                <option value="2-3 times a week">2–3 times a week</option>
+                <option value="4+ times a week">4+ times a week</option>
+              </select>
+
+              <label class="q-text" style="font-size:.92rem;margin-top:10px">How many standard drinks on a typical day when drinking?</label>
+              <select name="S05" class="form-select">
+                <option value="1 or 2">1 or 2 standard drinks</option>
+                <option value="3 or 4">3 or 4 standard drinks</option>
+                <option value="5 or 6">5 or 6 standard drinks</option>
+                <option value="7 to 9">7 to 9 standard drinks</option>
+                <option value="10 or more">10 or more standard drinks</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== DOMAIN 4 ==================== -->
+        <div class="domain-step" id="domainStep4">
+          <div class="domain-title-block">
+            <h2>Domain 4: Medical History, Medications &amp; Labs</h2>
+            <p>Incorporates AHA Life's Essential 8, blood pressure, glycemic control, lipid panels, and biomarker values.</p>
+          </div>
+
+          <!-- M01 - M04 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">M01–M04</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Cardiometabolic Health History</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Diagnosed hypertension, type 2 diabetes, or dyslipidemia directly alters cardiovascular risk engines (Framingham/AHA).</div>
+            <div class="options-stack">
+              <label class="option-tile"><input type="checkbox" name="M_diag" value="htn"> Diagnosed High Blood Pressure (Hypertension)</label>
+              <label class="option-tile"><input type="checkbox" name="M_diag" value="db"> Diagnosed Elevated Blood Sugar / Type 2 Diabetes</label>
+              <label class="option-tile"><input type="checkbox" name="M_diag" value="chol"> Diagnosed High Cholesterol</label>
+              <label class="option-tile"><input type="checkbox" name="M_diag" value="none" checked> None of the above</label>
+            </div>
+          </div>
+
+          <!-- M09 Blood Pressure -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">M09</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">Most Recent Systolic Blood Pressure (mmHg) - Optional</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Systolic BP &lt;120 mmHg is optimal. SBP &gt;140 mmHg adds +2.5 yrs cardiovascular risk delta.</div>
+            <div class="input-unit-wrap">
+              <input type="number" id="M09" name="M09" class="form-input-number" placeholder="e.g. 118">
+              <span>mmHg</span>
+            </div>
+          </div>
+
+          <!-- M11 - M15 Key Biomarkers -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">M11–M15</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Optional Labs</button>
+            </div>
+            <div class="q-text">Laboratory Biomarkers (If available from recent bloodwork)</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Direct biological age proxies (HbA1c, hs-CRP, Albumin, Fasting Glucose, Lipid ratios).</div>
+            <div class="options-stack">
+              <div class="input-unit-wrap">
+                <input type="number" step="0.1" id="M11" name="M11" class="form-input-number" placeholder="HbA1c (e.g. 5.4)">
+                <span>%</span>
               </div>
-              <div class="form-group">
-                <label for="weight">Weight (kg)</label>
-                <input type="number" id="weight" name="weight" class="form-control" placeholder="e.g. 70" required>
+              <div class="input-unit-wrap" style="margin-top:10px">
+                <input type="number" step="0.1" id="M12" name="M12" class="form-input-number" placeholder="Fasting Glucose (e.g. 92)">
+                <span>mg/dL</span>
+              </div>
+              <div class="input-unit-wrap" style="margin-top:10px">
+                <input type="number" step="0.1" id="M13" name="M13" class="form-input-number" placeholder="hs-CRP (e.g. 0.8)">
+                <span>mg/L</span>
               </div>
             </div>
-          </fieldset>
+          </div>
+        </div>
 
-          <!-- Domain Steps Preview -->
-          <div class="domain-overview-pills">
-            <span class="pill active">1. Demographics & Biometrics</span>
-            <span class="pill">2. Lifestyle & Daily Habits</span>
-            <span class="pill">3. Substance Use</span>
-            <span class="pill">4. Medical History & Markers</span>
-            <span class="pill">5. Function & Prevention</span>
-            <span class="pill">6. Preferences & Focus</span>
+        <!-- ==================== DOMAIN 5 ==================== -->
+        <div class="domain-step" id="domainStep5">
+          <div class="domain-title-block">
+            <h2>Domain 5: Age-Specific Screeners (A01–A40)</h2>
+            <p>Targeted assessments tailored to specific cohorts (Adolescents 13-17, Adults 18-39, Adults 40-59, Seniors 60+).</p>
           </div>
 
-          <!-- Buttons -->
-          <div class="form-actions">
-            <button type="button" class="btn btn-secondary" disabled>Previous</button>
-            <button type="submit" class="btn btn-primary">Save & Continue <span aria-hidden="true">→</span></button>
+          <!-- A01 - A05 Adolescents -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">A01–A05</span></div>
+              <button type="button" class="applies-to-btn">Applies To: 13–17</button>
+            </div>
+            <div class="q-text">Adolescent Academic Stress &amp; Screen Time Screen</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Excessive recreational screen time (&gt;4h/day) correlates with reduced sleep duration and sedentary behavior in youth cohorts.</div>
+            <div class="options-stack">
+              <label class="q-text" style="font-size:.92rem">Daily non-academic screen time:</label>
+              <select name="A02" class="form-select">
+                <option value="<2 hours">&lt; 2 hours / day</option>
+                <option value="2-4 hours">2–4 hours / day</option>
+                <option value=">4 hours">&gt; 4 hours / day (-0.60 yrs)</option>
+              </select>
+            </div>
           </div>
 
-        </form>
-      </div>
+          <!-- A10 - A15 Adults 40+ -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">A10–A15</span></div>
+              <button type="button" class="applies-to-btn">Applies To: 40+</button>
+            </div>
+            <div class="q-text">USPSTF Cancer Screening Adherence</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Adherence to recommended colorectal, mammography, and cervical screening protocols.</div>
+            <div class="options-stack">
+              <label class="option-tile"><input type="radio" name="A10" value="Up to date" checked> Up to date with all age-appropriate preventive screenings (+0.80 yrs)</label>
+              <label class="option-tile"><input type="radio" name="A10" value="Overdue"> Overdue for one or more routine screenings</label>
+            </div>
+          </div>
 
+          <!-- A20 - A23 SARC-F Frailty Screen -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">A20–A23</span></div>
+              <button type="button" class="applies-to-btn">Applies To: 60+</button>
+            </div>
+            <div class="q-text">SARC-F Muscle Strength &amp; Frailty Screen</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Validated screener for sarcopenia and physical frailty in older adults. Score ≥4 indicates sarcopenia risk.</div>
+            <div class="options-stack">
+              <label class="q-text" style="font-size:.92rem">How much difficulty do you have lifting and carrying 10 lbs?</label>
+              <select name="A20" class="form-select">
+                <option value="None">None</option>
+                <option value="Some">Some</option>
+                <option value="A lot or unable">A lot / Unable (-1.50 yrs)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== DOMAIN 6 ==================== -->
+        <div class="domain-step" id="domainStep6">
+          <div class="domain-title-block">
+            <h2>Domain 6: Preferences &amp; Focus (UX)</h2>
+            <p>Customizes your app interface, notification frequency, and habit priority areas (0 score weight contribution).</p>
+          </div>
+
+          <!-- P01 - P04 -->
+          <div class="q-item">
+            <div class="q-header-row">
+              <div class="q-meta"><span class="q-id">P01–P04</span></div>
+              <button type="button" class="applies-to-btn">Applies To: Everyone</button>
+            </div>
+            <div class="q-text">What is your primary wellness goal for YouthCraft?</div>
+            <div class="q-rationale"><strong>Clinical Rationale:</strong> Configures algorithmic recommendation engine to prioritize sleep, movement, or stress reduction micro-missions.</div>
+            <div class="options-stack">
+              <label class="option-tile"><input type="radio" name="P01" value="Sleep" checked> Optimize Sleep &amp; Morning Energy</label>
+              <label class="option-tile"><input type="radio" name="P01" value="Movement"> Build Physical Strength &amp; Endurance</label>
+              <label class="option-tile"><input type="radio" name="P01" value="Longevity"> Lower Biological Age &amp; Long-term Risk</label>
+              <label class="option-tile"><input type="radio" name="P01" value="Stress"> Manage Daily Stress &amp; Mental Focus</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Action Navigation -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeStep(-1)" disabled>← Previous</button>
+          <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">Next Domain →</button>
+        </div>
+
+      </form>
     </div>
-  </main>
 
-  <!-- Dynamic Footer Slot -->
-  <div id="site-footer"></div>
+  </div>
+</main>
 
-  <!-- Shared Script -->
-  <script src="script.js"></script>
+<!-- Dynamic Footer Slot -->
+<div id="site-footer"></div>
 
+<!-- Shared Site Script -->
+<script src="script.js"></script>
+
+<!-- Multi-Step Navigation & Tab Handler -->
+<script>
+  let currentDomain = 1;
+  const totalDomains = 6;
+
+  const domainTitles = [
+    "Demographics & Biometrics",
+    "Lifestyle & Habits",
+    "Substance Use",
+    "Medical & Labs",
+    "Age-Specific Screeners",
+    "Preferences & Focus"
+  ];
+
+  function updateStepUI() {
+    // Show active domain step
+    for (let i = 1; i <= totalDomains; i++) {
+      const stepEl = document.getElementById(`domainStep${i}`);
+      if (stepEl) {
+        stepEl.classList.toggle('active', i === currentDomain);
+      }
+    }
+
+    // Update Pills
+    const pills = document.querySelectorAll('.domain-pill');
+    pills.forEach((pill, idx) => {
+      pill.classList.toggle('active', idx + 1 === currentDomain);
+    });
+
+    // Update Progress Bar & Counters
+    const progressPercent = (currentDomain / totalDomains) * 100;
+    document.getElementById('progressBar').style.width = `${progressPercent}%`;
+    document.getElementById('stepCounter').innerText = `Domain ${currentDomain} of ${totalDomains}`;
+    document.getElementById('stepTitle').innerText = domainTitles[currentDomain - 1];
+
+    // Button states
+    document.getElementById('prevBtn').disabled = (currentDomain === 1);
+    
+    const nextBtn = document.getElementById('nextBtn');
+    if (currentDomain === totalDomains) {
+      nextBtn.innerText = "Complete Assessment ✓";
+      nextBtn.classList.remove('btn-primary');
+      nextBtn.style.background = "var(--yc-ink)";
+      nextBtn.style.color = "white";
+    } else {
+      nextBtn.innerText = "Next Domain →";
+      nextBtn.classList.add('btn-primary');
+      nextBtn.style.background = "var(--yc-green)";
+    }
+
+    window.scrollTo({ top: 120, behavior: 'smooth' });
+  }
+
+  function changeStep(direction) {
+    currentDomain += direction;
+    if (currentDomain < 1) currentDomain = 1;
+    if (currentDomain > totalDomains) {
+      submitAssessment();
+      return;
+    }
+    updateStepUI();
+  }
+
+  function goToDomain(domainNum) {
+    currentDomain = domainNum;
+    updateStepUI();
+  }
+
+  function submitAssessment() {
+    alert("Questionnaire Submitted! Calculating your Youth Score and Biological Age Deltas...");
+    window.location.href = "biological_age.html";
+  }
+
+  // Option tile selection highlighting
+  document.addEventListener('change', function(e) {
+    if (e.target.type === 'radio') {
+      const name = e.target.name;
+      document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+        const tile = input.closest('.option-tile');
+        if (tile) tile.classList.remove('option-tileHasChecked');
+      });
+      const selectedTile = e.target.closest('.option-tile');
+      if (selectedTile) selectedTile.classList.add('option-tileHasChecked');
+    }
+  });
+
+  // Initialize
+  updateStepUI();
+</script>
 </body>
 </html>

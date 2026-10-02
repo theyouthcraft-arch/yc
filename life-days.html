@@ -3077,6 +3077,110 @@ h2{font-size:20px;line-height:1.25;margin:4px 0 14px}
     
 </section>
 
+
+
+
+<!-- YouthCraft: LIFE DAYS / LIFEYEAR Navigation Tabs -->
+<style>
+  .yc-page-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 auto 28px;
+    padding: 10px;
+    max-width: 900px;
+    background: #f0f8f2;
+    border: 1px solid #d5e8da;
+    border-radius: 14px;
+  }
+
+  .yc-page-tabs a {
+    flex: 1 1 220px;
+    display: block;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    color: #176336;
+    background: #ffffff;
+    border: 1px solid #cce3d2;
+    border-radius: 10px;
+    transition: background 0.2s ease, color 0.2s ease,
+                transform 0.2s ease;
+  }
+
+  .yc-page-tabs a:hover {
+    background: #e2f4e7;
+    transform: translateY(-1px);
+  }
+
+  .yc-page-tabs a.active {
+    background: #137a3e;
+    color: #ffffff;
+    border-color: #137a3e;
+    box-shadow: 0 4px 12px rgba(19, 122, 62, 0.18);
+  }
+
+  .yc-page-tabs .tab-subtitle {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  @media (max-width: 480px) {
+    .yc-page-tabs {
+      gap: 8px;
+      padding: 8px;
+    }
+
+    .yc-page-tabs a {
+      flex-basis: 100%;
+      padding: 12px;
+    }
+  }
+</style>
+
+<nav class="yc-page-tabs" aria-label="Explore LIFE DAYS and LIFEYEAR pages">
+  <a href="life-days.html" data-yc-page="loss">
+    LIFE DAYS Lost
+    <span class="tab-subtitle">Explore life-day losses and risk factors</span>
+  </a>
+
+  <a href="plus_youth-score.html" data-yc-page="gain">
+    LIFEYEAR Gains
+    <span class="tab-subtitle">Explore positive scoring options</span>
+  </a>
+</nav>
+
+<script>
+(function () {
+  var currentPage = window.location.pathname.toLowerCase();
+  var activeTab = currentPage.endsWith('/life-days.html')
+    ? 'loss'
+    : currentPage.endsWith('/plus_youth-score.html')
+      ? 'gain'
+      : '';
+
+  document.querySelectorAll('.yc-page-tabs a').forEach(function (tab) {
+    if (tab.dataset.ycPage === activeTab) {
+      tab.classList.add('active');
+      tab.setAttribute('aria-current', 'page');
+    }
+  });
+})();
+</script>
+
+
+
+
+
+
+
+    
+    
 <aside class="source-note">
 <strong>Source workbook:</strong> Youthcraft Onboarding Full 107 Scoring Framework — <code>Option_Lookup</code>, cross-referenced with <code>Question_Bank_Full</code> and <code>Instrument_References</code>.<br><br>
 <strong>Clinical safety:</strong> This page presents the workbook's scoring framework for informational use. It is not a diagnosis or individualized prognosis. Concerning measurements, symptoms, or behaviors should be reviewed with an appropriately qualified clinician.

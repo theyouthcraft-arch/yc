@@ -67,17 +67,21 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 .delta-negative{background:#fadbd8;color:var(--yc-danger);border:1px solid #f5b7b1}
 .delta-neutral{background:var(--yc-paper);color:var(--yc-muted);border:1px solid var(--yc-line)}
 
-/* Computed Final Result Card */
+/* Computed Final Result Card - Contrast Fix Overrides */
 .final-results-card{background:linear-gradient(135deg,#183b32,#24644f);border-radius:24px;padding:36px;color:white;margin-top:40px;box-shadow:0 12px 32px rgba(24,59,50,.15)}
 .final-results-header{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:18px;margin-bottom:24px}
-.final-results-header h2{font-size:1.8rem;margin:0 0 6px;letter-spacing:-.03em}
+.final-results-header h2{font-size:1.8rem;margin:0 0 6px;letter-spacing:-.03em;color:white}
 .final-results-header p{margin:0;color:#d4e4dc;font-size:.98rem}
 
-.results-table{width:100%;border-collapse:collapse;margin-top:10px}
-.results-table td{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:1.05rem;color:#e8f3ed}
-.results-table tr:last-child td{border-bottom:none}
-.results-table td.val-col{text-align:right;font-weight:850;font-size:1.25rem}
-.results-table .highlight-row td{font-size:1.35rem;font-weight:850;color:white;padding-top:18px}
+.final-results-card table,
+.final-results-card table.results-table{width:100% !important;border-collapse:collapse !important;margin-top:10px !important;background:transparent !important;border:none !important;box-shadow:none !important}
+.final-results-card tr,
+.final-results-card tr.data-row{background:transparent !important}
+.final-results-card td{padding:16px 0 !important;border-bottom:1px solid rgba(255,255,255,.15) !important;font-size:1.05rem !important;color:#e8f3ed !important;background:transparent !important}
+.final-results-card tr:last-child td{border-bottom:none !important}
+.final-results-card td.val-col{text-align:right !important;font-weight:850 !important;font-size:1.25rem !important;color:#ffffff !important}
+.final-results-card .highlight-row td{font-size:1.35rem !important;font-weight:850 !important;color:#ffffff !important;padding-top:20px !important}
+.final-results-card code{background:rgba(255,255,255,.18);color:#ffffff;padding:2px 8px;border-radius:6px;font-family:monospace}
 
 @media(max-width:768px){
   .summary-grid{grid-template-columns:1fr 1fr}
@@ -323,7 +327,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
         <tbody>
           <tr>
             <td>Total Year Delta (all inputs)</td>
-            <td class="val-col" style="color:#f5b7b1">-6.80 yrs</td>
+            <td class="val-col" style="color: #ff9e9e !important;">-6.80 yrs</td>
           </tr>
           <tr>
             <td>Chronological Baseline Age</td>

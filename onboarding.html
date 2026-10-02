@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Onboarding Baseline Questionnaire | YouthCraft</title>
+  <meta name="description" content="Build your baseline health picture with YouthCraft's onboarding baseline questionnaire.">
+  <link rel="stylesheet" href="styles.css">
   <style>
     :root {
       --yc-ink: #183b32;
@@ -12,64 +14,37 @@
       --yc-paper: #fbfaf6;
       --yc-line: #dce7df;
       --yc-muted: #5b7068;
+      --yc-gold: #c48a39;
+      --yc-lilac: #eeeafb;
+    }
+    * {
+      box-sizing: border-box;
     }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--yc-paper);
+      margin: 0;
+      background: var(--yc-paper);
       color: #243b33;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-family: inherit;
+    }
+    .wrap {
+      max-width: 1160px;
+      margin: auto;
+      padding: 0 22px;
     }
 
-    /* Header & Navigation Styles */
-    .site-header {
-      background: #ffffff;
-      border-bottom: 1px solid var(--yc-line);
-      padding: 16px 20px;
-    }
-    .header-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .site-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--yc-ink);
-      text-decoration: none;
-    }
-    .nav-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-    }
-    .nav-links a {
-      color: var(--yc-muted);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--yc-green);
-    }
-
-    /* Main Content Area */
-    main {
-      flex: 1;
+    /* Main Container */
+    .content {
+      padding-top: 40px;
+      padding-bottom: 72px;
     }
     .onboarding-container {
       max-width: 750px;
       margin: 0 auto;
-      padding: 40px 20px;
+    }
+
+    /* Progress & Indicators */
+    .onboarding-header {
+      margin-bottom: 24px;
     }
     .progress-bar-container {
       background: var(--yc-line);
@@ -88,158 +63,175 @@
       display: flex;
       justify-content: space-between;
       font-size: 0.85rem;
-      font-weight: 700;
+      font-weight: 850;
       color: var(--yc-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 24px;
     }
+
+    /* Card Layout */
     .onboarding-card {
       background: #ffffff;
       border: 1px solid var(--yc-line);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 4px 20px rgba(24, 59, 50, 0.04);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 8px 24px rgba(24, 59, 50, 0.035);
     }
-    h2 {
+    .onboarding-card h2 {
       color: var(--yc-ink);
-      margin-top: 0;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
     }
     .lead {
       color: var(--yc-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-top: 0;
       margin-bottom: 28px;
     }
+
+    /* Form & Sections */
     fieldset.domain-section {
       border: 1px solid var(--yc-line);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 24px;
+      border-radius: 16px;
+      padding: 24px;
+      margin: 0 0 28px 0;
+      background: #fafcfb;
     }
     fieldset.domain-section legend {
-      font-weight: 700;
+      font-weight: 800;
       color: var(--yc-green);
-      padding: 0 8px;
+      padding: 0 10px;
+      font-size: 0.98rem;
     }
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 20px;
+    }
+    .form-group:last-child {
+      margin-bottom: 0;
     }
     .form-group label {
       display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      font-weight: 750;
       color: var(--yc-ink);
     }
-    .form-group input, .form-group select {
+    .form-control {
       width: 100%;
-      padding: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
       border: 1px solid var(--yc-line);
-      border-radius: 6px;
-      box-sizing: border-box;
+      background: #ffffff;
+      color: var(--yc-ink);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.18s, box-shadow 0.18s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--yc-green);
+      box-shadow: 0 0 0 3px rgba(23, 107, 85, 0.12);
+    }
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%20%235b7068' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
     }
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
+
+    /* Domain Overview Pills */
     .domain-overview-pills {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 24px 0;
+      margin: 24px 0 32px;
     }
     .pill {
       background: var(--yc-paper);
       border: 1px solid var(--yc-line);
       color: var(--yc-muted);
-      padding: 6px 12px;
+      padding: 8px 14px;
       border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.82rem;
+      font-weight: 700;
     }
     .pill.active {
       background: var(--yc-mint);
       border-color: var(--yc-green);
       color: var(--yc-green);
     }
+
+    /* Form Actions & Buttons */
     .form-actions {
       display: flex;
       justify-content: space-between;
-      margin-top: 32px;
+      gap: 16px;
     }
     .btn {
-      padding: 10px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      text-decoration: none;
       border-radius: 999px;
-      font-weight: 700;
+      padding: 13px 24px;
+      font-size: 0.98rem;
+      font-weight: 800;
       cursor: pointer;
-      border: none;
+      transition: transform 0.18s, box-shadow 0.18s;
+      border: 1px solid transparent;
     }
     .btn-secondary {
-      background: var(--yc-line);
+      background: white;
+      border-color: var(--yc-line);
       color: var(--yc-muted);
     }
     .btn-primary {
       background: var(--yc-green);
       color: #ffffff;
+      border-color: var(--yc-green);
+    }
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(24, 59, 50, 0.12);
     }
     .btn:disabled {
-      opacity: 0.5;
+      opacity: 0.45;
       cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
     }
 
-    /* Footer Styles */
-    .site-footer {
-      background: #ffffff;
-      border-top: 1px solid var(--yc-line);
-      padding: 24px 20px;
-      margin-top: 60px;
-    }
-    .footer-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 0.9rem;
-      color: var(--yc-muted);
-    }
-    .footer-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 16px;
-    }
-    .footer-links a {
-      color: var(--yc-muted);
-      text-decoration: none;
-    }
-    .footer-links a:hover {
-      color: var(--yc-green);
+    @media (max-width: 560px) {
+      .onboarding-card {
+        padding: 24px;
+        border-radius: 20px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Site Header -->
-  <header class="site-header">
-    <div class="header-container">
-      <a href="index.html" class="site-logo">YouthCraft</a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="biological_age.html">Biological Age</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Dynamic Header Slot -->
+  <div id="site-header"></div>
 
-  <!-- Main Content -->
-  <main>
-    <section class="container onboarding-container">
+  <!-- Main Content Area -->
+  <main class="wrap content">
+    <div class="onboarding-container">
+      
+      <!-- Progress Bar Header -->
       <header class="onboarding-header">
         <div class="progress-bar-container">
           <div class="progress-bar" style="width: 16%;"></div>
@@ -250,24 +242,26 @@
         </div>
       </header>
 
+      <!-- Main Form Card -->
       <div class="onboarding-card">
         <h2>Welcome to YouthCraft</h2>
         <p class="lead">Let's build your baseline health picture. This questionnaire takes 8–12 minutes. You can save your progress and return at any time.</p>
 
-        <form class="onboarding-form">
+        <form class="onboarding-form" action="onboarding-step-2.html" method="POST">
+          
           <!-- Domain 1: Demographics & Biometrics -->
           <fieldset class="domain-section">
             <legend>Demographics & Basic Biometrics</legend>
             
             <div class="form-group">
               <label for="age">What is your chronological age?</label>
-              <input type="number" id="age" min="18" max="120" placeholder="e.g. 35" required>
+              <input type="number" id="age" name="age" class="form-control" min="18" max="120" placeholder="e.g. 35" required>
             </div>
 
             <div class="form-group">
               <label for="biological-sex">Biological Sex (for physiological baselines)</label>
-              <select id="biological-sex" required>
-                <option value="">Select an option</option>
+              <select id="biological-sex" name="biologicalSex" class="form-control" required>
+                <option value="" disabled selected>Select an option</option>
                 <option value="female">Female</option>
                 <option value="male">Male</option>
                 <option value="intersex">Intersex / Other</option>
@@ -277,16 +271,16 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="height">Height (cm)</label>
-                <input type="number" id="height" placeholder="175">
+                <input type="number" id="height" name="height" class="form-control" placeholder="e.g. 175" required>
               </div>
               <div class="form-group">
                 <label for="weight">Weight (kg)</label>
-                <input type="number" id="weight" placeholder="70">
+                <input type="number" id="weight" name="weight" class="form-control" placeholder="e.g. 70" required>
               </div>
             </div>
           </fieldset>
 
-          <!-- Preview of Domain Flow -->
+          <!-- Domain Steps Preview -->
           <div class="domain-overview-pills">
             <span class="pill active">1. Demographics & Biometrics</span>
             <span class="pill">2. Lifestyle & Daily Habits</span>
@@ -296,26 +290,23 @@
             <span class="pill">6. Preferences & Focus</span>
           </div>
 
+          <!-- Buttons -->
           <div class="form-actions">
             <button type="button" class="btn btn-secondary" disabled>Previous</button>
-            <button type="submit" class="btn btn-primary">Save & Continue →</button>
+            <button type="submit" class="btn btn-primary">Save & Continue <span aria-hidden="true">→</span></button>
           </div>
+
         </form>
       </div>
-    </section>
+
+    </div>
   </main>
 
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <p>&copy; 2026 YouthCraft. All rights reserved.</p>
-      <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="disclaimer.html">Disclaimer</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </footer>
+  <!-- Dynamic Footer Slot -->
+  <div id="site-footer"></div>
+
+  <!-- Shared Script -->
+  <script src="script.js"></script>
 
 </body>
 </html>

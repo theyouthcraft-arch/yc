@@ -1,50 +1,207 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biological Age Calculator | Youth Craft</title>
-    <!-- Include your main stylesheet to import header & footer styles -->
-    <link rel="stylesheet" href="style.css"> 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Biological Age Calculator | YouthCraft</title>
+<meta name="description" content="Calculate and explore your biological age using YouthCraft's data-driven scoring tools and lifestyle metrics.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb;--yc-danger:#c0392b;--yc-success:#27ae60}
+*{box-sizing:border-box}
+body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
+.wrap{max-width:1160px;margin:auto;padding:0 22px}
+
+/* Page Hero Header */
+.calc-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:60px 0 40px;border-bottom:1px solid var(--yc-line)}
+.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
+.calc-hero h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;color:var(--yc-ink);margin:12px 0;letter-spacing:-.045em}
+.calc-hero h1 span{color:var(--yc-green)}
+.calc-hero p{font-size:1.08rem;line-height:1.6;color:#466157;margin:0 auto;max-width:680px}
+
+.content{padding-top:40px;padding-bottom:72px}
+.calc-container{max-width:860px;margin:0 auto}
+
+/* Interactive Calculator Layout */
+.calc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+.calc-card,.results-card{background:white;border:1px solid var(--yc-line);border-radius:24px;padding:32px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
+
+.calc-card h2,.results-card h2{color:var(--yc-ink);font-size:1.45rem;margin:0 0 16px;letter-spacing:-.02em}
+
+/* Form Inputs */
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:.92rem;font-weight:750;color:var(--yc-ink);margin-bottom:8px}
+.form-control{width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--yc-line);background:#fafcfb;color:var(--yc-ink);font-size:1rem;font-family:inherit;transition:border-color .18s,box-shadow .18s}
+.form-control:focus{outline:none;border-color:var(--yc-green);background:white;box-shadow:0 0 0 3px rgba(23,107,85,.12)}
+select.form-control{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%20%235b7068' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
+
+/* Results Display Box */
+.results-card{background:linear-gradient(135deg,#183b32,#24644f);color:white;display:flex;flex-direction:column;justify-content:space-between}
+.results-card h2{color:white;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:12px;margin-bottom:20px}
+
+.stat-box{margin-bottom:20px}
+.stat-box .label{font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#d4e4dc;margin-bottom:4px}
+.stat-box .val{font-size:2.8rem;font-weight:850;line-height:1;color:white;letter-spacing:-.03em}
+.stat-box .sub{font-size:.88rem;color:#c2dad0;margin-top:6px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;text-decoration:none;border-radius:999px;padding:14px 20px;font-size:1rem;font-weight:800;background:var(--yc-green);color:white;border:1px solid var(--yc-green);cursor:pointer;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #183b321a}
+.btn-alt{background:white;color:var(--yc-ink);border-color:white}
+
+.closing{margin-top:44px;background:linear-gradient(120deg,#183b32,#24644f);border-radius:24px;padding:34px;color:white;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.closing h2{font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.15;margin:0 0 10px;letter-spacing:-.03em}
+.closing p{margin:0;color:#d4e4dc;line-height:1.65;max-width:650px}
+.closing .btn{width:auto;background:white;color:var(--yc-ink);border-color:white;flex-shrink:0}
+
+@media(max-width:768px){
+  .calc-grid{grid-template-columns:1fr}
+  .closing{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:560px){
+  .calc-hero{padding:44px 0 30px}
+  .calc-card,.results-card{padding:22px}
+  .content{padding-top:28px}
+}
+</style>
 </head>
 <body>
 
-    <!-- ================= HEADER SECTION ================= -->
-    <header class="site-header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo">Youth Craft</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="biological_age.html" class="active">Biological Age</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- Dynamic Header Slot -->
+<div id="site-header"></div>
 
-    <!-- ================= MAIN CONTENT ================= -->
-    <main class="content-container">
-        <section class="calculator-section">
-            <h1>Biological Age Calculator</h1>
-            <p>Calculate and explore your biological age using our data-driven tools.</p>
-            
-            <!-- Place your specific biological age calculator code / form here -->
-            <div id="calculator-app">
-                <!-- Calculator inputs & results go here -->
-            </div>
-        </section>
-    </main>
+<!-- Hero Header -->
+<header class="calc-hero">
+  <div class="wrap" style="text-align:center">
+    <div class="eyebrow">✦ Interactive Assessment</div>
+    <h1>Biological Age <span>Calculator</span></h1>
+    <p>Calculate and explore your biological age estimate using YouthCraft's evidence-informed scoring parameters.</p>
+  </div>
+</header>
 
-    <!-- ================= FOOTER SECTION ================= -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <p>&copy; 2026 Youth Craft. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-            </ul>
+<!-- Main Content -->
+<main class="wrap content">
+  <div class="calc-container">
+    <div class="calc-grid">
+      
+      <!-- Calculator Inputs -->
+      <section class="calc-card" aria-labelledby="calc-inputs-title">
+        <h2 id="calc-inputs-title">Quick Assessment</h2>
+        <form id="calcForm" oninput="calculateAge()">
+          
+          <div class="form-group">
+            <label for="chronoAge">Chronological Age</label>
+            <input type="number" id="chronoAge" class="form-control" value="35" min="13" max="120" required>
+          </div>
+
+          <div class="form-group">
+            <label for="sleepHours">Average Nightly Sleep</label>
+            <select id="sleepHours" class="form-control">
+              <option value="-1.5">&lt; 5 hours (-1.5 yrs)</option>
+              <option value="-0.5">5 – 6 hours (-0.5 yrs)</option>
+              <option value="1.2" selected>7 – 8 hours (+1.2 yrs)</option>
+              <option value="-0.3">&gt; 9 hours (-0.3 yrs)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="exerciseDays">Aerobic Activity (Days / Week)</label>
+            <select id="exerciseDays" class="form-control">
+              <option value="0">0 days (0 yrs)</option>
+              <option value="0.5">1 – 2 days (+0.5 yrs)</option>
+              <option value="1.2" selected>3 – 4 days (+1.2 yrs)</option>
+              <option value="1.8">5+ days (+1.8 yrs)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dietQuality">Dietary Focus (MEDAS)</label>
+            <select id="dietQuality" class="form-control">
+              <option value="-1.2">High Ultra-Processed Foods (-1.2 yrs)</option>
+              <option value="0">Average Intake (0 yrs)</option>
+              <option value="1.1" selected>High Fruit &amp; Veg / Whole Foods (+1.1 yrs)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="tobacco">Tobacco Use</label>
+            <select id="tobacco" class="form-control">
+              <option value="0" selected>Never Smoked (0 yrs)</option>
+              <option value="-1.5">Former Smoker (-1.5 yrs)</option>
+              <option value="-4.0">Current Smoker (-4.0 yrs)</option>
+            </select>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Live Calculation Results -->
+      <aside class="results-card" aria-label="Calculator Results">
+        <div>
+          <h2>Your Estimated Output</h2>
+          
+          <div class="stat-box">
+            <div class="label">Biological Age</div>
+            <div class="val" id="bioAgeVal">31.5 <span style="font-size:1.2rem">yrs</span></div>
+            <div class="sub" id="deltaSub">3.5 years younger than chronological age</div>
+          </div>
+
+          <div class="stat-box">
+            <div class="label">Net Lifestyle Delta</div>
+            <div class="val" id="netDeltaVal" style="color:#a3e4d7">+3.50 <span style="font-size:1.2rem">yrs</span></div>
+            <div class="sub">Positive drivers outweigh risk factors</div>
+          </div>
         </div>
-    </footer>
 
+        <a href="questionnaire.html" class="btn btn-alt">Take Full 107-Q Assessment <span aria-hidden="true">→</span></a>
+      </aside>
+
+    </div>
+
+    <!-- Closing Callout -->
+    <section class="closing">
+      <div>
+        <h2>Want a comprehensive health breakdown?</h2>
+        <p>Complete our full multi-domain questionnaire to unlock detailed biomarker analysis and customized micro-missions.</p>
+      </div>
+      <a class="btn" href="questionnaire.html">Start Questionnaire <span aria-hidden="true">→</span></a>
+    </section>
+  </div>
+</main>
+
+<!-- Dynamic Footer Slot -->
+<div id="site-footer"></div>
+
+<!-- Shared Site Script -->
+<script src="script.js"></script>
+
+<!-- Calculator Logic -->
+<script>
+function calculateAge() {
+  const chronoAge = parseFloat(document.getElementById('chronoAge').value) || 35;
+  const sleepDelta = parseFloat(document.getElementById('sleepHours').value) || 0;
+  const exerciseDelta = parseFloat(document.getElementById('exerciseDays').value) || 0;
+  const dietDelta = parseFloat(document.getElementById('dietQuality').value) || 0;
+  const tobaccoDelta = parseFloat(document.getElementById('tobacco').value) || 0;
+
+  const totalDelta = sleepDelta + exerciseDelta + dietDelta + tobaccoDelta;
+  const biologicalAge = chronoAge - totalDelta;
+
+  document.getElementById('bioAgeVal').innerHTML = `${biologicalAge.toFixed(1)} <span style="font-size:1.2rem">yrs</span>`;
+  
+  const netDeltaEl = document.getElementById('netDeltaVal');
+  if (totalDelta >= 0) {
+    netDeltaEl.style.color = '#a3e4d7';
+    netDeltaEl.innerHTML = `+${totalDelta.toFixed(2)} <span style="font-size:1.2rem">yrs</span>`;
+    document.getElementById('deltaSub').innerText = `${Math.abs(totalDelta).toFixed(1)} years younger than chronological age`;
+  } else {
+    netDeltaEl.style.color = '#ff9e9e';
+    netDeltaEl.innerHTML = `${totalDelta.toFixed(2)} <span style="font-size:1.2rem">yrs</span>`;
+    document.getElementById('deltaSub').innerText = `${Math.abs(totalDelta).toFixed(1)} years older than chronological age`;
+  }
+}
+
+// Initial calculation on load
+calculateAge();
+</script>
 </body>
 </html>

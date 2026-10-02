@@ -4,47 +4,46 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Full 77-Metric Recurring Data Collection | YouthCraft</title>
-<meta name="description" content="Log your daily, weekly, and event-based recurring health metrics to recapture LIFE DAYS and track biological age progression.">
+<meta name="description" content="Log all daily, weekly, monthly, and event-based health parameters from your Metrics Bank to recapture LIFE DAYS and update your biological age tracking.">
+<link rel="stylesheet" href="styles.css">
 <style>
 :root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb}
 *{box-sizing:border-box}
-body{margin:0;background:var(--yc-paper);color:#243b33;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-.wrap{max-width:1200px;margin:auto;padding:0 22px}
+body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
+.wrap{max-width:1160px;margin:auto;padding:0 22px}
 
-/* Hero Section */
-.q-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:54px 0 36px;border-bottom:1px solid var(--yc-line)}
+/* Recurring Hero */
+.q-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:82px 0 68px;border-bottom:1px solid var(--yc-line)}
 .eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
-.q-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.08;color:var(--yc-ink);margin:12px 0;letter-spacing:-.045em}
-.q-hero p{font-size:1.05rem;line-height:1.6;color:#466157;margin:0;max-width:760px}
+.q-hero h1{font-size:clamp(2.3rem,5vw,4.2rem);line-height:1.05;max-width:850px;color:var(--yc-ink);margin:16px 0 20px;letter-spacing:-.055em}
+.q-hero h1 span{color:var(--yc-green)}
+.q-hero p{font-size:1.1rem;line-height:1.75;max-width:780px;color:#466157;margin:0}
 
-/* Main Layout & Stats Banner */
-.content{padding-top:36px;padding-bottom:72px}
-.q-container{max-width:960px;margin:0 auto}
-
+/* Stats Banner */
 .stats-banner{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
 .stat-card{background:white;border:1px solid var(--yc-line);border-radius:18px;padding:20px;box-shadow:0 4px 16px rgba(24,59,50,.03);text-align:center}
 .stat-value{font-size:1.8rem;font-weight:850;color:var(--yc-green);margin-bottom:4px}
 .stat-label{font-size:.84rem;color:var(--yc-muted);text-transform:uppercase;letter-spacing:.05em;font-weight:750}
 
-/* Domain / Category Navigation Pills */
+/* Domain Navigation Pills (13 Domains) */
 .domain-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
 .domain-pill{background:white;border:1px solid var(--yc-line);color:var(--yc-muted);padding:8px 16px;border-radius:999px;font-size:.82rem;font-weight:750;cursor:pointer;transition:all .18s ease;user-select:none}
 .domain-pill:hover{border-color:var(--yc-green);color:var(--yc-green)}
 .domain-pill.active{background:var(--yc-mint);border-color:var(--yc-green);color:var(--yc-green)}
 
 /* Card Container */
-.q-card{background:white;border:1px solid var(--yc-line);border-radius:24px;padding:36px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
+.content{padding-top:42px;padding-bottom:72px}
+.q-card{background:white;border:1px solid var(--yc-line);border-radius:22px;padding:32px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
 .domain-section{display:none}
 .domain-section.active{display:block}
 
 .domain-title-block{margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--yc-mint)}
-.domain-title-block h2{color:var(--yc-ink);font-size:1.6rem;margin:0 0 6px;letter-spacing:-.02em}
+.domain-title-block h2{color:var(--yc-ink);font-size:1.65rem;margin:0 0 6px;letter-spacing:-.02em}
 .domain-title-block p{color:var(--yc-muted);margin:0;font-size:.96rem}
 
-/* Individual Question Item */
+/* Question Item Styles */
 .q-item{margin-bottom:32px;padding-bottom:28px;border-bottom:1px solid var(--yc-line)}
 .q-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
-
 .q-header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
 .q-meta{display:flex;align-items:center;gap:8px}
 .q-id{font-size:.78rem;font-weight:850;color:var(--yc-green);background:var(--yc-mint);padding:3px 8px;border-radius:6px;letter-spacing:.05em}
@@ -60,830 +59,761 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:-apple-system
 
 /* Controls */
 .options-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-.options-stack{display:flex;flex-direction:column;gap:10px}
-
-.option-tile{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--yc-line);border-radius:12px;background:#fafcfb;cursor:pointer;transition:all .15s ease;user-select:none;font-size:.96rem;font-weight:600;color:var(--yc-ink)}
+.option-tile{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--yc-line);border-radius:12px;background:var(--yc-paper);cursor:pointer;transition:all .15s ease;user-select:none;font-size:.96rem;font-weight:600;color:var(--yc-ink)}
 .option-tile:hover{background:white;border-color:#b5d3c3;transform:translateY(-1px)}
-.option-tile input[type="radio"],.option-tile input[type="checkbox"]{accent-color:var(--yc-green);width:18px;height:18px;cursor:pointer}
+.option-tile input[type="radio"]{accent-color:var(--yc-green);width:18px;height:18px;cursor:pointer}
 .option-tileHasChecked{background:var(--yc-mint);border-color:var(--yc-green)}
 
-.form-input-number,.form-select,.form-input-text{width:100%;max-width:340px;padding:12px 16px;border-radius:12px;border:1px solid var(--yc-line);background:#fafcfb;color:var(--yc-ink);font-size:1rem;font-family:inherit}
-.form-input-number:focus,.form-select:focus,.form-input-text:focus{outline:none;border-color:var(--yc-green);background:white;box-shadow:0 0 0 3px rgba(23,107,85,.12)}
+.form-input-number,.form-select,.form-input-text{width:100%;max-width:340px;padding:12px 14px;border:1px solid var(--yc-line);border-radius:12px;font-size:.98rem;background:var(--yc-paper);color:var(--yc-ink);font-family:inherit;transition:border-color .18s,box-shadow .18s}
+.form-input-number:focus,.form-select:focus,.form-input-text:focus{outline:none;border-color:var(--yc-green);box-shadow:0 0 0 3px rgba(23,107,85,.12);background:white}
 .input-unit-wrap{display:flex;align-items:center;gap:10px}
 .input-unit-wrap span{font-size:.9rem;font-weight:700;color:var(--yc-muted)}
 
-/* Bottom Actions */
+/* Bottom Actions & Buttons */
 .form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--yc-line)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border-radius:999px;padding:13px 26px;font-size:.98rem;font-weight:800;cursor:pointer;transition:all .18s;border:1px solid transparent}
-.btn-primary{background:var(--yc-green);color:white;border-color:var(--yc-green)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(24,59,50,.15)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:999px;padding:13px 20px;font-weight:800;background:var(--yc-green);color:white;border:1px solid var(--yc-green);transition:transform .18s,box-shadow .18s;cursor:pointer;font-family:inherit;font-size:1rem}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #183b321a}
+.btn:focus-visible{outline:3px solid #e3b45e;outline-offset:3px}
 
-@media(max-width:640px){
-  .q-card{padding:22px;border-radius:18px}
+@media(max-width:850px){
   .options-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .q-hero{padding:54px 0 45px}
+  .q-card{padding:22px}
 }
 </style>
 </head>
 <body>
 
+<!-- Site Header Slot -->
+<div id="site-header"></div>
+
 <!-- Hero Section -->
 <header class="q-hero">
   <div class="wrap">
     <div class="eyebrow">✦ Full 77-Metric Framework</div>
-    <h1>Recurring Data Collection &amp; LIFE DAYS Tracker</h1>
+    <h1>Recurring Data Collection &amp; <span>LIFE DAYS Tracker.</span></h1>
     <p>Log all daily, weekly, monthly, and event-based health parameters from your Metrics Bank to recapture LIFE DAYS and update your biological age tracking.</p>
   </div>
 </header>
 
 <main class="wrap content">
-  <div class="q-container">
 
-    <!-- Status Overview Banner -->
-    <div class="stats-banner">
-      <div class="stat-card">
-        <div class="stat-value">77</div>
-        <div class="stat-label">Total Metrics Tracked</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="reclaimedDays" style="color:var(--yc-gold);">0 Days</div>
-        <div class="stat-label">LIFE DAYS Recaptured</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="streakCount">0 Days</div>
-        <div class="stat-label">Logging Streak</div>
-      </div>
+  <!-- Status Overview Banner -->
+  <div class="stats-banner">
+    <div class="stat-card">
+      <div class="stat-value">77</div>
+      <div class="stat-label">Total Metrics Tracked</div>
     </div>
-
-    <!-- Domain Navigation Pills (13 Domains) -->
-    <nav class="domain-pills" id="domainPills">
-      <button type="button" class="domain-pill active" onclick="switchDomain(1)">1. Sleep (12)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(2)">2. Activity (9)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(3)">3. Sedentary (5)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(4)">4. Nutrition (9)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(5)">5. Tobacco (4)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(6)">6. Alcohol (3)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(7)">7. Medication (6)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(8)">8. Vaccine (3)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(9)">9. Metabolic (8)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(10)">10. Illness (5)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(11)">11. Allergy (3)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(12)">12. Incident (5)</button>
-      <button type="button" class="domain-pill" onclick="switchDomain(13)">13. Other (5)</button>
-    </nav>
-
-    <!-- Main Form Card -->
-    <div class="q-card">
-      <form id="recurringForm" onsubmit="event.preventDefault(); saveAllMetrics();">
-
-        <!-- ==================== DOMAIN 1: SLEEP (SL01-SL12) ==================== -->
-        <div class="domain-section active" id="domainSection1">
-          <div class="domain-title-block">
-            <h2>Domain 1: Sleep Architecture &amp; Quality (12 Metrics)</h2>
-            <p>Tracks duration, efficiency, timing, stages, and consistency (PSQI &amp; Roenneberg frameworks).</p>
-          </div>
-
-          <!-- SL01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Sleep Duration (Total)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> U-curve 7–9h optimal (+0.008 YD); short/long sleep elevates cardiometabolic risk.</div>
-            <div class="input-unit-wrap"><input type="number" step="0.1" name="SL01" class="form-input-number" placeholder="e.g. 7.5"><span>hours</span></div>
-          </div>
-          <!-- SL02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Time in Bed</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Total time in bed including awake time; used for sleep efficiency calculation.</div>
-            <div class="input-unit-wrap"><input type="number" step="0.1" name="SL02" class="form-input-number" placeholder="e.g. 8.0"><span>hours</span></div>
-          </div>
-          <!-- SL03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Sleep Efficiency % (Asleep / Time in Bed × 100)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> ≥85% optimal (+0.004 YD); low efficiency marks insomnia phenotype.</div>
-            <div class="input-unit-wrap"><input type="number" step="1" name="SL03" class="form-input-number" placeholder="e.g. 88"><span>%</span></div>
-          </div>
-          <!-- SL04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Sleep Onset Time</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Circadian alignment tracking; large deviations indicate social jetlag.</div>
-            <input type="time" name="SL04" class="form-select">
-          </div>
-          <!-- SL05 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Wake Time</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Wake-time consistency pairs with onset for circadian stability.</div>
-            <input type="time" name="SL05" class="form-select">
-          </div>
-          <!-- SL06 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Sleep Midpoint (Onset–Wake midpoint)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Chronotype marker; weekday/weekend shifts associate with metabolic risk.</div>
-            <input type="time" name="SL06" class="form-select">
-          </div>
-          <!-- SL07 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">REM Sleep Duration</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> REM supports memory consolidation and emotional regulation.</div>
-            <div class="input-unit-wrap"><input type="number" name="SL07" class="form-input-number" placeholder="e.g. 90"><span>minutes</span></div>
-          </div>
-          <!-- SL08 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Deep / Slow-Wave Sleep Duration</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Primary restorative stage for physical recovery and immune function.</div>
-            <div class="input-unit-wrap"><input type="number" name="SL08" class="form-input-number" placeholder="e.g. 80"><span>minutes</span></div>
-          </div>
-          <!-- SL09 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL09</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Light Sleep Duration</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Contextual sleep architecture proportion.</div>
-            <div class="input-unit-wrap"><input type="number" name="SL09" class="form-input-number" placeholder="e.g. 250"><span>minutes</span></div>
-          </div>
-          <!-- SL10 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL10</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Awakenings / Interruptions Count</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Sleep fragmentation marker; associated with OSA risk.</div>
-            <div class="input-unit-wrap"><input type="number" name="SL10" class="form-input-number" placeholder="e.g. 1"><span>wakings</span></div>
-          </div>
-          <!-- SL11 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL11</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Subjective Sleep Quality (1 to 5)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> PSQI subjective sleep quality component.</div>
-            <select name="SL11" class="form-select">
-              <option value="5">5 - Very Good (+0.003 YD)</option>
-              <option value="4">4 - Good (+0.002 YD)</option>
-              <option value="3">3 - Fair (0.000 YD)</option>
-              <option value="2">2 - Poor (-0.003 YD)</option>
-              <option value="1">1 - Very Poor (-0.006 YD)</option>
-            </select>
-          </div>
-          <!-- SL12 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SL12</span></div><div class="badge-group"><span class="freq-badge">Weekly rolling</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Sleep Consistency Score (Minutes SD of midpoint over 7 days)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Regular sleep timing protects metabolic health.</div>
-            <div class="input-unit-wrap"><input type="number" name="SL12" class="form-input-number" placeholder="e.g. 20"><span>min standard dev</span></div>
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 2: ACTIVITY (PA01-PA09) ==================== -->
-        <div class="domain-section" id="domainSection2">
-          <div class="domain-title-block">
-            <h2>Domain 2: Physical Activity &amp; Exercise (9 Metrics)</h2>
-            <p>Tracks steps, MVPA, distance, active calories, exercise sessions, and strength training (IPAQ &amp; ACSM).</p>
-          </div>
-
-          <!-- PA01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">PA01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Daily Step Count</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> ≥8,000 steps optimal (+0.003 YD); reduces all-cause mortality.</div>
-            <div class="input-unit-wrap"><input type="number" name="PA01" class="form-input-number" placeholder="e.g. 8500"><span>steps</span></div>
-          </div>
-          <!-- PA02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">PA02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Active Minutes (Moderate+) / MVPA</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> WHO guidelines (30+ min/day moderate activity gives +0.008 YD).</div>
-            <div class="input-unit-wrap"><input type="number" name="PA02" class="form-input-number" placeholder="e.g. 35"><span>minutes</span></div>
-          </div>
-          <!-- PA03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">PA03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Total Distance Covered</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Spatial movement volume indicator.</div>
-            <div class="input-unit-wrap"><input type="number" step="0.1" name="PA03" class="form-input-number" placeholder="e.g. 6.2"><span>km</span></div>
-          </div>
-          <!-- PA04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">PA04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Active Calories Burned</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Energy expenditure above basal metabolic rate.</div>
-            <div class="input-unit-wrap"><input type="number" name="PA04" class="form-input-number" placeholder="e.g. 500"><span>kcal</span></div>
-          </div>
-          <!-- PA05 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">PA05</span></div><div class="badge-group"><span class="freq-badge">Per session</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Average Speed / Pace (Per exercise session)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Cardiovascular capacity and walking/running speed index.</div>
-            <input type="text" name="PA05" class="form-input-text" placeholder="e.g. 5.5 min/km">
-          </div>
-          <!-- PA06 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">PA06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Elevation Gain</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Vertical work load and muscular load intensity.</div>
-            <div class="input-unit-wrap"><input type="number" name="PA06" class="form-input-number" placeholder="e.g. 120"><span>metres</span></div>
-          </div>
-          <!-- PA07 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">PA07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Exercise Sessions Count &amp; Type (Cardio, HIIT, etc.)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Structured exercise frequency tracking.</div>
-            <input type="text" name="PA07" class="form-input-text" placeholder="e.g. 1 session (Running)">
-          </div>
-          <!-- PA08 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">PA08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Strength / Resistance Training Minutes</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> ACSM guidelines (20+ min or ≥2 days/week resistance training gives +0.006 YD).</div>
-            <div class="input-unit-wrap"><input type="number" name="PA08" class="form-input-number" placeholder="e.g. 30"><span>minutes</span></div>
-          </div>
-          <!-- PA09 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">PA09</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Heart Rate Zones / Average Heart Rate</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Training intensity distribution and cardiovascular load.</div>
-            <input type="text" name="PA09" class="form-input-text" placeholder="e.g. Zone 2: 45 min, Avg 125 bpm">
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 3: SEDENTARY (SE01-SE05) ==================== -->
-        <div class="domain-section" id="domainSection3">
-          <div class="domain-title-block">
-            <h2>Domain 3: Sedentary Behavior &amp; Posture (5 Metrics)</h2>
-            <p>Tracks total sitting time, unbroken bouts, reclining, movement breaks, and screen time.</p>
-          </div>
-
-          <!-- SE01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SE01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Total Sedentary / Sitting Time</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> &lt;6h optimal (+0.001 YD); &gt;10h sitting accelerates vascular aging (-0.012 YD).</div>
-            <div class="input-unit-wrap"><input type="number" step="0.5" name="SE01" class="form-input-number" placeholder="e.g. 6.5"><span>hours</span></div>
-          </div>
-          <!-- SE02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SE02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Longest Unbroken Sitting Bout</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Prolonged unbroken sitting impairs lipoprotein lipase activity and endothelial function.</div>
-            <div class="input-unit-wrap"><input type="number" name="SE02" class="form-input-number" placeholder="e.g. 90"><span>minutes</span></div>
-          </div>
-          <!-- SE03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SE03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Time on Bed / Reclining during Daytime</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Daytime physical inactivity and fatigue indicator.</div>
-            <div class="input-unit-wrap"><input type="number" step="0.5" name="SE03" class="form-input-number" placeholder="e.g. 0.5"><span>hours</span></div>
-          </div>
-          <!-- SE04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SE04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Standing / Light Movement Breaks Count</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Breaking up sedentary bouts maintains micro-vascular tone.</div>
-            <div class="input-unit-wrap"><input type="number" name="SE04" class="form-input-number" placeholder="e.g. 8"><span>breaks</span></div>
-          </div>
-          <!-- SE05 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">SE05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Recreational Screen Time (TV, gaming, social media)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Excessive screen time correlates with sleep disruption and physical inactivity.</div>
-            <div class="input-unit-wrap"><input type="number" step="0.5" name="SE05" class="form-input-number" placeholder="e.g. 2.0"><span>hours</span></div>
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 4: NUTRITION (NU01-NU09) ==================== -->
-        <div class="domain-section" id="domainSection4">
-          <div class="domain-title-block">
-            <h2>Domain 4: Nutrition &amp; Dietary Quality (9 Metrics)</h2>
-            <p>Tracks meal logging, vegetable/fruit servings, hydration, UPF intake, meal timing, and protein adequacy.</p>
-          </div>
-
-          <!-- NU01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">NU01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Meals Logged Today</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Meal tracking consistency and dietary tracking adherence.</div>
-            <div class="input-unit-wrap"><input type="number" name="NU01" class="form-input-number" placeholder="e.g. 3"><span>meals</span></div>
-          </div>
-          <!-- NU02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">NU02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Vegetable + Fruit Servings (0 to 10+)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> 5+ servings optimal (+0.005 YD); rich in polyphenols and fiber.</div>
-            <div class="input-unit-wrap"><input type="number" name="NU02" class="form-input-number" placeholder="e.g. 6"><span>servings</span></div>
-          </div>
-          <!-- NU03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">NU03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Water / Fluid Intake</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Optimal cellular hydration and renal clearance.</div>
-            <div class="input-unit-wrap"><input type="number" step="0.5" name="NU03" class="form-input-number" placeholder="e.g. 2.5"><span>litres</span></div>
-          </div>
-          <!-- NU04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">NU04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Ultra-Processed / Fast Food Consumption</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Zero UPF gives +0.003 YD; high UPF accelerates systemic aging (-0.010 YD).</div>
-            <select name="NU04" class="form-select">
-              <option value="None">None / Zero UPF (+0.003 YD)</option>
-              <option value="1 serving">1 serving / Moderate (0.000 YD)</option>
-              <option value="2+ servings">2+ servings / High (-0.010 YD)</option>
-            </select>
-          </div>
-          <!-- NU05 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">NU05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Meal Timing – First Meal (Breakfast / Fast-breaker)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Time-restricted eating window and circadian alignment.</div>
-            <input type="time" name="NU05" class="form-select">
-          </div>
-          <!-- NU06 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">NU06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Meal Timing – Last Meal (Dinner end)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Avoiding late-night eating improves nocturnal glucose and sleep quality.</div>
-            <input type="time" name="NU06" class="form-select">
-          </div>
-          <!-- NU07 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">NU07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Protein Adequacy (Low / Optimal / High)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Adequate protein synthesis supports muscle preservation (sarcopenia prevention).</div>
-            <select name="NU07" class="form-select">
-              <option value="Optimal">Optimal (1.2–2.0g/kg) (+0.003 YD)</option>
-              <option value="Low">Low (&lt;0.8g/kg) (-0.004 YD)</option>
-              <option value="High">High / Supplemented</option>
-            </select>
-          </div>
-          <!-- NU08 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">NU08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Overall Meal Quality Rating (1 to 5)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Subjective overall nutritional balance.</div>
-            <select name="NU08" class="form-select">
-              <option value="5">5 - Excellent / Whole foods (+0.004 YD)</option>
-              <option value="4">4 - Good (+0.002 YD)</option>
-              <option value="3">3 - Moderate (0.000 YD)</option>
-              <option value="2">2 - Poor (-0.004 YD)</option>
-              <option value="1">1 - Very Poor / Junk heavy (-0.008 YD)</option>
-            </select>
-          </div>
-          <!-- NU09 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">NU09</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Skipped Meals Today</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Unplanned meal skipping can induce glycemic volatility.</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="NU09" value="No"> No / Regular meals</label>
-              <label class="option-tile"><input type="radio" name="NU09" value="Yes"> Yes / Skipped meal</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 5: TOBACCO (TB01-TB04) ==================== -->
-        <div class="domain-section" id="domainSection5">
-          <div class="domain-title-block">
-            <h2>Domain 5: Tobacco &amp; Nicotine Exposure (4 Metrics)</h2>
-            <p>Tracks daily cigarette count, alternative nicotine, craving intensity, and quit attempt status.</p>
-          </div>
-
-          <!-- TB01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">TB01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Cigarettes / Units Smoked Today</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Zero cigarettes gives +0.010 YD; smoking accelerates aging (-0.015 YD per cigarette active day).</div>
-            <div class="input-unit-wrap"><input type="number" name="TB01" class="form-input-number" placeholder="e.g. 0"><span>cigarettes</span></div>
-          </div>
-          <!-- TB02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">TB02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Other Nicotine Use (Vape, e-cig, pouches)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Nicotine delivery system vascular and pulmonary impact.</div>
-            <input type="text" name="TB02" class="form-input-text" placeholder="e.g. None or 1 vape pod">
-          </div>
-          <!-- TB03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">TB03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Craving Intensity (0 to 10 scale)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Nicotine withdrawal and cessation support monitoring.</div>
-            <div class="input-unit-wrap"><input type="number" min="0" max="10" name="TB03" class="form-input-number" placeholder="e.g. 2"><span>/ 10</span></div>
-          </div>
-          <!-- TB04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">TB04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Quit Attempt Active Today?</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Encourages cessation pathways and partner routing.</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="TB04" value="Yes"> Yes (+0.005 YD for trying)</label>
-              <label class="option-tile"><input type="radio" name="TB04" value="No"> No / Not on quit plan</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 6: ALCOHOL (AL01-AL03) ==================== -->
-        <div class="domain-section" id="domainSection6">
-          <div class="domain-title-block">
-            <h2>Domain 6: Alcohol Consumption (3 Metrics)</h2>
-            <p>Tracks standard drinks, beverage type/context, and binge drinking flags (AUDIT-C framework).</p>
-          </div>
-
-          <!-- AL01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">AL01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Alcoholic Drinks Today (Standard units)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Zero drinks optimal (+0.005 YD); heavy intake accelerates cellular aging (-0.010 YD).</div>
-            <div class="input-unit-wrap"><input type="number" name="AL01" class="form-input-number" placeholder="e.g. 0"><span>standard drinks</span></div>
-          </div>
-          <!-- AL02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">AL02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Drink Type / Context (Social dinner, solo, etc.)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Behavioral context of alcohol consumption.</div>
-            <input type="text" name="AL02" class="form-input-text" placeholder="e.g. 1 glass of wine with dinner">
-          </div>
-          <!-- AL03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">AL03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Binge Drinking Flag (&gt;4 drinks women, &gt;5 drinks men today)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Heavy episodic binge drinking triggers high-risk medical alerts (-0.015 YD).</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="AL03" value="No"> No binge</label>
-              <label class="option-tile"><input type="radio" name="AL03" value="Yes"> Yes / Binge episode (-0.015 YD)</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 7: MEDICATION (MD01-MD06) ==================== -->
-        <div class="domain-section" id="domainSection7">
-          <div class="domain-title-block">
-            <h2>Domain 7: Medication &amp; Supplement Adherence (6 Metrics)</h2>
-            <p>Tracks scheduled doses, doses taken, missed doses, PRN meds, injections, and side effects.</p>
-          </div>
-
-          <!-- MD01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">MD01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Scheduled Medication Doses Due Today</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Baseline therapeutic regimen schedule.</div>
-            <input type="text" name="MD01" class="form-input-text" placeholder="e.g. Metformin 500mg, Lisinopril 10mg">
-          </div>
-          <!-- MD02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">MD02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Doses Taken on Schedule</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Adherence tracking maintains chronic disease control.</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="MD02" value="All taken"> All scheduled doses taken (+0.003 YD)</label>
-              <label class="option-tile"><input type="radio" name="MD02" value="Partial"> Partial doses taken</label>
-            </div>
-          </div>
-          <!-- MD03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">MD03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Missed Doses Count &amp; Reason</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Chronic medication non-adherence triggers clinical alerts (-0.008 YD).</div>
-            <input type="text" name="MD03" class="form-input-text" placeholder="e.g. 0 missed doses">
-          </div>
-          <!-- MD04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">MD04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">PRN / As-Needed Medications Used</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Tracks acute symptom management (inhalers, pain relief).</div>
-            <input type="text" name="MD04" class="form-input-text" placeholder="e.g. Ibuprofen 400mg for headache">
-          </div>
-          <!-- MD05 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">MD05</span></div><div class="badge-group"><span class="freq-badge">As scheduled</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Injection Log (Insulin, GLP-1, biologic, etc.)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Specialized therapy adherence monitoring.</div>
-            <input type="text" name="MD05" class="form-input-text" placeholder="e.g. None due today">
-          </div>
-          <!-- MD06 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">MD06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Medication Side Effects Noted</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Pharmacovigilance and adverse reaction screening.</div>
-            <input type="text" name="MD06" class="form-input-text" placeholder="e.g. None">
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 8: VACCINE (VC01-VC03) ==================== -->
-        <div class="domain-section" id="domainSection8">
-          <div class="domain-title-block">
-            <h2>Domain 8: Immunization &amp; Vaccine Tracking (3 Metrics)</h2>
-            <p>Tracks upcoming preventive vaccines, vaccination events, and post-vaccine reactions.</p>
-          </div>
-
-          <!-- VC01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">VC01</span></div><div class="badge-group"><span class="freq-badge">As needed</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Upcoming Preventive Vaccines Due</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Preventive healthcare adherence (flu, booster, shingles).</div>
-            <input type="text" name="VC01" class="form-input-text" placeholder="e.g. Annual flu shot due in November">
-          </div>
-          <!-- VC02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">VC02</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Vaccine Received Today</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Immune protection update (+0.005 YD event bonus).</div>
-            <input type="text" name="VC02" class="form-input-text" placeholder="e.g. None">
-          </div>
-          <!-- VC03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">VC03</span></div><div class="badge-group"><span class="freq-badge">Event +1–3d</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Post-Vaccine Reaction (None / Mild / Moderate / Severe)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Immunization reactogenicity monitoring.</div>
-            <select name="VC03" class="form-select">
-              <option value="None">None / Asymptomatic</option>
-              <option value="Mild">Mild soreness / fatigue</option>
-              <option value="Moderate">Moderate fever / body aches</option>
-              <option value="Severe">Severe systemic reaction</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 9: METABOLIC (ME01-ME08) ==================== -->
-        <div class="domain-section" id="domainSection9">
-          <div class="domain-title-block">
-            <h2>Domain 9: Metabolic &amp; Physiological Vitals (8 Metrics)</h2>
-            <p>Tracks weight, waist circumference, blood pressure, blood glucose, resting heart rate, and HRV.</p>
-          </div>
-
-          <!-- ME01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">ME01</span></div><div class="badge-group"><span class="freq-badge">2–3x/wk</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Body Weight Update</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> BMI trend and metabolic trajectory monitoring.</div>
-            <div class="input-unit-wrap"><input type="number" step="0.1" name="ME01" class="form-input-number" placeholder="e.g. 70.0"><span>kg</span></div>
-          </div>
-          <!-- ME02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">ME02</span></div><div class="badge-group"><span class="freq-badge">Weekly</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Waist Circumference</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Visceral adiposity and waist-to-height ratio (WHtR) tracking.</div>
-            <div class="input-unit-wrap"><input type="number" step="0.5" name="ME02" class="form-input-number" placeholder="e.g. 80.0"><span>cm</span></div>
-          </div>
-          <!-- ME03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">ME03</span></div><div class="badge-group"><span class="freq-badge">As prescribed</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Blood Pressure (Systolic)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> SBP &lt;120 optimal (+0.003 YD); &gt;140 triggers hypertension alerts (-0.012 YD).</div>
-            <div class="input-unit-wrap"><input type="number" name="ME03" class="form-input-number" placeholder="e.g. 118"><span>mmHg</span></div>
-          </div>
-          <!-- ME04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">ME04</span></div><div class="badge-group"><span class="freq-badge">As prescribed</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Blood Pressure (Diastolic)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Diastolic vascular resistance and perfusion pressure.</div>
-            <div class="input-unit-wrap"><input type="number" name="ME04" class="form-input-number" placeholder="e.g. 76"><span>mmHg</span></div>
-          </div>
-          <!-- ME05 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">ME05</span></div><div class="badge-group"><span class="freq-badge">As prescribed</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Blood Glucose Level</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Glycemic control and insulin sensitivity monitoring.</div>
-            <div class="input-unit-wrap"><input type="number" name="ME05" class="form-input-number" placeholder="e.g. 92"><span>mg/dL</span></div>
-          </div>
-          <!-- ME06 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">ME06</span></div><div class="badge-group"><span class="freq-badge">With reading</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Blood Glucose Context (Fasting, Post-meal, Bedtime)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Physiological context for interpretation of glucose values.</div>
-            <select name="ME06" class="form-select">
-              <option value="Fasting">Fasting</option>
-              <option value="Post-meal">Post-meal (1-2h)</option>
-              <option value="Bedtime">Bedtime</option>
-              <option value="Random">Random / Other</option>
-            </select>
-          </div>
-          <!-- ME07 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">ME07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Resting Heart Rate (RHR)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Lower RHR (&lt;60 bpm) indicates superior cardiovascular conditioning.</div>
-            <div class="input-unit-wrap"><input type="number" name="ME07" class="form-input-number" placeholder="e.g. 58"><span>bpm</span></div>
-          </div>
-          <!-- ME08 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">ME08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Heart Rate Variability (HRV - RMSSD)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Autonomic nervous system resilience and recovery index.</div>
-            <div class="input-unit-wrap"><input type="number" name="ME08" class="form-input-number" placeholder="e.g. 65"><span>ms</span></div>
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 10: ILLNESS (IL01-IL05) ==================== -->
-        <div class="domain-section" id="domainSection10">
-          <div class="domain-title-block">
-            <h2>Domain 10: Acute Illness &amp; Symptoms (5 Metrics)</h2>
-            <p>Tracks symptom presence, severity, fever, duration, and work/activity impact.</p>
-          </div>
-
-          <!-- IL01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IL01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Symptom Presence (Cold, flu, GI, headache, etc.)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Acute inflammatory stressors temporarily depress LIFE DAYS.</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="IL01" value="None"> None / Healthy</label>
-              <label class="option-tile"><input type="radio" name="IL01" value="Respiratory"> Respiratory / Cold symptoms</label>
-              <label class="option-tile"><input type="radio" name="IL01" value="GI"> Gastrointestinal symptoms</label>
-              <label class="option-tile"><input type="radio" name="IL01" value="Other"> Other symptoms</label>
-            </div>
-          </div>
-          <!-- IL02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IL02</span></div><div class="badge-group"><span class="freq-badge">If symptoms</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Symptom Severity (1 to 5 or Mild/Mod/Severe)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Quantifies acute physiological burden.</div>
-            <select name="IL02" class="form-select">
-              <option value="None">None</option>
-              <option value="Mild">Mild (Minimal disruption)</option>
-              <option value="Moderate">Moderate (Noticeable impact)</option>
-              <option value="Severe">Severe (Significant impairment)</option>
-            </select>
-          </div>
-          <!-- IL03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IL03</span></div><div class="badge-group"><span class="freq-badge">If relevant</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Fever Present / Maximum Temperature</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Acute immune febrile response indicator.</div>
-            <div class="input-unit-wrap"><input type="number" step="0.1" name="IL03" class="form-input-number" placeholder="e.g. 37.2"><span>°C</span></div>
-          </div>
-          <!-- IL04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IL04</span></div><div class="badge-group"><span class="freq-badge">If symptoms</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Symptom Notes / Duration</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Clinical timeline tracking.</div>
-            <input type="text" name="IL04" class="form-input-text" placeholder="e.g. Day 2 of mild sore throat">
-          </div>
-          <!-- IL05 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IL05</span></div><div class="badge-group"><span class="freq-badge">If symptoms</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Work / Activity Impact (None / Mild / Significant / Bed rest)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Functional disability grading during acute illness.</div>
-            <select name="IL05" class="form-select">
-              <option value="None">None</option>
-              <option value="Mild">Mild reduction in output</option>
-              <option value="Significant">Significant reduction / Modified duties</option>
-              <option value="Bed rest">Bed rest required (-0.010 YD)</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 11: ALLERGY (AG01-AG03) ==================== -->
-        <div class="domain-section" id="domainSection11">
-          <div class="domain-title-block">
-            <h2>Domain 11: Allergy &amp; Environmental Flare (3 Metrics)</h2>
-            <p>Tracks allergy flares, trigger exposures, and rescue medication usage.</p>
-          </div>
-
-          <!-- AG01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">AG01</span></div><div class="badge-group"><span class="freq-badge">Daily if known</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Allergy Flare Today (Pollen, dust, food, etc.)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Allergic inflammation and mucosal irritation.</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="AG01" value="No"> No flare</label>
-              <label class="option-tile"><input type="radio" name="AG01" value="Yes"> Yes / Active flare</label>
-            </div>
-          </div>
-          <!-- AG02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">AG02</span></div><div class="badge-group"><span class="freq-badge">If flare</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Trigger Exposure Identified</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Environmental allergen identification.</div>
-            <input type="text" name="AG02" class="form-input-text" placeholder="e.g. High pollen count day">
-          </div>
-          <!-- AG03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">AG03</span></div><div class="badge-group"><span class="freq-badge">If used</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Rescue / Allergy Medication Used (Antihistamine, nasal spray, inhaler)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Symptom relief medication tracking.</div>
-            <input type="text" name="AG03" class="form-input-text" placeholder="e.g. Cetirizine 10mg">
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 12: INCIDENT (IN01-IN05) ==================== -->
-        <div class="domain-section" id="domainSection12">
-          <div class="domain-title-block">
-            <h2>Domain 12: Incidents &amp; Safety Events (5 Metrics)</h2>
-            <p>Tracks falls, near-falls, GI incidents, accidents, and medical/ER visits.</p>
-          </div>
-
-          <!-- IN01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IN01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Fall or Near-Fall Incident Today</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Fall safety screening and balance instability warning.</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="IN01" value="None"> None</label>
-              <label class="option-tile"><input type="radio" name="IN01" value="Near-fall"> Near-fall / Stumble</label>
-              <label class="option-tile"><input type="radio" name="IN01" value="Fall"> Actual Fall (-0.020 YD alert)</label>
-            </div>
-          </div>
-          <!-- IN02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IN02</span></div><div class="badge-group"><span class="freq-badge">If fall</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Fall Details (Location, injury sustained)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Safety incident investigation.</div>
-            <input type="text" name="IN02" class="form-input-text" placeholder="e.g. N/A">
-          </div>
-          <!-- IN03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IN03</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Event only</span></div></div>
-            <div class="q-text">Food Poisoning / Acute GI Incident</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Acute food-borne illness tracking.</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="IN03" value="No"> No</label>
-              <label class="option-tile"><input type="radio" name="IN03" value="Yes"> Yes</label>
-            </div>
-          </div>
-          <!-- IN04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IN04</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Event only</span></div></div>
-            <div class="q-text">Other Accident / Physical Injury</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Traumatic physical injury logging.</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="IN04" value="No"> No</label>
-              <label class="option-tile"><input type="radio" name="IN04" value="Yes"> Yes</label>
-            </div>
-          </div>
-          <!-- IN05 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">IN05</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Event only</span></div></div>
-            <div class="q-text">Urgent Medical Visit / ER / Hospital Admission Today</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Major clinical safety event routing and partner escalation.</div>
-            <div class="options-grid">
-              <label class="option-tile"><input type="radio" name="IN05" value="No"> No</label>
-              <label class="option-tile"><input type="radio" name="IN05" value="Yes"> Yes (-0.050 YD alert)</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==================== DOMAIN 13: OTHER (OT01-OT05) ==================== -->
-        <div class="domain-section" id="domainSection13">
-          <div class="domain-title-block">
-            <h2>Domain 13: Subjective Well-being &amp; Engagement (5 Metrics)</h2>
-            <p>Tracks mood/energy ratings, stress levels, menstrual cycle tracking, journal notes, and data completeness.</p>
-          </div>
-
-          <!-- OT01 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">OT01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Mood / Energy Rating (1 to 5)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Psychological vitality and vitality index.</div>
-            <select name="OT01" class="form-select">
-              <option value="5">5 - High energy &amp; positive mood (+0.003 YD)</option>
-              <option value="4">4 - Good (+0.001 YD)</option>
-              <option value="3">3 - Neutral (0.000 YD)</option>
-              <option value="2">2 - Low energy (-0.002 YD)</option>
-              <option value="1">1 - Exhausted / Depressed (-0.005 YD)</option>
-            </select>
-          </div>
-          <!-- OT02 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">OT02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-            <div class="q-text">Stress Level (1 to 10 scale)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Chronic cortisol elevation and psychological stress load.</div>
-            <div class="input-unit-wrap"><input type="number" min="1" max="10" name="OT02" class="form-input-number" placeholder="e.g. 3"><span>/ 10</span></div>
-          </div>
-          <!-- OT03 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">OT03</span></div><div class="badge-group"><span class="freq-badge">If tracked</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Menstrual Cycle Day / Hormonal Symptoms</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Endocrinological rhythm and hormonal symptom tracking.</div>
-            <input type="text" name="OT03" class="form-input-text" placeholder="e.g. Day 14 or N/A">
-          </div>
-          <!-- OT04 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">OT04</span></div><div class="badge-group"><span class="freq-badge">Daily optional</span><span class="tier-badge">Optional</span></div></div>
-            <div class="q-text">Personal Notes / Journal Entry</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Qualitative reflection and contextual note logging.</div>
-            <input type="text" name="OT04" class="form-input-text" placeholder="e.g. Felt great during morning workout">
-          </div>
-          <!-- OT05 -->
-          <div class="q-item">
-            <div class="q-header-row"><div class="q-meta"><span class="q-id">OT05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-            <div class="q-text">Data Completeness Flag (Wearable sync vs manual entry)</div>
-            <div class="q-rationale"><strong>Biological Rationale:</strong> Tracking data integrity and trust score.</div>
-            <select name="OT05" class="form-select">
-              <option value="Full auto sync">Full auto sync (Wearable API)</option>
-              <option value="Partial manual">Partial manual entry</option>
-              <option value="Fully manual">Fully manual</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Form Actions -->
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Save All 77 Metrics &amp; Recapture LIFE DAYS ✓</button>
-        </div>
-
-      </form>
+    <div class="stat-card">
+      <div class="stat-value" id="reclaimedDays" style="color:var(--yc-gold);">0 Days</div>
+      <div class="stat-label">LIFE DAYS Recaptured</div>
     </div>
-
+    <div class="stat-card">
+      <div class="stat-value" id="streakCount">0 Days</div>
+      <div class="stat-label">Logging Streak</div>
+    </div>
   </div>
+
+  <!-- Domain Navigation Pills (13 Domains) -->
+  <nav class="domain-pills" id="domainPills" aria-label="Domains">
+    <button type="button" class="domain-pill active" onclick="switchDomain(1)">1. Sleep (12)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(2)">2. Activity (9)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(3)">3. Sedentary (5)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(4)">4. Nutrition (9)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(5)">5. Tobacco (4)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(6)">6. Alcohol (3)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(7)">7. Medication (6)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(8)">8. Vaccine (3)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(9)">9. Metabolic (8)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(10)">10. Illness (5)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(11)">11. Allergy (3)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(12)">12. Incident (5)</button>
+    <button type="button" class="domain-pill" onclick="switchDomain(13)">13. Other (5)</button>
+  </nav>
+
+  <!-- Main Form Card -->
+  <div class="q-card">
+    <form id="recurringForm" onsubmit="event.preventDefault(); saveAllMetrics();">
+
+      <!-- ==================== DOMAIN 1: SLEEP (SL01-SL12) ==================== -->
+      <div class="domain-section active" id="domainSection1">
+        <div class="domain-title-block">
+          <h2>Domain 1: Sleep Architecture &amp; Quality (12 Metrics)</h2>
+          <p>Tracks duration, efficiency, timing, stages, and consistency (PSQI &amp; Roenneberg frameworks).</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Sleep Duration (Total)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> U-curve 7–9h optimal (+0.008 YD); short/long sleep elevates cardiometabolic risk.</div>
+          <div class="input-unit-wrap"><input type="number" step="0.1" name="SL01" class="form-input-number" placeholder="e.g. 7.5"><span>hours</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Time in Bed</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Total time in bed including awake time; used for sleep efficiency calculation.</div>
+          <div class="input-unit-wrap"><input type="number" step="0.1" name="SL02" class="form-input-number" placeholder="e.g. 8.0"><span>hours</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Sleep Efficiency % (Asleep / Time in Bed × 100)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> ≥85% optimal (+0.004 YD); low efficiency marks insomnia phenotype.</div>
+          <div class="input-unit-wrap"><input type="number" step="1" name="SL03" class="form-input-number" placeholder="e.g. 88"><span>%</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Sleep Onset Time</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Circadian alignment tracking; large deviations indicate social jetlag.</div>
+          <input type="time" name="SL04" class="form-select">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Wake Time</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Wake-time consistency pairs with onset for circadian stability.</div>
+          <input type="time" name="SL05" class="form-select">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Sleep Midpoint (Onset–Wake midpoint)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Chronotype marker; weekday/weekend shifts associate with metabolic risk.</div>
+          <input type="time" name="SL06" class="form-select">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">REM Sleep Duration</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> REM supports memory consolidation and emotional regulation.</div>
+          <div class="input-unit-wrap"><input type="number" name="SL07" class="form-input-number" placeholder="e.g. 90"><span>minutes</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Deep / Slow-Wave Sleep Duration</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Primary restorative stage for physical recovery and immune function.</div>
+          <div class="input-unit-wrap"><input type="number" name="SL08" class="form-input-number" placeholder="e.g. 80"><span>minutes</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL09</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Light Sleep Duration</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Contextual sleep architecture proportion.</div>
+          <div class="input-unit-wrap"><input type="number" name="SL09" class="form-input-number" placeholder="e.g. 250"><span>minutes</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL10</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Awakenings / Interruptions Count</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Sleep fragmentation marker; associated with OSA risk.</div>
+          <div class="input-unit-wrap"><input type="number" name="SL10" class="form-input-number" placeholder="e.g. 1"><span>wakings</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL11</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Subjective Sleep Quality (1 to 5)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> PSQI subjective sleep quality component.</div>
+          <select name="SL11" class="form-select">
+            <option value="5">5 - Very Good (+0.003 YD)</option>
+            <option value="4">4 - Good (+0.002 YD)</option>
+            <option value="3">3 - Fair (0.000 YD)</option>
+            <option value="2">2 - Poor (-0.003 YD)</option>
+            <option value="1">1 - Very Poor (-0.006 YD)</option>
+          </select>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL12</span></div><div class="badge-group"><span class="freq-badge">Weekly rolling</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Sleep Consistency Score (Minutes SD of midpoint over 7 days)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Regular sleep timing protects metabolic health.</div>
+          <div class="input-unit-wrap"><input type="number" name="SL12" class="form-input-number" placeholder="e.g. 20"><span>min standard dev</span></div>
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 2: ACTIVITY (PA01-PA09) ==================== -->
+      <div class="domain-section" id="domainSection2">
+        <div class="domain-title-block">
+          <h2>Domain 2: Physical Activity &amp; Exercise (9 Metrics)</h2>
+          <p>Tracks steps, MVPA, distance, active calories, exercise sessions, and strength training (IPAQ &amp; ACSM).</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Daily Step Count</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> ≥8,000 steps optimal (+0.003 YD); reduces all-cause mortality.</div>
+          <div class="input-unit-wrap"><input type="number" name="PA01" class="form-input-number" placeholder="e.g. 8500"><span>steps</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Active Minutes (Moderate+) / MVPA</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> WHO guidelines (30+ min/day moderate activity gives +0.008 YD).</div>
+          <div class="input-unit-wrap"><input type="number" name="PA02" class="form-input-number" placeholder="e.g. 35"><span>minutes</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Total Distance Covered</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Spatial movement volume indicator.</div>
+          <div class="input-unit-wrap"><input type="number" step="0.1" name="PA03" class="form-input-number" placeholder="e.g. 6.2"><span>km</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Active Calories Burned</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Energy expenditure above basal metabolic rate.</div>
+          <div class="input-unit-wrap"><input type="number" name="PA04" class="form-input-number" placeholder="e.g. 500"><span>kcal</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA05</span></div><div class="badge-group"><span class="freq-badge">Per session</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Average Speed / Pace (Per exercise session)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Cardiovascular capacity and walking/running speed index.</div>
+          <input type="text" name="PA05" class="form-input-text" placeholder="e.g. 5.5 min/km">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Elevation Gain</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Vertical work load and muscular load intensity.</div>
+          <div class="input-unit-wrap"><input type="number" name="PA06" class="form-input-number" placeholder="e.g. 120"><span>metres</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Exercise Sessions Count &amp; Type (Cardio, HIIT, etc.)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Structured exercise frequency tracking.</div>
+          <input type="text" name="PA07" class="form-input-text" placeholder="e.g. 1 session (Running)">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Strength / Resistance Training Minutes</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> ACSM guidelines (20+ min or ≥2 days/week resistance training gives +0.006 YD).</div>
+          <div class="input-unit-wrap"><input type="number" name="PA08" class="form-input-number" placeholder="e.g. 30"><span>minutes</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA09</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Heart Rate Zones / Average Heart Rate</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Training intensity distribution and cardiovascular load.</div>
+          <input type="text" name="PA09" class="form-input-text" placeholder="e.g. Zone 2: 45 min, Avg 125 bpm">
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 3: SEDENTARY (SE01-SE05) ==================== -->
+      <div class="domain-section" id="domainSection3">
+        <div class="domain-title-block">
+          <h2>Domain 3: Sedentary Behavior &amp; Posture (5 Metrics)</h2>
+          <p>Tracks total sitting time, unbroken bouts, reclining, movement breaks, and screen time.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Total Sedentary / Sitting Time</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> &lt;6h optimal (+0.001 YD); &gt;10h sitting accelerates vascular aging (-0.012 YD).</div>
+          <div class="input-unit-wrap"><input type="number" step="0.5" name="SE01" class="form-input-number" placeholder="e.g. 6.5"><span>hours</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Longest Unbroken Sitting Bout</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Prolonged unbroken sitting impairs lipoprotein lipase activity and endothelial function.</div>
+          <div class="input-unit-wrap"><input type="number" name="SE02" class="form-input-number" placeholder="e.g. 90"><span>minutes</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Time on Bed / Reclining during Daytime</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Daytime physical inactivity and fatigue indicator.</div>
+          <div class="input-unit-wrap"><input type="number" step="0.5" name="SE03" class="form-input-number" placeholder="e.g. 0.5"><span>hours</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Standing / Light Movement Breaks Count</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Breaking up sedentary bouts maintains micro-vascular tone.</div>
+          <div class="input-unit-wrap"><input type="number" name="SE04" class="form-input-number" placeholder="e.g. 8"><span>breaks</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Recreational Screen Time (TV, gaming, social media)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Excessive screen time correlates with sleep disruption and physical inactivity.</div>
+          <div class="input-unit-wrap"><input type="number" step="0.5" name="SE05" class="form-input-number" placeholder="e.g. 2.0"><span>hours</span></div>
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 4: NUTRITION (NU01-NU09) ==================== -->
+      <div class="domain-section" id="domainSection4">
+        <div class="domain-title-block">
+          <h2>Domain 4: Nutrition &amp; Dietary Quality (9 Metrics)</h2>
+          <p>Tracks meal logging, vegetable/fruit servings, hydration, UPF intake, meal timing, and protein adequacy.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Meals Logged Today</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Meal tracking consistency and dietary tracking adherence.</div>
+          <div class="input-unit-wrap"><input type="number" name="NU01" class="form-input-number" placeholder="e.g. 3"><span>meals</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Vegetable + Fruit Servings (0 to 10+)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> 5+ servings optimal (+0.005 YD); rich in polyphenols and fiber.</div>
+          <div class="input-unit-wrap"><input type="number" name="NU02" class="form-input-number" placeholder="e.g. 6"><span>servings</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Water / Fluid Intake</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Optimal cellular hydration and renal clearance.</div>
+          <div class="input-unit-wrap"><input type="number" step="0.5" name="NU03" class="form-input-number" placeholder="e.g. 2.5"><span>litres</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Ultra-Processed / Fast Food Consumption</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Zero UPF gives +0.003 YD; high UPF accelerates systemic aging (-0.010 YD).</div>
+          <select name="NU04" class="form-select">
+            <option value="None">None / Zero UPF (+0.003 YD)</option>
+            <option value="1 serving">1 serving / Moderate (0.000 YD)</option>
+            <option value="2+ servings">2+ servings / High (-0.010 YD)</option>
+          </select>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Meal Timing – First Meal (Breakfast / Fast-breaker)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Time-restricted eating window and circadian alignment.</div>
+          <input type="time" name="NU05" class="form-select">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Meal Timing – Last Meal (Dinner end)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Avoiding late-night eating improves nocturnal glucose and sleep quality.</div>
+          <input type="time" name="NU06" class="form-select">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Protein Adequacy (Low / Optimal / High)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Adequate protein synthesis supports muscle preservation (sarcopenia prevention).</div>
+          <select name="NU07" class="form-select">
+            <option value="Optimal">Optimal (1.2–2.0g/kg) (+0.003 YD)</option>
+            <option value="Low">Low (&lt;0.8g/kg) (-0.004 YD)</option>
+            <option value="High">High / Supplemented</option>
+          </select>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Overall Meal Quality Rating (1 to 5)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Subjective overall nutritional balance.</div>
+          <select name="NU08" class="form-select">
+            <option value="5">5 - Excellent / Whole foods (+0.004 YD)</option>
+            <option value="4">4 - Good (+0.002 YD)</option>
+            <option value="3">3 - Moderate (0.000 YD)</option>
+            <option value="2">2 - Poor (-0.004 YD)</option>
+            <option value="1">1 - Very Poor / Junk heavy (-0.008 YD)</option>
+          </select>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU09</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Skipped Meals Today</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Unplanned meal skipping can induce glycemic volatility.</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="NU09" value="No"> No / Regular meals</label>
+            <label class="option-tile"><input type="radio" name="NU09" value="Yes"> Yes / Skipped meal</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 5: TOBACCO (TB01-TB04) ==================== -->
+      <div class="domain-section" id="domainSection5">
+        <div class="domain-title-block">
+          <h2>Domain 5: Tobacco &amp; Nicotine Exposure (4 Metrics)</h2>
+          <p>Tracks daily cigarette count, alternative nicotine, craving intensity, and quit attempt status.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">TB01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Cigarettes / Units Smoked Today</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Zero cigarettes gives +0.010 YD; smoking accelerates aging (-0.015 YD per cigarette active day).</div>
+          <div class="input-unit-wrap"><input type="number" name="TB01" class="form-input-number" placeholder="e.g. 0"><span>cigarettes</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">TB02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Other Nicotine Use (Vape, e-cig, pouches)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Nicotine delivery system vascular and pulmonary impact.</div>
+          <input type="text" name="TB02" class="form-input-text" placeholder="e.g. None or 1 vape pod">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">TB03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Craving Intensity (0 to 10 scale)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Nicotine withdrawal and cessation support monitoring.</div>
+          <div class="input-unit-wrap"><input type="number" min="0" max="10" name="TB03" class="form-input-number" placeholder="e.g. 2"><span>/ 10</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">TB04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Quit Attempt Active Today?</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Encourages cessation pathways and partner routing.</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="TB04" value="Yes"> Yes (+0.005 YD for trying)</label>
+            <label class="option-tile"><input type="radio" name="TB04" value="No"> No / Not on quit plan</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 6: ALCOHOL (AL01-AL03) ==================== -->
+      <div class="domain-section" id="domainSection6">
+        <div class="domain-title-block">
+          <h2>Domain 6: Alcohol Consumption (3 Metrics)</h2>
+          <p>Tracks standard drinks, beverage type/context, and binge drinking flags (AUDIT-C framework).</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">AL01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Alcoholic Drinks Today (Standard units)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Zero drinks optimal (+0.005 YD); heavy intake accelerates cellular aging (-0.010 YD).</div>
+          <div class="input-unit-wrap"><input type="number" name="AL01" class="form-input-number" placeholder="e.g. 0"><span>standard drinks</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">AL02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Drink Type / Context (Social dinner, solo, etc.)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Behavioral context of alcohol consumption.</div>
+          <input type="text" name="AL02" class="form-input-text" placeholder="e.g. 1 glass of wine with dinner">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">AL03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Binge Drinking Flag (&gt;4 drinks women, &gt;5 drinks men today)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Heavy episodic binge drinking triggers high-risk medical alerts (-0.015 YD).</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="AL03" value="No"> No binge</label>
+            <label class="option-tile"><input type="radio" name="AL03" value="Yes"> Yes / Binge episode (-0.015 YD)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 7: MEDICATION (MD01-MD06) ==================== -->
+      <div class="domain-section" id="domainSection7">
+        <div class="domain-title-block">
+          <h2>Domain 7: Medication &amp; Supplement Adherence (6 Metrics)</h2>
+          <p>Tracks scheduled doses, doses taken, missed doses, PRN meds, injections, and side effects.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Scheduled Medication Doses Due Today</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Baseline therapeutic regimen schedule.</div>
+          <input type="text" name="MD01" class="form-input-text" placeholder="e.g. Metformin 500mg, Lisinopril 10mg">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Doses Taken on Schedule</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Adherence tracking maintains chronic disease control.</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="MD02" value="All taken"> All scheduled doses taken (+0.003 YD)</label>
+            <label class="option-tile"><input type="radio" name="MD02" value="Partial"> Partial doses taken</label>
+          </div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Missed Doses Count &amp; Reason</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Chronic medication non-adherence triggers clinical alerts (-0.008 YD).</div>
+          <input type="text" name="MD03" class="form-input-text" placeholder="e.g. 0 missed doses">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">PRN / As-Needed Medications Used</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Tracks acute symptom management (inhalers, pain relief).</div>
+          <input type="text" name="MD04" class="form-input-text" placeholder="e.g. Ibuprofen 400mg for headache">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD05</span></div><div class="badge-group"><span class="freq-badge">As scheduled</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Injection Log (Insulin, GLP-1, biologic, etc.)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Specialized therapy adherence monitoring.</div>
+          <input type="text" name="MD05" class="form-input-text" placeholder="e.g. None due today">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Medication Side Effects Noted</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Pharmacovigilance and adverse reaction screening.</div>
+          <input type="text" name="MD06" class="form-input-text" placeholder="e.g. None">
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 8: VACCINE (VC01-VC03) ==================== -->
+      <div class="domain-section" id="domainSection8">
+        <div class="domain-title-block">
+          <h2>Domain 8: Immunization &amp; Vaccine Tracking (3 Metrics)</h2>
+          <p>Tracks upcoming preventive vaccines, vaccination events, and post-vaccine reactions.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">VC01</span></div><div class="badge-group"><span class="freq-badge">As needed</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Upcoming Preventive Vaccines Due</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Preventive healthcare adherence (flu, booster, shingles).</div>
+          <input type="text" name="VC01" class="form-input-text" placeholder="e.g. Annual flu shot due in November">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">VC02</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Vaccine Received Today</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Immune protection update (+0.005 YD event bonus).</div>
+          <input type="text" name="VC02" class="form-input-text" placeholder="e.g. None">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">VC03</span></div><div class="badge-group"><span class="freq-badge">Event +1–3d</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Post-Vaccine Reaction (None / Mild / Moderate / Severe)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Immunization reactogenicity monitoring.</div>
+          <select name="VC03" class="form-select">
+            <option value="None">None / Asymptomatic</option>
+            <option value="Mild">Mild soreness / fatigue</option>
+            <option value="Moderate">Moderate fever / body aches</option>
+            <option value="Severe">Severe systemic reaction</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 9: METABOLIC (ME01-ME08) ==================== -->
+      <div class="domain-section" id="domainSection9">
+        <div class="domain-title-block">
+          <h2>Domain 9: Metabolic &amp; Physiological Vitals (8 Metrics)</h2>
+          <p>Tracks weight, waist circumference, blood pressure, blood glucose, resting heart rate, and HRV.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME01</span></div><div class="badge-group"><span class="freq-badge">2–3x/wk</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Body Weight Update</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> BMI trend and metabolic trajectory monitoring.</div>
+          <div class="input-unit-wrap"><input type="number" step="0.1" name="ME01" class="form-input-number" placeholder="e.g. 70.0"><span>kg</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME02</span></div><div class="badge-group"><span class="freq-badge">Weekly</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Waist Circumference</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Visceral adiposity and waist-to-height ratio (WHtR) tracking.</div>
+          <div class="input-unit-wrap"><input type="number" step="0.5" name="ME02" class="form-input-number" placeholder="e.g. 80.0"><span>cm</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME03</span></div><div class="badge-group"><span class="freq-badge">As prescribed</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Blood Pressure (Systolic)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> SBP &lt;120 optimal (+0.003 YD); &gt;140 triggers hypertension alerts (-0.012 YD).</div>
+          <div class="input-unit-wrap"><input type="number" name="ME03" class="form-input-number" placeholder="e.g. 118"><span>mmHg</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME04</span></div><div class="badge-group"><span class="freq-badge">As prescribed</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Blood Pressure (Diastolic)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Diastolic vascular resistance and perfusion pressure.</div>
+          <div class="input-unit-wrap"><input type="number" name="ME04" class="form-input-number" placeholder="e.g. 76"><span>mmHg</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME05</span></div><div class="badge-group"><span class="freq-badge">As prescribed</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Blood Glucose Level</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Glycemic control and insulin sensitivity monitoring.</div>
+          <div class="input-unit-wrap"><input type="number" name="ME05" class="form-input-number" placeholder="e.g. 92"><span>mg/dL</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME06</span></div><div class="badge-group"><span class="freq-badge">With reading</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Blood Glucose Context (Fasting, Post-meal, Bedtime)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Physiological context for interpretation of glucose values.</div>
+          <select name="ME06" class="form-select">
+            <option value="Fasting">Fasting</option>
+            <option value="Post-meal">Post-meal (1-2h)</option>
+            <option value="Bedtime">Bedtime</option>
+            <option value="Random">Random / Other</option>
+          </select>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Resting Heart Rate (RHR)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Lower RHR (&lt;60 bpm) indicates superior cardiovascular conditioning.</div>
+          <div class="input-unit-wrap"><input type="number" name="ME07" class="form-input-number" placeholder="e.g. 58"><span>bpm</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Heart Rate Variability (HRV - RMSSD)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Autonomic nervous system resilience and recovery index.</div>
+          <div class="input-unit-wrap"><input type="number" name="ME08" class="form-input-number" placeholder="e.g. 65"><span>ms</span></div>
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 10: ILLNESS (IL01-IL05) ==================== -->
+      <div class="domain-section" id="domainSection10">
+        <div class="domain-title-block">
+          <h2>Domain 10: Acute Illness &amp; Symptoms (5 Metrics)</h2>
+          <p>Tracks symptom presence, severity, fever, duration, and work/activity impact.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Symptom Presence (Cold, flu, GI, headache, etc.)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Acute inflammatory stressors temporarily depress LIFE DAYS.</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="IL01" value="None"> None / Healthy</label>
+            <label class="option-tile"><input type="radio" name="IL01" value="Respiratory"> Respiratory / Cold symptoms</label>
+            <label class="option-tile"><input type="radio" name="IL01" value="GI"> Gastrointestinal symptoms</label>
+            <label class="option-tile"><input type="radio" name="IL01" value="Other"> Other symptoms</label>
+          </div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL02</span></div><div class="badge-group"><span class="freq-badge">If symptoms</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Symptom Severity (1 to 5 or Mild/Mod/Severe)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Quantifies acute physiological burden.</div>
+          <select name="IL02" class="form-select">
+            <option value="None">None</option>
+            <option value="Mild">Mild (Minimal disruption)</option>
+            <option value="Moderate">Moderate (Noticeable impact)</option>
+            <option value="Severe">Severe (Significant impairment)</option>
+          </select>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL03</span></div><div class="badge-group"><span class="freq-badge">If relevant</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Fever Present / Maximum Temperature</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Acute immune febrile response indicator.</div>
+          <div class="input-unit-wrap"><input type="number" step="0.1" name="IL03" class="form-input-number" placeholder="e.g. 37.2"><span>°C</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL04</span></div><div class="badge-group"><span class="freq-badge">If symptoms</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Symptom Notes / Duration</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Clinical timeline tracking.</div>
+          <input type="text" name="IL04" class="form-input-text" placeholder="e.g. Day 2 of mild sore throat">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL05</span></div><div class="badge-group"><span class="freq-badge">If symptoms</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Work / Activity Impact (None / Mild / Significant / Bed rest)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Functional disability grading during acute illness.</div>
+          <select name="IL05" class="form-select">
+            <option value="None">None</option>
+            <option value="Mild">Mild reduction in output</option>
+            <option value="Significant">Significant reduction / Modified duties</option>
+            <option value="Bed rest">Bed rest required (-0.010 YD)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 11: ALLERGY (AG01-AG03) ==================== -->
+      <div class="domain-section" id="domainSection11">
+        <div class="domain-title-block">
+          <h2>Domain 11: Allergy &amp; Environmental Flare (3 Metrics)</h2>
+          <p>Tracks allergy flares, trigger exposures, and rescue medication usage.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">AG01</span></div><div class="badge-group"><span class="freq-badge">Daily if known</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Allergy Flare Today (Pollen, dust, food, etc.)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Allergic inflammation and mucosal irritation.</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="AG01" value="No"> No flare</label>
+            <label class="option-tile"><input type="radio" name="AG01" value="Yes"> Yes / Active flare</label>
+          </div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">AG02</span></div><div class="badge-group"><span class="freq-badge">If flare</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Trigger Exposure Identified</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Environmental allergen identification.</div>
+          <input type="text" name="AG02" class="form-input-text" placeholder="e.g. High pollen count day">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">AG03</span></div><div class="badge-group"><span class="freq-badge">If used</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Rescue / Allergy Medication Used (Antihistamine, nasal spray, inhaler)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Symptom relief medication tracking.</div>
+          <input type="text" name="AG03" class="form-input-text" placeholder="e.g. Cetirizine 10mg">
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 12: INCIDENT (IN01-IN05) ==================== -->
+      <div class="domain-section" id="domainSection12">
+        <div class="domain-title-block">
+          <h2>Domain 12: Incidents &amp; Safety Events (5 Metrics)</h2>
+          <p>Tracks falls, near-falls, GI incidents, accidents, and medical/ER visits.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Fall or Near-Fall Incident Today</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Fall safety screening and balance instability warning.</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="IN01" value="None"> None</label>
+            <label class="option-tile"><input type="radio" name="IN01" value="Near-fall"> Near-fall / Stumble</label>
+            <label class="option-tile"><input type="radio" name="IN01" value="Fall"> Actual Fall (-0.020 YD alert)</label>
+          </div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN02</span></div><div class="badge-group"><span class="freq-badge">If fall</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Fall Details (Location, injury sustained)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Safety incident investigation.</div>
+          <input type="text" name="IN02" class="form-input-text" placeholder="e.g. N/A">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN03</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Event only</span></div></div>
+          <div class="q-text">Food Poisoning / Acute GI Incident</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Acute food-borne illness tracking.</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="IN03" value="No"> No</label>
+            <label class="option-tile"><input type="radio" name="IN03" value="Yes"> Yes</label>
+          </div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN04</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Event only</span></div></div>
+          <div class="q-text">Other Accident / Physical Injury</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Traumatic physical injury logging.</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="IN04" value="No"> No</label>
+            <label class="option-tile"><input type="radio" name="IN04" value="Yes"> Yes</label>
+          </div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN05</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Event only</span></div></div>
+          <div class="q-text">Urgent Medical Visit / ER / Hospital Admission Today</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Major clinical safety event routing and partner escalation.</div>
+          <div class="options-grid">
+            <label class="option-tile"><input type="radio" name="IN05" value="No"> No</label>
+            <label class="option-tile"><input type="radio" name="IN05" value="Yes"> Yes (-0.050 YD alert)</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== DOMAIN 13: OTHER (OT01-OT05) ==================== -->
+      <div class="domain-section" id="domainSection13">
+        <div class="domain-title-block">
+          <h2>Domain 13: Subjective Well-being &amp; Engagement (5 Metrics)</h2>
+          <p>Tracks mood/energy ratings, stress levels, menstrual cycle tracking, journal notes, and data completeness.</p>
+        </div>
+
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Mood / Energy Rating (1 to 5)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Psychological vitality and vitality index.</div>
+          <select name="OT01" class="form-select">
+            <option value="5">5 - High energy &amp; positive mood (+0.003 YD)</option>
+            <option value="4">4 - Good (+0.001 YD)</option>
+            <option value="3">3 - Neutral (0.000 YD)</option>
+            <option value="2">2 - Low energy (-0.002 YD)</option>
+            <option value="1">1 - Exhausted / Depressed (-0.005 YD)</option>
+          </select>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
+          <div class="q-text">Stress Level (1 to 10 scale)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Chronic cortisol elevation and psychological stress load.</div>
+          <div class="input-unit-wrap"><input type="number" min="1" max="10" name="OT02" class="form-input-number" placeholder="e.g. 3"><span>/ 10</span></div>
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT03</span></div><div class="badge-group"><span class="freq-badge">If tracked</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Menstrual Cycle Day / Hormonal Symptoms</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Endocrinological rhythm and hormonal symptom tracking.</div>
+          <input type="text" name="OT03" class="form-input-text" placeholder="e.g. Day 14 or N/A">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT04</span></div><div class="badge-group"><span class="freq-badge">Daily optional</span><span class="tier-badge">Optional</span></div></div>
+          <div class="q-text">Personal Notes / Journal Entry</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Qualitative reflection and contextual note logging.</div>
+          <input type="text" name="OT04" class="form-input-text" placeholder="e.g. Felt great during morning workout">
+        </div>
+        <div class="q-item">
+          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
+          <div class="q-text">Data Completeness Flag (Wearable sync vs manual entry)</div>
+          <div class="q-rationale"><strong>Biological Rationale:</strong> Tracking data integrity and trust score.</div>
+          <select name="OT05" class="form-select">
+            <option value="Full auto sync">Full auto sync (Wearable API)</option>
+            <option value="Partial manual">Partial manual entry</option>
+            <option value="Fully manual">Fully manual</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="submit" class="btn">Save All 77 Metrics &amp; Recapture LIFE DAYS <span aria-hidden="true">→</span></button>
+      </div>
+
+    </form>
+  </div>
+
 </main>
+
+<!-- Site Footer Slot -->
+<div id="site-footer"></div>
+
+<!-- Shared Site Script -->
+<script src="script.js"></script>
 
 <!-- Navigation & Handler Script -->
 <script>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ongoing Dashboard & Full 77-Metric Scoring | YouthCraft</title>
-<meta name="description" content="Track all 77 recurring metrics across 13 domains with multi-modal capture (Manual, Screenshot, Auto-Synch) and real-time LIFE DAYS recapture.">
+<meta name="description" content="Track all 77 recurring metrics across 13 domains with multi-modal capture, scientific validation links, and Earn Life Days CTAs.">
 <link rel="stylesheet" href="styles.css">
 <style>
 :root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb;--yc-danger:#c0392b;--yc-success:#27ae60}
@@ -74,13 +74,28 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 
 .card-body-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;font-size:.85rem;color:var(--yc-muted);margin-bottom:6px}
 .response-tag{display:inline-block;background:white;border:1px solid var(--yc-line);padding:3px 8px;border-radius:6px;font-weight:700;color:var(--yc-ink)}
-.matched-key{font-size:.8rem;color:var(--yc-muted);font-family:monospace}
 
-/* Capture Mode Buttons (Manual, Screenshot, Auto-Synch) */
+/* Capture Mode Buttons */
 .capture-mode-group{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:6px}
 .capture-btn{background:white;border:1px solid var(--yc-line);color:var(--yc-muted);font-size:.72rem;font-weight:800;padding:3px 9px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all .15s ease}
 .capture-btn:hover{border-color:var(--yc-green);color:var(--yc-green);background:var(--yc-mint)}
 .capture-btn.active-mode{background:var(--yc-mint);border-color:var(--yc-green);color:var(--yc-green)}
+
+/* EARN LIFE DAYS - CTA CONTAINER */
+.earn-cta-box{margin-top:10px;background:#fffaf0;border:1px dashed var(--yc-gold);border-radius:10px;padding:10px 12px}
+.earn-cta-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.earn-cta-title{font-size:.78rem;font-weight:850;letter-spacing:.05em;text-transform:uppercase;color:#8c5d18;display:flex;align-items:center;gap:5px}
+.earn-cta-badge{background:#fdf2e9;color:#b06100;border:1px solid #f5cba7;font-size:.75rem;font-weight:800;padding:2px 8px;border-radius:999px}
+
+.options-ladder{display:flex;flex-direction:column;gap:4px;margin-top:6px;border-top:1px solid #f2e3c6;padding-top:6px}
+.ladder-item{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;background:white;padding:4px 8px;border-radius:6px;border:1px solid #f5e5c9}
+.ladder-item .opt-text{font-weight:700;color:var(--yc-ink)}
+.ladder-item .opt-gain{font-weight:850;color:var(--yc-success)}
+
+/* Reference URL Link Footer inside Card */
+.card-ref-footer{margin-top:10px;padding-top:8px;border-top:1px solid var(--yc-line);display:flex;justify-content:flex-end}
+.ref-link{font-size:.78rem;font-weight:700;color:var(--yc-green);text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:color .15s ease}
+.ref-link:hover{color:var(--yc-ink);text-decoration:underline}
 
 /* Computed Final Result Card */
 .final-results-card{background:linear-gradient(135deg,#183b32,#24644f);border-radius:20px;padding:24px 20px;color:white;margin-top:28px;box-shadow:0 8px 24px rgba(24,59,50,.15)}
@@ -116,7 +131,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
   <div class="wrap">
     <div class="eyebrow">✦ Full 77-Metric Ongoing Dashboard</div>
     <h1>Recurring Health Score Report &amp; Data Stream</h1>
-    <p>Monitor all 77 recurring metrics across 13 domains. Use the interactive capture buttons to switch between manual entry, screenshot OCR, or auto-synch from your connected app.</p>
+    <p>Monitor all 77 recurring metrics across 13 domains. Use capture mode buttons, explore scientific validation links, and utilize Earn Life Days CTAs mapped from Metric_Option_Lookup.</p>
   </div>
 </header>
 
@@ -185,51 +200,83 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL01</span><span class="q-title">Sleep Duration (Total)</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">7.5 hours</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">7.5 hours</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="card-ref-footer"><a href="https://www.sleep.pitt.edu/" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL02</span><span class="q-title">Time in Bed</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">8.0 hours</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">8.0 hours</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL03</span><span class="q-title">Sleep Efficiency %</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">88%</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">88%</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL04</span><span class="q-title">Sleep Onset Time</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">23:15</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">23:15</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL05</span><span class="q-title">Wake Time</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">07:15</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">07:15</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL06</span><span class="q-title">Sleep Midpoint</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">03:15</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">03:15</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.10">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL07</span><span class="q-title">REM Sleep Duration</span></div><span class="delta-pill delta-positive">+0.10 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">90 mins</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">90 mins</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.15">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL08</span><span class="q-title">Deep / Slow-Wave Sleep Duration</span></div><span class="delta-pill delta-positive">+0.15 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">80 mins</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">80 mins</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL09</span><span class="q-title">Light Sleep Duration</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">250 mins</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">250 mins</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL10</span><span class="q-title">Awakenings / Interruptions Count</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">1 waking</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">1 waking</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL11</span><span class="q-title">Subjective Sleep Quality (1 to 5)</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">4 - Good</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">4 - Good</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">Reclaim up to +0.30 Yrs (+109 Days)</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">SL11 | 5 - Very Good</span><span class="opt-gain">+0.30 yrs (+109 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1016/S1389-9457(00)00065-4" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SL12</span><span class="q-title">Sleep Consistency Score</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">20 min SD</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">20 min SD</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -243,39 +290,65 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.30">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">PA01</span><span class="q-title">Daily Step Count</span></div><span class="delta-pill delta-positive">+0.30 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">8,500 steps</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">8,500 steps</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">PA01 | 12,000+ steps</span><span class="opt-gain">+0.50 yrs (+182 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1016/S0140-6736(19)33441-9" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.40">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">PA02</span><span class="q-title">Active Minutes (MVPA)</span></div><span class="delta-pill delta-positive">+0.40 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">35 mins</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">35 mins</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">PA03</span><span class="q-title">Total Distance Covered</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">6.2 km</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">6.2 km</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.10">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">PA04</span><span class="q-title">Active Calories Burned</span></div><span class="delta-pill delta-positive">+0.10 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">500 kcal</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">500 kcal</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">PA05</span><span class="q-title">Average Speed / Pace</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">5.5 min/km</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">5.5 min/km</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">PA06</span><span class="q-title">Elevation Gain</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">120 m</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">120 m</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">PA07</span><span class="q-title">Exercise Sessions Count & Type</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">1 session (Running)</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">1 session (Running)</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.30">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">PA08</span><span class="q-title">Strength / Resistance Training Minutes</span></div><span class="delta-pill delta-positive">+0.30 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">30 mins</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">30 mins</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1136/bjsports-2018-100606" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">PA09</span><span class="q-title">Heart Rate Zones / Average HR</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">Avg 125 bpm</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">Avg 125 bpm</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -289,23 +362,40 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="-0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SE01</span><span class="q-title">Total Sedentary / Sitting Time</span></div><span class="delta-pill delta-negative">-0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">6.5 hours</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">6.5 hours</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">Reclaim up to +0.40 Yrs (+146 Days)</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">SE01 | &lt;4 hours sitting</span><span class="opt-gain">+0.40 yrs (+146 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1016/S0140-6736(16)30370-1" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SE02</span><span class="q-title">Longest Unbroken Sitting Bout</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">90 mins</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">90 mins</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SE03</span><span class="q-title">Time on Bed / Reclining Daytime</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">0.5 hours</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">0.5 hours</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.10">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SE04</span><span class="q-title">Standing / Light Movement Breaks Count</span></div><span class="delta-pill delta-positive">+0.10 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">8 breaks</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">8 breaks</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">SE05</span><span class="q-title">Recreational Screen Time</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">2.0 hours</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">2.0 hours</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -319,39 +409,65 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">NU01</span><span class="q-title">Meals Logged Today</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">3 meals</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">3 meals</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.30">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">NU02</span><span class="q-title">Vegetable + Fruit Servings</span></div><span class="delta-pill delta-positive">+0.30 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">6 servings</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">6 servings</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">Reclaim up to +0.20 Yrs (+73 Days)</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">NU02 | 8+ servings</span><span class="opt-gain">+0.20 yrs (+73 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1093/ije/dyw319" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.10">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">NU03</span><span class="q-title">Water / Fluid Intake</span></div><span class="delta-pill delta-positive">+0.10 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">2.5 litres</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">2.5 litres</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">NU04</span><span class="q-title">Ultra-Processed / Fast Food Consumption</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None / Zero UPF</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None / Zero UPF</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1136/bmj.l6698" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">NU05</span><span class="q-title">Meal Timing – First Meal</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">08:30</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">08:30</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">NU06</span><span class="q-title">Meal Timing – Last Meal</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">19:30</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">19:30</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">NU07</span><span class="q-title">Protein Adequacy</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">Optimal (1.4g/kg)</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">Optimal (1.4g/kg)</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">NU08</span><span class="q-title">Overall Meal Quality Rating</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">5 - Excellent / Whole foods</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">5 - Excellent / Whole foods</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">NU09</span><span class="q-title">Skipped Meals Today</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">No / Regular meals</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">No / Regular meals</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -365,19 +481,34 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.50">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">TB01</span><span class="q-title">Cigarettes Smoked Today</span></div><span class="delta-pill delta-positive">+0.50 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">0 cigarettes</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">0 cigarettes</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">Zero Nicotine Baseline</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">TB01 | Maintained 0 units</span><span class="opt-gain">+0.50 yrs (+182 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1136/bmj.328.7455.1519" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">TB02</span><span class="q-title">Other Nicotine Use</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">TB03</span><span class="q-title">Craving Intensity</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">0 / 10</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">0 / 10</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">TB04</span><span class="q-title">Quit Attempt Active Today?</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">No / Non-smoker</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">No / Non-smoker</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -391,15 +522,28 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.30">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">AL01</span><span class="q-title">Alcoholic Drinks Today (Standard units)</span></div><span class="delta-pill delta-positive">+0.30 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">0 standard drinks</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">0 standard drinks</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">Abstinence Benefit</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">AL01 | 0 drinks</span><span class="opt-gain">+0.30 yrs (+109 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1016/S0140-6736(18)31310-2" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">AL02</span><span class="q-title">Drink Type / Context</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">AL03</span><span class="q-title">Binge Drinking Flag</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">No binge</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">No binge</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -413,27 +557,46 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">MD01</span><span class="q-title">Scheduled Medication Doses Due</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">Multivitamin</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">Multivitamin</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">MD02</span><span class="q-title">Doses Taken on Schedule</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">All scheduled doses taken</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">All scheduled doses taken</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">100% Adherence Bonus</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">MD02 | Full adherence</span><span class="opt-gain">+0.20 yrs (+73 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1001/jama.296.20.2483" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">MD03</span><span class="q-title">Missed Doses Count & Reason</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">0 missed</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">0 missed</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">MD04</span><span class="q-title">PRN / As-Needed Medications Used</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">MD05</span><span class="q-title">Injection Log</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">MD06</span><span class="q-title">Medication Side Effects Noted</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -447,15 +610,22 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">VC01</span><span class="q-title">Upcoming Preventive Vaccines Due</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None due</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None due</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">VC02</span><span class="q-title">Vaccine Received Today</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">VC03</span><span class="q-title">Post-Vaccine Reaction</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None / Asymptomatic</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None / Asymptomatic</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="card-ref-footer"><a href="https://www.cdc.gov/vaccines/" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
       </div>
     </section>
@@ -469,35 +639,65 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">ME01</span><span class="q-title">Body Weight Update</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">70.0 kg</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">70.0 kg</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.10">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">ME02</span><span class="q-title">Waist Circumference</span></div><span class="delta-pill delta-positive">+0.10 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">80.0 cm</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">80.0 cm</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.30">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">ME03</span><span class="q-title">Blood Pressure (Systolic)</span></div><span class="delta-pill delta-positive">+0.30 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">118 mmHg</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">118 mmHg</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">Optimal SBP Range</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">ME03 | &lt;120 mmHg</span><span class="opt-gain">+0.30 yrs (+109 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1161/CIR.0000000000000596" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">ME04</span><span class="q-title">Blood Pressure (Diastolic)</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">76 mmHg</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">76 mmHg</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">ME05</span><span class="q-title">Blood Glucose Level</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">92 mg/dL</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">92 mg/dL</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">Normoglycemia Bonus</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">ME05 | &lt;100 mg/dL</span><span class="opt-gain">+0.20 yrs (+73 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://diabetesjournals.org/care" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">ME06</span><span class="q-title">Blood Glucose Context</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">Fasting</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">Fasting</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">ME07</span><span class="q-title">Resting Heart Rate (RHR)</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">58 bpm</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">58 bpm</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">ME08</span><span class="q-title">Heart Rate Variability (HRV - RMSSD)</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">65 ms</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">65 ms</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -511,23 +711,33 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IL01</span><span class="q-title">Symptom Presence</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None / Healthy</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None / Healthy</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IL02</span><span class="q-title">Symptom Severity</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IL03</span><span class="q-title">Fever Present / Max Temp</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">36.6 °C</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">36.6 °C</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IL04</span><span class="q-title">Symptom Notes / Duration</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IL05</span><span class="q-title">Work / Activity Impact</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -541,15 +751,21 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">AG01</span><span class="q-title">Allergy Flare Today</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">No flare</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">No flare</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">AG02</span><span class="q-title">Trigger Exposure Identified</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">AG03</span><span class="q-title">Rescue / Allergy Medication Used</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -557,29 +773,40 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
     <!-- ==================== DOMAIN 12: INCIDENT (IN01-IN05) ==================== -->
     <section class="domain-block" data-domain="12">
       <div class="domain-header">
-        <h2><span>⚠️️</span> 12. Incidents & Safety Events (IN01-IN05)</h2>
+        <h2><span>⚠️</span> 12. Incidents & Safety Events (IN01-IN05)</h2>
         <span class="domain-badge">Domain 12 (5 Metrics)</span>
       </div>
       <div class="cards-list">
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IN01</span><span class="q-title">Fall or Near-Fall Incident Today</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1016/j.jamda.2013.03.022" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IN02</span><span class="q-title">Fall Details</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">N/A</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">N/A</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IN03</span><span class="q-title">Food Poisoning / Acute GI Incident</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">No</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">No</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IN04</span><span class="q-title">Other Accident / Physical Injury</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">No</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">No</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">IN05</span><span class="q-title">Urgent Medical Visit / ER / Hospital</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">No</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">No</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>
@@ -593,23 +820,40 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="cards-list">
         <div class="question-card" data-delta="0.20">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">OT01</span><span class="q-title">Mood / Energy Rating (1 to 5)</span></div><span class="delta-pill delta-positive">+0.20 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">5 - High energy & positive mood</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">5 - High energy & positive mood</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header"><span class="earn-cta-title">✨ Earn Life Days - CTA</span><span class="earn-cta-badge">High Vitality Bonus</span></div>
+            <div class="options-ladder">
+              <div class="ladder-item"><span class="opt-text">OT01 | Rating 5</span><span class="opt-gain">+0.20 yrs (+73 Days)</span></div>
+            </div>
+          </div>
+          <div class="card-ref-footer"><a href="https://doi.org/10.1037/0022-3514.46.4.907" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 Scientific Validation & Reference</span> ↗</a></div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">OT02</span><span class="q-title">Stress Level (1 to 10 scale)</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">3 / 10</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">3 / 10</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">OT03</span><span class="q-title">Menstrual Cycle Day / Hormonal Symptoms</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">N/A</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">N/A</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">OT04</span><span class="q-title">Personal Notes / Journal Entry</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">Felt great during morning workout</span></span><div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">Felt great during morning workout</span></span>
+            <div class="capture-mode-group"><button class="capture-btn active-mode" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
         <div class="question-card" data-delta="0.00">
           <div class="card-top-row"><div class="card-title-group"><span class="q-code">OT05</span><span class="q-title">Data Completeness Flag</span></div><span class="delta-pill delta-neutral">0.00 yrs</span></div>
-          <div class="card-body-row"><span>Response: <span class="response-tag">Full auto sync</span></span><div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div></div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">Full auto sync</span></span>
+            <div class="capture-mode-group"><button class="capture-btn" onclick="setMode(this, 'Manual')">✍️ Manual</button><button class="capture-btn" onclick="setMode(this, 'Screenshot')">📸 Screenshot</button><button class="capture-btn active-mode" onclick="setMode(this, 'Auto-Synch')">⚡ Auto-Synch from App</button></div>
+          </div>
         </div>
       </div>
     </section>

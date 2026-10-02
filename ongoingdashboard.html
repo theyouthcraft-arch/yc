@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ongoing Dashboard & Daily Scoring | YouthCraft</title>
+<meta name="description" content="Track your daily 77 recurring metrics, LIFE DAYS recapture, clinical triggers, and scientific instrument references across all 13 domains.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb;--yc-danger:#c0392b;--yc-success:#27ae60}
+*{box-sizing:border-box}
+body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
+.wrap{max-width:1160px;margin:auto;padding:0 16px}
+
+/* Page Hero Header */
+.dashboard-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:36px 0 24px;border-bottom:1px solid var(--yc-line)}
+.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
+.dashboard-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;color:var(--yc-ink);margin:8px 0;letter-spacing:-.04em}
+.dashboard-hero p{font-size:.98rem;line-height:1.5;color:#466157;margin:0;max-width:760px}
+
+.content{padding-top:24px;padding-bottom:60px}
+.dashboard-container{max-width:920px;margin:0 auto}
+
+/* Top Summary Cards Banner (Grid) */
+.summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:20px}
+.metric-card{background:white;border:1px solid var(--yc-line);border-radius:16px;padding:16px 12px;box-shadow:0 4px 16px rgba(24,59,50,.03);text-align:center;position:relative;overflow:hidden}
+.metric-card .icon-tile{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:var(--yc-mint);font-size:1.1rem;margin:0 auto 8px}
+.metric-card .label{font-size:.75rem;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:var(--yc-muted);margin-bottom:4px}
+.metric-card .value{font-size:1.6rem;font-weight:850;color:var(--yc-ink);line-height:1.1;letter-spacing:-.02em}
+.metric-card .sub-label{font-size:.78rem;color:var(--yc-muted);margin-top:4px;font-weight:600}
+
+/* Risk Badge Styling */
+.badge-risk-good{background:#e8f8f5;color:var(--yc-success);border:1px solid #a3e4d7;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:850;display:inline-block;margin-top:4px}
+
+/* Action Control Bar (Instrument References & Triggers Buttons) */
+.action-controls-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px;background:white;padding:12px 16px;border-radius:16px;border:1px solid var(--yc-line);box-shadow:0 2px 8px rgba(24,59,50,.02)}
+.action-btn-group{display:flex;gap:10px;flex-wrap:wrap}
+.action-btn{display:inline-flex;align-items:center;gap:6px;background:var(--yc-paper);border:1px solid var(--yc-line);color:var(--yc-ink);padding:8px 14px;border-radius:999px;font-size:.82rem;font-weight:800;text-decoration:none;cursor:pointer;transition:all .15s ease}
+.action-btn:hover{background:var(--yc-mint);border-color:var(--yc-green);color:var(--yc-green)}
+.action-btn.primary{background:var(--yc-green);color:white;border-color:var(--yc-green)}
+.action-btn.primary:hover{background:#125242}
+
+/* Filter Tabs */
+.filter-tabs-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px;background:white;padding:6px 10px;border-radius:999px;border:1px solid var(--yc-line)}
+.tab-group{display:flex;gap:4px;width:100%;max-width:480px}
+.tab-btn{flex:1;background:transparent;border:none;padding:8px 12px;border-radius:999px;font-size:.8rem;font-weight:800;color:var(--yc-muted);cursor:pointer;transition:all .18s ease;text-align:center}
+.tab-btn:hover{color:var(--yc-ink)}
+.tab-btn.active{background:var(--yc-ink);color:white}
+.tab-btn.active-positive{background:var(--yc-green);color:white}
+.tab-btn.active-negative{background:var(--yc-danger);color:white}
+.tab-info-text{font-size:.8rem;color:var(--yc-muted);font-weight:600;padding-left:8px}
+
+/* Domain Block */
+.domain-block{background:white;border:1px solid var(--yc-line);border-radius:20px;padding:20px 16px;box-shadow:0 4px 16px rgba(24,59,50,.025);margin-bottom:20px}
+.domain-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--yc-mint);padding-bottom:10px;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.domain-header h2{font-size:1.2rem;color:var(--yc-ink);margin:0;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.domain-header .domain-badge{font-size:.75rem;font-weight:800;background:var(--yc-paper);border:1px solid var(--yc-line);padding:3px 8px;border-radius:999px;color:var(--yc-muted)}
+
+/* CARDS LAYOUT FOR MOBILE-FIRST DESIGN */
+.cards-list{display:flex;flex-direction:column;gap:12px}
+.question-card{background:var(--yc-paper);border:1px solid var(--yc-line);border-radius:14px;padding:14px 16px;position:relative;transition:transform .15s ease,box-shadow .15s ease}
+.question-card:hover{border-color:var(--yc-green);box-shadow:0 4px 14px rgba(23,107,85,.06)}
+
+.card-top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.card-title-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.q-code{font-weight:850;color:var(--yc-green);font-size:.82rem;background:var(--yc-mint);padding:2px 6px;border-radius:4px;display:inline-block}
+.q-title{font-weight:750;color:var(--yc-ink);font-size:.95rem}
+
+/* Delta / Score Badges */
+.delta-pill{font-weight:850;padding:3px 10px;border-radius:999px;font-size:.82rem;white-space:nowrap;display:inline-block}
+.delta-positive{background:#e8f8f5;color:var(--yc-success);border:1px solid #a3e4d7}
+.delta-negative{background:#fadbd8;color:var(--yc-danger);border:1px solid #f5b7b1}
+.delta-neutral{background:white;color:var(--yc-muted);border:1px solid var(--yc-line)}
+
+.card-body-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.85rem;color:var(--yc-muted);margin-bottom:6px}
+.response-tag{display:inline-block;background:white;border:1px solid var(--yc-line);padding:3px 8px;border-radius:6px;font-weight:700;color:var(--yc-ink)}
+.matched-key{font-size:.8rem;color:var(--yc-muted);font-family:monospace}
+
+/* Medical Trigger Red Alert Banner */
+.card-trigger-alert{background:var(--yc-danger);color:white;padding:8px 12px;border-radius:8px;font-size:.8rem;font-weight:800;margin-top:10px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 6px rgba(192,57,43,.2)}
+.card-trigger-alert .alert-icon{font-size:1rem}
+
+/* EARN LIFE DAYS - CTA CONTAINER */
+.earn-cta-box{margin-top:10px;background:#fffaf0;border:1px dashed var(--yc-gold);border-radius:10px;padding:10px 12px}
+.earn-cta-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.earn-cta-title{font-size:.78rem;font-weight:850;letter-spacing:.05em;text-transform:uppercase;color:#8c5d18;display:flex;align-items:center;gap:5px}
+.earn-cta-badge{background:#fdf2e9;color:#b06100;border:1px solid #f5cba7;font-size:.75rem;font-weight:800;padding:2px 8px;border-radius:999px}
+
+.options-ladder{display:flex;flex-direction:column;gap:4px;margin-top:6px;border-top:1px solid #f2e3c6;padding-top:6px}
+.ladder-item{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;background:white;padding:4px 8px;border-radius:6px;border:1px solid #f5e5c9}
+.ladder-item .opt-text{font-weight:700;color:var(--yc-ink)}
+.ladder-item .opt-gain{font-weight:850;color:var(--yc-success)}
+
+/* Reference URL Link Footer inside Card */
+.card-ref-footer{margin-top:10px;padding-top:8px;border-top:1px solid var(--yc-line);display:flex;justify-content:flex-end}
+.ref-link{font-size:.78rem;font-weight:700;color:var(--yc-green);text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:color .15s ease}
+.ref-link:hover{color:var(--yc-ink);text-decoration:underline}
+
+/* Computed Final Result Card */
+.final-results-card{background:linear-gradient(135deg,#183b32,#24644f);border-radius:20px;padding:24px 20px;color:white;margin-top:28px;box-shadow:0 8px 24px rgba(24,59,50,.15)}
+.final-results-header{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:12px;margin-bottom:16px}
+.final-results-header h2{font-size:1.4rem;margin:0 0 4px;letter-spacing:-.02em;color:white}
+.final-results-header p{margin:0;color:#d4e4dc;font-size:.88rem}
+
+.final-results-card table{width:100%!important;border-collapse:collapse!important;background:transparent!important;border:none!important}
+.final-results-card td{padding:10px 0!important;border-bottom:1px solid rgba(255,255,255,.15)!important;font-size:.95rem!important;color:#e8f3ed!important}
+.final-results-card tr:last-child td{border-bottom:none!important}
+.final-results-card td.val-col{text-align:right!important;font-weight:850!important;font-size:1.15rem!important;color:#ffffff!important}
+.final-results-card .highlight-row td{font-size:1.15rem!important;font-weight:850!important;color:#ffffff!important;padding-top:14px!important}
+
+@media(max-width:768px){
+  .summary-grid{grid-template-columns:repeat(2,1fr)}
+  .filter-tabs-bar{flex-direction:column;align-items:stretch}
+  .tab-group{max-width:100%}
+  .tab-info-text{padding-left:0;text-align:center}
+}
+@media(max-width:480px){
+  .summary-grid{grid-template-columns:1fr}
+  .card-top-row{flex-direction:column;align-items:flex-start}
+  .delta-pill{align-self:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- Hero Section -->
+<header class="dashboard-hero">
+  <div class="wrap">
+    <div class="eyebrow">✦ Ongoing Dashboard &amp; Daily Scoring</div>
+    <h1>Recurring Health Score Report</h1>
+    <p>Monitor your daily recurring metrics, LIFE DAYS recaptured, clinical triggers, and scientific validation links across all 13 domains.</p>
+  </div>
+</header>
+
+<main class="wrap content">
+  <div class="dashboard-container">
+
+    <!-- INFOGRAPHICS BANNER SUMMARY -->
+    <div class="summary-grid">
+      <div class="metric-card">
+        <div class="icon-tile" aria-hidden="true">🔄</div>
+        <div class="label">Total Tracked</div>
+        <div class="value">77</div>
+        <div class="sub-label">Recurring Metrics</div>
+      </div>
+      <div class="metric-card">
+        <div class="icon-tile" aria-hidden="true">⏳</div>
+        <div class="label">LIFE DAYS Recaptured</div>
+        <div class="value" style="color:var(--yc-success)">+4.20 yrs</div>
+        <div class="sub-label">Positive Accrual</div>
+      </div>
+      <div class="metric-card">
+        <div class="icon-tile" aria-hidden="true">🔥</div>
+        <div class="label">Logging Streak</div>
+        <div class="value">14 Days</div>
+        <div class="sub-label">Active Consistency</div>
+      </div>
+      <div class="metric-card">
+        <div class="icon-tile" aria-hidden="true">🛡️</div>
+        <div class="label">Clinical Status</div>
+        <div class="value"><span class="badge-risk-good">Stable</span></div>
+        <div class="sub-label">0 Active Triggers</div>
+      </div>
+    </div>
+
+    <!-- ACTION CONTROLS: INSTRUMENT REFERENCES & TRIGGERS -->
+    <div class="action-controls-bar">
+      <div class="action-btn-group">
+        <button type="button" class="action-btn primary" onclick="alert('Instrument References:\n• Pittsburgh Sleep Quality Index (PSQI)\n• International Physical Activity Questionnaire (IPAQ)\n• AUDIT-C Alcohol Screening\n• WHO STEPS Surveillance Framework')">
+          <span>📚</span> Instrument_References
+        </button>
+        <button type="button" class="action-btn" onclick="alert('Triggers & Clinical Safety Net:\n• 0 Active High-Severity Triggers\n• Routine monitoring active across all 13 domains\n• Connected to Google Sheet source: gid=1762602720')">
+          <span>🚨</span> Triggers (0 Active)
+        </button>
+      </div>
+      <a href="https://docs.google.com/spreadsheets/d/1gE5oTpitnggq-0zEflTemfHPeY3bcqvH7K70dFYmE7w/edit?gid=1762602720#gid=1762602720" target="_blank" rel="noopener noreferrer" class="action-btn">
+        <span>📊</span> Source Sheet ↗
+      </a>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="filter-tabs-bar">
+      <div class="tab-group">
+        <button type="button" class="tab-btn active" id="filterAll" onclick="filterDeltas('all')">All Metrics</button>
+        <button type="button" class="tab-btn" id="filterPositive" onclick="filterDeltas('positive')">🟢 Gaining</button>
+        <button type="button" class="tab-btn" id="filterNegative" onclick="filterDeltas('negative')">🔴 Risk / Loss</button>
+      </div>
+      <div class="tab-info-text" id="tabCountText">Showing all recurring inputs</div>
+    </div>
+
+    <!-- DOMAIN 1: Sleep Architecture & Quality -->
+    <section class="domain-block" data-domain="1">
+      <div class="domain-header">
+        <h2><span>🌙</span> 1. Sleep Architecture & Quality (SL01-SL12)</h2>
+        <span class="domain-badge">Domain 1 (12 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">SL01</span><span class="q-title">Sleep Duration (Total)</span></div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">7.5 hours</span></span><span>Lookup: <span class="matched-key">SL01|7.5h</span></span></div>
+        </div>
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">SL03</span><span class="q-title">Sleep Efficiency %</span></div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">88%</span></span><span>Lookup: <span class="matched-key">SL03|88</span></span></div>
+        </div>
+        <div class="question-card" data-delta="0.20">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">SL11</span><span class="q-title">Subjective Sleep Quality (1 to 5)</span></div>
+            <span class="delta-pill delta-positive">+0.20 yrs (+73 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">4 - Good</span></span><span>Lookup: <span class="matched-key">SL11|4</span></span></div>
+          <div class="card-ref-footer"><a href="https://www.sleep.pitt.edu/" target="_blank" rel="noopener noreferrer" class="ref-link"><span>🔬 PSQI Scientific Validation</span> ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 2: Physical Activity & Exercise -->
+    <section class="domain-block" data-domain="2">
+      <div class="domain-header">
+        <h2><span>🏃</span> 2. Physical Activity & Exercise (PA01-PA09)</h2>
+        <span class="domain-badge">Domain 2 (9 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.30">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">PA01</span><span class="q-title">Daily Step Count</span></div>
+            <span class="delta-pill delta-positive">+0.30 yrs (+109 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">8,500 steps</span></span><span>Lookup: <span class="matched-key">PA01|8500</span></span></div>
+        </div>
+        <div class="question-card" data-delta="0.40">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">PA02</span><span class="q-title">Active Minutes (MVPA)</span></div>
+            <span class="delta-pill delta-positive">+0.40 yrs (+146 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">35 minutes</span></span><span>Lookup: <span class="matched-key">PA02|35</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 3: Sedentary Behavior & Posture -->
+    <section class="domain-block" data-domain="3">
+      <div class="domain-header">
+        <h2><span>🪑</span> 3. Sedentary Behavior & Posture (SE01-SE05)</h2>
+        <span class="domain-badge">Domain 3 (5 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="-0.20">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">SE01</span><span class="q-title">Total Sedentary / Sitting Time</span></div>
+            <span class="delta-pill delta-negative">-0.20 yrs (-73 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">6.5 hours</span></span><span>Lookup: <span class="matched-key">SE01|6.5</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 4: Nutrition & Dietary Quality -->
+    <section class="domain-block" data-domain="4">
+      <div class="domain-header">
+        <h2><span>🥗</span> 4. Nutrition & Dietary Quality (NU01-NU09)</h2>
+        <span class="domain-badge">Domain 4 (9 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.30">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">NU02</span><span class="q-title">Vegetable + Fruit Servings</span></div>
+            <span class="delta-pill delta-positive">+0.30 yrs (+109 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">6 servings</span></span><span>Lookup: <span class="matched-key">NU02|6</span></span></div>
+        </div>
+        <div class="question-card" data-delta="0.20">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">NU04</span><span class="q-title">Ultra-Processed / Fast Food Consumption</span></div>
+            <span class="delta-pill delta-positive">+0.20 yrs (+73 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None / Zero UPF</span></span><span>Lookup: <span class="matched-key">NU04|None</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 5: Tobacco & Nicotine Exposure -->
+    <section class="domain-block" data-domain="5">
+      <div class="domain-header">
+        <h2><span>🚭</span> 5. Tobacco & Nicotine Exposure (TB01-TB04)</h2>
+        <span class="domain-badge">Domain 5 (4 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.50">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">TB01</span><span class="q-title">Cigarettes Smoked Today</span></div>
+            <span class="delta-pill delta-positive">+0.50 yrs (+182 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">0 cigarettes</span></span><span>Lookup: <span class="matched-key">TB01|0</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 6: Alcohol Consumption -->
+    <section class="domain-block" data-domain="6">
+      <div class="domain-header">
+        <h2><span>🍷</span> 6. Alcohol Consumption (AL01-AL03)</h2>
+        <span class="domain-badge">Domain 6 (3 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.30">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">AL01</span><span class="q-title">Alcoholic Drinks Today (Standard units)</span></div>
+            <span class="delta-pill delta-positive">+0.30 yrs (+109 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">0 standard drinks</span></span><span>Lookup: <span class="matched-key">AL01|0</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 7: Medication & Supplement Adherence -->
+    <section class="domain-block" data-domain="7">
+      <div class="domain-header">
+        <h2><span>💊</span> 7. Medication & Supplement Adherence (MD01-MD06)</h2>
+        <span class="domain-badge">Domain 7 (6 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.20">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">MD02</span><span class="q-title">Doses Taken on Schedule</span></div>
+            <span class="delta-pill delta-positive">+0.20 yrs (+73 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">All scheduled doses taken</span></span><span>Lookup: <span class="matched-key">MD02|All</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 8: Immunization & Vaccine Tracking -->
+    <section class="domain-block" data-domain="8">
+      <div class="domain-header">
+        <h2><span>💉</span> 8. Immunization & Vaccine Tracking (VC01-VC03)</h2>
+        <span class="domain-badge">Domain 8 (3 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">VC02</span><span class="q-title">Vaccine Received Today</span></div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><span>Lookup: <span class="matched-key">VC02|None</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 9: Metabolic & Physiological Vitals -->
+    <section class="domain-block" data-domain="9">
+      <div class="domain-header">
+        <h2><span>🩺</span> 9. Metabolic & Physiological Vitals (ME01-ME08)</h2>
+        <span class="domain-badge">Domain 9 (8 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.30">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">ME03</span><span class="q-title">Blood Pressure (Systolic)</span></div>
+            <span class="delta-pill delta-positive">+0.30 yrs (+109 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">118 mmHg</span></span><span>Lookup: <span class="matched-key">ME03|118</span></span></div>
+        </div>
+        <div class="question-card" data-delta="0.20">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">ME07</span><span class="q-title">Resting Heart Rate (RHR)</span></div>
+            <span class="delta-pill delta-positive">+0.20 yrs (+73 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">58 bpm</span></span><span>Lookup: <span class="matched-key">ME07|58</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 10: Acute Illness & Symptoms -->
+    <section class="domain-block" data-domain="10">
+      <div class="domain-header">
+        <h2><span>🤒</span> 10. Acute Illness & Symptoms (IL01-IL05)</h2>
+        <span class="domain-badge">Domain 10 (5 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">IL01</span><span class="q-title">Symptom Presence</span></div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None / Healthy</span></span><span>Lookup: <span class="matched-key">IL01|None</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 11: Allergy & Environmental Flare -->
+    <section class="domain-block" data-domain="11">
+      <div class="domain-header">
+        <h2><span>🌼</span> 11. Allergy & Environmental Flare (AG01-AG03)</h2>
+        <span class="domain-badge">Domain 11 (3 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">AG01</span><span class="q-title">Allergy Flare Today</span></div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">No flare</span></span><span>Lookup: <span class="matched-key">AG01|No</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 12: Incidents & Safety Events -->
+    <section class="domain-block" data-domain="12">
+      <div class="domain-header">
+        <h2><span>⚠️</span> 12. Incidents & Safety Events (IN01-IN05)</h2>
+        <span class="domain-badge">Domain 12 (5 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">IN01</span><span class="q-title">Fall or Near-Fall Incident Today</span></div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">None</span></span><span>Lookup: <span class="matched-key">IN01|None</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 13: Subjective Well-being & Engagement -->
+    <section class="domain-block" data-domain="13">
+      <div class="domain-header">
+        <h2><span>🧠</span> 13. Subjective Well-being & Engagement (OT01-OT05)</h2>
+        <span class="domain-badge">Domain 13 (5 Metrics)</span>
+      </div>
+      <div class="cards-list">
+        <div class="question-card" data-delta="0.20">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">OT01</span><span class="q-title">Mood / Energy Rating (1 to 5)</span></div>
+            <span class="delta-pill delta-positive">+0.20 yrs (+73 Days)</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">5 - High energy & positive mood</span></span><span>Lookup: <span class="matched-key">OT01|5</span></span></div>
+        </div>
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group"><span class="q-code">OT02</span><span class="q-title">Stress Level (1 to 10 scale)</span></div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row"><span>Response: <span class="response-tag">3 / 10</span></span><span>Lookup: <span class="matched-key">OT02|3</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL COMPUTED RESULTS CARD -->
+    <div class="final-results-card">
+      <div class="final-results-header">
+        <h2>Daily Scoring Engine Output Summary</h2>
+        <p>Derived dynamically from the <code>Daily_Scoring_Engine</code> &amp; <code>Metric_Option_Lookup</code> data sources.</p>
+      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>Total Recurring Metrics Monitored</td>
+            <td class="val-col">77 Metrics</td>
+          </tr>
+          <tr>
+            <td>Total LIFE DAYS Recaptured (Accrual)</td>
+            <td class="val-col" style="color:#57ffc2!important">+4.20 yrs (+1533 Days)</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Active Clinical Safety Triggers</td>
+            <td class="val-col">0 Active Triggers</td>
+          </tr>
+          <tr>
+            <td>Data Source Status</td>
+            <td class="val-col"><span class="badge-risk-good">Synced &amp; Active</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="script.js"></script>
+<script>
+function updateMetricsSummary() {
+  const cards = document.querySelectorAll('.question-card');
+  let posCount = 0, negCount = 0;
+  let posSum = 0, negSum = 0;
+
+  cards.forEach(card => {
+    const delta = parseFloat(card.getAttribute('data-delta'));
+    if (delta > 0) {
+      posCount++;
+      posSum += delta;
+    } else if (delta < 0) {
+      negCount++;
+      negSum += delta;
+    }
+  });
+
+  // Updates counts if needed or logs stats
+}
+
+function filterDeltas(type) {
+  const cards = document.querySelectorAll('.question-card');
+  const btnAll = document.getElementById('filterAll');
+  const btnPos = document.getElementById('filterPositive');
+  const btnNeg = document.getElementById('filterNegative');
+  const countText = document.getElementById('tabCountText');
+
+  btnAll.className = 'tab-btn';
+  btnPos.className = 'tab-btn';
+  btnNeg.className = 'tab-btn';
+
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const delta = parseFloat(card.getAttribute('data-delta'));
+
+    if (type === 'all') {
+      card.style.display = '';
+      visibleCount++;
+    } else if (type === 'positive') {
+      if (delta > 0) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    } else if (type === 'negative') {
+      if (delta < 0) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    }
+  });
+
+  if (type === 'all') {
+    btnAll.classList.add('active');
+    countText.innerText = `Showing all ${visibleCount} inputs`;
+  } else if (type === 'positive') {
+    btnPos.classList.add('active-positive');
+    countText.innerText = `Showing ${visibleCount} positive year-gaining drivers`;
+  } else if (type === 'negative') {
+    btnNeg.classList.add('active-negative');
+    countText.innerText = `Showing ${visibleCount} risk / loss drivers`;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', updateMetricsSummary);
+</script>
+</body>
+</html>

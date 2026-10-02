@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Biological Age Dashboard | YouthCraft</title>
-<meta name="description" content="View your personalized Biological Age calculations, Year Deltas, LIFE DAYS score, and domain-by-domain health insights.">
+<meta name="description" content="View your personalized Biological Age calculations, Year Deltas, and domain-by-domain health insights.">
 <link rel="stylesheet" href="styles.css">
 <style>
 :root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb;--yc-danger:#c0392b;--yc-success:#27ae60}
@@ -21,16 +21,27 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 .content{padding-top:36px;padding-bottom:72px}
 .dashboard-container{max-width:960px;margin:0 auto}
 
-/* Top Summary Cards / Infographics Banner */
-.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
+/* Top Summary Cards Banner (4 Grid) */
+.summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:28px}
 .metric-card{background:white;border:1px solid var(--yc-line);border-radius:20px;padding:22px;box-shadow:0 8px 24px rgba(24,59,50,.035);text-align:center;position:relative;overflow:hidden}
 .metric-card .icon-tile{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;background:var(--yc-mint);font-size:1.3rem;margin:0 auto 12px}
 .metric-card .label{font-size:.82rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:var(--yc-muted);margin-bottom:6px}
-.metric-card .value{font-size:2.2rem;font-weight:850;color:var(--yc-ink);line-height:1.1;letter-spacing:-.03em}
+.metric-card .value{font-size:2.1rem;font-weight:850;color:var(--yc-ink);line-height:1.1;letter-spacing:-.03em}
 .metric-card .sub-label{font-size:.84rem;color:var(--yc-muted);margin-top:6px;font-weight:600}
 
 /* Risk Badge Styling */
 .badge-risk-high{background:#fbeae8;color:var(--yc-danger);border:1px solid #f5b7b1;padding:4px 12px;border-radius:999px;font-size:.82rem;font-weight:850;display:inline-block;margin-top:6px}
+
+/* Impact Breakdown Sub-banner */
+.impact-summary-bar{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.impact-card{background:white;border:1px solid var(--yc-line);border-radius:16px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 12px rgba(24,59,50,.02)}
+.impact-card.pos{border-left:5px solid var(--yc-success)}
+.impact-card.neg{border-left:5px solid var(--yc-danger)}
+.impact-info .title{font-size:.82rem;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:var(--yc-muted)}
+.impact-info .count{font-size:1.1rem;font-weight:800;color:var(--yc-ink);margin-top:2px}
+.impact-value{font-size:1.45rem;font-weight:850}
+.impact-card.pos .impact-value{color:var(--yc-success)}
+.impact-card.neg .impact-value{color:var(--yc-danger)}
 
 /* Filter Tabs for Positive/Negative Deltas */
 .filter-tabs-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:24px;background:white;padding:8px 12px;border-radius:999px;border:1px solid var(--yc-line);box-shadow:0 4px 12px rgba(24,59,50,.02)}
@@ -67,7 +78,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 .delta-negative{background:#fadbd8;color:var(--yc-danger);border:1px solid #f5b7b1}
 .delta-neutral{background:var(--yc-paper);color:var(--yc-muted);border:1px solid var(--yc-line)}
 
-/* Computed Final Result Card - Contrast Fix Overrides */
+/* Computed Final Result Card */
 .final-results-card{background:linear-gradient(135deg,#183b32,#24644f);border-radius:24px;padding:36px;color:white;margin-top:40px;box-shadow:0 12px 32px rgba(24,59,50,.15)}
 .final-results-header{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:18px;margin-bottom:24px}
 .final-results-header h2{font-size:1.8rem;margin:0 0 6px;letter-spacing:-.03em;color:white}
@@ -83,8 +94,12 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 .final-results-card .highlight-row td{font-size:1.35rem !important;font-weight:850 !important;color:#ffffff !important;padding-top:20px !important}
 .final-results-card code{background:rgba(255,255,255,.18);color:#ffffff;padding:2px 8px;border-radius:6px;font-family:monospace}
 
-@media(max-width:768px){
-  .summary-grid{grid-template-columns:1fr 1fr}
+@media(max-width:850px){
+  .summary-grid{grid-template-columns:repeat(2,1fr)}
+  .impact-summary-bar{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .summary-grid{grid-template-columns:1fr}
   .filter-tabs-bar{flex-direction:column;align-items:stretch}
   .tab-group{width:100%;justify-content:center}
   .domain-header{flex-direction:column;align-items:flex-start;gap:8px}
@@ -101,7 +116,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
   <div class="wrap">
     <div class="eyebrow">✦ Biological Age Dashboard</div>
     <h1>Your Health Score Breakdown</h1>
-    <p>Explore your computed Biological Age, Year Deltas, and LIFE DAYS based on the <code>Scoring_Engine</code> framework.</p>
+    <p>Explore your computed Biological Age, Year Deltas, and health drivers based on the <code>Scoring_Engine</code> framework.</p>
   </div>
 </header>
 
@@ -109,9 +124,17 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 <main class="wrap content">
   <div class="dashboard-container">
 
-    <!-- INFOGRAPHICS BANNER SUMMARY -->
+    <!-- INFOGRAPHICS BANNER SUMMARY (TOP ROW) -->
     <div class="summary-grid">
       
+      <!-- Chronological Age -->
+      <div class="metric-card">
+        <div class="icon-tile" aria-hidden="true">🎂</div>
+        <div class="label">Chronological Age</div>
+        <div class="value">77.6 yrs</div>
+        <div class="sub-label">Baseline Anchor</div>
+      </div>
+
       <!-- Total Year Delta -->
       <div class="metric-card">
         <div class="icon-tile" aria-hidden="true">📉</div>
@@ -125,15 +148,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
         <div class="icon-tile" aria-hidden="true">🧬</div>
         <div class="label">Biological Age</div>
         <div class="value">70.8 yrs</div>
-        <div class="sub-label">Chronological Baseline: 77.6 yrs</div>
-      </div>
-
-      <!-- LIFE DAYS -->
-      <div class="metric-card">
-        <div class="icon-tile" aria-hidden="true">☀️</div>
-        <div class="label">LIFE DAYS</div>
-        <div class="value">0</div>
-        <div class="sub-label">Earned Quality Days</div>
+        <div class="sub-label">Derived Bio Proxy</div>
       </div>
 
       <!-- Risk Tier -->
@@ -144,6 +159,25 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
         <div class="sub-label">Requires Partner Action</div>
       </div>
 
+    </div>
+
+    <!-- GAINING VS LOSING SUMMARY CARDS -->
+    <div class="impact-summary-bar">
+      <div class="impact-card pos">
+        <div class="impact-info">
+          <div class="title">🟢 POSITIVE DRIVERS (GAINING)</div>
+          <div class="count" id="posCountDisplay">3 Questions Matched</div>
+        </div>
+        <div class="impact-value" id="posSumDisplay">+2.30 yrs</div>
+      </div>
+
+      <div class="impact-card neg">
+        <div class="impact-info">
+          <div class="title">🔴 NEGATIVE DRIVERS (LOSING)</div>
+          <div class="count" id="negCountDisplay">6 Questions Matched</div>
+        </div>
+        <div class="impact-value" id="negSumDisplay">-9.10 yrs</div>
+      </div>
     </div>
 
     <!-- FILTER TABS FOR POSITIVE / NEGATIVE DELTAS -->
@@ -326,20 +360,16 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <table class="results-table">
         <tbody>
           <tr>
-            <td>Total Year Delta (all inputs)</td>
-            <td class="val-col" style="color: #ff9e9e !important;">-6.80 yrs</td>
-          </tr>
-          <tr>
             <td>Chronological Baseline Age</td>
             <td class="val-col">77.60 yrs</td>
+          </tr>
+          <tr>
+            <td>Total Year Delta (all inputs)</td>
+            <td class="val-col" style="color: #ff9e9e !important;">-6.80 yrs</td>
           </tr>
           <tr class="highlight-row">
             <td>Biological Age</td>
             <td class="val-col">70.80 yrs</td>
-          </tr>
-          <tr>
-            <td>LIFE DAYS Score</td>
-            <td class="val-col">0 DAYS</td>
           </tr>
           <tr>
             <td>Risk Tier Status</td>
@@ -360,6 +390,28 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 
 <!-- Delta Filter JavaScript Logic -->
 <script>
+function updateMetricsSummary() {
+  const rows = document.querySelectorAll('.data-row');
+  let posCount = 0, negCount = 0;
+  let posSum = 0, negSum = 0;
+
+  rows.forEach(row => {
+    const delta = parseFloat(row.getAttribute('data-delta'));
+    if (delta > 0) {
+      posCount++;
+      posSum += delta;
+    } else if (delta < 0) {
+      negCount++;
+      negSum += delta;
+    }
+  });
+
+  document.getElementById('posCountDisplay').innerText = `${posCount} Questions Matched`;
+  document.getElementById('posSumDisplay').innerText = `+${posSum.toFixed(2)} yrs`;
+  document.getElementById('negCountDisplay').innerText = `${negCount} Questions Matched`;
+  document.getElementById('negSumDisplay').innerText = `${negSum.toFixed(2)} yrs`;
+}
+
 function filterDeltas(type) {
   const rows = document.querySelectorAll('.data-row');
   const btnAll = document.getElementById('filterAll');
@@ -409,6 +461,9 @@ function filterDeltas(type) {
     countText.innerText = `Showing ${visibleCount} negative year-losing risk drivers`;
   }
 }
+
+// Calculate gains and losses on page initialization
+document.addEventListener('DOMContentLoaded', updateMetricsSummary);
 </script>
 </body>
 </html>

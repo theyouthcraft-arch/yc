@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Biological Age Dashboard | YouthCraft</title>
-<meta name="description" content="View your personalized Biological Age calculations, Year Deltas, and domain-by-domain health insights.">
+<meta name="description" content="View your personalized Biological Age calculations, Year Deltas, and domain-by-domain health insights across all 107 assessment questions.">
 <link rel="stylesheet" href="styles.css">
 <style>
 :root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb;--yc-danger:#c0392b;--yc-success:#27ae60}
@@ -64,7 +64,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 .table-responsive{overflow-x:auto}
 .data-table{width:100%;border-collapse:collapse;text-align:left;font-size:.94rem}
 .data-table th{background:var(--yc-paper);color:var(--yc-ink);font-weight:800;padding:12px 16px;border-bottom:1px solid var(--yc-line);font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}
-.data-table td{padding:14px 16px;border-bottom:1px solid var(--yc-line);vertical-align:middle;color:var(--yc-ink)}
+.data-table td{padding:12px 16px;border-bottom:1px solid var(--yc-line);vertical-align:middle;color:var(--yc-ink)}
 .data-table tr:last-child td{border-bottom:none}
 
 .q-code{font-weight:850;color:var(--yc-green);font-size:.85rem;background:var(--yc-mint);padding:2px 6px;border-radius:4px}
@@ -115,8 +115,8 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 <header class="dashboard-hero">
   <div class="wrap">
     <div class="eyebrow">✦ Biological Age Dashboard</div>
-    <h1>Your Health Score Breakdown</h1>
-    <p>Explore your computed Biological Age, Year Deltas, and health drivers based on the <code>Scoring_Engine</code> framework.</p>
+    <h1>Full 107-Question Health Score Breakdown</h1>
+    <p>Explore your computed Biological Age, Year Deltas, and health drivers across all 107 questions based on the <code>Scoring_Engine</code> framework.</p>
   </div>
 </header>
 
@@ -131,7 +131,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="metric-card">
         <div class="icon-tile" aria-hidden="true">🎂</div>
         <div class="label">Chronological Age</div>
-        <div class="value">34 yrs</div>
+        <div class="value">77.6 yrs</div>
         <div class="sub-label">Baseline Anchor</div>
       </div>
 
@@ -147,7 +147,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="metric-card">
         <div class="icon-tile" aria-hidden="true">🧬</div>
         <div class="label">Biological Age</div>
-        <div class="value">40.8 yrs</div>
+        <div class="value">70.8 yrs</div>
         <div class="sub-label">Derived Bio Proxy</div>
       </div>
 
@@ -166,17 +166,17 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="impact-card pos">
         <div class="impact-info">
           <div class="title">🟢 POSITIVE DRIVERS (GAINING)</div>
-          <div class="count" id="posCountDisplay">3 Questions Matched</div>
+          <div class="count" id="posCountDisplay">Calculating...</div>
         </div>
-        <div class="impact-value" id="posSumDisplay">+2.30 yrs</div>
+        <div class="impact-value" id="posSumDisplay">0.00 yrs</div>
       </div>
 
       <div class="impact-card neg">
         <div class="impact-info">
           <div class="title">🔴 NEGATIVE DRIVERS (LOSING)</div>
-          <div class="count" id="negCountDisplay">6 Questions Matched</div>
+          <div class="count" id="negCountDisplay">Calculating...</div>
         </div>
-        <div class="impact-value" id="negSumDisplay">-9.10 yrs</div>
+        <div class="impact-value" id="negSumDisplay">0.00 yrs</div>
       </div>
     </div>
 
@@ -190,10 +190,10 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
       <div class="tab-info-text" id="tabCountText">Showing all domain inputs</div>
     </div>
 
-    <!-- DOMAIN 1: DEMOGRAPHICS & BIOMETRICS -->
+    <!-- DOMAIN 1: DEMOGRAPHICS & BIOMETRICS (C01-C09) -->
     <section class="domain-block" data-domain="1">
       <div class="domain-header">
-        <h2><span>📊</span> 1. Demographics &amp; Biometrics</h2>
+        <h2><span>📊</span> 1. Demographics &amp; Biometrics (C01–C09)</h2>
         <span class="domain-badge">Baseline &amp; Physical Indicators</span>
       </div>
       <div class="table-responsive">
@@ -208,9 +208,15 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
           </thead>
           <tbody>
             <tr class="data-row" data-delta="0.0">
-              <td><span class="q-code">C01</span> <span class="q-title">Exact Age</span></td>
-              <td><span class="response-tag">34 years</span></td>
+              <td><span class="q-code">C01</span> <span class="q-title">Exact Chronological Age</span></td>
+              <td><span class="response-tag">77.6 years</span></td>
               <td><span class="matched-key">Baseline Anchor</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">C02</span> <span class="q-title">Age Group Band</span></td>
+              <td><span class="response-tag">75+</span></td>
+              <td><span class="matched-key">Cohort Multiplier Key</span></td>
               <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
             </tr>
             <tr class="data-row" data-delta="0.4">
@@ -219,28 +225,52 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
               <td><span class="matched-key">C03|Female</span></td>
               <td style="text-align:right"><span class="delta-pill delta-positive">+0.40 yrs</span></td>
             </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">C04</span> <span class="q-title">Height (cm)</span></td>
+              <td><span class="response-tag">162 cm</span></td>
+              <td><span class="matched-key">Biometric Input</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
             <tr class="data-row" data-delta="-1.5">
-              <td><span class="q-code">C04/5</span> <span class="q-title">Body Mass Index (BMI)</span></td>
-              <td><span class="response-tag">31.2 kg/m²</span></td>
+              <td><span class="q-code">C05</span> <span class="q-title">Weight &amp; Derived BMI</span></td>
+              <td><span class="response-tag">82 kg (BMI 31.2)</span></td>
               <td><span class="matched-key">Obese Class I Band</span></td>
               <td style="text-align:right"><span class="delta-pill delta-negative">-1.50 yrs</span></td>
             </tr>
+            <tr class="data-row" data-delta="-0.8">
+              <td><span class="q-code">C06</span> <span class="q-title">Waist Circumference / WHtR</span></td>
+              <td><span class="response-tag">92 cm (WHtR 0.57)</span></td>
+              <td><span class="matched-key">Elevated Visceral Fat Band</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.80 yrs</span></td>
+            </tr>
             <tr class="data-row" data-delta="-0.5">
-              <td><span class="q-code">C07</span> <span class="q-title">Lives Alone</span></td>
-              <td><span class="response-tag">Yes</span></td>
-              <td><span class="matched-key">C07|Yes</span></td>
+              <td><span class="q-code">C07</span> <span class="q-title">Living Situation</span></td>
+              <td><span class="response-tag">Lives Alone</span></td>
+              <td><span class="matched-key">C07|Lives Alone</span></td>
               <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.3">
+              <td><span class="q-code">C08</span> <span class="q-title">Highest Education Level</span></td>
+              <td><span class="response-tag">University Degree</span></td>
+              <td><span class="matched-key">C08|University Degree</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.30 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.2">
+              <td><span class="q-code">C09</span> <span class="q-title">Employment Status</span></td>
+              <td><span class="response-tag">Retired / Active Social</span></td>
+              <td><span class="matched-key">C09|Retired Active</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.20 yrs</span></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- DOMAIN 2: LIFESTYLE & HABITS -->
+    <!-- DOMAIN 2: LIFESTYLE & HABITS (L01-L13b) -->
     <section class="domain-block" data-domain="2">
       <div class="domain-header">
-        <h2><span>🌙</span> 2. Lifestyle, Sleep &amp; Habits</h2>
-        <span class="domain-badge">PSQI, IPAQ &amp; MEDAS</span>
+        <h2><span>🌙</span> 2. Lifestyle, Sleep &amp; Habits (L01–L13b)</h2>
+        <span class="domain-badge">PSQI, IPAQ, MEDAS &amp; Social</span>
       </div>
       <div class="table-responsive">
         <table class="data-table">
@@ -259,33 +289,117 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
               <td><span class="matched-key">L01|&lt;5 hours</span></td>
               <td style="text-align:right"><span class="delta-pill delta-negative">-1.50 yrs</span></td>
             </tr>
+            <tr class="data-row" data-delta="-0.3">
+              <td><span class="q-code">L02</span> <span class="q-title">Weekend Sleep Catch-up</span></td>
+              <td><span class="response-tag">&gt;2h Catch-up (Social Jetlag)</span></td>
+              <td><span class="matched-key">L02|Social Jetlag</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.30 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.0">
+              <td><span class="q-code">L03</span> <span class="q-title">Insomnia / Sleep Quality (PSQI)</span></td>
+              <td><span class="response-tag">Almost Every Night</span></td>
+              <td><span class="matched-key">L03|Frequent Insomnia</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.6">
+              <td><span class="q-code">L04</span> <span class="q-title">Aerobic Activity Frequency</span></td>
+              <td><span class="response-tag">3-4 days / week</span></td>
+              <td><span class="matched-key">L04|3-4 days</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.60 yrs</span></td>
+            </tr>
             <tr class="data-row" data-delta="0.8">
               <td><span class="q-code">L05</span> <span class="q-title">Strength Training Days</span></td>
               <td><span class="response-tag">2+ days / week</span></td>
               <td><span class="matched-key">L05|2+ days</span></td>
               <td style="text-align:right"><span class="delta-pill delta-positive">+0.80 yrs</span></td>
             </tr>
+            <tr class="data-row" data-delta="0.4">
+              <td><span class="q-code">L06a</span> <span class="q-title">Daily Step Count Band</span></td>
+              <td><span class="response-tag">7,000–9,999 steps</span></td>
+              <td><span class="matched-key">L06a|7k-10k steps</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.40 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">L06b</span> <span class="q-title">Daily Sedentary Time</span></td>
+              <td><span class="response-tag">&gt;8 hours / day</span></td>
+              <td><span class="matched-key">L06b|&gt;8 hours</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
             <tr class="data-row" data-delta="1.1">
               <td><span class="q-code">L07</span> <span class="q-title">Fruit &amp; Vegetable Servings</span></td>
-              <td><span class="response-tag">5+ servings</span></td>
+              <td><span class="response-tag">5+ servings / day</span></td>
               <td><span class="matched-key">L07|5+ servings</span></td>
               <td style="text-align:right"><span class="delta-pill delta-positive">+1.10 yrs</span></td>
             </tr>
             <tr class="data-row" data-delta="-1.2">
               <td><span class="q-code">L08</span> <span class="q-title">Ultra-Processed Food Intake</span></td>
-              <td><span class="response-tag">Daily</span></td>
+              <td><span class="response-tag">Daily Consumption</span></td>
               <td><span class="matched-key">L08|Daily</span></td>
               <td style="text-align:right"><span class="delta-pill delta-negative">-1.20 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.2">
+              <td><span class="q-code">L09</span> <span class="q-title">Daily Water Hydration</span></td>
+              <td><span class="response-tag">2+ Liters / day</span></td>
+              <td><span class="matched-key">L09|2+ Liters</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.20 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.3">
+              <td><span class="q-code">L10a</span> <span class="q-title">Regular Breakfast Habit</span></td>
+              <td><span class="response-tag">Consistently Eat Breakfast</span></td>
+              <td><span class="matched-key">L10a|Daily</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.30 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">L10b</span> <span class="q-title">Late Night Eating / Meal Skipping</span></td>
+              <td><span class="response-tag">Occasional</span></td>
+              <td><span class="matched-key">L10b|Occasional</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.8">
+              <td><span class="q-code">L11a</span> <span class="q-title">Perceived Stress Level</span></td>
+              <td><span class="response-tag">High Stress</span></td>
+              <td><span class="matched-key">L11a|High Stress</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.80 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-2.0">
+              <td><span class="q-code">L11b</span> <span class="q-title">PHQ-2: Anhedonia / Little Interest</span></td>
+              <td><span class="response-tag">More than half the days</span></td>
+              <td><span class="matched-key">PHQ-2 Positive Screen</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-2.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-2.0">
+              <td><span class="q-code">L11c</span> <span class="q-title">PHQ-2: Feeling Down / Hopeless</span></td>
+              <td><span class="response-tag">More than half the days</span></td>
+              <td><span class="matched-key">PHQ-2 Positive Screen</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-2.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.4">
+              <td><span class="q-code">L12</span> <span class="q-title">Stress Coping Mechanisms</span></td>
+              <td><span class="response-tag">Healthy Outlets (Exercise/Mindfulness)</span></td>
+              <td><span class="matched-key">L12|Healthy Outlets</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.40 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">L13a</span> <span class="q-title">Perceived Loneliness</span></td>
+              <td><span class="response-tag">Often Lonely</span></td>
+              <td><span class="matched-key">L13a|Often</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.3">
+              <td><span class="q-code">L13b</span> <span class="q-title">Close Confidants / Social Support</span></td>
+              <td><span class="response-tag">3+ Close People</span></td>
+              <td><span class="matched-key">L13b|3+ Confidants</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.30 yrs</span></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- DOMAIN 3: SUBSTANCE USE -->
+    <!-- DOMAIN 3: SUBSTANCE USE (S01-S09) -->
     <section class="domain-block" data-domain="3">
       <div class="domain-header">
-        <h2><span>🚭</span> 3. Substance &amp; Exposure</h2>
+        <h2><span>🚭</span> 3. Substance Use &amp; Exposures (S01–S09)</h2>
         <span class="domain-badge">Fagerström &amp; AUDIT-C</span>
       </div>
       <div class="table-responsive">
@@ -300,27 +414,69 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
           </thead>
           <tbody>
             <tr class="data-row" data-delta="0.0">
-              <td><span class="q-code">S01</span> <span class="q-title">Tobacco Usage</span></td>
+              <td><span class="q-code">S01</span> <span class="q-title">Tobacco Usage Status</span></td>
               <td><span class="response-tag">Never Smoked</span></td>
               <td><span class="matched-key">S01|Never Smoked</span></td>
               <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
             </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">S02</span> <span class="q-title">Pack-Years Burden</span></td>
+              <td><span class="response-tag">0 Pack-Years</span></td>
+              <td><span class="matched-key">S02|0 Pack-Years</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">S03</span> <span class="q-title">Smokeless Tobacco / Vaping</span></td>
+              <td><span class="response-tag">None</span></td>
+              <td><span class="matched-key">S03|None</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
             <tr class="data-row" data-delta="-1.0">
-              <td><span class="q-code">S04</span> <span class="q-title">Alcohol Drinking Frequency</span></td>
-              <td><span class="response-tag">4+ times a week</span></td>
+              <td><span class="q-code">S04</span> <span class="q-title">AUDIT-C: Drinking Frequency</span></td>
+              <td><span class="response-tag">4+ times / week</span></td>
               <td><span class="matched-key">S04|4+ times a week</span></td>
               <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.8">
+              <td><span class="q-code">S05</span> <span class="q-title">AUDIT-C: Drinks on Typical Day</span></td>
+              <td><span class="response-tag">3 or 4 drinks</span></td>
+              <td><span class="matched-key">S05|3-4 drinks</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.80 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.0">
+              <td><span class="q-code">S06</span> <span class="q-title">AUDIT-C: Heavy Binge Frequency</span></td>
+              <td><span class="response-tag">Weekly Binge</span></td>
+              <td><span class="matched-key">S06|Weekly</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">S07</span> <span class="q-title">Recreational Drug Exposure</span></td>
+              <td><span class="response-tag">None</span></td>
+              <td><span class="matched-key">S07|None</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.2">
+              <td><span class="q-code">S08</span> <span class="q-title">Secondhand Smoke Exposure</span></td>
+              <td><span class="response-tag">Occasional Exposure</span></td>
+              <td><span class="matched-key">S08|Occasional</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.20 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">S09</span> <span class="q-title">Environmental Hazard Exposure</span></td>
+              <td><span class="response-tag">Low / Minimal</span></td>
+              <td><span class="matched-key">S09|Minimal</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- DOMAIN 4: MEDICAL HISTORY & LABS -->
+    <!-- DOMAIN 4: MEDICAL HISTORY & LABS (M01-M22) -->
     <section class="domain-block" data-domain="4">
       <div class="domain-header">
-        <h2><span>🩺</span> 4. Medical History &amp; Clinical Markers</h2>
-        <span class="domain-badge">AHA Life's Essential 8</span>
+        <h2><span>🩺</span> 4. Medical History, Diagnostics &amp; Clinical Labs (M01–M22)</h2>
+        <span class="domain-badge">AHA Life's Essential 8 &amp; Biomarkers</span>
       </div>
       <div class="table-responsive">
         <table class="data-table">
@@ -333,17 +489,463 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
             </tr>
           </thead>
           <tbody>
+            <tr class="data-row" data-delta="0.2">
+              <td><span class="q-code">M01</span> <span class="q-title">Recent BP Check Recency</span></td>
+              <td><span class="response-tag">Within last 6 months</span></td>
+              <td><span class="matched-key">M01|&lt;6 months</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.20 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.2">
+              <td><span class="q-code">M02</span> <span class="q-title">Recent Glucose Check Recency</span></td>
+              <td><span class="response-tag">Within last year</span></td>
+              <td><span class="matched-key">M02|&lt;1 year</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.20 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.5">
+              <td><span class="q-code">M03</span> <span class="q-title">Diagnosed Chronic Conditions Count</span></td>
+              <td><span class="response-tag">2 Conditions (Multimorbidity)</span></td>
+              <td><span class="matched-key">M03|2 Conditions</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">M04</span> <span class="q-title">Daily Prescription Meds Count</span></td>
+              <td><span class="response-tag">3 Prescriptions</span></td>
+              <td><span class="matched-key">M04|3 Meds</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.3">
+              <td><span class="q-code">M05</span> <span class="q-title">Medication Adherence Rate</span></td>
+              <td><span class="response-tag">Always Take as Prescribed</span></td>
+              <td><span class="matched-key">M05|Always</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.30 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.2">
+              <td><span class="q-code">M06</span> <span class="q-title">Home Self-Monitoring Habits</span></td>
+              <td><span class="response-tag">Monitors BP / Steps Regularly</span></td>
+              <td><span class="matched-key">M06|Regular</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.20 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">M07</span> <span class="q-title">Family Medical History Risk</span></td>
+              <td><span class="response-tag">First-degree Premature CVD</span></td>
+              <td><span class="matched-key">M07|Premature CVD</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.3">
+              <td><span class="q-code">M08</span> <span class="q-title">Preventive Vaccination Status</span></td>
+              <td><span class="response-tag">Up to Date (Flu/Pneumo)</span></td>
+              <td><span class="matched-key">M08|Up to Date</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.30 yrs</span></td>
+            </tr>
             <tr class="data-row" data-delta="-2.5">
               <td><span class="q-code">M09</span> <span class="q-title">Systolic Blood Pressure</span></td>
               <td><span class="response-tag">148 mmHg</span></td>
               <td><span class="matched-key">Hypertension Stage 2 Band</span></td>
               <td style="text-align:right"><span class="delta-pill delta-negative">-2.50 yrs</span></td>
             </tr>
+            <tr class="data-row" data-delta="-1.0">
+              <td><span class="q-code">M10</span> <span class="q-title">Fasting Blood Glucose</span></td>
+              <td><span class="response-tag">112 mg/dL</span></td>
+              <td><span class="matched-key">Impaired Glucose Band</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
             <tr class="data-row" data-delta="-0.9">
               <td><span class="q-code">M11</span> <span class="q-title">HbA1c Level</span></td>
               <td><span class="response-tag">6.2%</span></td>
               <td><span class="matched-key">Prediabetes Band</span></td>
               <td style="text-align:right"><span class="delta-pill delta-negative">-0.90 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.8">
+              <td><span class="q-code">M12</span> <span class="q-title">Total Cholesterol Level</span></td>
+              <td><span class="response-tag">235 mg/dL</span></td>
+              <td><span class="matched-key">Elevated Cholesterol Band</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.80 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">M13</span> <span class="q-title">Triglycerides Level</span></td>
+              <td><span class="response-tag">185 mg/dL</span></td>
+              <td><span class="matched-key">Borderline High Band</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.4">
+              <td><span class="q-code">M14</span> <span class="q-title">HDL Good Cholesterol</span></td>
+              <td><span class="response-tag">58 mg/dL</span></td>
+              <td><span class="matched-key">Optimal HDL Band</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.40 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.0">
+              <td><span class="q-code">M15</span> <span class="q-title">hs-CRP Inflammation Marker</span></td>
+              <td><span class="response-tag">3.4 mg/L</span></td>
+              <td><span class="matched-key">High Cardiovascular Risk</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">M16</span> <span class="q-title">ALT Liver Enzyme</span></td>
+              <td><span class="response-tag">24 U/L</span></td>
+              <td><span class="matched-key">Normal Liver Function</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">M17</span> <span class="q-title">AST Liver Enzyme</span></td>
+              <td><span class="response-tag">22 U/L</span></td>
+              <td><span class="matched-key">Normal Liver Function</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.3">
+              <td><span class="q-code">M18</span> <span class="q-title">Serum Albumin Level</span></td>
+              <td><span class="response-tag">4.3 g/dL</span></td>
+              <td><span class="matched-key">Optimal Protein Status</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.30 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">M19</span> <span class="q-title">Serum Creatinine / eGFR</span></td>
+              <td><span class="response-tag">1.3 mg/dL (eGFR 54)</span></td>
+              <td><span class="matched-key">Stage 3a CKD Band</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">M20</span> <span class="q-title">Hemoglobin Level</span></td>
+              <td><span class="response-tag">13.8 g/dL</span></td>
+              <td><span class="matched-key">Normal Hematocrit</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">M21</span> <span class="q-title">MCV Mean Corpuscular Volume</span></td>
+              <td><span class="response-tag">88 fL</span></td>
+              <td><span class="matched-key">Normal Erythrocyte Size</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.4">
+              <td><span class="q-code">M22</span> <span class="q-title">Serum Uric Acid Level</span></td>
+              <td><span class="response-tag">7.8 mg/dL</span></td>
+              <td><span class="matched-key">Hyperuricemia Band</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.40 yrs</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DOMAIN 5: AGE-SPECIFIC & GERIATRIC INDICATORS (A01-A40) -->
+    <section class="domain-block" data-domain="5">
+      <div class="domain-header">
+        <h2><span>👵</span> 5. Age-Specific &amp; Geriatric Indicators (A01–A40)</h2>
+        <span class="domain-badge">SARC-F, Fried Frailty, MNA-SF &amp; Mini-Cog</span>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Response</th>
+              <th>Matched Key / Band</th>
+              <th style="text-align:right">Year Delta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">A01</span> <span class="q-title">Academic / Youth Stress</span></td>
+              <td><span class="response-tag">N/A (Senior Cohort)</span></td>
+              <td><span class="matched-key">Cohort Excluded</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">A02</span> <span class="q-title">Adolescent Screen Time</span></td>
+              <td><span class="response-tag">N/A (Senior Cohort)</span></td>
+              <td><span class="matched-key">Cohort Excluded</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">A03</span> <span class="q-title">SCOFF Eating Disorder Screen</span></td>
+              <td><span class="response-tag">Negative (0 points)</span></td>
+              <td><span class="matched-key">A03|Negative</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">A04</span> <span class="q-title">Peer Influence / Pressure</span></td>
+              <td><span class="response-tag">Low / None</span></td>
+              <td><span class="matched-key">A04|Low</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">A05</span> <span class="q-title">Occupational Job Strain</span></td>
+              <td><span class="response-tag">Moderate Past Strain</span></td>
+              <td><span class="matched-key">A05|Moderate</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">A06</span> <span class="q-title">Financial Security Stress</span></td>
+              <td><span class="response-tag">Frequent Financial Worry</span></td>
+              <td><span class="matched-key">A06|High Strain</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.3">
+              <td><span class="q-code">A07</span> <span class="q-title">Menopause / Hormonal Symptoms</span></td>
+              <td><span class="response-tag">Post-menopausal / Unmanaged</span></td>
+              <td><span class="matched-key">A07|Unmanaged</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.30 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.4">
+              <td><span class="q-code">A08</span> <span class="q-title">Cancer Screening Compliance</span></td>
+              <td><span class="response-tag">Fully Up to Date</span></td>
+              <td><span class="matched-key">A08|Compliant</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.40 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">A09</span> <span class="q-title">Chronic Joint Pain / Mobility</span></td>
+              <td><span class="response-tag">Daily Joint Stiffness</span></td>
+              <td><span class="matched-key">A09|Daily Stiffness</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.4">
+              <td><span class="q-code">A10</span> <span class="q-title">Caregiver Burden / Strain</span></td>
+              <td><span class="response-tag">Primary Caregiver Duty</span></td>
+              <td><span class="matched-key">A10|High Burden</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.40 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.5">
+              <td><span class="q-code">A11</span> <span class="q-title">Falls History (Past Year)</span></td>
+              <td><span class="response-tag">2+ Falls with Injury</span></td>
+              <td><span class="matched-key">A11|Multiple Falls</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">A12</span> <span class="q-title">Fear of Falling Scale</span></td>
+              <td><span class="response-tag">Limits Activity Due to Fear</span></td>
+              <td><span class="matched-key">A12|Activity Limited</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.4">
+              <td><span class="q-code">A13</span> <span class="q-title">Sensory Acuity (Vision/Hearing)</span></td>
+              <td><span class="response-tag">Uncorrected Hearing Loss</span></td>
+              <td><span class="matched-key">A13|Hearing Loss</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.40 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.0">
+              <td><span class="q-code">A14</span> <span class="q-title">Self-Reported Memory Changes</span></td>
+              <td><span class="response-tag">Noticeable Forgetfulness</span></td>
+              <td><span class="matched-key">A14|Noticeable Decline</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">A15</span> <span class="q-title">Social Isolation Index</span></td>
+              <td><span class="response-tag">Limited Community Engagement</span></td>
+              <td><span class="matched-key">A15|Isolated</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.8">
+              <td><span class="q-code">A16</span> <span class="q-title">Bone Density / Fracture Hx</span></td>
+              <td><span class="response-tag">Osteopenia Diagnosed</span></td>
+              <td><span class="matched-key">A16|Osteopenia</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.80 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.2">
+              <td><span class="q-code">A17</span> <span class="q-title">Fried: Unintentional Weight Loss</span></td>
+              <td><span class="response-tag">&gt;5% Weight Loss in 6 mo</span></td>
+              <td><span class="matched-key">Fried Positive Criterion</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.20 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.0">
+              <td><span class="q-code">A18</span> <span class="q-title">Fried: Self-Reported Exhaustion</span></td>
+              <td><span class="response-tag">Exhausted Most Days</span></td>
+              <td><span class="matched-key">Fried Positive Criterion</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.8">
+              <td><span class="q-code">A19</span> <span class="q-title">Fried: Low Physical Energy</span></td>
+              <td><span class="response-tag">Significantly Reduced</span></td>
+              <td><span class="matched-key">Fried Positive Criterion</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.80 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">A20</span> <span class="q-title">SARC-F: Strength Lifting 10 lbs</span></td>
+              <td><span class="response-tag">Some Difficulty</span></td>
+              <td><span class="matched-key">SARC-F Score 1</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">A21</span> <span class="q-title">SARC-F: Walking Across Room</span></td>
+              <td><span class="response-tag">Some Difficulty</span></td>
+              <td><span class="matched-key">SARC-F Score 1</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">A22</span> <span class="q-title">SARC-F: Transferring from Chair</span></td>
+              <td><span class="response-tag">Some Difficulty</span></td>
+              <td><span class="matched-key">SARC-F Score 1</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.6">
+              <td><span class="q-code">A23</span> <span class="q-title">SARC-F: Climbing 10 Stairs</span></td>
+              <td><span class="response-tag">Great Difficulty</span></td>
+              <td><span class="matched-key">SARC-F Score 2</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.60 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">A24</span> <span class="q-title">MNA-SF: Food Intake Decline</span></td>
+              <td><span class="response-tag">Moderate Decreased Intake</span></td>
+              <td><span class="matched-key">MNA-SF Score 1</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">A25</span> <span class="q-title">MNA-SF: Weight Loss 3 Months</span></td>
+              <td><span class="response-tag">No Weight Loss</span></td>
+              <td><span class="matched-key">MNA-SF Score 3</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">A26</span> <span class="q-title">MNA-SF: Mobility Assessment</span></td>
+              <td><span class="response-tag">Goes Out of House</span></td>
+              <td><span class="matched-key">MNA-SF Score 2</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">A27</span> <span class="q-title">MNA-SF: Psychological Stress</span></td>
+              <td><span class="response-tag">Yes (Acute Stress)</span></td>
+              <td><span class="matched-key">MNA-SF Score 0</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">A28</span> <span class="q-title">MNA-SF: Neuropsychological</span></td>
+              <td><span class="response-tag">Mild Dementia / Depression</span></td>
+              <td><span class="matched-key">MNA-SF Score 1</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.5">
+              <td><span class="q-code">A29</span> <span class="q-title">Dementia Screening / Diagnosis</span></td>
+              <td><span class="response-tag">Mild Cognitive Impairment</span></td>
+              <td><span class="matched-key">MCI Diagnosis</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.0">
+              <td><span class="q-code">A30</span> <span class="q-title">ADL: Bathing / Dressing</span></td>
+              <td><span class="response-tag">Needs Minor Assistance</span></td>
+              <td><span class="matched-key">ADL Impairment</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.8">
+              <td><span class="q-code">A31</span> <span class="q-title">IADL: Managing Finances / Meds</span></td>
+              <td><span class="response-tag">Needs Reminders</span></td>
+              <td><span class="matched-key">IADL Impairment</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.80 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.0">
+              <td><span class="q-code">A32</span> <span class="q-title">Mini-Cog: Word Recall Test</span></td>
+              <td><span class="response-tag">Recalled 1 / 3 Words</span></td>
+              <td><span class="matched-key">Impaired Recall</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.3">
+              <td><span class="q-code">A33</span> <span class="q-title">Mini-Cog: Clock Drawing Test</span></td>
+              <td><span class="response-tag">Normal Clock</span></td>
+              <td><span class="matched-key">Normal Clock</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-positive">+0.30 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">A34</span> <span class="q-title">GDS-5: Satisfied with Life</span></td>
+              <td><span class="response-tag">No</span></td>
+              <td><span class="matched-key">GDS-5 Depressive Point</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">A35</span> <span class="q-title">GDS-5: Dropped Activities</span></td>
+              <td><span class="response-tag">Yes</span></td>
+              <td><span class="matched-key">GDS-5 Depressive Point</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.5">
+              <td><span class="q-code">A36</span> <span class="q-title">GDS-5: Feel Life is Empty</span></td>
+              <td><span class="response-tag">Yes</span></td>
+              <td><span class="matched-key">GDS-5 Depressive Point</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.50 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">A37</span> <span class="q-title">GDS-5: Afraid Something Bad</span></td>
+              <td><span class="response-tag">No</span></td>
+              <td><span class="matched-key">Normal Response</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">A38</span> <span class="q-title">GDS-5: Feel Good / Happy</span></td>
+              <td><span class="response-tag">Yes</span></td>
+              <td><span class="matched-key">Normal Response</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-0.8">
+              <td><span class="q-code">A39</span> <span class="q-title">Grip Strength Performance</span></td>
+              <td><span class="response-tag">Weak Grip (&lt;16 kg)</span></td>
+              <td><span class="matched-key">Low Muscle Function</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-0.80 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="-1.0">
+              <td><span class="q-code">A40</span> <span class="q-title">Gait Speed Performance</span></td>
+              <td><span class="response-tag">Slow Gait (&lt;0.8 m/s)</span></td>
+              <td><span class="matched-key">Slow Gait Band</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-negative">-1.00 yrs</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DOMAIN 6: USER PREFERENCES & UX CUSTOMIZATION (P01-P07) -->
+    <section class="domain-block" data-domain="6">
+      <div class="domain-header">
+        <h2><span>⚙️</span> 6. User Preferences &amp; UX Customization (P01–P07)</h2>
+        <span class="domain-badge">Gamification &amp; Interface Settings</span>
+      </div>
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Response</th>
+              <th>Matched Key / Band</th>
+              <th style="text-align:right">Year Delta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">P01</span> <span class="q-title">Primary Health Motivation</span></td>
+              <td><span class="response-tag">Longevity &amp; Mobility</span></td>
+              <td><span class="matched-key">UX Preference Only</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">P02</span> <span class="q-title">Preferred Communication Channel</span></td>
+              <td><span class="response-tag">In-App Notifications</span></td>
+              <td><span class="matched-key">UX Preference Only</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">P03</span> <span class="q-title">Daily Micro-Mission Pacing</span></td>
+              <td><span class="response-tag">1 Mission per Day</span></td>
+              <td><span class="matched-key">UX Preference Only</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">P04</span> <span class="q-title">Community Privacy Sharing</span></td>
+              <td><span class="response-tag">Anonymous / Private</span></td>
+              <td><span class="matched-key">UX Preference Only</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">P05</span> <span class="q-title">Gamification / Points Toggle</span></td>
+              <td><span class="response-tag">LIFE DAYS Enabled</span></td>
+              <td><span class="matched-key">UX Preference Only</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">P06</span> <span class="q-title">Partner Integration Consent</span></td>
+              <td><span class="response-tag">Opt-In Telehealth Prompts</span></td>
+              <td><span class="matched-key">UX Preference Only</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
+            </tr>
+            <tr class="data-row" data-delta="0.0">
+              <td><span class="q-code">P07</span> <span class="q-title">Data Export &amp; Backup Frequency</span></td>
+              <td><span class="response-tag">Monthly Automatic CSV</span></td>
+              <td><span class="matched-key">UX Preference Only</span></td>
+              <td style="text-align:right"><span class="delta-pill delta-neutral">0.00 yrs</span></td>
             </tr>
           </tbody>
         </table>
@@ -361,15 +963,15 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
         <tbody>
           <tr>
             <td>Chronological Baseline Age</td>
-            <td class="val-col">34 yrs</td>
+            <td class="val-col">77.60 yrs</td>
           </tr>
           <tr>
-            <td>Total Year Delta (all inputs)</td>
+            <td>Total Year Delta (all 107 inputs)</td>
             <td class="val-col" style="color: #ff9e9e !important;">-6.80 yrs</td>
           </tr>
           <tr class="highlight-row">
-            <td>Biological Age</td>
-            <td class="val-col">40.80 yrs</td>
+            <td>Biological Age Proxy</td>
+            <td class="val-col">70.80 yrs</td>
           </tr>
           <tr>
             <td>Risk Tier Status</td>
@@ -388,7 +990,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
 <!-- Shared Script -->
 <script src="script.js"></script>
 
-<!-- Delta Filter JavaScript Logic -->
+<!-- Delta Filter & Metrics Aggregation JavaScript -->
 <script>
 function updateMetricsSummary() {
   const rows = document.querySelectorAll('.data-row');

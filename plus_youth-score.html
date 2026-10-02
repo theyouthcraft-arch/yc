@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Positive LIFEYEAR Gain Options | YouthCraft</title>
+<meta name="description" content="Positive response-level LIFE_DAYS values listed in the YouthCraft Option_Lookup workbook, shown with question, response, domain, and source references.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--bg:#f3faf5;--card:#fff;--ink:#173124;--muted:#5c7667;--line:#d9e9dd;--positive:#137a3e;--positive-bg:#e7f7ec;--accent:#16834a;--accent-bg:#e7f7ec;--shadow:0 8px 28px rgba(21,70,39,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+.gain-container{max-width:1280px;margin:auto;padding:34px 20px 60px}
+.gain-hero{background:linear-gradient(135deg,#104b2b,#19864a);color:#fff;border-radius:22px;padding:32px;margin-bottom:24px;box-shadow:var(--shadow)}
+.gain-hero h1{margin:0 0 10px;font-size:clamp(28px,4vw,44px);letter-spacing:-.03em}
+.subtitle{margin:0;color:#e2f6e8;max-width:950px}
+.note{margin-top:18px;padding:14px 16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:12px;color:#f0fff4;font-size:14px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:10px 14px;border-radius:12px}
+.stat strong{display:block;font-size:21px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.toolbar button{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:10px;cursor:pointer;color:var(--ink)}
+.toolbar button.active{background:var(--accent-bg);border-color:#9bd4ad;color:#105c31}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.rank{font-weight:800;color:var(--muted)}
+.gain{font-weight:800;color:var(--positive);background:var(--positive-bg);padding:7px 10px;border-radius:999px;white-space:nowrap}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.meta span{font-size:12px;color:#42624e;background:#eff7f1;padding:4px 8px;border-radius:999px}
+.card h2{font-size:20px;line-height:1.25;margin:4px 0 14px}
+.label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800;margin-bottom:4px}
+.situation{border-left:3px solid var(--accent);padding-left:12px;margin-bottom:14px}
+.value{font-weight:700}
+.gain-box{display:flex;justify-content:space-between;align-items:center;padding:14px;background:var(--positive-bg);border-radius:12px;margin-bottom:14px;gap:10px}
+.gain-box strong{font-size:25px;color:var(--positive)}
+.years{text-align:right;font-weight:700;color:#176336;white-space:nowrap}
+.years small{font-weight:500;color:var(--muted)}
+.action{border-top:1px solid var(--line);padding-top:14px;margin-top:auto}
+.action p,.reference p{margin:4px 0 0}
+.reference{border-top:1px solid var(--line);padding-top:14px;margin-top:14px;font-size:13px}
+.reference a{color:#14733d;text-decoration:none;overflow-wrap:anywhere}
+.reference a:hover{text-decoration:underline}
+.rationale{color:var(--muted)}
+.source-note{margin-top:28px;padding:18px;background:#fff;border:1px solid var(--line);border-radius:16px;color:var(--muted);font-size:13px}
+.hidden{display:none!important}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.gain-container{padding:18px 12px 40px}.card-top{align-items:flex-start;flex-direction:column}}
+@media print{body{background:#fff}.gain-container{max-width:none;padding:0}.gain-hero{box-shadow:none}.toolbar{display:none}.grid{grid-template-columns:1fr 1fr}.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<main class="gain-container">
+<section class="gain-hero">
+<h1>Positive LIFEYEAR Gain Options</h1>
+<p class="subtitle">Source-listed positive response options from the YouthCraft workbook’s <strong>Option_Lookup</strong> tab, ranked from highest to lowest positive <strong>Life_Days</strong> value.</p>
+<div class="stats">
+<div class="stat"><strong>45</strong><span>positive source options</span></div>
+<div class="stat"><strong>Option_Lookup</strong><span>source of all displayed values</span></div>
+<div class="stat"><strong>Green theme</strong><span>positive framework values</span></div>
+</div>
+<div class="note"><strong>Important interpretation:</strong> This page includes only rows whose <strong>Option_Lookup Life_Days</strong> value is positive. Values are copied from the workbook; negative values are <strong>not</strong> reversed, and zero-value rows are not added. The 45 positive rows in the source do not provide 50 positive options, so the page does not invent five additional entries. These are illustrative framework values, not validated predictions of individual life-years gained. Some entries are demographic or measured-health categories rather than direct behavior-change opportunities.</div>
+</section>
+
+<nav class="toolbar" aria-label="Filter opportunities">
+<button class="active" data-filter="All" type="button">All domains</button>
+<button data-filter="Demographics" type="button">Demographics</button>
+<button data-filter="Age-Specific" type="button">Age-Specific</button>
+<button data-filter="Medical" type="button">Medical</button>
+<button data-filter="Nutrition" type="button">Nutrition</button>
+<button data-filter="Psychological" type="button">Psychological</button>
+<button data-filter="Sleep" type="button">Sleep</button>
+<button data-filter="Substance" type="button">Substance</button>
+</nav>
+<section class="grid" id="gain-grid" aria-label="LIFEYEAR gain opportunities">
+
+<article class="card" data-domain="Nutrition">
+  <div class="card-top">
+    <span class="rank">#1</span>
+    <span class="gain">+912 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Nutrition</span><span>L08</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>How often do you eat ultra-processed / fast food?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Never</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+912 days</strong></div>
+    <div class="years">≈ 2.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Precision Anti-Inflammatory Meal Plan &amp; Gut Microbiome Coaching</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-NOVA</strong> — <a href="https://doi.org/10.1017/S1368980018003762" target="_blank" rel="noopener noreferrer">NOVA</a></p>
+    <p class="rationale">Ultra-processed diets drive metabolic dysfunction obesity and cellular senescence.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Nutrition">
+  <div class="card-top">
+    <span class="rank">#2</span>
+    <span class="gain">+912 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Nutrition</span><span>L08</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>How often do you eat ultra-processed / fast food?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Rarely</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+912 days</strong></div>
+    <div class="years">≈ 2.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Precision Anti-Inflammatory Meal Plan &amp; Gut Microbiome Coaching</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-NOVA</strong> — <a href="https://doi.org/10.1017/S1368980018003762" target="_blank" rel="noopener noreferrer">NOVA</a></p>
+    <p class="rationale">Ultra-processed diets drive metabolic dysfunction obesity and cellular senescence.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#3</span>
+    <span class="gain">+912 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L13</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>How often do you feel lonely or isolated?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Never</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+912 days</strong></div>
+    <div class="years">≈ 2.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Peer Longevity Groups &amp; Community Engagement Program</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-UCLA</strong> — <a href="https://doi.org/10.1177/0164027504268574" target="_blank" rel="noopener noreferrer">UCLA</a></p>
+    <p class="rationale">Social isolation carries a mortality risk equivalent to smoking 15 cigarettes daily.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Sleep">
+  <div class="card-top">
+    <span class="rank">#4</span>
+    <span class="gain">+730 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Sleep</span><span>L03</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>How often do you have trouble falling or staying asleep?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Never</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+730 days</strong></div>
+    <div class="years">≈ 2.0 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Home Sleep Apnea Test (HST) &amp; CPAP/Oral Appliance Fitting</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-ISI</strong> — <a href="https://doi.org/10.1016/S1389-9457(00)00065-4" target="_blank" rel="noopener noreferrer">ISI</a></p>
+    <p class="rationale">Chronic insomnia drives HPA axis dysregulation and systemic inflammation.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#5</span>
+    <span class="gain">+730 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L11</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>In past 2 weeks, how often felt stressed, anxious or low?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Not at all</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+730 days</strong></div>
+    <div class="years">≈ 2.0 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Mental Health &amp; Community Programs</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-PSS</strong> — <a href="https://doi.org/10.1037/0022-3514.46.4.907" target="_blank" rel="noopener noreferrer">PSS-4</a></p>
+    <p class="rationale">Chronically elevated cortisol accelerates telomere shortening and suppresses immune function.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#6</span>
+    <span class="gain">+548 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L11b</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>In past 2 weeks, little interest or pleasure in doing things?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Not at all</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+548 days</strong></div>
+    <div class="years">≈ 1.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-PHQ2</strong> — <a href="https://journals.lww.com/lww-medicalcare/Abstract/2003/11000/The_Patient_Health_Questionnaire_2__Validity_of_a.8.aspx" target="_blank" rel="noopener noreferrer">PHQ-2</a></p>
+    <p class="rationale">Anhedonia is a core symptom of clinical depression and a predictor of cardiovascular events.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#7</span>
+    <span class="gain">+548 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L11c</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>In past 2 weeks, feeling down, depressed or hopeless?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Not at all</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+548 days</strong></div>
+    <div class="years">≈ 1.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-PHQ2</strong> — <a href="https://journals.lww.com/lww-medicalcare/Abstract/2003/11000/The_Patient_Health_Questionnaire_2__Validity_of_a.8.aspx" target="_blank" rel="noopener noreferrer">PHQ-2</a></p>
+    <p class="rationale">Depression increases all-cause mortality risk by 1.5x through behavioral and biological pathways.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#8</span>
+    <span class="gain">+548 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L13b</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>How many people can you confide in?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">3+</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+548 days</strong></div>
+    <div class="years">≈ 1.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-MSPSS</strong> — <a href="https://doi.org/10.1207/s15327752jpa5201_2" target="_blank" rel="noopener noreferrer">MSPSS</a></p>
+    <p class="rationale">Strong social networks provide a buffer against stress and improve health behaviors.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#9</span>
+    <span class="gain">+548 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L13</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>How often do you feel lonely or isolated?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Rarely</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+548 days</strong></div>
+    <div class="years">≈ 1.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Peer Longevity Groups &amp; Community Engagement Program</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-UCLA</strong> — <a href="https://doi.org/10.1177/0164027504268574" target="_blank" rel="noopener noreferrer">UCLA</a></p>
+    <p class="rationale">Social isolation carries a mortality risk equivalent to smoking 15 cigarettes daily.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Demographics">
+  <div class="card-top">
+    <span class="rank">#10</span>
+    <span class="gain">+438 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Demographics</span><span>C06</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>Do you currently live alone?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">No</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+438 days</strong></div>
+    <div class="years">≈ 1.2 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-UCLA</strong> — <a href="https://doi.org/10.1177/0164027504268574" target="_blank" rel="noopener noreferrer">UCLA</a></p>
+    <p class="rationale">Social isolation carries a mortality risk equivalent to smoking 15 cigarettes daily.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Age-Specific">
+  <div class="card-top">
+    <span class="rank">#11</span>
+    <span class="gain">+365 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Age-Specific</span><span>A09</span><span>40+</span><span>High</span>
+  </div>
+  <h2>Cancer screening adherence</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Up to date</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+365 days</strong></div>
+    <div class="years">≈ 1.0 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Cologuard / Mammogram / Low-Dose CT Referral</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-USPSTF</strong> — <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer">USPSTF</a></p>
+    <p class="rationale">Early cancer detection dramatically shifts survival curves by enabling early stage treatment.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Sleep">
+  <div class="card-top">
+    <span class="rank">#12</span>
+    <span class="gain">+365 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Sleep</span><span>L02</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>Do you feel rested most mornings?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Yes</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+365 days</strong></div>
+    <div class="years">≈ 1.0 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-PSQI</strong> — <a href="https://www.sleep.pitt.edu/sites/default/files/assets/Instrument%20Materials/Exhibit%20A-PSQI%20scoring.pdf" target="_blank" rel="noopener noreferrer">PSQI</a></p>
+    <p class="rationale">Subjective sleep quality is a strong predictor of all-cause mortality and cognitive decline.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Sleep">
+  <div class="card-top">
+    <span class="rank">#13</span>
+    <span class="gain">+365 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Sleep</span><span>L03</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>How often do you have trouble falling or staying asleep?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Rarely</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+365 days</strong></div>
+    <div class="years">≈ 1.0 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Home Sleep Apnea Test (HST) &amp; CPAP/Oral Appliance Fitting</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-ISI</strong> — <a href="https://doi.org/10.1016/S1389-9457(00)00065-4" target="_blank" rel="noopener noreferrer">ISI</a></p>
+    <p class="rationale">Chronic insomnia drives HPA axis dysregulation and systemic inflammation.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Nutrition">
+  <div class="card-top">
+    <span class="rank">#14</span>
+    <span class="gain">+365 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Nutrition</span><span>L08</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>How often do you eat ultra-processed / fast food?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">1-2x/wk</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+365 days</strong></div>
+    <div class="years">≈ 1.0 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Precision Anti-Inflammatory Meal Plan &amp; Gut Microbiome Coaching</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-NOVA</strong> — <a href="https://doi.org/10.1017/S1368980018003762" target="_blank" rel="noopener noreferrer">NOVA</a></p>
+    <p class="rationale">Ultra-processed diets drive metabolic dysfunction obesity and cellular senescence.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#15</span>
+    <span class="gain">+365 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L12</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>Do you have effective ways to manage stress?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Yes</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+365 days</strong></div>
+    <div class="years">≈ 1.0 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-PSS</strong> — <a href="https://doi.org/10.1037/0022-3514.46.4.907" target="_blank" rel="noopener noreferrer">Brief COPE</a></p>
+    <p class="rationale">Effective coping mechanisms buffer the physiological impact of allostatic load.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Nutrition">
+  <div class="card-top">
+    <span class="rank">#16</span>
+    <span class="gain">+292 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Nutrition</span><span>L10</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>Do you regularly skip meals?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">No</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+292 days</strong></div>
+    <div class="years">≈ 0.8 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Metabolic Meal Timing &amp; Circadian Nutrition Protocol</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-ROEN</strong> — <a href="https://doi.org/10.1016/j.cub.2012.03.038" target="_blank" rel="noopener noreferrer">Circadian</a></p>
+    <p class="rationale">Irregular eating disrupts peripheral clock genes and insulin sensitivity.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#17</span>
+    <span class="gain">+292 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L13b</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>How many people can you confide in?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">2</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+292 days</strong></div>
+    <div class="years">≈ 0.8 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-MSPSS</strong> — <a href="https://doi.org/10.1207/s15327752jpa5201_2" target="_blank" rel="noopener noreferrer">MSPSS</a></p>
+    <p class="rationale">Strong social networks provide a buffer against stress and improve health behaviors.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#18</span>
+    <span class="gain">+292 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M14</span><span>18+</span><span>High</span>
+  </div>
+  <h2>HDL cholesterol (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">&gt;60</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+292 days</strong></div>
+    <div class="years">≈ 0.8 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Advanced Lipid Management &amp; Statin/Nutraceutical Protocol</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-NONE</strong> — AHA/ACC <span class="muted">(no URL listed for this option)</span></p>
+    <p class="rationale">Low HDL is an independent risk factor for cardiovascular disease.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Nutrition">
+  <div class="card-top">
+    <span class="rank">#19</span>
+    <span class="gain">+255 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Nutrition</span><span>L10b</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>Do you eat breakfast most days?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Yes</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+255 days</strong></div>
+    <div class="years">≈ 0.7 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-ROEN</strong> — <a href="https://doi.org/10.1016/j.cub.2012.03.038" target="_blank" rel="noopener noreferrer">Circadian</a></p>
+    <p class="rationale">Breakfast consumption is linked to better glycemic control and lipid profiles.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Demographics">
+  <div class="card-top">
+    <span class="rank">#20</span>
+    <span class="gain">+182 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Demographics</span><span>C08</span><span>18+</span><span>Low</span>
+  </div>
+  <h2>Highest education level completed</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Postgraduate</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+182 days</strong></div>
+    <div class="years">≈ 0.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-SES</strong> — <a href="https://doi.org/10.1146/annurev.publhealth.18.1.341" target="_blank" rel="noopener noreferrer">SES</a></p>
+    <p class="rationale">Higher education correlates with better health literacy and longer healthspan.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Demographics">
+  <div class="card-top">
+    <span class="rank">#21</span>
+    <span class="gain">+182 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Demographics</span><span>C09</span><span>18+</span><span>Low</span>
+  </div>
+  <h2>Occupation type</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Heavy manual</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+182 days</strong></div>
+    <div class="years">≈ 0.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-OPAQ</strong> — <a href="https://doi.org/10.1038/oby.2006.287" target="_blank" rel="noopener noreferrer">OPAQ</a></p>
+    <p class="rationale">Occupational activity levels dictate baseline non-exercise activity thermogenesis (NEAT).</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#22</span>
+    <span class="gain">+182 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L11</span><span>Everyone</span><span>High</span>
+  </div>
+  <h2>In past 2 weeks, how often felt stressed, anxious or low?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Several days</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+182 days</strong></div>
+    <div class="years">≈ 0.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Mental Health &amp; Community Programs</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-PSS</strong> — <a href="https://doi.org/10.1037/0022-3514.46.4.907" target="_blank" rel="noopener noreferrer">PSS-4</a></p>
+    <p class="rationale">Chronically elevated cortisol accelerates telomere shortening and suppresses immune function.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#23</span>
+    <span class="gain">+182 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M11</span><span>18+</span><span>High</span>
+  </div>
+  <h2>Blood pressure status (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Normal</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+182 days</strong></div>
+    <div class="years">≈ 0.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Hypertension Tele-Management &amp; 24hr ABPM Referral</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-ACCAHA</strong> — <a href="https://doi.org/10.1161/CIR.0000000000000596" target="_blank" rel="noopener noreferrer">ACC/AHA</a></p>
+    <p class="rationale">Hypertension damages endothelial walls accelerating vascular aging and stroke risk.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#24</span>
+    <span class="gain">+182 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M12</span><span>18+</span><span>Critical</span>
+  </div>
+  <h2>Fasting glucose status (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">&lt;100</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+182 days</strong></div>
+    <div class="years">≈ 0.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Endocrinology Tele-Consult &amp; CGM Setup</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-ADA</strong> — <a href="https://diabetesjournals.org/care" target="_blank" rel="noopener noreferrer">ADA</a></p>
+    <p class="rationale">Chronic hyperglycemia drives advanced glycation end-products (AGEs) and microvascular damage.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#25</span>
+    <span class="gain">+182 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M13</span><span>18+</span><span>High</span>
+  </div>
+  <h2>Total cholesterol (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">&lt;180</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+182 days</strong></div>
+    <div class="years">≈ 0.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Advanced Lipid Management &amp; Statin/Nutraceutical Protocol</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-NONE</strong> — AHA/ACC <span class="muted">(no URL listed for this option)</span></p>
+    <p class="rationale">Elevated cholesterol contributes to atherosclerotic plaque formation.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#26</span>
+    <span class="gain">+182 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M15</span><span>18+</span><span>High</span>
+  </div>
+  <h2>Triglycerides (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">&lt;100</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+182 days</strong></div>
+    <div class="years">≈ 0.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Advanced Lipid Management &amp; Statin/Nutraceutical Protocol</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-NONE</strong> — AHA/ACC <span class="muted">(no URL listed for this option)</span></p>
+    <p class="rationale">High triglycerides indicate metabolic syndrome and increased cardiovascular risk.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#27</span>
+    <span class="gain">+182 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M16</span><span>18+</span><span>High</span>
+  </div>
+  <h2>hsCRP (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">&lt;1</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+182 days</strong></div>
+    <div class="years">≈ 0.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Anti-inflammatory Protocol &amp; Vascular Risk Workup</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-HSCRP</strong> — <a href="https://doi.org/10.1161/01.CIR.0000038493.65177.46" target="_blank" rel="noopener noreferrer">hsCRP</a></p>
+    <p class="rationale">High-sensitivity CRP is a marker of systemic inflammation and predicts cardiovascular events.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#28</span>
+    <span class="gain">+182 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M19</span><span>18+</span><span>High</span>
+  </div>
+  <h2>Albumin (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">&gt;4.5</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+182 days</strong></div>
+    <div class="years">≈ 0.5 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-MNASF</strong> — <a href="https://doi.org/10.1007/s12603-009-0214-5" target="_blank" rel="noopener noreferrer">Albumin</a></p>
+    <p class="rationale">Low albumin is a strong predictor of mortality frailty and poor surgical outcomes.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Demographics">
+  <div class="card-top">
+    <span class="rank">#29</span>
+    <span class="gain">+146 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Demographics</span><span>C03</span><span>Everyone</span><span>Low</span>
+  </div>
+  <h2>Biological sex / gender identity</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Female</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+146 days</strong></div>
+    <div class="years">≈ 0.4 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-ACT</strong> — <a href="https://www.ssa.gov/oact/STATS/table4c6.html" target="_blank" rel="noopener noreferrer">Actuarial</a></p>
+    <p class="rationale">Females average 4-5 years longer lifespan globally due to hormonal/chromosomal differences.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#30</span>
+    <span class="gain">+146 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M08</span><span>40+</span><span>Low</span>
+  </div>
+  <h2>Do you track BP glucose or weight at home?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Yes regularly</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+146 days</strong></div>
+    <div class="years">≈ 0.4 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-USPSTF</strong> — <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer">RPM</a></p>
+    <p class="rationale">Self-monitoring improves patient engagement and early detection of clinical deterioration.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Demographics">
+  <div class="card-top">
+    <span class="rank">#31</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Demographics</span><span>C08</span><span>18+</span><span>Low</span>
+  </div>
+  <h2>Highest education level completed</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Graduate</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-SES</strong> — <a href="https://doi.org/10.1146/annurev.publhealth.18.1.341" target="_blank" rel="noopener noreferrer">SES</a></p>
+    <p class="rationale">Higher education correlates with better health literacy and longer healthspan.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Nutrition">
+  <div class="card-top">
+    <span class="rank">#32</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Nutrition</span><span>L09</span><span>Everyone</span><span>Low</span>
+  </div>
+  <h2>Daily water intake</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">&gt;8 glasses</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-HEI</strong> — <a href="https://www.dietaryguidelines.gov/" target="_blank" rel="noopener noreferrer">AI</a></p>
+    <p class="rationale">Proper hydration is essential for renal function and cellular metabolism.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Psychological">
+  <div class="card-top">
+    <span class="rank">#33</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Psychological</span><span>L12</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>Do you have effective ways to manage stress?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Somewhat</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-PSS</strong> — <a href="https://doi.org/10.1037/0022-3514.46.4.907" target="_blank" rel="noopener noreferrer">Brief COPE</a></p>
+    <p class="rationale">Effective coping mechanisms buffer the physiological impact of allostatic load.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#34</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M01</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>When was your last blood pressure check?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Within 6mo</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>At-Home Blood Panel &amp; Preventive Screening Kit</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-USPSTF</strong> — <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer">USPSTF</a></p>
+    <p class="rationale">Regular BP monitoring is critical for early detection of hypertension and stroke prevention.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#35</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M02</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>When was your last blood sugar / HbA1c check?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Within 6mo</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>At-Home Blood Panel &amp; Preventive Screening Kit</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-USPSTF</strong> — <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer">USPSTF</a></p>
+    <p class="rationale">Early detection of dysglycemia prevents microvascular and macrovascular complications.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#36</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M07</span><span>If M04=Yes</span><span>Medium</span>
+  </div>
+  <h2>How often do you miss doses?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Never</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Smart Pill Box Setup &amp; Adherence Counseling Program</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-MMAS</strong> — <a href="https://doi.org/10.1097/01.mlr.0000163641.74112.fc" target="_blank" rel="noopener noreferrer">MMAS-4</a></p>
+    <p class="rationale">Medication non-adherence is a primary driver of preventable hospitalizations and disease progression.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#37</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M10</span><span>Age&gt;=50</span><span>Medium</span>
+  </div>
+  <h2>Vaccinations up to date for age?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Yes</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Vaccine Consultation &amp; Pharmacy Admin Scheduling</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-USPSTF</strong> — <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer">CDC</a></p>
+    <p class="rationale">Vaccines prevent severe infectious diseases which can trigger long-term organ damage.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#38</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M17</span><span>18+</span><span>Medium</span>
+  </div>
+  <h2>ALT (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">&lt;25</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Hepatology / Metabolic Liver (MASLD) Assessment</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-LFT</strong> — <a href="https://doi.org/10.1002/hep.29367" target="_blank" rel="noopener noreferrer">LFT</a></p>
+    <p class="rationale">Elevated ALT indicates hepatic stress often linked to NAFLD and metabolic dysfunction.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#39</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M18</span><span>18+</span><span>Medium</span>
+  </div>
+  <h2>AST (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">&lt;25</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Hepatology / Metabolic Liver (MASLD) Assessment</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-LFT</strong> — <a href="https://doi.org/10.1002/hep.29367" target="_blank" rel="noopener noreferrer">LFT</a></p>
+    <p class="rationale">Elevated AST can indicate liver damage or muscle breakdown.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#40</span>
+    <span class="gain">+110 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M20</span><span>18+</span><span>High</span>
+  </div>
+  <h2>Creatinine (last reading)</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">0.7-1.0</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+110 days</strong></div>
+    <div class="years">≈ 0.3 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>Nephrology Risk Assessment &amp; Blood Pressure Optimization</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-KDIGO</strong> — <a href="https://kdigo.org/guidelines/" target="_blank" rel="noopener noreferrer">KDIGO</a></p>
+    <p class="rationale">Elevated creatinine indicates declining renal function which accelerates cardiovascular aging.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Sleep">
+  <div class="card-top">
+    <span class="rank">#41</span>
+    <span class="gain">+73 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Sleep</span><span>L02</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>Do you feel rested most mornings?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Sometimes</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+73 days</strong></div>
+    <div class="years">≈ 0.2 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-PSQI</strong> — <a href="https://www.sleep.pitt.edu/sites/default/files/assets/Instrument%20Materials/Exhibit%20A-PSQI%20scoring.pdf" target="_blank" rel="noopener noreferrer">PSQI</a></p>
+    <p class="rationale">Subjective sleep quality is a strong predictor of all-cause mortality and cognitive decline.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Nutrition">
+  <div class="card-top">
+    <span class="rank">#42</span>
+    <span class="gain">+73 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Nutrition</span><span>L09</span><span>Everyone</span><span>Low</span>
+  </div>
+  <h2>Daily water intake</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">7-8</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+73 days</strong></div>
+    <div class="years">≈ 0.2 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-HEI</strong> — <a href="https://www.dietaryguidelines.gov/" target="_blank" rel="noopener noreferrer">AI</a></p>
+    <p class="rationale">Proper hydration is essential for renal function and cellular metabolism.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Nutrition">
+  <div class="card-top">
+    <span class="rank">#43</span>
+    <span class="gain">+73 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Nutrition</span><span>L10b</span><span>Everyone</span><span>Medium</span>
+  </div>
+  <h2>Do you eat breakfast most days?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Sometimes</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+73 days</strong></div>
+    <div class="years">≈ 0.2 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-ROEN</strong> — <a href="https://doi.org/10.1016/j.cub.2012.03.038" target="_blank" rel="noopener noreferrer">Circadian</a></p>
+    <p class="rationale">Breakfast consumption is linked to better glycemic control and lipid profiles.</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Demographics">
+  <div class="card-top">
+    <span class="rank">#44</span>
+    <span class="gain">+36 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Demographics</span><span>C09</span><span>18+</span><span>Low</span>
+  </div>
+  <h2>Occupation type</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Light manual</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+36 days</strong></div>
+    <div class="years">≈ 0.1 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-OPAQ</strong> — <a href="https://doi.org/10.1038/oby.2006.287" target="_blank" rel="noopener noreferrer">OPAQ</a></p>
+    <p class="rationale">Occupational activity levels dictate baseline non-exercise activity thermogenesis (NEAT).</p>
+  </div>
+</article>
+
+<article class="card" data-domain="Medical">
+  <div class="card-top">
+    <span class="rank">#45</span>
+    <span class="gain">+36 LIFE DAYS</span>
+  </div>
+  <div class="meta">
+    <span>Medical</span><span>M08</span><span>40+</span><span>Low</span>
+  </div>
+  <h2>Do you track BP glucose or weight at home?</h2>
+  <div class="situation">
+    <div class="label">Source workbook response</div>
+    <div class="value">Occasionally</div>
+  </div>
+  <div class="gain-box">
+    <div><div class="label">Option_Lookup Life_Days</div><strong>+36 days</strong></div>
+    <div class="years">≈ 0.1 years<br><small>source framework equivalent</small></div>
+  </div>
+  <div class="action">
+    <div class="label">Potential improvement pathway / source note</div>
+    <p>No specific improvement pathway is listed for this response in the source workbook.</p>
+  </div>
+  <div class="reference">
+    <div class="label">Scientific basis listed in source</div>
+    <p><strong>REF-USPSTF</strong> — <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer">RPM</a></p>
+    <p class="rationale">Self-monitoring improves patient engagement and early detection of clinical deterioration.</p>
+  </div>
+</article>
+</section>
+
+
+
+
+
+<!-- YouthCraft: LIFE DAYS / LIFEYEAR Navigation Tabs -->
+<style>
+  .yc-page-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 auto 28px;
+    padding: 10px;
+    max-width: 900px;
+    background: #f0f8f2;
+    border: 1px solid #d5e8da;
+    border-radius: 14px;
+  }
+
+  .yc-page-tabs a {
+    flex: 1 1 220px;
+    display: block;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    color: #176336;
+    background: #ffffff;
+    border: 1px solid #cce3d2;
+    border-radius: 10px;
+    transition: background 0.2s ease, color 0.2s ease,
+                transform 0.2s ease;
+  }
+
+  .yc-page-tabs a:hover {
+    background: #e2f4e7;
+    transform: translateY(-1px);
+  }
+
+  .yc-page-tabs a.active {
+    background: #137a3e;
+    color: #ffffff;
+    border-color: #137a3e;
+    box-shadow: 0 4px 12px rgba(19, 122, 62, 0.18);
+  }
+
+  .yc-page-tabs .tab-subtitle {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  @media (max-width: 480px) {
+    .yc-page-tabs {
+      gap: 8px;
+      padding: 8px;
+    }
+
+    .yc-page-tabs a {
+      flex-basis: 100%;
+      padding: 12px;
+    }
+  }
+</style>
+
+<nav class="yc-page-tabs" aria-label="Explore LIFE DAYS and LIFEYEAR pages">
+  <a href="life-days.html" data-yc-page="loss">
+    LIFE DAYS Lost
+    <span class="tab-subtitle">Explore life-day losses and risk factors</span>
+  </a>
+
+  <a href="plus_youth-score.html" data-yc-page="gain">
+    LIFEYEAR Gains
+    <span class="tab-subtitle">Explore positive scoring options</span>
+  </a>
+</nav>
+
+<script>
+(function () {
+  var currentPage = window.location.pathname.toLowerCase();
+  var activeTab = currentPage.endsWith('/life-days.html')
+    ? 'loss'
+    : currentPage.endsWith('/plus_youth-score.html')
+      ? 'gain'
+      : '';
+
+  document.querySelectorAll('.yc-page-tabs a').forEach(function (tab) {
+    if (tab.dataset.ycPage === activeTab) {
+      tab.classList.add('active');
+      tab.setAttribute('aria-current', 'page');
+    }
+  });
+})();
+</script>
+
+
+
+
+
+<div class="source-note"><strong>Source and limitations:</strong> All displayed response labels, domains, applicability values, weight tiers, positive <em>Life_Days</em> values, instruments, and URLs are taken from the uploaded YouthCraft scoring workbook’s <em>Option_Lookup</em> tab; question wording, rationale, and suggested pathway are taken from <em>Question_Bank_Full</em>. The list contains all 45 positive rows currently present in <em>Option_Lookup</em>, sorted by descending positive Life_Days. A positive score is a workbook framework value and must not be interpreted as a proven causal gain from changing a response or as an individualized clinical estimate. Verify scoring assumptions and references before public-facing clinical use.</div>
+</main>
+<div id="site-footer"></div>
+<script src="script.js"></script>
+<script>
+(function(){
+ const buttons=[...document.querySelectorAll('.toolbar button')];
+ const cards=[...document.querySelectorAll('.card')];
+ buttons.forEach(btn=>btn.addEventListener('click',()=>{
+   buttons.forEach(b=>b.classList.toggle('active',b===btn));
+   const f=btn.dataset.filter;
+   cards.forEach(card=>card.classList.toggle('hidden',f!=='All'&&card.dataset.domain!==f));
+ }));
+})();
+</script>
+</body></html>

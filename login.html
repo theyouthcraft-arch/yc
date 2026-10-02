@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Log In | YouthCraft</title>
+<meta name="description" content="Log in to your YouthCraft account to track your daily missions, biological age insights, and habit streaks.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--yc-paper);color:#243b33}
+.wrap{max-width:1160px;margin:auto;padding:0 22px}
+
+/* Page Layout */
+.auth-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:60px 0 40px;border-bottom:1px solid var(--yc-line);text-align:center}
+.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
+.auth-hero h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;color:var(--yc-ink);margin:12px 0;letter-spacing:-.045em}
+.auth-hero p{font-size:1.08rem;line-height:1.6;color:#466157;margin:0 auto;max-width:560px}
+
+.content{padding-top:40px;padding-bottom:72px}
+.auth-card{max-width:480px;margin:0 auto;background:white;border:1px solid var(--yc-line);border-radius:24px;padding:36px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
+
+/* Form Elements */
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:.92rem;font-weight:750;color:var(--yc-ink);margin-bottom:8px}
+.form-group label .note-inline{font-weight:400;font-size:.82rem;color:var(--yc-muted)}
+.form-control{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--yc-line);background:#fafcfb;color:var(--yc-ink);font-size:1rem;font-family:inherit;transition:border-color .18s,box-shadow .18s}
+.form-control:focus{outline:none;border-color:var(--yc-green);background:white;box-shadow:0 0 0 3px rgba(23,107,85,.12)}
+
+/* Helper Row & Links */
+.form-row-between{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;font-size:.88rem}
+.remember-me{display:flex;align-items:center;gap:8px;color:var(--yc-muted);cursor:pointer;user-select:none}
+.remember-me input{accent-color:var(--yc-green);width:16px;height:16px;cursor:pointer}
+.forgot-link,.auth-footer-link a{color:var(--yc-green);text-decoration:none;font-weight:700}
+.forgot-link:hover,.auth-footer-link a:hover{text-decoration:underline}
+
+/* Actions */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;text-decoration:none;border-radius:999px;padding:14px 20px;font-size:1rem;font-weight:800;background:var(--yc-green);color:white;border:1px solid var(--yc-green);cursor:pointer;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #183b321a}
+.btn:focus-visible{outline:3px solid #e3b45e;outline-offset:3px}
+
+.auth-footer-link{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--yc-line);font-size:.92rem;color:var(--yc-muted)}
+
+@media(max-width:560px){
+  .auth-hero{padding:44px 0 30px}
+  .auth-card{padding:24px;border-radius:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- Dynamic Header Slot -->
+<div id="site-header"></div>
+
+<!-- Hero Header -->
+<header class="auth-hero">
+  <div class="wrap">
+    <div class="eyebrow">✦ Welcome Back</div>
+    <h1>Log in to YouthCraft</h1>
+    <p>Continue building active years, tracking your habits, and managing your Youth Score.</p>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="wrap content">
+  <div class="auth-card">
+    <form action="dashboard.html" method="POST" id="loginForm">
+      
+      <!-- Username / Email -->
+      <div class="form-group">
+        <label for="username">Email Address</label>
+        <input type="email" id="username" name="username" class="form-control" placeholder="you@example.com" required autocomplete="username">
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+      </div>
+
+      <!-- Helper Options -->
+      <div class="form-row-between">
+        <label class="remember-me">
+          <input type="checkbox" name="remember">
+          Remember me
+        </label>
+        <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn">Log In <span aria-hidden="true">→</span></button>
+
+      <!-- Sign Up Switch -->
+      <div class="auth-footer-link">
+        Don't have an account yet? <a href="signup.html">Sign up now</a>
+      </div>
+
+    </form>
+  </div>
+</main>
+
+<!-- Dynamic Footer Slot -->
+<div id="site-footer"></div>
+
+<!-- Shared Script -->
+<script src="script.js"></script>
+</body>
+</html>

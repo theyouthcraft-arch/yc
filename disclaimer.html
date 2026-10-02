@@ -4,170 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Medical & Scientific Disclaimer | YouthCraft</title>
-  <style>
-    :root {
-      --yc-ink: #183b32;
-      --yc-paper: #fbfaf6;
-      --yc-line: #dce7df;
-      --yc-muted: #5b7068;
-      --yc-gold: #c48a39;
-      --yc-green: #176b55;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--yc-paper);
-      color: #243b33;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* Header & Navigation Styles */
-    .site-header {
-      background: #ffffff;
-      border-bottom: 1px solid var(--yc-line);
-      padding: 16px 20px;
-    }
-    .header-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .site-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--yc-ink);
-      text-decoration: none;
-    }
-    .nav-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-    }
-    .nav-links a {
-      color: var(--yc-muted);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--yc-green);
-    }
-
-    /* Main Content Area */
-    main {
-      flex: 1;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    .badge.warning {
-      background: #fff7e9;
-      color: var(--yc-gold);
-      border: 1px solid var(--yc-gold);
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-bottom: 12px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: var(--yc-ink);
-      margin: 0 0 10px 0;
-    }
-    .lead {
-      font-size: 1.1rem;
-      color: var(--yc-muted);
-      margin: 0 0 30px 0;
-    }
-    .alert-box {
-      border-left: 4px solid var(--yc-gold);
-      background: #fff7e9;
-      border-radius: 0 12px 12px 0;
-      padding: 20px;
-      margin-bottom: 30px;
-    }
-    .alert-box h2 {
-      margin-top: 0;
-      color: #624b2d;
-    }
-    .alert-box p {
-      margin-bottom: 0;
-      color: #624b2d;
-    }
-    .content-body h2 {
-      font-size: 1.35rem;
-      color: var(--yc-ink);
-      border-bottom: 1px solid var(--yc-line);
-      padding-bottom: 6px;
-      margin-top: 32px;
-    }
-
-    /* Footer Styles */
-    .site-footer {
-      background: #ffffff;
-      border-top: 1px solid var(--yc-line);
-      padding: 24px 20px;
-      margin-top: 60px;
-    }
-    .footer-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 0.9rem;
-      color: var(--yc-muted);
-    }
-    .footer-links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 16px;
-    }
-    .footer-links a {
-      color: var(--yc-muted);
-      text-decoration: none;
-    }
-    .footer-links a:hover {
-      color: var(--yc-green);
-    }
-  </style>
+ <link rel="stylesheet" href="styles.css">
+<style>
 </head>
 <body>
-
-  <!-- Site Header -->
-  <header class="site-header">
-    <div class="header-container">
-      <a href="index.html" class="site-logo">YouthCraft</a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="biological_age.html">Biological Age</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Main Content -->
+<div id="site-header"></div>
+  
   <main>
     <section class="container">
       <header class="page-header">
@@ -197,17 +39,10 @@
     </section>
   </main>
 
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <p>&copy; 2026 YouthCraft. All rights reserved.</p>
-      <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="disclaimer.html">Disclaimer</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </footer>
+<div id="site-footer"></div>
+<script src="script.js"></script>
+</body>
+</html>
 
 </body>
 </html>

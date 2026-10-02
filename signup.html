@@ -7,7 +7,7 @@
 <meta name="description" content="Create your YouthCraft account. Start crafting a younger you with science-informed wellness and habit tracking.">
 <link rel="stylesheet" href="styles.css">
 <style>
-:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb}
+:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb;--yc-error:#b3261e}
 *{box-sizing:border-box}
 body{margin:0;background:var(--yc-paper);color:#243b33}
 .wrap{max-width:1160px;margin:auto;padding:0 22px}
@@ -28,6 +28,10 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
 .form-control{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--yc-line);background:#fafcfb;color:var(--yc-ink);font-size:1rem;font-family:inherit;transition:border-color .18s,box-shadow .18s}
 .form-control:focus{outline:none;border-color:var(--yc-green);background:white;box-shadow:0 0 0 3px rgba(23,107,85,.12)}
 select.form-control{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%20%235b7068' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}
+
+/* Validation Error Message */
+.error-message{display:none;font-size:.84rem;color:var(--yc-error);margin-top:6px;font-weight:600}
+.form-control.invalid{border-color:var(--yc-error);background:#fff9f9}
 
 /* Actions */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;text-decoration:none;border-radius:999px;padding:14px 20px;font-size:1rem;font-weight:800;background:var(--yc-green);color:white;border:1px solid var(--yc-green);cursor:pointer;transition:transform .18s,box-shadow .18s}
@@ -95,6 +99,19 @@ select.form-control{appearance:none;background-image:url("data:image/svg+xml,%3C
         </select>
       </div>
 
+      <!-- Field 4: Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required minlength="8" autocomplete="new-password">
+      </div>
+
+      <!-- Field 5: Repeat Password -->
+      <div class="form-group">
+        <label for="confirmPassword">Repeat Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="••••••••" required minlength="8" autocomplete="new-password">
+        <div id="passwordError" class="error-message">Passwords do not match. Please re-enter.</div>
+      </div>
+
       <!-- Submit Button -->
       <button type="submit" class="btn">Sign Up <span aria-hidden="true">→</span></button>
 
@@ -112,5 +129,33 @@ select.form-control{appearance:none;background-image:url("data:image/svg+xml,%3C
 
 <!-- Shared Script -->
 <script src="script.js"></script>
+
+<!-- Password Match Verification Script -->
+<script>
+  document.getElementById('signupForm').addEventListener('submit', function(e) {
+    var pass = document.getElementById('password');
+    var confirmPass = document.getElementById('confirmPassword');
+    var errorMsg = document.getElementById('passwordError');
+
+    if (pass.value !== confirmPass.value) {
+      e.preventDefault();
+      confirmPass.classList.add('invalid');
+      errorMsg.style.display = 'block';
+      confirmPass.focus();
+    } else {
+      confirmPass.classList.remove('invalid');
+      errorMsg.style.display = 'none';
+    }
+  });
+
+  document.getElementById('confirmPassword').addEventListener('input', function() {
+    var pass = document.getElementById('password');
+    var errorMsg = document.getElementById('passwordError');
+    if (this.value === pass.value) {
+      this.classList.remove('invalid');
+      errorMsg.style.display = 'none';
+    }
+  });
+</script>
 </body>
 </html>

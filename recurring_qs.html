@@ -3,852 +3,127 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Full 77-Metric Recurring Data Collection | YouthCraft</title>
-<meta name="description" content="Log all daily, weekly, monthly, and event-based health parameters from your Metrics Bank to recapture LIFE DAYS and update your biological age tracking.">
+<title>Recurring Questionnaire | YouthCraft</title>
+<meta name="description" content="Answer YouthCraft's recurring questions to keep your lifestyle, environment and physiology data current and track your biological age.">
 <link rel="stylesheet" href="styles.css">
 <style>
 :root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb}
 *{box-sizing:border-box}
-body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}
+body{margin:0;background:var(--yc-paper);color:#243b33}
 .wrap{max-width:1160px;margin:auto;padding:0 22px}
-
-/* Recurring Hero */
-.q-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:82px 0 68px;border-bottom:1px solid var(--yc-line)}
+.q-hero{background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:48px 0 30px;border-bottom:1px solid var(--yc-line)}
 .eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
-.q-hero h1{font-size:clamp(2.3rem,5vw,4.2rem);line-height:1.05;max-width:850px;color:var(--yc-ink);margin:16px 0 20px;letter-spacing:-.055em}
-.q-hero h1 span{color:var(--yc-green)}
-.q-hero p{font-size:1.1rem;line-height:1.75;max-width:780px;color:#466157;margin:0}
-
-/* Stats Banner */
-.stats-banner{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
-.stat-card{background:white;border:1px solid var(--yc-line);border-radius:18px;padding:20px;box-shadow:0 4px 16px rgba(24,59,50,.03);text-align:center}
-.stat-value{font-size:1.8rem;font-weight:850;color:var(--yc-green);margin-bottom:4px}
-.stat-label{font-size:.84rem;color:var(--yc-muted);text-transform:uppercase;letter-spacing:.05em;font-weight:750}
-
-/* Domain Navigation Pills (13 Domains) */
-.domain-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
-.domain-pill{background:white;border:1px solid var(--yc-line);color:var(--yc-muted);padding:8px 16px;border-radius:999px;font-size:.82rem;font-weight:750;cursor:pointer;transition:all .18s ease;user-select:none}
-.domain-pill:hover{border-color:var(--yc-green);color:var(--yc-green)}
-.domain-pill.active{background:var(--yc-mint);border-color:var(--yc-green);color:var(--yc-green)}
-
-/* Card Container */
-.content{padding-top:42px;padding-bottom:72px}
-.q-card{background:white;border:1px solid var(--yc-line);border-radius:22px;padding:32px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
-.domain-section{display:none}
-.domain-section.active{display:block}
-
-.domain-title-block{margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--yc-mint)}
-.domain-title-block h2{color:var(--yc-ink);font-size:1.65rem;margin:0 0 6px;letter-spacing:-.02em}
-.domain-title-block p{color:var(--yc-muted);margin:0;font-size:.96rem}
-
-/* Question Item Styles */
-.q-item{margin-bottom:32px;padding-bottom:28px;border-bottom:1px solid var(--yc-line)}
-.q-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
-.q-header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
-.q-meta{display:flex;align-items:center;gap:8px}
-.q-id{font-size:.78rem;font-weight:850;color:var(--yc-green);background:var(--yc-mint);padding:3px 8px;border-radius:6px;letter-spacing:.05em}
-
-/* Badges */
-.badge-group{display:flex;gap:6px}
-.freq-badge{background:var(--yc-paper);border:1px solid var(--yc-line);color:var(--yc-ink);font-size:.74rem;font-weight:750;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
-.tier-badge{background:#eef6f2;border:1px solid #c5dcd0;color:var(--yc-green);font-size:.74rem;font-weight:750;padding:4px 10px;border-radius:999px}
-
-.q-text{font-size:1.08rem;font-weight:750;color:var(--yc-ink);line-height:1.45;margin:0 0 6px}
-.q-rationale{font-size:.84rem;line-height:1.55;color:var(--yc-muted);margin:0 0 16px;background:#fbfbf8;padding:8px 12px;border-left:3px solid #cbdcd0;border-radius:0 8px 8px 0}
-.q-rationale strong{color:#3d544b}
-
-/* Controls */
-.options-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-.option-tile{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1px solid var(--yc-line);border-radius:12px;background:var(--yc-paper);cursor:pointer;transition:all .15s ease;user-select:none;font-size:.96rem;font-weight:600;color:var(--yc-ink)}
-.option-tile:hover{background:white;border-color:#b5d3c3;transform:translateY(-1px)}
-.option-tile input[type="radio"]{accent-color:var(--yc-green);width:18px;height:18px;cursor:pointer}
-.option-tileHasChecked{background:var(--yc-mint);border-color:var(--yc-green)}
-
-.form-input-number,.form-select,.form-input-text{width:100%;max-width:340px;padding:12px 14px;border:1px solid var(--yc-line);border-radius:12px;font-size:.98rem;background:var(--yc-paper);color:var(--yc-ink);font-family:inherit;transition:border-color .18s,box-shadow .18s}
-.form-input-number:focus,.form-select:focus,.form-input-text:focus{outline:none;border-color:var(--yc-green);box-shadow:0 0 0 3px rgba(23,107,85,.12);background:white}
-.input-unit-wrap{display:flex;align-items:center;gap:10px}
-.input-unit-wrap span{font-size:.9rem;font-weight:700;color:var(--yc-muted)}
-
-/* Bottom Actions & Buttons */
-.form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--yc-line)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:999px;padding:13px 20px;font-weight:800;background:var(--yc-green);color:white;border:1px solid var(--yc-green);transition:transform .18s,box-shadow .18s;cursor:pointer;font-family:inherit;font-size:1rem}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #183b321a}
-.btn:focus-visible{outline:3px solid #e3b45e;outline-offset:3px}
-
-@media(max-width:850px){
-  .options-grid{grid-template-columns:1fr}
-}
-@media(max-width:560px){
-  .q-hero{padding:54px 0 45px}
-  .q-card{padding:22px}
-}
+.q-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.08;color:var(--yc-ink);margin:12px 0;letter-spacing:-.045em}
+.q-hero p{font-size:1.05rem;line-height:1.6;color:#466157;margin:0;max-width:760px}
+.content{padding-top:28px;padding-bottom:72px}
+.q-container{max-width:940px;margin:0 auto}
+.overall{display:flex;justify-content:space-between;font-size:.85rem;font-weight:800;color:var(--yc-muted);margin-bottom:8px}
+.bar{background:var(--yc-line);height:8px;border-radius:999px;overflow:hidden;margin-bottom:20px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yc-green),#3d9a7c);border-radius:999px;transition:width .3s}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin-bottom:12px;scrollbar-width:thin;position:sticky;top:0;z-index:5;background:var(--yc-paper)}
+.tab{flex:none;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--yc-line);color:var(--yc-muted);padding:9px 16px;border-radius:999px;font:inherit;font-size:.86rem;font-weight:750;cursor:pointer;transition:all .18s;white-space:nowrap}
+.tab:hover{border-color:var(--yc-green);color:var(--yc-green)}
+.tab[aria-selected=true]{background:var(--yc-green);border-color:var(--yc-green);color:#fff}
+.tab .n{font-size:.72rem;font-weight:800;background:var(--yc-mint);color:var(--yc-green);padding:2px 8px;border-radius:999px}
+.tab[aria-selected=true] .n{background:rgba(255,255,255,.2);color:#fff}
+.tab.done:not([aria-selected=true]) .n{background:var(--yc-green);color:#fff}
+.tab:focus-visible,.btn:focus-visible,select:focus-visible,.ref:focus-visible{outline:3px solid var(--yc-gold);outline-offset:2px}
+.q-card{background:#fff;border:1px solid var(--yc-line);border-radius:24px;padding:34px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
+.cat-head{margin-bottom:6px;padding-bottom:14px;border-bottom:2px solid var(--yc-mint)}
+.cat-head h2{color:var(--yc-ink);font-size:1.6rem;margin:0 0 4px;letter-spacing:-.02em}
+.cat-head p{color:var(--yc-muted);margin:0;font-size:.92rem}
+.q-item{padding:24px 0;border-bottom:1px solid var(--yc-line)}
+.q-item:last-child{border-bottom:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.tag{font-size:.66rem;line-height:1;font-weight:750;padding:4px 8px;border-radius:999px;letter-spacing:.02em}
+.tag.sys{background:var(--yc-mint);color:var(--yc-green)}
+.tag.clu{background:#f7ecd8;color:#8a5d1c}
+.q-text{font-size:1.06rem;font-weight:750;color:var(--yc-ink);line-height:1.45;margin:0}
+.daa{font-size:.68rem;color:var(--yc-muted);margin:4px 0 12px;line-height:1.4}
+.q-item select{width:100%;max-width:440px;padding:12px 40px 12px 16px;border-radius:12px;border:1px solid var(--yc-line);background:#fafcfb;color:var(--yc-ink);font:inherit;font-size:.98rem;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23176b55' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;cursor:pointer}
+.q-item select:focus{border-color:var(--yc-green);background-color:#fff}
+.q-item select.has{background-color:var(--yc-mint);border-color:var(--yc-green)}
+.refwrap{display:block;margin-top:10px;font-size:.78rem;line-height:1.45;max-width:760px}.refpre{font-weight:800;color:var(--yc-muted)}.refwrap .ref{display:inline;margin-top:0}
+.ref{display:inline-block;margin-top:10px;font-size:.78rem;line-height:1.45;color:var(--yc-green);text-decoration:underline;text-underline-offset:2px;max-width:760px}
+.ref:hover{color:var(--yc-ink)}
+.refl{display:block;margin-top:10px;font-size:.72rem;color:var(--yc-muted)}
+.form-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:22px;border-top:1px solid var(--yc-line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 26px;font:inherit;font-size:.98rem;font-weight:800;cursor:pointer;transition:all .18s;border:1px solid transparent}
+.btn-secondary{background:#fff;border-color:var(--yc-line);color:var(--yc-muted)}
+.btn-secondary:hover:not(:disabled){border-color:var(--yc-green);color:var(--yc-green)}
+.btn-primary{background:var(--yc-green);color:#fff;border-color:var(--yc-green)}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 18px rgba(24,59,50,.15)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:640px){.q-card{padding:20px;border-radius:18px}.q-item select{max-width:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-
-<!-- Site Header Slot -->
 <div id="site-header"></div>
-
-<!-- Hero Section -->
-<header class="q-hero">
-  <div class="wrap">
-    <div class="eyebrow">✦ Full 77-Metric Framework</div>
-    <h1>Recurring Data Collection &amp; <span>LIFE DAYS Tracker.</span></h1>
-    <p>Log all daily, weekly, monthly, and event-based health parameters from your Metrics Bank to recapture LIFE DAYS and update your biological age tracking.</p>
-  </div>
-</header>
-
-<main class="wrap content">
-
-  <!-- Status Overview Banner -->
-  <div class="stats-banner">
-    <div class="stat-card">
-      <div class="stat-value">77</div>
-      <div class="stat-label">Total Metrics Tracked</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value" id="reclaimedDays" style="color:var(--yc-gold);">0 Days</div>
-      <div class="stat-label">LIFE DAYS Recaptured</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value" id="streakCount">0 Days</div>
-      <div class="stat-label">Logging Streak</div>
-    </div>
-  </div>
-
-  <!-- Domain Navigation Pills (13 Domains) -->
-  <nav class="domain-pills" id="domainPills" aria-label="Domains">
-    <button type="button" class="domain-pill active" onclick="switchDomain(1)">1. Sleep (12)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(2)">2. Activity (9)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(3)">3. Sedentary (5)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(4)">4. Nutrition (9)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(5)">5. Tobacco (4)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(6)">6. Alcohol (3)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(7)">7. Medication (6)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(8)">8. Vaccine (3)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(9)">9. Metabolic (8)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(10)">10. Illness (5)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(11)">11. Allergy (3)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(12)">12. Incident (5)</button>
-    <button type="button" class="domain-pill" onclick="switchDomain(13)">13. Other (5)</button>
-  </nav>
-
-  <!-- Main Form Card -->
-  <div class="q-card">
-    <form id="recurringForm" onsubmit="event.preventDefault(); saveAllMetrics();">
-
-      <!-- ==================== DOMAIN 1: SLEEP (SL01-SL12) ==================== -->
-      <div class="domain-section active" id="domainSection1">
-        <div class="domain-title-block">
-          <h2>Domain 1: Sleep Architecture &amp; Quality (12 Metrics)</h2>
-          <p>Tracks duration, efficiency, timing, stages, and consistency (PSQI &amp; Roenneberg frameworks).</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Sleep Duration (Total)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> U-curve 7–9h optimal (+0.008 YD); short/long sleep elevates cardiometabolic risk.</div>
-          <div class="input-unit-wrap"><input type="number" step="0.1" name="SL01" class="form-input-number" placeholder="e.g. 7.5"><span>hours</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Time in Bed</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Total time in bed including awake time; used for sleep efficiency calculation.</div>
-          <div class="input-unit-wrap"><input type="number" step="0.1" name="SL02" class="form-input-number" placeholder="e.g. 8.0"><span>hours</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Sleep Efficiency % (Asleep / Time in Bed × 100)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> ≥85% optimal (+0.004 YD); low efficiency marks insomnia phenotype.</div>
-          <div class="input-unit-wrap"><input type="number" step="1" name="SL03" class="form-input-number" placeholder="e.g. 88"><span>%</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Sleep Onset Time</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Circadian alignment tracking; large deviations indicate social jetlag.</div>
-          <input type="time" name="SL04" class="form-select">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Wake Time</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Wake-time consistency pairs with onset for circadian stability.</div>
-          <input type="time" name="SL05" class="form-select">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Sleep Midpoint (Onset–Wake midpoint)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Chronotype marker; weekday/weekend shifts associate with metabolic risk.</div>
-          <input type="time" name="SL06" class="form-select">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">REM Sleep Duration</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> REM supports memory consolidation and emotional regulation.</div>
-          <div class="input-unit-wrap"><input type="number" name="SL07" class="form-input-number" placeholder="e.g. 90"><span>minutes</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Deep / Slow-Wave Sleep Duration</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Primary restorative stage for physical recovery and immune function.</div>
-          <div class="input-unit-wrap"><input type="number" name="SL08" class="form-input-number" placeholder="e.g. 80"><span>minutes</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL09</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Light Sleep Duration</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Contextual sleep architecture proportion.</div>
-          <div class="input-unit-wrap"><input type="number" name="SL09" class="form-input-number" placeholder="e.g. 250"><span>minutes</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL10</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Awakenings / Interruptions Count</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Sleep fragmentation marker; associated with OSA risk.</div>
-          <div class="input-unit-wrap"><input type="number" name="SL10" class="form-input-number" placeholder="e.g. 1"><span>wakings</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL11</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Subjective Sleep Quality (1 to 5)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> PSQI subjective sleep quality component.</div>
-          <select name="SL11" class="form-select">
-            <option value="5">5 - Very Good (+0.003 YD)</option>
-            <option value="4">4 - Good (+0.002 YD)</option>
-            <option value="3">3 - Fair (0.000 YD)</option>
-            <option value="2">2 - Poor (-0.003 YD)</option>
-            <option value="1">1 - Very Poor (-0.006 YD)</option>
-          </select>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SL12</span></div><div class="badge-group"><span class="freq-badge">Weekly rolling</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Sleep Consistency Score (Minutes SD of midpoint over 7 days)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Regular sleep timing protects metabolic health.</div>
-          <div class="input-unit-wrap"><input type="number" name="SL12" class="form-input-number" placeholder="e.g. 20"><span>min standard dev</span></div>
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 2: ACTIVITY (PA01-PA09) ==================== -->
-      <div class="domain-section" id="domainSection2">
-        <div class="domain-title-block">
-          <h2>Domain 2: Physical Activity &amp; Exercise (9 Metrics)</h2>
-          <p>Tracks steps, MVPA, distance, active calories, exercise sessions, and strength training (IPAQ &amp; ACSM).</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Daily Step Count</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> ≥8,000 steps optimal (+0.003 YD); reduces all-cause mortality.</div>
-          <div class="input-unit-wrap"><input type="number" name="PA01" class="form-input-number" placeholder="e.g. 8500"><span>steps</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Active Minutes (Moderate+) / MVPA</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> WHO guidelines (30+ min/day moderate activity gives +0.008 YD).</div>
-          <div class="input-unit-wrap"><input type="number" name="PA02" class="form-input-number" placeholder="e.g. 35"><span>minutes</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Total Distance Covered</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Spatial movement volume indicator.</div>
-          <div class="input-unit-wrap"><input type="number" step="0.1" name="PA03" class="form-input-number" placeholder="e.g. 6.2"><span>km</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Active Calories Burned</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Energy expenditure above basal metabolic rate.</div>
-          <div class="input-unit-wrap"><input type="number" name="PA04" class="form-input-number" placeholder="e.g. 500"><span>kcal</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA05</span></div><div class="badge-group"><span class="freq-badge">Per session</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Average Speed / Pace (Per exercise session)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Cardiovascular capacity and walking/running speed index.</div>
-          <input type="text" name="PA05" class="form-input-text" placeholder="e.g. 5.5 min/km">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Elevation Gain</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Vertical work load and muscular load intensity.</div>
-          <div class="input-unit-wrap"><input type="number" name="PA06" class="form-input-number" placeholder="e.g. 120"><span>metres</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Exercise Sessions Count &amp; Type (Cardio, HIIT, etc.)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Structured exercise frequency tracking.</div>
-          <input type="text" name="PA07" class="form-input-text" placeholder="e.g. 1 session (Running)">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Strength / Resistance Training Minutes</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> ACSM guidelines (20+ min or ≥2 days/week resistance training gives +0.006 YD).</div>
-          <div class="input-unit-wrap"><input type="number" name="PA08" class="form-input-number" placeholder="e.g. 30"><span>minutes</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">PA09</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Heart Rate Zones / Average Heart Rate</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Training intensity distribution and cardiovascular load.</div>
-          <input type="text" name="PA09" class="form-input-text" placeholder="e.g. Zone 2: 45 min, Avg 125 bpm">
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 3: SEDENTARY (SE01-SE05) ==================== -->
-      <div class="domain-section" id="domainSection3">
-        <div class="domain-title-block">
-          <h2>Domain 3: Sedentary Behavior &amp; Posture (5 Metrics)</h2>
-          <p>Tracks total sitting time, unbroken bouts, reclining, movement breaks, and screen time.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Total Sedentary / Sitting Time</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> &lt;6h optimal (+0.001 YD); &gt;10h sitting accelerates vascular aging (-0.012 YD).</div>
-          <div class="input-unit-wrap"><input type="number" step="0.5" name="SE01" class="form-input-number" placeholder="e.g. 6.5"><span>hours</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Longest Unbroken Sitting Bout</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Prolonged unbroken sitting impairs lipoprotein lipase activity and endothelial function.</div>
-          <div class="input-unit-wrap"><input type="number" name="SE02" class="form-input-number" placeholder="e.g. 90"><span>minutes</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Time on Bed / Reclining during Daytime</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Daytime physical inactivity and fatigue indicator.</div>
-          <div class="input-unit-wrap"><input type="number" step="0.5" name="SE03" class="form-input-number" placeholder="e.g. 0.5"><span>hours</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Standing / Light Movement Breaks Count</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Breaking up sedentary bouts maintains micro-vascular tone.</div>
-          <div class="input-unit-wrap"><input type="number" name="SE04" class="form-input-number" placeholder="e.g. 8"><span>breaks</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">SE05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Recreational Screen Time (TV, gaming, social media)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Excessive screen time correlates with sleep disruption and physical inactivity.</div>
-          <div class="input-unit-wrap"><input type="number" step="0.5" name="SE05" class="form-input-number" placeholder="e.g. 2.0"><span>hours</span></div>
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 4: NUTRITION (NU01-NU09) ==================== -->
-      <div class="domain-section" id="domainSection4">
-        <div class="domain-title-block">
-          <h2>Domain 4: Nutrition &amp; Dietary Quality (9 Metrics)</h2>
-          <p>Tracks meal logging, vegetable/fruit servings, hydration, UPF intake, meal timing, and protein adequacy.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Meals Logged Today</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Meal tracking consistency and dietary tracking adherence.</div>
-          <div class="input-unit-wrap"><input type="number" name="NU01" class="form-input-number" placeholder="e.g. 3"><span>meals</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Vegetable + Fruit Servings (0 to 10+)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> 5+ servings optimal (+0.005 YD); rich in polyphenols and fiber.</div>
-          <div class="input-unit-wrap"><input type="number" name="NU02" class="form-input-number" placeholder="e.g. 6"><span>servings</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Water / Fluid Intake</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Optimal cellular hydration and renal clearance.</div>
-          <div class="input-unit-wrap"><input type="number" step="0.5" name="NU03" class="form-input-number" placeholder="e.g. 2.5"><span>litres</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Ultra-Processed / Fast Food Consumption</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Zero UPF gives +0.003 YD; high UPF accelerates systemic aging (-0.010 YD).</div>
-          <select name="NU04" class="form-select">
-            <option value="None">None / Zero UPF (+0.003 YD)</option>
-            <option value="1 serving">1 serving / Moderate (0.000 YD)</option>
-            <option value="2+ servings">2+ servings / High (-0.010 YD)</option>
-          </select>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Meal Timing – First Meal (Breakfast / Fast-breaker)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Time-restricted eating window and circadian alignment.</div>
-          <input type="time" name="NU05" class="form-select">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Meal Timing – Last Meal (Dinner end)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Avoiding late-night eating improves nocturnal glucose and sleep quality.</div>
-          <input type="time" name="NU06" class="form-select">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Protein Adequacy (Low / Optimal / High)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Adequate protein synthesis supports muscle preservation (sarcopenia prevention).</div>
-          <select name="NU07" class="form-select">
-            <option value="Optimal">Optimal (1.2–2.0g/kg) (+0.003 YD)</option>
-            <option value="Low">Low (&lt;0.8g/kg) (-0.004 YD)</option>
-            <option value="High">High / Supplemented</option>
-          </select>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Overall Meal Quality Rating (1 to 5)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Subjective overall nutritional balance.</div>
-          <select name="NU08" class="form-select">
-            <option value="5">5 - Excellent / Whole foods (+0.004 YD)</option>
-            <option value="4">4 - Good (+0.002 YD)</option>
-            <option value="3">3 - Moderate (0.000 YD)</option>
-            <option value="2">2 - Poor (-0.004 YD)</option>
-            <option value="1">1 - Very Poor / Junk heavy (-0.008 YD)</option>
-          </select>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">NU09</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Skipped Meals Today</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Unplanned meal skipping can induce glycemic volatility.</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="NU09" value="No"> No / Regular meals</label>
-            <label class="option-tile"><input type="radio" name="NU09" value="Yes"> Yes / Skipped meal</label>
-          </div>
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 5: TOBACCO (TB01-TB04) ==================== -->
-      <div class="domain-section" id="domainSection5">
-        <div class="domain-title-block">
-          <h2>Domain 5: Tobacco &amp; Nicotine Exposure (4 Metrics)</h2>
-          <p>Tracks daily cigarette count, alternative nicotine, craving intensity, and quit attempt status.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">TB01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Cigarettes / Units Smoked Today</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Zero cigarettes gives +0.010 YD; smoking accelerates aging (-0.015 YD per cigarette active day).</div>
-          <div class="input-unit-wrap"><input type="number" name="TB01" class="form-input-number" placeholder="e.g. 0"><span>cigarettes</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">TB02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Other Nicotine Use (Vape, e-cig, pouches)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Nicotine delivery system vascular and pulmonary impact.</div>
-          <input type="text" name="TB02" class="form-input-text" placeholder="e.g. None or 1 vape pod">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">TB03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Craving Intensity (0 to 10 scale)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Nicotine withdrawal and cessation support monitoring.</div>
-          <div class="input-unit-wrap"><input type="number" min="0" max="10" name="TB03" class="form-input-number" placeholder="e.g. 2"><span>/ 10</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">TB04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Quit Attempt Active Today?</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Encourages cessation pathways and partner routing.</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="TB04" value="Yes"> Yes (+0.005 YD for trying)</label>
-            <label class="option-tile"><input type="radio" name="TB04" value="No"> No / Not on quit plan</label>
-          </div>
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 6: ALCOHOL (AL01-AL03) ==================== -->
-      <div class="domain-section" id="domainSection6">
-        <div class="domain-title-block">
-          <h2>Domain 6: Alcohol Consumption (3 Metrics)</h2>
-          <p>Tracks standard drinks, beverage type/context, and binge drinking flags (AUDIT-C framework).</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">AL01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Alcoholic Drinks Today (Standard units)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Zero drinks optimal (+0.005 YD); heavy intake accelerates cellular aging (-0.010 YD).</div>
-          <div class="input-unit-wrap"><input type="number" name="AL01" class="form-input-number" placeholder="e.g. 0"><span>standard drinks</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">AL02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Drink Type / Context (Social dinner, solo, etc.)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Behavioral context of alcohol consumption.</div>
-          <input type="text" name="AL02" class="form-input-text" placeholder="e.g. 1 glass of wine with dinner">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">AL03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Binge Drinking Flag (&gt;4 drinks women, &gt;5 drinks men today)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Heavy episodic binge drinking triggers high-risk medical alerts (-0.015 YD).</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="AL03" value="No"> No binge</label>
-            <label class="option-tile"><input type="radio" name="AL03" value="Yes"> Yes / Binge episode (-0.015 YD)</label>
-          </div>
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 7: MEDICATION (MD01-MD06) ==================== -->
-      <div class="domain-section" id="domainSection7">
-        <div class="domain-title-block">
-          <h2>Domain 7: Medication &amp; Supplement Adherence (6 Metrics)</h2>
-          <p>Tracks scheduled doses, doses taken, missed doses, PRN meds, injections, and side effects.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Scheduled Medication Doses Due Today</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Baseline therapeutic regimen schedule.</div>
-          <input type="text" name="MD01" class="form-input-text" placeholder="e.g. Metformin 500mg, Lisinopril 10mg">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Doses Taken on Schedule</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Adherence tracking maintains chronic disease control.</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="MD02" value="All taken"> All scheduled doses taken (+0.003 YD)</label>
-            <label class="option-tile"><input type="radio" name="MD02" value="Partial"> Partial doses taken</label>
-          </div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD03</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Missed Doses Count &amp; Reason</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Chronic medication non-adherence triggers clinical alerts (-0.008 YD).</div>
-          <input type="text" name="MD03" class="form-input-text" placeholder="e.g. 0 missed doses">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD04</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">PRN / As-Needed Medications Used</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Tracks acute symptom management (inhalers, pain relief).</div>
-          <input type="text" name="MD04" class="form-input-text" placeholder="e.g. Ibuprofen 400mg for headache">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD05</span></div><div class="badge-group"><span class="freq-badge">As scheduled</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Injection Log (Insulin, GLP-1, biologic, etc.)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Specialized therapy adherence monitoring.</div>
-          <input type="text" name="MD05" class="form-input-text" placeholder="e.g. None due today">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">MD06</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Medication Side Effects Noted</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Pharmacovigilance and adverse reaction screening.</div>
-          <input type="text" name="MD06" class="form-input-text" placeholder="e.g. None">
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 8: VACCINE (VC01-VC03) ==================== -->
-      <div class="domain-section" id="domainSection8">
-        <div class="domain-title-block">
-          <h2>Domain 8: Immunization &amp; Vaccine Tracking (3 Metrics)</h2>
-          <p>Tracks upcoming preventive vaccines, vaccination events, and post-vaccine reactions.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">VC01</span></div><div class="badge-group"><span class="freq-badge">As needed</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Upcoming Preventive Vaccines Due</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Preventive healthcare adherence (flu, booster, shingles).</div>
-          <input type="text" name="VC01" class="form-input-text" placeholder="e.g. Annual flu shot due in November">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">VC02</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Vaccine Received Today</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Immune protection update (+0.005 YD event bonus).</div>
-          <input type="text" name="VC02" class="form-input-text" placeholder="e.g. None">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">VC03</span></div><div class="badge-group"><span class="freq-badge">Event +1–3d</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Post-Vaccine Reaction (None / Mild / Moderate / Severe)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Immunization reactogenicity monitoring.</div>
-          <select name="VC03" class="form-select">
-            <option value="None">None / Asymptomatic</option>
-            <option value="Mild">Mild soreness / fatigue</option>
-            <option value="Moderate">Moderate fever / body aches</option>
-            <option value="Severe">Severe systemic reaction</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 9: METABOLIC (ME01-ME08) ==================== -->
-      <div class="domain-section" id="domainSection9">
-        <div class="domain-title-block">
-          <h2>Domain 9: Metabolic &amp; Physiological Vitals (8 Metrics)</h2>
-          <p>Tracks weight, waist circumference, blood pressure, blood glucose, resting heart rate, and HRV.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME01</span></div><div class="badge-group"><span class="freq-badge">2–3x/wk</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Body Weight Update</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> BMI trend and metabolic trajectory monitoring.</div>
-          <div class="input-unit-wrap"><input type="number" step="0.1" name="ME01" class="form-input-number" placeholder="e.g. 70.0"><span>kg</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME02</span></div><div class="badge-group"><span class="freq-badge">Weekly</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Waist Circumference</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Visceral adiposity and waist-to-height ratio (WHtR) tracking.</div>
-          <div class="input-unit-wrap"><input type="number" step="0.5" name="ME02" class="form-input-number" placeholder="e.g. 80.0"><span>cm</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME03</span></div><div class="badge-group"><span class="freq-badge">As prescribed</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Blood Pressure (Systolic)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> SBP &lt;120 optimal (+0.003 YD); &gt;140 triggers hypertension alerts (-0.012 YD).</div>
-          <div class="input-unit-wrap"><input type="number" name="ME03" class="form-input-number" placeholder="e.g. 118"><span>mmHg</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME04</span></div><div class="badge-group"><span class="freq-badge">As prescribed</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Blood Pressure (Diastolic)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Diastolic vascular resistance and perfusion pressure.</div>
-          <div class="input-unit-wrap"><input type="number" name="ME04" class="form-input-number" placeholder="e.g. 76"><span>mmHg</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME05</span></div><div class="badge-group"><span class="freq-badge">As prescribed</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Blood Glucose Level</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Glycemic control and insulin sensitivity monitoring.</div>
-          <div class="input-unit-wrap"><input type="number" name="ME05" class="form-input-number" placeholder="e.g. 92"><span>mg/dL</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME06</span></div><div class="badge-group"><span class="freq-badge">With reading</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Blood Glucose Context (Fasting, Post-meal, Bedtime)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Physiological context for interpretation of glucose values.</div>
-          <select name="ME06" class="form-select">
-            <option value="Fasting">Fasting</option>
-            <option value="Post-meal">Post-meal (1-2h)</option>
-            <option value="Bedtime">Bedtime</option>
-            <option value="Random">Random / Other</option>
-          </select>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME07</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Resting Heart Rate (RHR)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Lower RHR (&lt;60 bpm) indicates superior cardiovascular conditioning.</div>
-          <div class="input-unit-wrap"><input type="number" name="ME07" class="form-input-number" placeholder="e.g. 58"><span>bpm</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">ME08</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Heart Rate Variability (HRV - RMSSD)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Autonomic nervous system resilience and recovery index.</div>
-          <div class="input-unit-wrap"><input type="number" name="ME08" class="form-input-number" placeholder="e.g. 65"><span>ms</span></div>
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 10: ILLNESS (IL01-IL05) ==================== -->
-      <div class="domain-section" id="domainSection10">
-        <div class="domain-title-block">
-          <h2>Domain 10: Acute Illness &amp; Symptoms (5 Metrics)</h2>
-          <p>Tracks symptom presence, severity, fever, duration, and work/activity impact.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Symptom Presence (Cold, flu, GI, headache, etc.)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Acute inflammatory stressors temporarily depress LIFE DAYS.</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="IL01" value="None"> None / Healthy</label>
-            <label class="option-tile"><input type="radio" name="IL01" value="Respiratory"> Respiratory / Cold symptoms</label>
-            <label class="option-tile"><input type="radio" name="IL01" value="GI"> Gastrointestinal symptoms</label>
-            <label class="option-tile"><input type="radio" name="IL01" value="Other"> Other symptoms</label>
-          </div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL02</span></div><div class="badge-group"><span class="freq-badge">If symptoms</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Symptom Severity (1 to 5 or Mild/Mod/Severe)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Quantifies acute physiological burden.</div>
-          <select name="IL02" class="form-select">
-            <option value="None">None</option>
-            <option value="Mild">Mild (Minimal disruption)</option>
-            <option value="Moderate">Moderate (Noticeable impact)</option>
-            <option value="Severe">Severe (Significant impairment)</option>
-          </select>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL03</span></div><div class="badge-group"><span class="freq-badge">If relevant</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Fever Present / Maximum Temperature</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Acute immune febrile response indicator.</div>
-          <div class="input-unit-wrap"><input type="number" step="0.1" name="IL03" class="form-input-number" placeholder="e.g. 37.2"><span>°C</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL04</span></div><div class="badge-group"><span class="freq-badge">If symptoms</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Symptom Notes / Duration</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Clinical timeline tracking.</div>
-          <input type="text" name="IL04" class="form-input-text" placeholder="e.g. Day 2 of mild sore throat">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IL05</span></div><div class="badge-group"><span class="freq-badge">If symptoms</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Work / Activity Impact (None / Mild / Significant / Bed rest)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Functional disability grading during acute illness.</div>
-          <select name="IL05" class="form-select">
-            <option value="None">None</option>
-            <option value="Mild">Mild reduction in output</option>
-            <option value="Significant">Significant reduction / Modified duties</option>
-            <option value="Bed rest">Bed rest required (-0.010 YD)</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 11: ALLERGY (AG01-AG03) ==================== -->
-      <div class="domain-section" id="domainSection11">
-        <div class="domain-title-block">
-          <h2>Domain 11: Allergy &amp; Environmental Flare (3 Metrics)</h2>
-          <p>Tracks allergy flares, trigger exposures, and rescue medication usage.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">AG01</span></div><div class="badge-group"><span class="freq-badge">Daily if known</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Allergy Flare Today (Pollen, dust, food, etc.)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Allergic inflammation and mucosal irritation.</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="AG01" value="No"> No flare</label>
-            <label class="option-tile"><input type="radio" name="AG01" value="Yes"> Yes / Active flare</label>
-          </div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">AG02</span></div><div class="badge-group"><span class="freq-badge">If flare</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Trigger Exposure Identified</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Environmental allergen identification.</div>
-          <input type="text" name="AG02" class="form-input-text" placeholder="e.g. High pollen count day">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">AG03</span></div><div class="badge-group"><span class="freq-badge">If used</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Rescue / Allergy Medication Used (Antihistamine, nasal spray, inhaler)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Symptom relief medication tracking.</div>
-          <input type="text" name="AG03" class="form-input-text" placeholder="e.g. Cetirizine 10mg">
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 12: INCIDENT (IN01-IN05) ==================== -->
-      <div class="domain-section" id="domainSection12">
-        <div class="domain-title-block">
-          <h2>Domain 12: Incidents &amp; Safety Events (5 Metrics)</h2>
-          <p>Tracks falls, near-falls, GI incidents, accidents, and medical/ER visits.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Fall or Near-Fall Incident Today</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Fall safety screening and balance instability warning.</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="IN01" value="None"> None</label>
-            <label class="option-tile"><input type="radio" name="IN01" value="Near-fall"> Near-fall / Stumble</label>
-            <label class="option-tile"><input type="radio" name="IN01" value="Fall"> Actual Fall (-0.020 YD alert)</label>
-          </div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN02</span></div><div class="badge-group"><span class="freq-badge">If fall</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Fall Details (Location, injury sustained)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Safety incident investigation.</div>
-          <input type="text" name="IN02" class="form-input-text" placeholder="e.g. N/A">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN03</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Event only</span></div></div>
-          <div class="q-text">Food Poisoning / Acute GI Incident</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Acute food-borne illness tracking.</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="IN03" value="No"> No</label>
-            <label class="option-tile"><input type="radio" name="IN03" value="Yes"> Yes</label>
-          </div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN04</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Event only</span></div></div>
-          <div class="q-text">Other Accident / Physical Injury</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Traumatic physical injury logging.</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="IN04" value="No"> No</label>
-            <label class="option-tile"><input type="radio" name="IN04" value="Yes"> Yes</label>
-          </div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">IN05</span></div><div class="badge-group"><span class="freq-badge">Event</span><span class="tier-badge">Event only</span></div></div>
-          <div class="q-text">Urgent Medical Visit / ER / Hospital Admission Today</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Major clinical safety event routing and partner escalation.</div>
-          <div class="options-grid">
-            <label class="option-tile"><input type="radio" name="IN05" value="No"> No</label>
-            <label class="option-tile"><input type="radio" name="IN05" value="Yes"> Yes (-0.050 YD alert)</label>
-          </div>
-        </div>
-      </div>
-
-      <!-- ==================== DOMAIN 13: OTHER (OT01-OT05) ==================== -->
-      <div class="domain-section" id="domainSection13">
-        <div class="domain-title-block">
-          <h2>Domain 13: Subjective Well-being &amp; Engagement (5 Metrics)</h2>
-          <p>Tracks mood/energy ratings, stress levels, menstrual cycle tracking, journal notes, and data completeness.</p>
-        </div>
-
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT01</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Mood / Energy Rating (1 to 5)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Psychological vitality and vitality index.</div>
-          <select name="OT01" class="form-select">
-            <option value="5">5 - High energy &amp; positive mood (+0.003 YD)</option>
-            <option value="4">4 - Good (+0.001 YD)</option>
-            <option value="3">3 - Neutral (0.000 YD)</option>
-            <option value="2">2 - Low energy (-0.002 YD)</option>
-            <option value="1">1 - Exhausted / Depressed (-0.005 YD)</option>
-          </select>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT02</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Core</span></div></div>
-          <div class="q-text">Stress Level (1 to 10 scale)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Chronic cortisol elevation and psychological stress load.</div>
-          <div class="input-unit-wrap"><input type="number" min="1" max="10" name="OT02" class="form-input-number" placeholder="e.g. 3"><span>/ 10</span></div>
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT03</span></div><div class="badge-group"><span class="freq-badge">If tracked</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Menstrual Cycle Day / Hormonal Symptoms</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Endocrinological rhythm and hormonal symptom tracking.</div>
-          <input type="text" name="OT03" class="form-input-text" placeholder="e.g. Day 14 or N/A">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT04</span></div><div class="badge-group"><span class="freq-badge">Daily optional</span><span class="tier-badge">Optional</span></div></div>
-          <div class="q-text">Personal Notes / Journal Entry</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Qualitative reflection and contextual note logging.</div>
-          <input type="text" name="OT04" class="form-input-text" placeholder="e.g. Felt great during morning workout">
-        </div>
-        <div class="q-item">
-          <div class="q-header-row"><div class="q-meta"><span class="q-id">OT05</span></div><div class="badge-group"><span class="freq-badge">Daily</span><span class="tier-badge">Standard</span></div></div>
-          <div class="q-text">Data Completeness Flag (Wearable sync vs manual entry)</div>
-          <div class="q-rationale"><strong>Biological Rationale:</strong> Tracking data integrity and trust score.</div>
-          <select name="OT05" class="form-select">
-            <option value="Full auto sync">Full auto sync (Wearable API)</option>
-            <option value="Partial manual">Partial manual entry</option>
-            <option value="Fully manual">Fully manual</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Form Actions -->
-      <div class="form-actions">
-        <button type="submit" class="btn">Save All 77 Metrics &amp; Recapture LIFE DAYS <span aria-hidden="true">→</span></button>
-      </div>
-
-    </form>
-  </div>
-
-</main>
-
-<!-- Site Footer Slot -->
+<header class="q-hero"><div class="wrap">
+  <div class="eyebrow">✦ Recurring Assessment</div>
+  <h1>Recurring Health Questionnaire</h1>
+  <p>119 questions across 7 categories. Move between categories using the tabs, answer at your own pace, and your answers are saved on this device.</p>
+</div></header>
+<main class="wrap content"><div class="q-container">
+  <div class="overall"><span id="ovCount">0 of 119 answered</span><span id="ovPct">0%</span></div>
+  <div class="bar" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="119" id="bar"><i id="barFill"></i></div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="q-card" id="panel" role="tabpanel"></div>
+</div></main>
 <div id="site-footer"></div>
-
-<!-- Shared Site Script -->
 <script src="script.js"></script>
-
-<!-- Navigation & Handler Script -->
 <script>
-  let currentDomain = 1;
-  const totalDomains = 13;
-
-  function switchDomain(domainNum) {
-    currentDomain = domainNum;
-    for (let i = 1; i <= totalDomains; i++) {
-      const section = document.getElementById(`domainSection${i}`);
-      if (section) section.classList.toggle('active', i === currentDomain);
-    }
-    const pills = document.querySelectorAll('.domain-pill');
-    pills.forEach((pill, idx) => {
-      pill.classList.toggle('active', idx + 1 === currentDomain);
-    });
-    window.scrollTo({ top: 120, behavior: 'smooth' });
-  }
-
-  function saveAllMetrics() {
-    alert("All 77 Recurring Metrics Logged Successfully! LIFE DAYS Recaptured and Streak Updated.");
-  }
-
-  // Option tile selection highlighting
-  document.addEventListener('change', function(e) {
-    if (e.target.type === 'radio') {
-      const name = e.target.name;
-      document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
-        const tile = input.closest('.option-tile');
-        if (tile) tile.classList.remove('option-tileHasChecked');
-      });
-      const selectedTile = e.target.closest('.option-tile');
-      if (selectedTile) selectedTile.classList.add('option-tileHasChecked');
-    }
-  });
+const DATA={"cats": ["Environment & preventive care", "Lifestyle: Mind & social", "Lifestyle: Nutrition", "Lifestyle: Physical activity", "Lifestyle: Sleep & circadian", "Lifestyle: Substance use", "Physiological"], "qs": [{"id": "Q001", "c": "Physiological", "s": "Cardiovascular", "k": "Metabolic & Biomarkers", "q": "What is your usual systolic blood pressure (treated or not)?", "d": "Increased arterial stiffness / systolic BP", "m": "Tier 4: Diagnostic Report Extract", "o": ["Below 130 mmHg", "130 to 139 mmHg", "140 to 159 mmHg", "160 mmHg or above"], "t": "Age-specific relevance of usual blood pressure to vascular mortality: a meta-analysis of individual data for one million adults in 61 prospective studies (Lancet, 2002)", "u": "https://pubmed.ncbi.nlm.nih.gov/12493255/"}, {"id": "Q002", "c": "Physiological", "s": "Cardiovascular", "k": "Other Physiological", "q": "Do you get breathless climbing two flights of stairs?", "d": "Reduced aerobic capacity (VO2max)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT EVIDENCE] Cardiorespiratory fitness as a quantitative predictor of all-cause mortality and cardiovascular events in healthy men and women: a meta-analysis (JAMA, 2009)", "u": "https://doi.org/10.1001/jama.2009.681"}, {"id": "Q003", "c": "Physiological", "s": "Cardiovascular", "k": "Other Physiological", "q": "What is your resting heart rate?", "d": "Altered resting heart rate", "m": "Tier 3: Device Auto-Capture", "o": ["Below 70 bpm", "70 to 79 bpm", "80 to 89 bpm", "90 bpm or above"], "t": "Resting heart rate and all-cause and cardiovascular mortality in the general population: a meta-analysis (CMAJ, 2016)", "u": "https://doi.org/10.1503/cmaj.150535"}, {"id": "Q004", "c": "Physiological", "s": "Cardiovascular", "k": "Other Physiological", "q": "Do you feel dizzy on standing up quickly?", "d": "Impaired baroreflex", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Orthostatic hypotension and mortality risk: a meta-analysis of cohort studies (Heart, 2014)", "u": "https://heart.bmj.com/content/100/5/406"}, {"id": "Q005", "c": "Physiological", "s": "Respiratory", "k": "Other Physiological", "q": "Do you get breathless or wheezy walking on level ground?", "d": "Decreased FEV1 / lung elasticity", "m": "Tier 4: Diagnostic Report Extract", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT EVIDENCE] Cardiorespiratory fitness as a quantitative predictor of all-cause mortality... (JAMA, 2009)", "u": "https://doi.org/10.1001/jama.2009.681"}, {"id": "Q006", "c": "Physiological", "s": "Respiratory", "k": "Other Physiological", "q": "Do you have frequent chest infections or a persistent cough?", "d": "Weaker airway defence", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Chronic bronchitis and the risk of coronary heart disease and all-cause mortality: a meta-analysis (and related COPD mortality reviews)", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q007", "c": "Physiological", "s": "Musculoskeletal", "k": "Other Physiological", "q": "Do you have difficulty rising from a chair without using your hands?", "d": "Sarcopenia (muscle loss)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT EVIDENCE] Objectively measured physical capability levels and mortality: systematic review and meta-analysis (BMJ, 2010)", "u": "https://pubmed.ncbi.nlm.nih.gov/20829298/"}, {"id": "Q008", "c": "Physiological", "s": "Musculoskeletal", "k": "Other Physiological", "q": "Do you struggle to open jars or carry 5 kg of shopping?", "d": "Decreased grip strength", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT EVIDENCE] Objectively measured physical capability levels and mortality: systematic review and meta-analysis (BMJ, 2010)", "u": "https://pubmed.ncbi.nlm.nih.gov/20829298/"}, {"id": "Q009", "c": "Physiological", "s": "Musculoskeletal", "k": "Other Physiological", "q": "Have you lost height or had a fracture from a minor fall?", "d": "Decreased bone mineral density", "m": "Tier 1: Manual Input (Simple)", "o": ["No", "Height loss only", "One low-impact fracture", "Two or more fractures"], "t": "History of fracture and risk of mortality: a systematic review and meta-analysis of cohort studies", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q010", "c": "Physiological", "s": "Musculoskeletal", "k": "Other Physiological", "q": "Do you have joint pain or stiffness lasting over 30 minutes in the morning?", "d": "Cartilage thinning", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Morning stiffness / osteoarthritis and mortality risk – related systematic reviews on OA and mortality", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q011", "c": "Physiological", "s": "Musculoskeletal", "k": "Metabolic & Biomarkers", "q": "Do you find it hard to walk 1 km at a steady pace?", "d": "Slower gait speed", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Gait speed and survival in older adults (JAMA, 2011)", "u": "https://doi.org/10.1001/jama.2010.1923"}, {"id": "Q013", "c": "Physiological", "s": "Skin", "k": "Other Physiological", "q": "Is pinched skin on the back of your hand slow to flatten?", "d": "Decreased skin thickness / elasticity", "m": "Tier 1: Manual Input (Simple)", "o": ["No", "Yes"], "t": "[PROXY FOR BIOLOGICAL AGE] Skin aging markers and mortality – limited direct evidence; often used as proxy in biological age studies", "u": "https://www.nature.com/articles/s41591-019-0495-2"}, {"id": "Q014", "c": "Physiological", "s": "Skin", "k": "Other Physiological", "q": "Do minor cuts take more than 2 weeks to heal?", "d": "Delayed wound healing", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[PROXY] Delayed wound healing as marker of frailty / comorbidity burden and mortality risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q015", "c": "Physiological", "s": "Skin / Hair", "k": "Other Physiological", "q": "Is more than half of your hair grey, or is there marked thinning?", "d": "Hair greying and thinning", "m": "Tier 1: Manual Input (Simple)", "o": ["No", "Yes"], "t": "[PROXY FOR BIOLOGICAL AGE] Premature greying / hair thinning and mortality – weak direct evidence; used as biological age marker", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q016", "c": "Physiological", "s": "Eye", "k": "Other Physiological", "q": "Do you need glasses for close-up reading and not have them?", "d": "Presbyopia", "m": "Tier 1: Manual Input (Simple)", "o": ["No", "Yes"], "t": "[INDIRECT EVIDENCE] Association between vision impairment and mortality: a systematic review and meta-analysis", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q017", "c": "Physiological", "s": "Eye", "k": "Other Physiological", "q": "Do you notice cloudy vision or glare from lights?", "d": "Lens opacity", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT EVIDENCE] Association between vision impairment and mortality: a systematic review and meta-analysis", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q018", "c": "Physiological", "s": "Eye", "k": "Other Physiological", "q": "Do you have difficulty seeing or driving at night?", "d": "Reduced dark adaptation", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT EVIDENCE] Association between vision impairment and mortality: a systematic review and meta-analysis", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q019", "c": "Physiological", "s": "Ear", "k": "Other Physiological", "q": "Do you have difficulty following conversation in noisy places?", "d": "Presbycusis (hearing loss)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Associations of Hearing Loss and Dual Sensory Loss With Mortality: A Systematic Review, Meta-analysis, and Meta-regression (JAMA Otolaryngol, 2022)", "u": "https://doi.org/10.1001/jamaoto.2021.3767"}, {"id": "Q020", "c": "Physiological", "s": "Ear / Vestibular", "k": "Other Physiological", "q": "Do you get vertigo or unsteadiness?", "d": "Vestibular decline", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Vertigo / vestibular dysfunction and fall-related mortality risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q021", "c": "Physiological", "s": "Olfaction", "k": "Metabolic & Biomarkers", "q": "Do you often fail to notice smells others notice?", "d": "Decreased sense of smell", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Association of Olfactory Impairment With All-Cause Mortality: A Systematic Review and Meta-analysis (JAMA Otolaryngol, 2022)", "u": "https://doi.org/10.1001/jamaoto.2022.0263"}, {"id": "Q022", "c": "Physiological", "s": "Taste", "k": "Metabolic & Biomarkers", "q": "Does food often taste bland?", "d": "Decreased taste sensitivity", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[PROXY] Taste impairment as marker of frailty / nutritional risk and mortality", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q023", "c": "Physiological", "s": "Kidney", "k": "Metabolic & Biomarkers", "q": "Do you have foamy urine or wake 2+ times nightly to urinate?", "d": "Reduced glomerular filtration", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Nocturia / proteinuria markers and mortality – CKD-related meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q024", "c": "Physiological", "s": "Urinary", "k": "Metabolic & Biomarkers", "q": "Do you have urgency or leakage of urine?", "d": "Bladder function decline", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Urinary incontinence and mortality / institutionalization risk in older adults", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q025", "c": "Physiological", "s": "Gastrointestinal", "k": "Metabolic & Biomarkers", "q": "Do you have chronic constipation?", "d": "Reduced gut motility", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Association between constipation and risk of cardiovascular or all-cause mortality: a meta-analysis (2025)", "u": "https://pubmed.ncbi.nlm.nih.gov/40982729/"}, {"id": "Q026", "c": "Physiological", "s": "Gastrointestinal", "k": "Other Physiological", "q": "How much weight have you lost unintentionally in the past 6 months?", "d": "Anorexia of ageing", "m": "Tier 2: Manual Input (Detailed)", "o": ["None", "Under 3% of body weight", "3% to 5%", "More than 5%"], "t": "Observational Evidence for Unintentional Weight Loss in All-Cause Mortality and Major Cardiovascular Events: A Systematic Review and Meta-Analysis", "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6194006/"}, {"id": "Q027", "c": "Physiological", "s": "Oral", "k": "Other Physiological", "q": "Do you have missing teeth or difficulty chewing?", "d": "Tooth loss / chewing ability", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Tooth Loss is a Risk Factor for Cardiovascular Disease Mortality: A Systematic Review with Meta-analyses (J Endod, 2024)", "u": "https://www.sciencedirect.com/science/article/abs/pii/S0099239924003649"}, {"id": "Q028", "c": "Physiological", "s": "Endocrine", "k": "Other Physiological", "q": "Do you have low libido, hot flushes or low energy?", "d": "Decline in sex hormones", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Low libido / menopausal symptoms and cardiovascular / mortality risk – related reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q029", "c": "Physiological", "s": "Endocrine", "k": "Other Physiological", "q": "Have you gained central fat with reduced energy and strength?", "d": "Decline in GH / IGF-1", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT EVIDENCE] General and abdominal adiposity and risk of death in Europe (NEJM, 2008)", "u": "https://doi.org/10.1056/NEJMoa0801891"}, {"id": "Q030", "c": "Physiological", "s": "Endocrine", "k": "Other Physiological", "q": "What is your waist circumference?", "d": "Decreased insulin sensitivity", "m": "Tier 1: Manual Input (Simple)", "o": ["Below 80 cm (F) / 94 cm (M)", "80-87 cm (F) / 94-101 cm (M)", "88-99 cm (F) / 102-109 cm (M)", "100+ cm (F) / 110+ cm (M)"], "t": "General and abdominal adiposity and risk of death in Europe (NEJM, 2008)", "u": "https://doi.org/10.1056/NEJMoa0801891"}, {"id": "Q031", "c": "Physiological", "s": "Endocrine", "k": "Other Physiological", "q": "Do you have cold intolerance with persistent fatigue?", "d": "Thyroid function change", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Hypothyroid symptoms / cold intolerance and mortality – thyroid disease meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q032", "c": "Physiological", "s": "Immune", "k": "Other Physiological", "q": "How often do you get infections or recover slowly?", "d": "Immunosenescence", "m": "Tier 2: Manual Input (Detailed)", "o": ["Fewer than 2 per year", "2 to 3 per year", "4 to 5 per year", "More than 5 per year"], "t": "[INDIRECT] Recurrent infections as marker of immune senescence and mortality risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q034", "c": "Physiological", "s": "Sleep", "k": "Other Physiological", "q": "Do you wake 3+ times nightly or feel unrefreshed?", "d": "Reduced sleep efficiency", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Sleep fragmentation / unrefreshing sleep and mortality – related to sleep quality meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q035", "c": "Physiological", "s": "Sleep", "k": "Sleep", "q": "How many hours do you usually sleep?", "d": "Shortened sleep duration", "m": "Tier 3: Device Auto-Capture", "o": ["7 to 9 hours", "6 to 7 hours", "5 to 6 hours", "Under 5 hours or over 10 hours"], "t": "Sleep duration and all-cause mortality: a systematic review and meta-analysis of prospective studies (Sleep, 2010)", "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2864873/"}, {"id": "Q036", "c": "Physiological", "s": "Nervous system", "k": "Other Physiological", "q": "Do you have numbness or tingling in your feet or hands?", "d": "Slowed nerve conduction", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Peripheral neuropathy symptoms and mortality (diabetes / CKD related)", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q037", "c": "Physiological", "s": "Nervous system", "k": "Other Physiological", "q": "Do you notice slower reactions (e.g. near misses while driving)?", "d": "Slower reaction time", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Slowed reaction time / cognitive-motor slowing and mortality risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q038", "c": "Physiological", "s": "Nervous system", "k": "Other Physiological", "q": "Do you have hand tremor or difficulty with fine motor tasks?", "d": "Motor control decline", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "[INDIRECT] Tremor / fine motor impairment as early neurodegenerative marker and mortality", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q039", "c": "Physiological", "s": "Reproductive", "k": "Other Physiological", "q": "Did menopause occur before 45, or do you have erectile dysfunction?", "d": "Menopause / andropause timing", "m": "Tier 1: Manual Input (Simple)", "o": ["No", "Yes"], "t": "[PARTIAL MATCH] Association of age at onset of menopause and time since onset of menopause with cardiovascular outcomes... (JAMA Cardiol, 2016)", "u": "https://doi.org/10.1001/jamacardio.2016.2415"}, {"id": "Q040", "c": "Physiological", "s": "Body composition", "k": "Other Physiological", "q": "What is your BMI?", "d": "Increased visceral fat", "m": "Tier 2: Manual Input (Detailed)", "o": ["18.5 to 24.9", "25 to 29.9", "30 to 34.9", "35 or above, or below 18.5"], "t": "Body-mass index and all-cause mortality: individual-participant-data meta-analysis of 239 prospective studies in four continents (Lancet, 2016)", "u": "https://doi.org/10.1016/S0140-6736(16)30175-1"}, {"id": "Q101", "c": "Lifestyle: Physical activity", "s": "Whole body", "k": "Activity", "q": "How many minutes of moderate or vigorous exercise do you do per week?", "d": "Reduced aerobic capacity / sarcopenia (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["150 minutes or more", "75 to 149 minutes", "30 to 74 minutes", "Under 30 minutes"], "t": "Leisure time physical activity and mortality: a detailed pooled analysis of the dose-response relationship (JAMA Intern Med, 2015)", "u": "https://doi.org/10.1001/jamainternmed.2015.0533"}, {"id": "Q102", "c": "Lifestyle: Physical activity", "s": "Musculoskeletal", "k": "Activity", "q": "How often do you do strength training?", "d": "Sarcopenia (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["2 or more times per week", "About once a week", "Less than weekly", "Never"], "t": "Muscle-strengthening activities and mortality – systematic reviews and meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q103", "c": "Lifestyle: Physical activity", "s": "Whole body", "k": "Activity", "q": "How many steps do you take on a typical day?", "d": "Reduced gait speed / aerobic capacity (driver)", "m": "Tier 3: Device Auto-Capture", "o": ["8,000 or more", "6,000 to 7,999", "4,000 to 5,999", "Under 4,000"], "t": "Daily steps and mortality – large device-based cohort meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q104", "c": "Lifestyle: Physical activity", "s": "Whole body", "k": "Activity", "q": "How many hours a day do you sit (work, TV, travel)?", "d": "Insulin resistance / cardiovascular decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Under 4 hours", "4 to 6 hours", "6 to 8 hours", "8 hours or more"], "t": "Sedentary time and mortality – systematic reviews and meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q105", "c": "Lifestyle: Physical activity", "s": "Whole body", "k": "Activity", "q": "How often do you sit for over an hour without a break?", "d": "Insulin resistance (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Prolonged sitting without breaks and mortality risk – related sedentary behaviour literature", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q106", "c": "Lifestyle: Physical activity", "s": "Musculoskeletal", "k": "Activity", "q": "How often do you do stretching or mobility work?", "d": "Joint stiffness / reduced mobility (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Most days", "1 to 2 days per week", "Rarely", "Never"], "t": "Flexibility / mobility work – indirect via physical capability literature", "u": "https://pubmed.ncbi.nlm.nih.gov/20829298/"}, {"id": "Q107", "c": "Lifestyle: Physical activity", "s": "Musculoskeletal", "k": "Activity", "q": "How often do you practise balance (tai chi, yoga, single-leg stands)?", "d": "Reduced balance (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Balance training / tai chi and fall / mortality risk reduction", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q108", "c": "Lifestyle: Physical activity", "s": "Whole body", "k": "Activity", "q": "How often do you do active recreation (sport, dance, hiking, gardening)?", "d": "Reduced aerobic capacity (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Active recreation / leisure activity and mortality – physical activity meta-analyses", "u": "https://doi.org/10.1001/jamainternmed.2015.0533"}, {"id": "Q109", "c": "Lifestyle: Physical activity", "s": "Whole body", "k": "Activity", "q": "How often do you walk or cycle for transport?", "d": "Reduced aerobic capacity (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Active transport (walking/cycling) and mortality – systematic reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q110", "c": "Lifestyle: Physical activity", "s": "Whole body", "k": "Activity", "q": "How often do you take the stairs instead of a lift?", "d": "Sarcopenia (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Stair climbing and mortality / fitness – cohort studies", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q111", "c": "Lifestyle: Physical activity", "s": "Whole body", "k": "Activity", "q": "How long have you kept a regular exercise routine?", "d": "Reduced aerobic capacity (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Over 2 years", "1 to 2 years", "Under 1 year", "No regular routine"], "t": "Long-term exercise adherence and mortality benefit – physical activity literature", "u": "https://doi.org/10.1001/jamainternmed.2015.0533"}, {"id": "Q112", "c": "Lifestyle: Physical activity", "s": "Cardiovascular", "k": "Activity", "q": "How often do you do short high-intensity intervals (fast hills, stairs, cycling sprints)?", "d": "Reduced VO2max (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "High-intensity interval training / vigorous activity and mortality – dose-response analyses", "u": "https://doi.org/10.1001/jamainternmed.2015.0533"}, {"id": "Q113", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How many servings of fruit and vegetables do you eat per day?", "d": "Cardiovascular and cancer risk (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["5 or more", "3 to 4", "1 to 2", "Less than 1"], "t": "Fruit and vegetable intake and mortality – large meta-analyses (e.g. BMJ, Lancet Public Health)", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q114", "c": "Lifestyle: Nutrition", "s": "Gastrointestinal", "k": "Diet", "q": "How often do you eat whole grains (oats, brown rice, wholemeal bread)?", "d": "Reduced gut motility / metabolic decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Whole grain intake and mortality – systematic reviews and meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q115", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How often do you eat legumes, nuts or seeds?", "d": "Cardiovascular and metabolic decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Nuts, legumes, seeds and mortality – PREDIMED / large cohort meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q116", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How many servings of red meat do you eat per week?", "d": "Colorectal and cardiovascular risk (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["0 to 1", "2 to 3", "4 to 6", "Daily or more"], "t": "Red meat intake and mortality – systematic reviews (IARC / cohort data)", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q117", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How often do you eat processed meat (bacon, sausages, deli meats)?", "d": "Colorectal cancer / cardiovascular risk (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Rarely or never", "About weekly", "Few times a week", "Daily"], "t": "Processed meat and mortality / cancer risk – IARC and cohort meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q118", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "What share of your food is ultra-processed (packaged snacks, ready meals, soft drinks)?", "d": "Inflammation / obesity (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Under 20%", "20% to 40%", "40% to 60%", "Over 60%"], "t": "Ultra-processed food consumption and mortality – recent systematic reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q119", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How often do you drink sugary drinks (soda, juice, sweet coffee)?", "d": "Insulin resistance (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never or rarely", "About weekly", "Most days", "Several times a day"], "t": "Sugar-sweetened beverages and mortality – systematic reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q120", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How often do you eat sweets, pastries or desserts?", "d": "Insulin resistance (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Rarely or never", "About weekly", "Most days", "Several times a day"], "t": "Added sugar / sweets and mortality – related dietary pattern literature", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q121", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How often do you eat oily fish (salmon, sardines, mackerel)?", "d": "Cardiovascular and cognitive decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Twice a week or more", "About weekly", "About monthly", "Never"], "t": "Oily fish / omega-3 and mortality – systematic reviews and trials", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q122", "c": "Lifestyle: Nutrition", "s": "Cardiovascular", "k": "Diet", "q": "Do you add salt at the table or eat salty processed food?", "d": "Increased blood pressure (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Dietary sodium / salt and mortality / CVD – INTERSALT / meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q123", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How closely does your diet follow a Mediterranean-style pattern?", "d": "Cardiovascular and cognitive decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Closely", "Moderately", "Loosely", "Not at all"], "t": "Mediterranean diet and mortality – PREDIMED, large meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q124", "c": "Lifestyle: Nutrition", "s": "Musculoskeletal", "k": "Diet", "q": "Do you eat a good protein source (about 25-30 g) at each main meal?", "d": "Sarcopenia (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Always", "Usually", "Sometimes", "Never"], "t": "Protein intake distribution and muscle / mortality in older adults", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q125", "c": "Lifestyle: Nutrition", "s": "Kidney", "k": "Diet", "q": "Do you drink enough fluids (about 1.5-2 litres a day)?", "d": "Reduced kidney function (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Always", "Usually", "Sometimes", "Never"], "t": "Hydration status and mortality – limited direct; related to kidney / heat risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q126", "c": "Lifestyle: Nutrition", "s": "Metabolism", "k": "Diet", "q": "How often do you eat within 2 hours of bedtime?", "d": "Circadian disruption / insulin resistance (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Late-night eating / circadian nutrition and metabolic risk / mortality", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q127", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How often do you eat until uncomfortably full?", "d": "Obesity (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Overeating / energy density and obesity-related mortality", "u": "https://doi.org/10.1016/S0140-6736(16)30175-1"}, {"id": "Q128", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How often do you eat takeaway or fast food?", "d": "Obesity / cardiovascular risk (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Rarely or never", "1 to 2 times per week", "3 to 4 times per week", "5 or more times per week"], "t": "Fast food / takeaway frequency and mortality / cardiometabolic risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q129", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How much weight have you gained over the past 5 years?", "d": "Increased visceral fat (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Stable or lost intentionally", "2 to 5 kg", "5 to 10 kg", "Over 10 kg"], "t": "Weight gain over time and mortality – trajectory studies", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q130", "c": "Lifestyle: Nutrition", "s": "Whole body", "k": "Diet", "q": "How often do you cook meals from fresh ingredients?", "d": "Metabolic decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Home cooking / fresh food preparation and diet quality / mortality", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q131", "c": "Lifestyle: Nutrition", "s": "Cardiovascular", "k": "Diet", "q": "Is olive oil or another unsaturated oil your main cooking fat?", "d": "Atherosclerosis (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Always", "Usually", "Sometimes", "Never"], "t": "Olive oil / unsaturated fats and mortality – PREDIMED and meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q132", "c": "Lifestyle: Nutrition", "s": "Metabolism", "k": "Diet", "q": "Do you eat meals at regular, consistent times?", "d": "Circadian disruption (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Always", "Usually", "Sometimes", "Never"], "t": "Meal timing regularity and metabolic / mortality risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q133", "c": "Lifestyle: Substance use", "s": "Respiratory / Cardiovascular", "k": "Substance", "q": "What is your smoking status?", "d": "COPD, atherosclerosis, cancer (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never smoked", "Quit over 10 years ago", "Quit under 10 years ago", "Current smoker, under 10 a day", "Current smoker, 10 or more a day"], "t": "21st-Century Hazards of Smoking and Benefits of Cessation in the United States (NEJM, 2013)", "u": "https://doi.org/10.1056/NEJMsa1211128"}, {"id": "Q134", "c": "Lifestyle: Substance use", "s": "Respiratory", "k": "Substance", "q": "Do you vape or use e-cigarettes?", "d": "Lung function decline (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Former", "Occasionally", "Daily"], "t": "E-cigarette / vaping and mortality – emerging cohort data (still limited long-term)", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q135", "c": "Lifestyle: Substance use", "s": "Oral / Cancer", "k": "Substance", "q": "Do you use chewing tobacco, snuff or betel?", "d": "Oral and oesophageal cancer (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Former", "Occasionally", "Daily"], "t": "Smokeless tobacco / betel and mortality / cancer risk – WHO / IARC reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q136", "c": "Lifestyle: Substance use", "s": "Respiratory", "k": "Substance", "q": "How often are you exposed to others' tobacco smoke?", "d": "Lung and cardiovascular risk (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Second-hand smoke exposure and mortality – meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q137", "c": "Lifestyle: Substance use", "s": "Liver / Brain", "k": "Substance", "q": "How many alcoholic drinks do you have per week?", "d": "Liver disease, cancer, brain atrophy (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["None", "1 to 7", "8 to 14", "15 to 28", "29 or more"], "t": "Risk thresholds for alcohol consumption: combined analysis of individual-participant data for 599 912 current drinkers in 83 prospective studies (Lancet, 2018)", "u": "https://doi.org/10.1016/S0140-6736(18)30134-X"}, {"id": "Q138", "c": "Lifestyle: Substance use", "s": "Liver / Brain", "k": "Substance", "q": "How often do you drink 5+ drinks in one session?", "d": "Binge-related damage (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Less than monthly", "Monthly", "Weekly or more"], "t": "Binge drinking / heavy episodic drinking and mortality – alcohol meta-analyses", "u": "https://doi.org/10.1016/S0140-6736(18)30134-X"}, {"id": "Q139", "c": "Lifestyle: Substance use", "s": "Liver / Brain", "k": "Substance", "q": "Have you felt you should cut down, or has anyone been concerned about your drinking?", "d": "Alcohol dependence (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["No", "Once in the past", "Within the past year", "Repeatedly or ongoing"], "t": "Alcohol use disorder concern and mortality – related to quantity/pattern literature", "u": "https://doi.org/10.1016/S0140-6736(18)30134-X"}, {"id": "Q140", "c": "Lifestyle: Substance use", "s": "Liver", "k": "Substance", "q": "How many alcohol-free days do you have per week?", "d": "Liver and cardiovascular risk (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["7 (no alcohol)", "4 to 6", "1 to 3", "None"], "t": "Alcohol-free days / drinking pattern and mortality – related to total consumption meta-analyses", "u": "https://doi.org/10.1016/S0140-6736(18)30134-X"}, {"id": "Q141", "c": "Lifestyle: Substance use", "s": "Brain", "k": "Substance", "q": "How often do you use cannabis?", "d": "Cognitive decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Occasionally", "Weekly", "Daily"], "t": "Cannabis use and mortality – emerging systematic reviews (mixed findings)", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q142", "c": "Lifestyle: Substance use", "s": "Whole body", "k": "Substance", "q": "Do you use recreational drugs such as stimulants or opioids?", "d": "Cardiovascular and neurological damage (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Past use only", "Occasionally", "Regularly"], "t": "Recreational drug use and mortality – opioid / stimulant specific literature", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q143", "c": "Lifestyle: Substance use", "s": "Brain", "k": "Substance", "q": "How often do you use sleeping pills, benzodiazepines or sedatives?", "d": "Cognitive decline / falls (driver)", "m": "Tier 3: Device Auto-Capture", "o": ["Never", "Rarely", "Few times a week", "Nightly"], "t": "Benzodiazepine / sedative use and mortality – systematic reviews in older adults", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q144", "c": "Lifestyle: Substance use", "s": "Cardiovascular", "k": "Substance", "q": "How many energy drinks or strong coffees do you have per day?", "d": "Hypertension / sleep disruption (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["0 to 3 coffees, no energy drinks", "4 to 5", "6 or more, or 1+ energy drinks", "Several energy drinks"], "t": "High caffeine / energy drink intake and cardiovascular / mortality risk – limited evidence", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q145", "c": "Lifestyle: Substance use", "s": "Kidney / GI", "k": "Substance", "q": "How often do you use anti-inflammatory painkillers (e.g. ibuprofen)?", "d": "Kidney and GI damage (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Rarely or never", "A few times a month", "Weekly", "Daily"], "t": "NSAIDs / chronic analgesic use and mortality / GI / renal risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q146", "c": "Lifestyle: Sleep & circadian", "s": "Sleep", "k": "Sleep", "q": "How much does your bedtime vary from day to day?", "d": "Sleep fragmentation (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Within 30 minutes", "About 1 hour", "About 2 hours", "More than 2 hours"], "t": "Sleep regularity / bedtime variability and mortality – emerging circadian literature", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q147", "c": "Lifestyle: Sleep & circadian", "s": "Respiratory / Cardiovascular", "k": "Sleep", "q": "Do you snore loudly or has anyone seen you stop breathing in sleep?", "d": "Sleep apnoea (driver)", "m": "Tier 3: Device Auto-Capture", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Obstructive sleep apnoea / snoring and mortality – systematic reviews and CPAP trials", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q148", "c": "Lifestyle: Sleep & circadian", "s": "Sleep", "k": "Sleep", "q": "Do you feel sleepy during the day?", "d": "Sleep disorders (driver)", "m": "Tier 3: Device Auto-Capture", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Daytime sleepiness and mortality – related to OSA / sleep quality", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q149", "c": "Lifestyle: Sleep & circadian", "s": "Sleep", "k": "Sleep", "q": "Does it take you more than 30 minutes to fall asleep?", "d": "Insomnia (driver)", "m": "Tier 3: Device Auto-Capture", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Insomnia / sleep onset difficulty and mortality – meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q150", "c": "Lifestyle: Sleep & circadian", "s": "Sleep", "k": "Sleep", "q": "Do you use phones, TV or screens in bed?", "d": "Circadian disruption (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Screen use in bed / blue light and sleep / circadian disruption – related literature", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q151", "c": "Lifestyle: Sleep & circadian", "s": "Whole body", "k": "Sleep", "q": "Do you work night or rotating shifts?", "d": "Circadian disruption (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Occasionally", "Regularly", "Permanent nights"], "t": "Shift work and mortality / cancer risk – IARC and cohort meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q152", "c": "Lifestyle: Sleep & circadian", "s": "Sleep", "k": "Sleep", "q": "Do you get 20+ minutes of outdoor daylight in the morning?", "d": "Circadian misalignment (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Morning light exposure and circadian / mood / mortality-related pathways", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q153", "c": "Lifestyle: Sleep & circadian", "s": "Sleep", "k": "Sleep", "q": "Do you drink caffeine after 2 pm or alcohol close to bedtime?", "d": "Sleep fragmentation (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Caffeine / alcohol near bedtime and sleep quality / next-day performance", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q154", "c": "Lifestyle: Sleep & circadian", "s": "Sleep", "k": "Sleep", "q": "Do you nap for over an hour during the day?", "d": "Sleep disorders (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Long daytime naps and mortality – U-shaped associations in meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q155", "c": "Lifestyle: Sleep & circadian", "s": "Sleep", "k": "Sleep", "q": "Is your bedroom dark, quiet and cool at night?", "d": "Sleep disruption (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Always", "Usually", "Sometimes", "Never"], "t": "Sleep environment (dark, quiet, cool) and sleep quality – related to sleep duration literature", "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2864873/"}, {"id": "Q156", "c": "Lifestyle: Mind & social", "s": "Brain", "k": "Social / Mind", "q": "How often do you practise relaxation, meditation or breathing exercises?", "d": "Stress response / cognitive decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Meditation / mindfulness and mortality / stress reduction – limited direct mortality data; strong intermediate benefits", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q157", "c": "Lifestyle: Mind & social", "s": "Brain", "k": "Social / Mind", "q": "How often do you learn new skills or take on mentally challenging hobbies?", "d": "Cognitive decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Cognitive engagement / lifelong learning and dementia / mortality risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q158", "c": "Lifestyle: Mind & social", "s": "Brain", "k": "Social / Mind", "q": "How often do you read, do puzzles or engage in stimulating mental activity?", "d": "Cognitive decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Reading / cognitive activity and mortality / dementia risk – cohort studies", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q159", "c": "Lifestyle: Mind & social", "s": "Brain", "k": "Social / Mind", "q": "Do you generally expect good things to happen?", "d": "Psychological resilience (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Always", "Usually", "Sometimes", "Never"], "t": "Optimism / positive expectations and mortality – systematic reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q160", "c": "Lifestyle: Mind & social", "s": "Cardiovascular", "k": "Social / Mind", "q": "How often do you feel your job is highly stressful with little control?", "d": "Chronic stress (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Job strain / low control and mortality – Karasek model meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q161", "c": "Lifestyle: Mind & social", "s": "Cardiovascular", "k": "Social / Mind", "q": "How many hours do you work per week?", "d": "Chronic stress (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Under 40", "40 to 48", "49 to 55", "Over 55"], "t": "Long working hours and mortality – systematic reviews (WHO/ILO)", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q162", "c": "Lifestyle: Mind & social", "s": "Brain", "k": "Social / Mind", "q": "How often do you volunteer or take part in community activities?", "d": "Loneliness / cognitive decline (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Volunteering / community engagement and mortality – systematic reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q163", "c": "Lifestyle: Mind & social", "s": "Brain", "k": "Social / Mind", "q": "Do you have someone you can rely on in a crisis?", "d": "Social isolation (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Yes, several people", "Yes, one person", "Not sure", "No one"], "t": "Social support / having someone to rely on and mortality (PLoS Med, 2010)", "u": "https://doi.org/10.1371/journal.pmed.1000316"}, {"id": "Q164", "c": "Lifestyle: Mind & social", "s": "Cardiovascular", "k": "Social / Mind", "q": "How often do you feel angry, hostile or irritable?", "d": "Chronic stress / hostility (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Hostility / anger and cardiovascular / mortality risk – classic literature", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q165", "c": "Lifestyle: Mind & social", "s": "Brain", "k": "Social / Mind", "q": "How often do you spend time in nature or green space?", "d": "Chronic stress (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Daily or almost daily", "Few times a week", "About weekly", "Rarely or never"], "t": "Nature exposure / green space and mortality – systematic reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q166", "c": "Lifestyle: Mind & social", "s": "Brain", "k": "Social / Mind", "q": "How much recreational screen or social-media time do you have per day?", "d": "Depression and sleep disruption (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Under 2 hours", "2 to 4 hours", "4 to 6 hours", "Over 6 hours"], "t": "Screen time / social media and mental health / mortality-related pathways – emerging data", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q167", "c": "Environment & preventive care", "s": "Respiratory / Cardiovascular", "k": "Preventive & Environment", "q": "How would you rate outdoor air pollution where you live or work?", "d": "Lung and cardiovascular damage (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Low", "Moderate", "High", "Very high"], "t": "Air pollution (PM2.5) and mortality – large global burden and cohort meta-analyses", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q168", "c": "Environment & preventive care", "s": "Respiratory", "k": "Preventive & Environment", "q": "Do you cook or heat with solid fuel or smoky indoor sources?", "d": "COPD and cardiovascular risk (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["No", "Occasionally", "Regularly with ventilation", "Regularly without ventilation"], "t": "Household air pollution / solid fuel and mortality – WHO / GBD estimates", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q169", "c": "Environment & preventive care", "s": "Respiratory / Cancer", "k": "Preventive & Environment", "q": "Do you work with dust, chemicals, asbestos or other hazards?", "d": "Occupational lung/cancer risk (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Never", "In the past only", "Occasionally", "Regularly"], "t": "Occupational exposures (dust, chemicals, asbestos) and mortality – occupational epidemiology", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q170", "c": "Environment & preventive care", "s": "Ear", "k": "Preventive & Environment", "q": "How often are you exposed to loud noise?", "d": "Presbycusis (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Noise exposure and cardiovascular / mortality risk – systematic reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q172", "c": "Environment & preventive care", "s": "Skin", "k": "Preventive & Environment", "q": "Do you use sunscreen or protective clothing when outdoors?", "d": "Skin ageing (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Always", "Usually", "Sometimes", "Never"], "t": "Sunscreen / sun protection and skin cancer risk reduction", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q173", "c": "Environment & preventive care", "s": "Whole body", "k": "Preventive & Environment", "q": "Do you wear a seatbelt when travelling in a car?", "d": "Injury (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Always", "Usually", "Sometimes", "Never"], "t": "Seatbelt use and injury / mortality risk – classic traffic safety data", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q174", "c": "Environment & preventive care", "s": "Whole body", "k": "Preventive & Environment", "q": "How often do you drive over the speed limit or use a phone while driving?", "d": "Injury (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Never", "Rarely (a few times a year)", "Sometimes (about monthly)", "Often (weekly or more)"], "t": "Speeding / distracted driving and crash mortality risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q175", "c": "Environment & preventive care", "s": "Head / Injury", "k": "Preventive & Environment", "q": "Do you wear a helmet when cycling or riding a motorbike?", "d": "Injury (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Not applicable", "Always", "Usually", "Sometimes", "Never"], "t": "Helmet use and head injury / mortality in cycling / motorcycling", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q176", "c": "Environment & preventive care", "s": "Musculoskeletal", "k": "Preventive & Environment", "q": "How many fall hazards are in your home (loose rugs, poor lighting, clutter)?", "d": "Fall-related fractures (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["None", "One", "Two to three", "Four or more"], "t": "Home fall hazards and fall-related mortality / injury", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q182", "c": "Environment & preventive care", "s": "Eye", "k": "Preventive & Environment", "q": "When was your last eye examination?", "d": "Glaucoma / macular degeneration detection (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Within the past 2 years", "2 to 5 years ago", "More than 5 years ago", "Never"], "t": "Eye examination frequency and vision preservation / accident risk", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q183", "c": "Environment & preventive care", "s": "Whole body", "k": "Preventive & Environment", "q": "Do you take prescribed medicines as directed?", "d": "Treatment effectiveness (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["No prescribed medicines", "Always", "Usually", "Sometimes", "Rarely or never"], "t": "Medication adherence and mortality – large observational and trial data", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q184", "c": "Environment & preventive care", "s": "Whole body", "k": "Preventive & Environment", "q": "How many regular prescription medicines do you take?", "d": "Adverse drug effects / falls (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["0 to 2", "3 to 4", "5 to 9", "10 or more"], "t": "Polypharmacy and mortality / adverse events in older adults – systematic reviews", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q185", "c": "Environment & preventive care", "s": "Whole body", "k": "Preventive & Environment", "q": "Do you have a regular doctor and an annual health review?", "d": "Care continuity (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Yes", "Seen but irregularly", "Only when ill", "No regular doctor"], "t": "Regular primary care / annual review and mortality – continuity of care literature", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q186", "c": "Environment & preventive care", "s": "Liver / Immune", "k": "Preventive & Environment", "q": "Have you been screened for hepatitis B/C and HIV where recommended?", "d": "Chronic viral infection (driver)", "m": "Tier 1: Manual Input (Simple)", "o": ["Yes, screened", "Not recommended for me", "Not sure", "No"], "t": "Hepatitis B/C and HIV screening / treatment and mortality reduction – antiviral trial data", "u": "https://pubmed.ncbi.nlm.nih.gov/"}, {"id": "Q200", "c": "Lifestyle: Mind & social", "s": "Brain", "k": "Social / Mind", "q": "Do you feel in control of your health choices and daily routines?", "d": "Chronic stress / self-efficacy (driver)", "m": "Tier 2: Manual Input (Detailed)", "o": ["Always", "Usually", "Sometimes", "Never"], "t": "Perceived control / self-efficacy over health and mortality / health behaviour pathways", "u": "https://pubmed.ncbi.nlm.nih.gov/"}]};
+const cats=DATA.cats, qs=DATA.qs, KEY='yc_recurring_answers_v1';
+let ans={}, cur=0;
+try{ans=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){ans={}}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const safeUrl=u=>/^https?:\/\//i.test(u)?u:'';
+const byCat=cats.map(c=>qs.filter(q=>q.c===c));
+const answeredIn=i=>byCat[i].filter(q=>ans[q.id]).length;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}}
+function renderTabs(){
+  $('tabs').innerHTML=cats.map((c,i)=>{const a=answeredIn(i),t=byCat[i].length;
+    return `<button type="button" role="tab" class="tab${a===t?' done':''}" aria-selected="${i===cur}" data-i="${i}">${esc(c)}<span class="n">${a}/${t}</span></button>`}).join('');
+}
+function renderOverall(){
+  const a=Object.keys(ans).filter(k=>ans[k]).length;
+  $('ovCount').textContent=a+' of '+qs.length+' answered';
+  $('ovPct').textContent=Math.round(a/qs.length*100)+'%';
+  $('barFill').style.width=(a/qs.length*100)+'%';
+  $('bar').setAttribute('aria-valuenow',a);
+}
+function renderPanel(){
+  const list=byCat[cur];
+  $('panel').innerHTML=`<div class="cat-head"><h2>${esc(cats[cur])}</h2><p>Category ${cur+1} of ${cats.length} · ${list.length} questions</p></div>`+
+  list.map((q,n)=>{
+    const opts=q.o.map((t,k)=>`<option value="${k+1}"${ans[q.id]==k+1?' selected':''}>${esc(t)}</option>`).join('');
+    const u=safeUrl(q.u);
+    const ref=q.t?(u?`<span class="refwrap"><span class="refpre">Refer:</span> <a class="ref" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(q.t)}</a></span>`:`<span class="refl"><span class="refpre">Refer:</span> ${esc(q.t)}</span>`):'';
+    return `<div class="q-item"><div class="tags"><span class="tag sys">${esc(q.s)}</span><span class="tag clu">${esc(q.k)}</span></div>
+<div class="q-text">${n+1}. ${esc(q.q)}</div><div class="daa">${esc(q.d)}<br>Input mode: ${esc(q.m)}</div>
+<select data-id="${q.id}" aria-label="${esc(q.q)}" class="${ans[q.id]?'has':''}"><option value="">Select an answer</option>${opts}</select>${ref}</div>`}).join('')+
+  `<div class="form-actions"><button type="button" class="btn btn-secondary" id="prev"${cur===0?' disabled':''}>← Previous</button>
+<button type="button" class="btn btn-primary" id="next">${cur===cats.length-1?'Save Responses ✓':'Next: '+esc(cats[cur+1])+' →'}</button></div>`;
+}
+function go(i){cur=Math.max(0,Math.min(cats.length-1,i));renderTabs();renderPanel();
+  const t=document.querySelector('.tab[aria-selected=true]');if(t)t.scrollIntoView({inline:'center',block:'nearest'});
+  window.scrollTo({top:$('tabs').offsetTop-8,behavior:'smooth'});}
+function submitAssessment(){
+  const left=qs.length-Object.keys(ans).filter(k=>ans[k]).length;
+  if(left&&!confirm(left+' question(s) are still unanswered. Save anyway?'))return;
+  alert('Your responses have been saved on this device.');
+}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)go(+b.dataset.i)});
+$('panel').addEventListener('change',e=>{const s=e.target.closest('select[data-id]');if(!s)return;
+  if(s.value)ans[s.dataset.id]=+s.value;else delete ans[s.dataset.id];
+  s.classList.toggle('has',!!s.value);save();renderOverall();renderTabs();});
+$('panel').addEventListener('click',e=>{
+  if(e.target.id==='prev')go(cur-1);
+  if(e.target.id==='next'){cur===cats.length-1?submitAssessment():go(cur+1)}});
+renderOverall();renderTabs();renderPanel();
 </script>
 </body>
 </html>

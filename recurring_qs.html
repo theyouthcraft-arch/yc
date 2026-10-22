@@ -102,7 +102,7 @@ const qmap={};qs.forEach(q=>qmap[q.id]=q);
 function info(q){const v=ans[q.id];if(!v||!q.o[v-1])return '';const k=v-1;
   if(/^not tested/i.test(q.o[k]))return '<div class="nt"><b>Get this tested.</b> Without a result we cannot tell how many Life-days you could reclaim here, so please take the relevant test and update your answer.</div>';
   const rc=q.r[k];if(!rc)return '';
-  return `<div class="reclaim"><span class="lbl">Reclaim Lifedays to the tune of</span><b class="num">${fmt(q.l[k])}</b><span class="u">Life-days</span><span class="sep">|</span><span class="lbl">Reclaim upto</span><b class="num">${fmt(rc)}</b><span class="u">Life-days</span></div>`+(q.a?`<div class="mission"><b>Mission:</b> ${esc(q.a)}</div>`:'');}
+  return `<div class="reclaim"><span class="lbl">Potential Life Days Lost</span><b class="num">${fmt(q.l[k])}</b><span class="u">Life-days</span><span class="sep">|</span><span class="lbl">Reclaim upto</span><b class="num">${fmt(rc)}</b><span class="u">Life-days</span></div>`+(q.a?`<div class="mission"><b>Mission:</b> ${esc(q.a)}</div>`:'');}
 function renderTotal(){let n=0,t=0;qs.forEach(q=>{const v=ans[q.id];if(v&&q.r[v-1]){n++;t+=q.r[v-1]}});
   $('total').innerHTML=n?`You can reclaim a total of <b>${fmt(Math.round(t))} Life-days (${(t/365.25).toFixed(2)} years)</b>, just by taking remedial action.`:'Answer the questions below to see how many Life-days you can reclaim by taking remedial action.';}
 function renderTabs(){

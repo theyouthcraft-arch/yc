@@ -3,145 +3,3459 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Biological Age Calculator | YouthCraft</title>
-<meta name="description" content="Calculate and explore your biological age using YouthCraft's science-informed scoring tools, habit metrics, and personalized wellness models.">
+<title>Biological Age Dashboard | YouthCraft</title>
+<meta name="description" content="View your personalized Biological Age calculations, Year Deltas, and domain-by-domain health insights across all 107 assessment questions.">
 <link rel="stylesheet" href="styles.css">
 <style>
 :root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb;--yc-danger:#c0392b;--yc-success:#27ae60}
-*{box-sizing:border-box}body{margin:0;background:var(--yc-paper);color:#243b33;font-family:inherit}.wrap{max-width:1160px;margin:auto;padding:0 22px}.about-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:82px 0 68px;border-bottom:1px solid var(--yc-line)}.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}.about-hero h1{font-size:clamp(2.7rem,6vw,5rem);line-height:1.01;max-width:850px;color:var(--yc-ink);margin:16px 0 20px;letter-spacing:-.055em}.about-hero h1 span{color:var(--yc-green)}.about-hero p{font-size:1.16rem;line-height:1.8;max-width:780px;color:#466157;margin:0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:999px;padding:13px 20px;font-weight:800;background:var(--yc-green);color:white;border:1px solid var(--yc-green);transition:transform .18s,box-shadow .18s;cursor:pointer;font-family:inherit;font-size:1rem}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #183b321a}.btn.alt{background:white;color:var(--yc-green);border-color:#bfd6c9}.content{padding-top:42px;padding-bottom:72px}.calc-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-bottom:44px}.calc-card,.results-card{background:white;border:1px solid var(--yc-line);border-radius:22px;padding:32px;box-shadow:0 8px 24px rgba(24,59,50,.035)}.calc-card h2,.results-card h2{color:var(--yc-ink);font-size:clamp(1.5rem,2.5vw,2rem);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px}.calc-card p{color:var(--yc-muted);line-height:1.75;margin:0 0 24px}.form-group{margin-bottom:20px}.form-group label{display:block;margin-bottom:8px;font-weight:750;font-size:.92rem;color:var(--yc-ink)}.form-group input,.form-group select{width:100%;padding:12px 14px;border:1px solid var(--yc-line);border-radius:12px;font-size:.98rem;background:var(--yc-paper);color:var(--yc-ink);font-family:inherit;transition:border-color .18s,box-shadow .18s}.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%20%235b7068' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer}.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--yc-green);box-shadow:0 0 0 3px rgba(23,107,85,.12);background:white}.results-card{background:linear-gradient(145deg,#183b32,#245e4d);color:white;display:flex;flex-direction:column;justify-content:space-between}.results-card h2{color:white;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:14px;margin-bottom:24px}.stat-box{margin-bottom:24px}.stat-box .label{font-size:.78rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase;color:#d5e9dd;margin-bottom:6px}.stat-box .val{font-size:clamp(2.5rem,4vw,3.5rem);font-weight:850;line-height:1;color:white;letter-spacing:-.03em}.stat-box .sub{font-size:.92rem;color:#d1e2d8;margin-top:8px;line-height:1.5}.results-card .btn{width:100%;background:white;color:var(--yc-ink);border-color:white;margin-top:16px}.closing{margin-top:44px;background:linear-gradient(120deg,#183b32,#24644f);border-radius:24px;padding:34px;color:white;display:flex;align-items:center;justify-content:space-between;gap:24px}.closing h2{font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.15;margin:0 0 10px;letter-spacing:-.03em}.closing p{margin:0;color:#d4e4dc;line-height:1.65;max-width:650px}.closing .btn{background:white;color:var(--yc-ink);border-color:white;flex-shrink:0}.note{font-size:.85rem;color:#6b7d73;line-height:1.6;margin-top:22px}.btn:focus-visible{outline:3px solid #e3b45e;outline-offset:3px}
-@media(max-width:850px){.calc-grid{grid-template-columns:1fr}.closing{align-items:flex-start;flex-direction:column}}
-@media(max-width:560px){.about-hero{padding:54px 0 45px}.calc-card,.results-card{padding:22px}.content{padding-top:28px}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--yc-paper);color:#243b33}
+.wrap{max-width:1160px;margin:auto;padding:0 16px}
+
+/* Page Hero Header */
+.dashboard-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:36px 0 24px;border-bottom:1px solid var(--yc-line)}
+.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
+.dashboard-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;color:var(--yc-ink);margin:8px 0;letter-spacing:-.04em}
+.dashboard-hero p{font-size:.98rem;line-height:1.5;color:#466157;margin:0;max-width:760px}
+
+.content{padding-top:24px;padding-bottom:60px}
+.dashboard-container{max-width:920px;margin:0 auto}
+
+/* Top Summary Cards Banner (Grid) */
+.summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:20px}
+.metric-card{background:white;border:1px solid var(--yc-line);border-radius:16px;padding:16px 12px;box-shadow:0 4px 16px rgba(24,59,50,.03);text-align:center;position:relative;overflow:hidden}
+.metric-card .icon-tile{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:var(--yc-mint);font-size:1.1rem;margin:0 auto 8px}
+.metric-card .label{font-size:.75rem;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:var(--yc-muted);margin-bottom:4px}
+.metric-card .value{font-size:1.6rem;font-weight:850;color:var(--yc-ink);line-height:1.1;letter-spacing:-.02em}
+.metric-card .sub-label{font-size:.78rem;color:var(--yc-muted);margin-top:4px;font-weight:600}
+
+/* Risk Badge Styling */
+.badge-risk-high{background:#fbeae8;color:var(--yc-danger);border:1px solid #f5b7b1;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:850;display:inline-block;margin-top:4px}
+
+/* Impact Breakdown Sub-banner */
+.impact-summary-bar{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.impact-card{background:white;border:1px solid var(--yc-line);border-radius:14px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(24,59,50,.02)}
+.impact-card.pos{border-left:5px solid var(--yc-success)}
+.impact-card.neg{border-left:5px solid var(--yc-danger)}
+.impact-info .title{font-size:.75rem;font-weight:850;letter-spacing:.05em;text-transform:uppercase;color:var(--yc-muted)}
+.impact-info .count{font-size:.95rem;font-weight:800;color:var(--yc-ink);margin-top:2px}
+.impact-value{font-size:1.3rem;font-weight:850}
+.impact-card.pos .impact-value{color:var(--yc-success)}
+.impact-card.neg .impact-value{color:var(--yc-danger)}
+
+/* Filter Tabs */
+.filter-tabs-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px;background:white;padding:6px 10px;border-radius:999px;border:1px solid var(--yc-line)}
+.tab-group{display:flex;gap:4px;width:100%;max-width:480px}
+.tab-btn{flex:1;background:transparent;border:none;padding:8px 12px;border-radius:999px;font-size:.8rem;font-weight:800;color:var(--yc-muted);cursor:pointer;transition:all .18s ease;text-align:center}
+.tab-btn:hover{color:var(--yc-ink)}
+.tab-btn.active{background:var(--yc-ink);color:white}
+.tab-btn.active-positive{background:var(--yc-green);color:white}
+.tab-btn.active-negative{background:var(--yc-danger);color:white}
+.tab-info-text{font-size:.8rem;color:var(--yc-muted);font-weight:600;padding-left:8px}
+
+/* Domain Block */
+.domain-block{background:white;border:1px solid var(--yc-line);border-radius:20px;padding:20px 16px;box-shadow:0 4px 16px rgba(24,59,50,.025);margin-bottom:20px}
+.domain-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--yc-mint);padding-bottom:10px;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.domain-header h2{font-size:1.2rem;color:var(--yc-ink);margin:0;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.domain-header .domain-badge{font-size:.75rem;font-weight:800;background:var(--yc-paper);border:1px solid var(--yc-line);padding:3px 8px;border-radius:999px;color:var(--yc-muted)}
+
+/* CARDS LAYOUT FOR MOBILE-FIRST DESIGN */
+.cards-list{display:flex;flex-direction:column;gap:12px}
+.question-card{background:var(--yc-paper);border:1px solid var(--yc-line);border-radius:14px;padding:14px 16px;position:relative;transition:transform .15s ease,box-shadow .15s ease}
+.question-card:hover{border-color:var(--yc-green);box-shadow:0 4px 14px rgba(23,107,85,.06)}
+
+.card-top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.card-title-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.q-code{font-weight:850;color:var(--yc-green);font-size:.82rem;background:var(--yc-mint);padding:2px 6px;border-radius:4px;display:inline-block}
+.q-title{font-weight:750;color:var(--yc-ink);font-size:.95rem}
+
+/* Year Delta Color Badges */
+.delta-pill{font-weight:850;padding:3px 10px;border-radius:999px;font-size:.82rem;white-space:nowrap;display:inline-block}
+.delta-positive{background:#e8f8f5;color:var(--yc-success);border:1px solid #a3e4d7}
+.delta-negative{background:#fadbd8;color:var(--yc-danger);border:1px solid #f5b7b1}
+.delta-neutral{background:white;color:var(--yc-muted);border:1px solid var(--yc-line)}
+
+.card-body-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.85rem;color:var(--yc-muted);margin-bottom:6px}
+.response-tag{display:inline-block;background:white;border:1px solid var(--yc-line);padding:3px 8px;border-radius:6px;font-weight:700;color:var(--yc-ink)}
+.matched-key{font-size:.8rem;color:var(--yc-muted);font-family:monospace}
+
+/* Medical Trigger Red Alert Banner */
+.card-trigger-alert{background:var(--yc-danger);color:white;padding:8px 12px;border-radius:8px;font-size:.8rem;font-weight:800;margin-top:10px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 6px rgba(192,57,43,.2)}
+.card-trigger-alert .alert-icon{font-size:1rem}
+
+/* EARN LIFE DAYS - CTA CONTAINER */
+.earn-cta-box{margin-top:10px;background:#fffaf0;border:1px dashed var(--yc-gold);border-radius:10px;padding:10px 12px}
+.earn-cta-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.earn-cta-title{font-size:.78rem;font-weight:850;letter-spacing:.05em;text-transform:uppercase;color:#8c5d18;display:flex;align-items:center;gap:5px}
+.earn-cta-badge{background:#fdf2e9;color:#b06100;border:1px solid #f5cba7;font-size:.75rem;font-weight:800;padding:2px 8px;border-radius:999px}
+
+.options-ladder{display:flex;flex-direction:column;gap:4px;margin-top:6px;border-top:1px solid #f2e3c6;padding-top:6px}
+.ladder-item{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;background:white;padding:4px 8px;border-radius:6px;border:1px solid #f5e5c9}
+.ladder-item .opt-text{font-weight:700;color:var(--yc-ink)}
+.ladder-item .opt-gain{font-weight:850;color:var(--yc-success)}
+
+/* Reference URL Link Footer inside Card */
+.card-ref-footer{margin-top:10px;padding-top:8px;border-top:1px solid var(--yc-line);display:flex;justify-content:flex-end}
+.ref-link{font-size:.78rem;font-weight:700;color:var(--yc-green);text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:color .15s ease}
+.ref-link:hover{color:var(--yc-ink);text-decoration:underline}
+
+/* Computed Final Result Card */
+.final-results-card{background:linear-gradient(135deg,#183b32,#24644f);border-radius:20px;padding:24px 20px;color:white;margin-top:28px;box-shadow:0 8px 24px rgba(24,59,50,.15)}
+.final-results-header{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:12px;margin-bottom:16px}
+.final-results-header h2{font-size:1.4rem;margin:0 0 4px;letter-spacing:-.02em;color:white}
+.final-results-header p{margin:0;color:#d4e4dc;font-size:.88rem}
+
+.final-results-card table{width:100%!important;border-collapse:collapse!important;background:transparent!important;border:none!important}
+.final-results-card td{padding:10px 0!important;border-bottom:1px solid rgba(255,255,255,.15)!important;font-size:.95rem!important;color:#e8f3ed!important}
+.final-results-card tr:last-child td{border-bottom:none!important}
+.final-results-card td.val-col{text-align:right!important;font-weight:850!important;font-size:1.15rem!important;color:#ffffff!important}
+.final-results-card .highlight-row td{font-size:1.15rem!important;font-weight:850!important;color:#ffffff!important;padding-top:14px!important}
+
+@media(max-width:768px){
+  .summary-grid{grid-template-columns:repeat(2,1fr)}
+  .impact-summary-bar{grid-template-columns:1fr}
+  .filter-tabs-bar{flex-direction:column;align-items:stretch}
+  .tab-group{max-width:100%}
+  .tab-info-text{padding-left:0;text-align:center}
+}
+@media(max-width:480px){
+  .summary-grid{grid-template-columns:1fr}
+  .card-top-row{flex-direction:column;align-items:flex-start}
+  .delta-pill{align-self:flex-start}
+}
 </style>
 </head>
 <body>
+
 <div id="site-header"></div>
 
-<header class="about-hero">
+<!-- Hero Section -->
+<header class="dashboard-hero">
   <div class="wrap">
-    <div class="eyebrow">✦ Interactive Assessment</div>
-    <h1>Biological Age <span>Calculator</span></h1>
-    <p>Calculate and explore your biological age estimate using YouthCraft's evidence-informed scoring parameters and daily habit metrics.</p>
+    <div class="eyebrow">✦ Biological Age Dashboard</div>
+    <h1>Your Health Score Report</h1>
+    <p>Explore your Biological Age, Year Deltas, Medical Alerts, Earn Life Days CTAs, and Scientific Validation Links across all assessment questions.</p>
   </div>
 </header>
 
 <main class="wrap content">
-  <div id="calculator-app" class="calc-grid">
-    
-    <!-- Calculator Form Section -->
-    <section class="calc-card" aria-labelledby="calc-title">
-      <h2 id="calc-title">Quick Health Inputs</h2>
-      <p>Adjust the baseline factors below to estimate your net lifestyle delta and biological age proxy.</p>
-      
-      <form id="calcForm" oninput="calculateAge()">
-        <div class="form-group">
-          <label for="chronoAge">Chronological Age</label>
-          <input type="number" id="chronoAge" class="form-control" value="35" min="13" max="120" required>
-        </div>
+  <div class="dashboard-container">
 
-        <div class="form-group">
-          <label for="sleepHours">Average Nightly Sleep</label>
-          <select id="sleepHours" class="form-control">
-            <option value="-1.5">&lt; 5 hours (-1.5 yrs)</option>
-            <option value="-0.5">5 – 6 hours (-0.5 yrs)</option>
-            <option value="1.2" selected>7 – 8 hours (+1.2 yrs)</option>
-            <option value="-0.3">&gt; 9 hours (-0.3 yrs)</option>
-          </select>
-        </div>
+    <!-- INFOGRAPHICS BANNER SUMMARY -->
+    <div class="summary-grid">
+      <div class="metric-card">
+        <div class="icon-tile" aria-hidden="true">🎂</div>
+        <div class="label">Chronological</div>
+        <div class="value">34 yrs</div>
+        <div class="sub-label">Baseline Anchor</div>
+      </div>
+      <div class="metric-card">
+        <div class="icon-tile" aria-hidden="true">📉</div>
+        <div class="label">Total Delta</div>
+        <div class="value" style="color:var(--yc-danger)">-6.80 yrs</div>
+        <div class="sub-label">Accelerated Aging</div>
+      </div>
+      <div class="metric-card">
+        <div class="icon-tile" aria-hidden="true">🧬</div>
+        <div class="label">Biological Age</div>
+        <div class="value">40.8 yrs</div>
+        <div class="sub-label">Derived Bio Proxy</div>
+      </div>
+      <div class="metric-card">
+        <div class="icon-tile" aria-hidden="true">🛡️</div>
+        <div class="label">Risk Tier</div>
+        <div class="value"><span class="badge-risk-high">High Risk</span></div>
+        <div class="sub-label">Action Required</div>
+      </div>
+    </div>
 
-        <div class="form-group">
-          <label for="exerciseDays">Aerobic Activity (Days / Week)</label>
-          <select id="exerciseDays" class="form-control">
-            <option value="0">0 days (0 yrs)</option>
-            <option value="0.5">1 – 2 days (+0.5 yrs)</option>
-            <option value="1.2" selected>3 – 4 days (+1.2 yrs)</option>
-            <option value="1.8">5+ days (+1.8 yrs)</option>
-          </select>
+    <!-- GAINING VS LOSING SUMMARY CARDS -->
+    <div class="impact-summary-bar">
+      <div class="impact-card pos">
+        <div class="impact-info">
+          <div class="title">🟢 POSITIVE DRIVERS (GAINING)</div>
+          <div class="count" id="posCountDisplay">Calculating...</div>
         </div>
+        <div class="impact-value" id="posSumDisplay">0.00 yrs</div>
+      </div>
+      <div class="impact-card neg">
+        <div class="impact-info">
+          <div class="title">🔴 NEGATIVE DRIVERS (LOSING)</div>
+          <div class="count" id="negCountDisplay">Calculating...</div>
+        </div>
+        <div class="impact-value" id="negSumDisplay">0.00 yrs</div>
+      </div>
+    </div>
 
-        <div class="form-group">
-          <label for="dietQuality">Dietary Focus (MEDAS)</label>
-          <select id="dietQuality" class="form-control">
-            <option value="-1.2">High Ultra-Processed Foods (-1.2 yrs)</option>
-            <option value="0">Average Intake (0 yrs)</option>
-            <option value="1.1" selected>High Fruit &amp; Veg / Whole Foods (+1.1 yrs)</option>
-          </select>
-        </div>
+    <!-- FILTER TABS -->
+    <div class="filter-tabs-bar">
+      <div class="tab-group">
+        <button type="button" class="tab-btn active" id="filterAll" onclick="filterDeltas('all')">All Items</button>
+        <button type="button" class="tab-btn" id="filterPositive" onclick="filterDeltas('positive')">🟢 Gaining</button>
+        <button type="button" class="tab-btn" id="filterNegative" onclick="filterDeltas('negative')">🔴 Losing</button>
+      </div>
+      <div class="tab-info-text" id="tabCountText">Showing all domain inputs</div>
+    </div>
 
-        <div class="form-group">
-          <label for="tobacco">Tobacco Exposure</label>
-          <select id="tobacco" class="form-control">
-            <option value="0" selected>Never Smoked (0 yrs)</option>
-            <option value="-1.5">Former Smoker (-1.5 yrs)</option>
-            <option value="-4.0">Current Smoker (-4.0 yrs)</option>
-          </select>
-        </div>
-      </form>
-    </section>
-
-    <!-- Results Panel -->
-    <aside class="results-card" aria-label="Calculation Results">
-      <div>
-        <h2>Estimated Output</h2>
-        
-        <div class="stat-box">
-          <div class="label">Biological Age Proxy</div>
-          <div class="val" id="bioAgeVal">31.5 <span style="font-size:1.2rem">yrs</span></div>
-          <div class="sub" id="deltaSub">3.5 years younger than chronological age</div>
-        </div>
-
-        <div class="stat-box">
-          <div class="label">Net Lifestyle Delta</div>
-          <div class="val" id="netDeltaVal" style="color:#d5e9dd">+3.50 <span style="font-size:1.2rem">yrs</span></div>
-          <div class="sub">Positive habits currently outweigh risk factors.</div>
-        </div>
+    <!-- DOMAIN 1: 1. Demographics & Biometrics -->
+    <section class="domain-block" data-domain="1">
+      <div class="domain-header">
+        <h2><span>📊</span> 1. Demographics & Biometrics</h2>
+        <span class="domain-badge">Domain 1 Assessment</span>
       </div>
 
-      <a href="onboarding.html" class="btn">Take Full 107-Q Assessment <span aria-hidden="true">→</span></a>
-    </aside>
+      <div class="cards-list">
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C01</span>
+              <span class="q-title">What is your exact age (years)?</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">34 yrs</span></span>
+            <span>Matched: <span class="matched-key">C01|34</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C02</span>
+              <span class="q-title">Age group (auto or selected)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">30-39 yrs</span></span>
+            <span>Matched: <span class="matched-key">C02|30-39</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C03</span>
+              <span class="q-title">Biological sex / gender identity</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Male</span></span>
+            <span>Matched: <span class="matched-key">C03|Male</span></span>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.ssa.gov/oact/STATS/table4c6.html" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C04</span>
+              <span class="q-title">Height (cm)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">175 cm</span></span>
+            <span>Matched: <span class="matched-key">C04|175</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C05</span>
+              <span class="q-title">Current weight (kg)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">72 kg</span></span>
+            <span>Matched: <span class="matched-key">C05|72</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Clinical nutrition</span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C05b</span>
+              <span class="q-title">Waist circumference (cm)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">84 cm</span></span>
+            <span>Matched: <span class="matched-key">C05b|84</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Metabolic/cardiology</span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C06</span>
+              <span class="q-title">Do you currently live alone?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes</span></span>
+            <span>Matched: <span class="matched-key">C06|Yes</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.20 Yrs (+803 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">C06 | No</span>
+                <span class="opt-gain">+1.20 yrs (+438 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">C06 | Prefer not to say</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1177/0164027504268574" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C07</span>
+              <span class="q-title">Preferred language for health information</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">English</span></span>
+            <span>Matched: <span class="matched-key">C07|English</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.20">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C08</span>
+              <span class="q-title">Highest education level completed</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.20 yrs (-73 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Primary</span></span>
+            <span>Matched: <span class="matched-key">C08|Primary</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.70 Yrs (+255 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">C08 | Postgraduate</span>
+                <span class="opt-gain">+0.50 yrs (+182 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">C08 | Graduate</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">C08 | Secondary</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 73 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1146/annurev.publhealth.18.1.341" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">C09</span>
+              <span class="q-title">Occupation type</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Sedentary desk</span></span>
+            <span>Matched: <span class="matched-key">C09|Sedentary desk</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">C09 | Heavy manual</span>
+                <span class="opt-gain">+0.50 yrs (+182 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">C09 | Light manual</span>
+                <span class="opt-gain">+0.10 yrs (+36 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">C09 | Retired</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1038/oby.2006.287" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 2: 2. Lifestyle & Daily Habits -->
+    <section class="domain-block" data-domain="2">
+      <div class="domain-header">
+        <h2><span>🌙</span> 2. Lifestyle & Daily Habits</h2>
+        <span class="domain-badge">Domain 2 Assessment</span>
+      </div>
+
+      <div class="cards-list">
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L01</span>
+              <span class="q-title">Average hours of sleep on weeknights</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">7 hours</span></span>
+            <span>Matched: <span class="matched-key">L01|7</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Sleep study / HST</span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L01b</span>
+              <span class="q-title">Average hours of sleep on weekends</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">8 hours</span></span>
+            <span>Matched: <span class="matched-key">L01b|8</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L02</span>
+              <span class="q-title">Do you feel rested most mornings?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">L02|No</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.80 Yrs (+657 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L02 | Yes</span>
+                <span class="opt-gain">+1.00 yrs (+365 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L02 | Sometimes</span>
+                <span class="opt-gain">+0.20 yrs (+73 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.sleep.pitt.edu/sites/default/files/assets/Instrument%20Materials/Exhibit%20A-PSQI%20scoring.pdf" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.20">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L03</span>
+              <span class="q-title">How often do you have trouble falling or staying asleep?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.20 yrs (-438 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Often</span></span>
+            <span>Matched: <span class="matched-key">L03|Often</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Sleep study / HST</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +3.20 Yrs (+1168 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L03 | Never</span>
+                <span class="opt-gain">+2.00 yrs (+730 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L03 | Rarely</span>
+                <span class="opt-gain">+1.00 yrs (+365 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L03 | Sometimes</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 438 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/S1389-9457(00)00065-4" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L04</span>
+              <span class="q-title">Days per week of moderate activity ≥30 min</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">4 days/wk</span></span>
+            <span>Matched: <span class="matched-key">L04|4</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>Medium-High SEVERITY: Movement prescription</span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L05</span>
+              <span class="q-title">Days per week of strength / resistance training</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">2 days/wk</span></span>
+            <span>Matched: <span class="matched-key">L05|2</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L06</span>
+              <span class="q-title">Average daily steps (if known)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">7,500 steps</span></span>
+            <span>Matched: <span class="matched-key">L06|7500</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>Medium-High SEVERITY: Movement prescription</span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L06b</span>
+              <span class="q-title">Average sedentary hours per day</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">8 hours</span></span>
+            <span>Matched: <span class="matched-key">L06b|8</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L07</span>
+              <span class="q-title">Typical daily servings of vegetables + fruit</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">3 servings</span></span>
+            <span>Matched: <span class="matched-key">L07|3</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L08</span>
+              <span class="q-title">How often do you eat ultra-processed / fast food?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">3-5x/wk</span></span>
+            <span>Matched: <span class="matched-key">L08|3-5x/wk</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +3.00 Yrs (+1095 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L08 | Never</span>
+                <span class="opt-gain">+2.50 yrs (+912 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L08 | Rarely</span>
+                <span class="opt-gain">+2.50 yrs (+912 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L08 | 1-2x/wk</span>
+                <span class="opt-gain">+1.00 yrs (+365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1017/S1368980018003762" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L09</span>
+              <span class="q-title">Daily water intake</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">&lt;4 glasses</span></span>
+            <span>Matched: <span class="matched-key">L09|&lt;4</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.60 Yrs (+219 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L09 | &gt;8 glasses</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L09 | 7-8</span>
+                <span class="opt-gain">+0.20 yrs (+73 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L09 | 4-6</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.dietaryguidelines.gov/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.70">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L10</span>
+              <span class="q-title">Do you regularly skip meals?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.70 yrs (-255 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes</span></span>
+            <span>Matched: <span class="matched-key">L10|Yes</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.50 Yrs (+547 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L10 | No</span>
+                <span class="opt-gain">+0.80 yrs (+292 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L10 | Sometimes</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 255 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/j.cub.2012.03.038" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L10b</span>
+              <span class="q-title">Do you eat breakfast most days?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">L10b|No</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.20 Yrs (+438 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L10b | Yes</span>
+                <span class="opt-gain">+0.70 yrs (+255 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L10b | Sometimes</span>
+                <span class="opt-gain">+0.20 yrs (+73 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/j.cub.2012.03.038" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L11</span>
+              <span class="q-title">In past 2 weeks, how often felt stressed, anxious or low?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">&gt;half days</span></span>
+            <span>Matched: <span class="matched-key">L11|&gt;half days</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Mental health escalation</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +3.00 Yrs (+1095 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L11 | Not at all</span>
+                <span class="opt-gain">+2.00 yrs (+730 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L11 | Several days</span>
+                <span class="opt-gain">+0.50 yrs (+182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1037/0022-3514.46.4.907" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.20">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L11b</span>
+              <span class="q-title">In past 2 weeks, little interest or pleasure in doing things?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.20 yrs (-438 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">&gt;half days</span></span>
+            <span>Matched: <span class="matched-key">L11b|&gt;half days</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Mental health escalation</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.70 Yrs (+985 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L11b | Not at all</span>
+                <span class="opt-gain">+1.50 yrs (+547 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L11b | Several days</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 438 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://journals.lww.com/lww-medicalcare/Abstract/2003/11000/The_Patient_Health_Questionnaire_2__Validity_of_a.8.aspx" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.20">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L11c</span>
+              <span class="q-title">In past 2 weeks, feeling down, depressed or hopeless?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.20 yrs (-438 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">&gt;half days</span></span>
+            <span>Matched: <span class="matched-key">L11c|&gt;half days</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Mental health escalation</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.70 Yrs (+985 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L11c | Not at all</span>
+                <span class="opt-gain">+1.50 yrs (+547 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L11c | Several days</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 438 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://journals.lww.com/lww-medicalcare/Abstract/2003/11000/The_Patient_Health_Questionnaire_2__Validity_of_a.8.aspx" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.70">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L12</span>
+              <span class="q-title">Do you have effective ways to manage stress?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.70 yrs (-255 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">L12|No</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.70 Yrs (+620 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L12 | Yes</span>
+                <span class="opt-gain">+1.00 yrs (+365 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L12 | Somewhat</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1037/0022-3514.46.4.907" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L13</span>
+              <span class="q-title">How often do you feel lonely or isolated?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.50 yrs (-547 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Often</span></span>
+            <span>Matched: <span class="matched-key">L13|Often</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +4.00 Yrs (+1460 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L13 | Never</span>
+                <span class="opt-gain">+2.50 yrs (+912 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L13 | Rarely</span>
+                <span class="opt-gain">+1.50 yrs (+547 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L13 | Sometimes</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1177/0164027504268574" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.20">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">L13b</span>
+              <span class="q-title">How many people can you confide in?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.20 yrs (-438 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">0</span></span>
+            <span>Matched: <span class="matched-key">L13b|0</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.70 Yrs (+985 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">L13b | 3+</span>
+                <span class="opt-gain">+1.50 yrs (+547 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L13b | 2</span>
+                <span class="opt-gain">+0.80 yrs (+292 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">L13b | 1</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 438 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1207/s15327752jpa5201_2" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 3: 3. Substance Use -->
+    <section class="domain-block" data-domain="3">
+      <div class="domain-header">
+        <h2><span>🚭</span> 3. Substance Use</h2>
+        <span class="domain-badge">Domain 3 Assessment</span>
+      </div>
+
+      <div class="cards-list">
+
+        <div class="question-card" data-delta="-2.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">S01</span>
+              <span class="q-title">Do you currently use any tobacco / nicotine product?</span>
+            </div>
+            <span class="delta-pill delta-negative">-2.00 yrs (-730 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Former</span></span>
+            <span>Matched: <span class="matched-key">S01|Former</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>Critical SEVERITY: Cessation program</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.00 Yrs (+730 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">S01 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 730 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1111/j.1360-0443.1991.tb01879.x" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">S02</span>
+              <span class="q-title">Type of tobacco/nicotine</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Cigarettes</span></span>
+            <span>Matched: <span class="matched-key">S02|Cigarettes</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">S03</span>
+              <span class="q-title">Quantity / frequency of tobacco use</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">5-10 per day</span></span>
+            <span>Matched: <span class="matched-key">S03|5-10/day</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">S04</span>
+              <span class="q-title">Years of tobacco use / age started</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">5 years</span></span>
+            <span>Matched: <span class="matched-key">S04|5 yrs</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">S05</span>
+              <span class="q-title">Interest in quitting tobacco (1-10)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">8 / 10</span></span>
+            <span>Matched: <span class="matched-key">S05|8</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">S06</span>
+              <span class="q-title">How often do you drink alcohol?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Monthly or less</span></span>
+            <span>Matched: <span class="matched-key">S06|Monthly or less</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Alcohol reduction</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.30 Yrs (+109 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">S06 | Never</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.drugsandalcohol.ie/18727/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">S07</span>
+              <span class="q-title">Typical number of drinks on a drinking day</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">3-4</span></span>
+            <span>Matched: <span class="matched-key">S07|3-4</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">S07 | 1-2</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.drugsandalcohol.ie/18727/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">S08</span>
+              <span class="q-title">Frequency of binge drinking</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">&lt;monthly</span></span>
+            <span>Matched: <span class="matched-key">S08|&lt;monthly</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Alcohol reduction</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.30 Yrs (+109 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">S08 | Never</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.drugsandalcohol.ie/18727/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-3.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">S09</span>
+              <span class="q-title">Any other recreational substance use?</span>
+            </div>
+            <span class="delta-pill delta-negative">-3.50 yrs (-1277 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes</span></span>
+            <span>Matched: <span class="matched-key">S09|Yes</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Addiction specialist</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +3.50 Yrs (+1277 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">S09 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 1277 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">S09 | Prefer not</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 1277 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.who.int/publications/i/item/978924159938-2" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 4: 4. Medical History & Clinical Markers -->
+    <section class="domain-block" data-domain="4">
+      <div class="domain-header">
+        <h2><span>🩺</span> 4. Medical History & Clinical Markers</h2>
+        <span class="domain-badge">Domain 4 Assessment</span>
+      </div>
+
+      <div class="cards-list">
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M01</span>
+              <span class="q-title">When was your last blood pressure check?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">1-2yr</span></span>
+            <span>Matched: <span class="matched-key">M01|1-2yr</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.60 Yrs (+219 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M01 | Within 6mo</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M01 | 6-12mo</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M02</span>
+              <span class="q-title">When was your last blood sugar / HbA1c check?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">1-2yr</span></span>
+            <span>Matched: <span class="matched-key">M02|1-2yr</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.60 Yrs (+219 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M02 | Within 6mo</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M02 | 6-12mo</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M03</span>
+              <span class="q-title">Known diagnoses (select all)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Mild Hypertension</span></span>
+            <span>Matched: <span class="matched-key">M03|Hypertension</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Multimorbidity consult</span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M04</span>
+              <span class="q-title">Are you currently taking any regular medications?</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes</span></span>
+            <span>Matched: <span class="matched-key">M04|Yes</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M05</span>
+              <span class="q-title">Number of regular medications</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">3</span></span>
+            <span>Matched: <span class="matched-key">M05|3</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Medication review</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M05 | 1</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M05 | 2</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1111/jgs.15767" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M06</span>
+              <span class="q-title">Medication categories</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Antihypertensives, Multivitamins</span></span>
+            <span>Matched: <span class="matched-key">M06|Antihypertensives</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M07</span>
+              <span class="q-title">How often do you miss doses?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Sometimes</span></span>
+            <span>Matched: <span class="matched-key">M07|Sometimes</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M07 | Never</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M07 | Rarely</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1097/01.mlr.0000163641.74112.fc" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M08</span>
+              <span class="q-title">Do you track BP glucose or weight at home?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">M08|No</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.70 Yrs (+255 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M08 | Yes regularly</span>
+                <span class="opt-gain">+0.40 yrs (+146 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M08 | Occasionally</span>
+                <span class="opt-gain">+0.10 yrs (+36 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M09</span>
+              <span class="q-title">Family history of early heart disease diabetes or cancer (first-degree &lt;60)?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Don't know</span></span>
+            <span>Matched: <span class="matched-key">M09|Don't know</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.30 Yrs (+109 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M09 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1161/CIR.0000000000000596" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M10</span>
+              <span class="q-title">Vaccinations up to date for age?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">M10|No</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M10 | Yes</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M10 | Partially</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M11</span>
+              <span class="q-title">Blood pressure status (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Elevated (128/82 mmHg)</span></span>
+            <span>Matched: <span class="matched-key">M11|Elevated</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: HTN tele-management</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.50 Yrs (+547 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M11 | Normal</span>
+                <span class="opt-gain">+0.50 yrs (+182 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M11 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1161/CIR.0000000000000596" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M12</span>
+              <span class="q-title">Fasting glucose status (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">100-125 mg/dL</span></span>
+            <span>Matched: <span class="matched-key">M12|100-125</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>Critical SEVERITY: Endo / CGM</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.50 Yrs (+547 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M12 | &lt;100</span>
+                <span class="opt-gain">+0.50 yrs (+182 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M12 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://diabetesjournals.org/care" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M13</span>
+              <span class="q-title">Total cholesterol (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.50 yrs (-547 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">210 mg/dL</span></span>
+            <span>Matched: <span class="matched-key">M13|200-240</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Lipid protocol</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.00 Yrs (+730 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M13 | &lt;180</span>
+                <span class="opt-gain">+0.50 yrs (+182 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M13 | 180-200</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M13 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-2.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M14</span>
+              <span class="q-title">HDL cholesterol (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-2.00 yrs (-730 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">38 mg/dL</span></span>
+            <span>Matched: <span class="matched-key">M14|&lt;40</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.80 Yrs (+1021 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M14 | &gt;60</span>
+                <span class="opt-gain">+0.80 yrs (+292 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M14 | 40-60</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 730 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M14 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 730 Days)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M15</span>
+              <span class="q-title">Triglycerides (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">165 mg/dL</span></span>
+            <span>Matched: <span class="matched-key">M15|150-200</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.50 Yrs (+547 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M15 | &lt;100</span>
+                <span class="opt-gain">+0.50 yrs (+182 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M15 | 100-150</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M15 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M16</span>
+              <span class="q-title">hsCRP (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.50 yrs (-547 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">4.2 mg/L</span></span>
+            <span>Matched: <span class="matched-key">M16|3-10</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Anti-inflammatory</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.00 Yrs (+730 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M16 | &lt;1</span>
+                <span class="opt-gain">+0.50 yrs (+182 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M16 | 1-3</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M16 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1161/01.CIR.0000038493.65177.46" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M17</span>
+              <span class="q-title">ALT (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">48 U/L</span></span>
+            <span>Matched: <span class="matched-key">M17|40-60</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>Medium-High SEVERITY: Hepatology</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.30 Yrs (+474 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M17 | &lt;25</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M17 | 25-40</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M17 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1002/hep.29367" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M18</span>
+              <span class="q-title">AST (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">45 U/L</span></span>
+            <span>Matched: <span class="matched-key">M18|40-60</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.30 Yrs (+474 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M18 | &lt;25</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M18 | 25-40</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M18 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1002/hep.29367" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M19</span>
+              <span class="q-title">Albumin (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">3.8 g/dL</span></span>
+            <span>Matched: <span class="matched-key">M19|3.5-4.0</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.50 Yrs (+547 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M19 | &gt;4.5</span>
+                <span class="opt-gain">+0.50 yrs (+182 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M19 | 4.0-4.5</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M19 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1007/s12603-009-0214-5" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M20</span>
+              <span class="q-title">Creatinine (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.50 yrs (-547 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">1.3 mg/dL</span></span>
+            <span>Matched: <span class="matched-key">M20|1.2-1.5</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Nephrology</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.80 Yrs (+657 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M20 | 0.7-1.0</span>
+                <span class="opt-gain">+0.30 yrs (+109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M20 | 1.0-1.2</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M20 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://kdigo.org/guidelines/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M21</span>
+              <span class="q-title">Hemoglobin (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">High (17.8 g/dL)</span></span>
+            <span>Matched: <span class="matched-key">M21|High</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M21 | Normal</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M21 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">M22</span>
+              <span class="q-title">MCV (last reading)</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">95 fL</span></span>
+            <span>Matched: <span class="matched-key">M22|92-100</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.30 Yrs (+109 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">M22 | 85-92</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">M22 | Don't know</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 5: 5. Age-Specific Functional & Preventive -->
+    <section class="domain-block" data-domain="5">
+      <div class="domain-header">
+        <h2><span>👵</span> 5. Age-Specific Functional & Preventive</h2>
+        <span class="domain-badge">Domain 5 Assessment</span>
+      </div>
+
+      <div class="cards-list">
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A01</span>
+              <span class="q-title">School / academic stress level</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Moderate</span></span>
+            <span>Matched: <span class="matched-key">A01|Moderate</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A01 | Low</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1037/0022-3514.46.4.907" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A02</span>
+              <span class="q-title">Average daily recreational screen time (hours)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">3.5 hrs/day</span></span>
+            <span>Matched: <span class="matched-key">A02|3.5</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A03</span>
+              <span class="q-title">Any body image or eating concerns?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Somewhat</span></span>
+            <span>Matched: <span class="matched-key">A03|Somewhat</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.00 Yrs (+365 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A03 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1136/bmj.319.7223.1467" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.20">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A04</span>
+              <span class="q-title">Peer pressure around substances or risky behaviours?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.20 yrs (-73 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Rarely</span></span>
+            <span>Matched: <span class="matched-key">A04|Rarely</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.20 Yrs (+73 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A04 | Never</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 73 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1136/bmj.319.7223.1467" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A05</span>
+              <span class="q-title">Occupational / work stress level</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Moderate</span></span>
+            <span>Matched: <span class="matched-key">A05|Moderate</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A05 | Low</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1037/0022-3514.46.4.907" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A06</span>
+              <span class="q-title">Reproductive health / contraception / pregnancy plans relevant?</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Not Applicable</span></span>
+            <span>Matched: <span class="matched-key">A06|N/A</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A07</span>
+              <span class="q-title">Financial stress impacting health behaviours?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Somewhat</span></span>
+            <span>Matched: <span class="matched-key">A07|Somewhat</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A07 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1146/annurev.publhealth.18.1.341" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A08</span>
+              <span class="q-title">Menopause / andropause symptoms present?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.50 yrs (-547 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes</span></span>
+            <span>Matched: <span class="matched-key">A08|Yes</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.50 Yrs (+547 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A08 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1161/CIR.0000000000000596" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A09</span>
+              <span class="q-title">Cancer screening adherence</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.50 yrs (-547 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Overdue</span></span>
+            <span>Matched: <span class="matched-key">A09|Overdue</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.50 Yrs (+912 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A09 | Up to date</span>
+                <span class="opt-gain">+1.00 yrs (+365 Days)</span>
+              </div>
+              <div class="ladder-item">
+                <span class="opt-text">A09 | Partially</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A10</span>
+              <span class="q-title">Joint pain or early musculoskeletal issues?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Mild</span></span>
+            <span>Matched: <span class="matched-key">A10|Mild</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A10 | None</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/0885-3924(91)90004-M" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A11</span>
+              <span class="q-title">Caregiving responsibilities (children/parents)?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Some</span></span>
+            <span>Matched: <span class="matched-key">A11|Some</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A11 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1371/journal.pmed.1000316" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A12</span>
+              <span class="q-title">Falls in the past 12 months?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.50 yrs (-547 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">1 fall</span></span>
+            <span>Matched: <span class="matched-key">A12|1</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Fall prevention</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.50 Yrs (+547 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A12 | 0</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 547 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/j.jamda.2013.03.022" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A13</span>
+              <span class="q-title">Fear of falling that limits activities?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Somewhat</span></span>
+            <span>Matched: <span class="matched-key">A13|Somewhat</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A13 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/j.jamda.2013.03.022" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A14</span>
+              <span class="q-title">Hearing or vision changes affecting daily life?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Somewhat</span></span>
+            <span>Matched: <span class="matched-key">A14|Somewhat</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A14 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1111/j.1532-5415.2000.tb04750.x" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A15</span>
+              <span class="q-title">Memory or concentration concerns?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Mild</span></span>
+            <span>Matched: <span class="matched-key">A15|Mild</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>Critical SEVERITY: Cognitive workup</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A15 | None</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1111/j.1532-5415.2000.tb04750.x" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A16</span>
+              <span class="q-title">Social isolation / limited social contact?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Sometimes</span></span>
+            <span>Matched: <span class="matched-key">A16|Sometimes</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A16 | Rarely</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1177/0164027504268574" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A17</span>
+              <span class="q-title">Bone health / previous fractures?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">None known</span></span>
+            <span>Matched: <span class="matched-key">A17|None known</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.30 Yrs (+109 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A17 | None known</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://www.sheffield.ac.uk/FRAX/" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A18</span>
+              <span class="q-title">Unintentional weight loss &gt;10 lbs in last year?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">A18|No</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Sarcopenia/frailty</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.30 Yrs (+109 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A18 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1093/gerona/56.3.M146" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A19</span>
+              <span class="q-title">How often felt everything was an effort?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Some</span></span>
+            <span>Matched: <span class="matched-key">A19|Some</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A19 | Rarely</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1093/gerona/56.3.M146" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A20</span>
+              <span class="q-title">Difficulty lifting or carrying 10 lbs?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Some difficulty</span></span>
+            <span>Matched: <span class="matched-key">A20|Some</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A20 | No difficulty</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/j.jamda.2013.03.022" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A21</span>
+              <span class="q-title">Difficulty walking across a room?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No difficulty</span></span>
+            <span>Matched: <span class="matched-key">A21|None</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A21 | None</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/j.jamda.2013.03.022" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A22</span>
+              <span class="q-title">Difficulty rising from a chair?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Some difficulty</span></span>
+            <span>Matched: <span class="matched-key">A22|Some</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A22 | No difficulty</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/j.jamda.2013.03.022" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A23</span>
+              <span class="q-title">Difficulty climbing 10 stairs?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Some difficulty</span></span>
+            <span>Matched: <span class="matched-key">A23|Some</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Sarcopenia/frailty</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A23 | No difficulty</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/j.jamda.2013.03.022" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A24</span>
+              <span class="q-title">Food intake declined in last 3 months?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Moderate decrease</span></span>
+            <span>Matched: <span class="matched-key">A24|Moderate decrease</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A24 | No decrease</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1007/s12603-009-0214-5" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A25</span>
+              <span class="q-title">Weight loss in last 3 months?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">1-3 kg</span></span>
+            <span>Matched: <span class="matched-key">A25|1-3 kg</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A25 | No weight loss</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1007/s12603-009-0214-5" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.30">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A26</span>
+              <span class="q-title">Mobility level</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.30 yrs (-109 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Walks freely</span></span>
+            <span>Matched: <span class="matched-key">A26|Walks freely</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.30 Yrs (+109 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A26 | Goes out</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 109 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1007/s12603-009-0214-5" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A27</span>
+              <span class="q-title">Acute illness/stress in last 3 months?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes</span></span>
+            <span>Matched: <span class="matched-key">A27|Yes</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.00 Yrs (+365 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A27 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1007/s12603-009-0214-5" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-3.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A28</span>
+              <span class="q-title">Neuropsychological issues?</span>
+            </div>
+            <span class="delta-pill delta-negative">-3.00 yrs (-1095 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">None</span></span>
+            <span>Matched: <span class="matched-key">A28|None</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +3.00 Yrs (+1095 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A28 | None</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 1095 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1111/j.1532-5415.2000.tb04750.x" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A29</span>
+              <span class="q-title">Need help with bathing/dressing?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Independent</span></span>
+            <span>Matched: <span class="matched-key">A29|Independent</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.00 Yrs (+365 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A29 | Independent</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1093/gerona/56.3.M146" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A30</span>
+              <span class="q-title">Need help with shopping/cooking?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Independent</span></span>
+            <span>Matched: <span class="matched-key">A30|Independent</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.00 Yrs (+365 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A30 | Independent</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1093/gerona/56.3.M146" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A31</span>
+              <span class="q-title">Need help with finances/medications?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Independent</span></span>
+            <span>Matched: <span class="matched-key">A31|Independent</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.00 Yrs (+365 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A31 | Independent</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1093/gerona/56.3.M146" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.50">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A32</span>
+              <span class="q-title">Mini-Cog: 3-item recall</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.50 yrs (-182 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">3 items recalled</span></span>
+            <span>Matched: <span class="matched-key">A32|3</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>Critical SEVERITY: Cognitive workup</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.50 Yrs (+182 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A32 | 3</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 182 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1111/j.1532-5415.2000.tb04750.x" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-2.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A33</span>
+              <span class="q-title">Mini-Cog: Clock drawing</span>
+            </div>
+            <span class="delta-pill delta-negative">-2.00 yrs (-730 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Normal</span></span>
+            <span>Matched: <span class="matched-key">A33|Normal</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>Critical SEVERITY: Cognitive workup</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +2.00 Yrs (+730 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A33 | Normal</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 730 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1111/j.1532-5415.2000.tb04750.x" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A34</span>
+              <span class="q-title">GDS-5: Are you basically satisfied with life?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes</span></span>
+            <span>Matched: <span class="matched-key">A34|Yes</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Geriatric psychiatry</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A34 | Yes</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/0022-3956(82)90033-4" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A35</span>
+              <span class="q-title">GDS-5: Do you often feel helpless?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">A35|No</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A35 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/0022-3956(82)90033-4" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.60">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A36</span>
+              <span class="q-title">GDS-5: Do you prefer to stay home rather than go out?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.60 yrs (-219 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">A36|No</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.60 Yrs (+219 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A36 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 219 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/0022-3956(82)90033-4" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-0.80">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A37</span>
+              <span class="q-title">GDS-5: Do you feel you have more problems with memory?</span>
+            </div>
+            <span class="delta-pill delta-negative">-0.80 yrs (-292 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">A37|No</span></span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +0.80 Yrs (+292 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A37 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 292 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/0022-3956(82)90033-4" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="-1.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A38</span>
+              <span class="q-title">GDS-5: Do you feel pretty worthless the way you are now?</span>
+            </div>
+            <span class="delta-pill delta-negative">-1.00 yrs (-365 Days)</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">No</span></span>
+            <span>Matched: <span class="matched-key">A38|No</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Geriatric psychiatry</span>
+          </div>
+          <div class="earn-cta-box">
+            <div class="earn-cta-header">
+              <span class="earn-cta-title">✨ Earn Life Days - CTA</span>
+              <span class="earn-cta-badge">Reclaim up to +1.00 Yrs (+365 Days)</span>
+            </div>
+            <div class="options-ladder">
+              <div class="ladder-item">
+                <span class="opt-text">A38 | No</span>
+                <span class="opt-gain">0.00 yrs (Reclaim 365 Days)</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-ref-footer">
+            <a href="https://doi.org/10.1016/0022-3956(82)90033-4" target="_blank" rel="noopener noreferrer" class="ref-link">
+              <span>🔬 Scientific Validation & Reference</span> ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A39</span>
+              <span class="q-title">Grip strength (if measurable with device)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">38 kg</span></span>
+            <span>Matched: <span class="matched-key">A39|38</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Sarcopenia/frailty</span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">A40</span>
+              <span class="q-title">Time to walk 15 feet (if measurable)</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">3.2 seconds</span></span>
+            <span>Matched: <span class="matched-key">A40|3.2</span></span>
+          </div>
+          <div class="card-trigger-alert">
+            <span class="alert-icon">🚨</span>
+            <span>High SEVERITY: Sarcopenia/frailty</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAIN 6: 6. Preferences & Engagement -->
+    <section class="domain-block" data-domain="6">
+      <div class="domain-header">
+        <h2><span>⚙️</span> 6. Preferences & Engagement</h2>
+        <span class="domain-badge">Domain 6 Assessment</span>
+      </div>
+
+      <div class="cards-list">
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">P01</span>
+              <span class="q-title">Preferred style of health missions</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Habit streaks</span></span>
+            <span>Matched: <span class="matched-key">P01|Habit streaks</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">P02</span>
+              <span class="q-title">Notification frequency preference</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Daily digest</span></span>
+            <span>Matched: <span class="matched-key">P02|Daily digest</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">P03</span>
+              <span class="q-title">Willingness to share progress with family/friends</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes, close contacts</span></span>
+            <span>Matched: <span class="matched-key">P03|Yes</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">P04</span>
+              <span class="q-title">Biggest health goal right now</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Improve sleep & stress</span></span>
+            <span>Matched: <span class="matched-key">P04|Sleep/Stress</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">P05</span>
+              <span class="q-title">Daily time available for missions</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">15-30 min</span></span>
+            <span>Matched: <span class="matched-key">P05|15-30 min</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">P06</span>
+              <span class="q-title">Willingness to upload lab reports</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes</span></span>
+            <span>Matched: <span class="matched-key">P06|Yes</span></span>
+          </div>
+        </div>
+
+        <div class="question-card" data-delta="0.00">
+          <div class="card-top-row">
+            <div class="card-title-group">
+              <span class="q-code">P07</span>
+              <span class="q-title">Willingness to sync wearable</span>
+            </div>
+            <span class="delta-pill delta-neutral">0.00 yrs</span>
+          </div>
+          <div class="card-body-row">
+            <span>Response: <span class="response-tag">Yes</span></span>
+            <span>Matched: <span class="matched-key">P07|Yes</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL COMPUTED RESULTS CARD -->
+    <div class="final-results-card">
+      <div class="final-results-header">
+        <h2>Computed Engine Output Summary</h2>
+        <p>Derived dynamically from the <code>Scoring_Engine</code> tab parameters.</p>
+      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>Chronological Baseline Age</td>
+            <td class="val-col">34.00 yrs</td>
+          </tr>
+          <tr>
+            <td>Total Year Delta (all inputs)</td>
+            <td class="val-col" style="color:#ff9e9e!important">-6.80 yrs</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Biological Age Proxy</td>
+            <td class="val-col">40.80 yrs</td>
+          </tr>
+          <tr>
+            <td>Risk Tier Status</td>
+            <td class="val-col"><span class="badge-risk-high">High Risk</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   </div>
-
-  <!-- Bottom CTA -->
-  <section class="closing">
-    <div>
-      <h2>Ready for a comprehensive breakdown?</h2>
-      <p>Complete our multi-domain questionnaire to discover your complete Youth Score, domain sub-scores, and customized micro-missions.</p>
-    </div>
-    <a class="btn" href="onboarding.html">Start Questionnaire <span aria-hidden="true">→</span></a>
-  </section>
-
-  <div class="note">Biological age proxies are motivational model outputs based on population lifestyle correlations and should not be relied upon as clinical health markers or diagnostic instruments.</div>
 </main>
 
 <div id="site-footer"></div>
+
 <script src="script.js"></script>
-
 <script>
-function calculateAge() {
-  const chronoAge = parseFloat(document.getElementById('chronoAge').value) || 35;
-  const sleepDelta = parseFloat(document.getElementById('sleepHours').value) || 0;
-  const exerciseDelta = parseFloat(document.getElementById('exerciseDays').value) || 0;
-  const dietDelta = parseFloat(document.getElementById('dietQuality').value) || 0;
-  const tobaccoDelta = parseFloat(document.getElementById('tobacco').value) || 0;
+function updateMetricsSummary() {
+  const cards = document.querySelectorAll('.question-card');
+  let posCount = 0, negCount = 0;
+  let posSum = 0, negSum = 0;
 
-  const totalDelta = sleepDelta + exerciseDelta + dietDelta + tobaccoDelta;
-  const biologicalAge = chronoAge - totalDelta;
+  cards.forEach(card => {
+    const delta = parseFloat(card.getAttribute('data-delta'));
+    if (delta > 0) {
+      posCount++;
+      posSum += delta;
+    } else if (delta < 0) {
+      negCount++;
+      negSum += delta;
+    }
+  });
 
-  document.getElementById('bioAgeVal').innerHTML = `${biologicalAge.toFixed(1)} <span style="font-size:1.2rem">yrs</span>`;
-  
-  const netDeltaEl = document.getElementById('netDeltaVal');
-  if (totalDelta >= 0) {
-    netDeltaEl.style.color = '#d5e9dd';
-    netDeltaEl.innerHTML = `+${totalDelta.toFixed(2)} <span style="font-size:1.2rem">yrs</span>`;
-    document.getElementById('deltaSub').innerText = `${Math.abs(totalDelta).toFixed(1)} years younger than chronological age`;
-  } else {
-    netDeltaEl.style.color = '#ff9e9e';
-    netDeltaEl.innerHTML = `${totalDelta.toFixed(2)} <span style="font-size:1.2rem">yrs</span>`;
-    document.getElementById('deltaSub').innerText = `${Math.abs(totalDelta).toFixed(1)} years older than chronological age`;
+  document.getElementById('posCountDisplay').innerText = `${posCount} Questions Matched`;
+  document.getElementById('posSumDisplay').innerText = `+${posSum.toFixed(2)} yrs`;
+  document.getElementById('negCountDisplay').innerText = `${negCount} Questions Matched`;
+  document.getElementById('negSumDisplay').innerText = `${negSum.toFixed(2)} yrs`;
+}
+
+function filterDeltas(type) {
+  const cards = document.querySelectorAll('.question-card');
+  const btnAll = document.getElementById('filterAll');
+  const btnPos = document.getElementById('filterPositive');
+  const btnNeg = document.getElementById('filterNegative');
+  const countText = document.getElementById('tabCountText');
+
+  btnAll.className = 'tab-btn';
+  btnPos.className = 'tab-btn';
+  btnNeg.className = 'tab-btn';
+
+  let visibleCount = 0;
+
+  cards.forEach(card => {
+    const delta = parseFloat(card.getAttribute('data-delta'));
+
+    if (type === 'all') {
+      card.style.display = '';
+      visibleCount++;
+    } else if (type === 'positive') {
+      if (delta > 0) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    } else if (type === 'negative') {
+      if (delta < 0) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    }
+  });
+
+  if (type === 'all') {
+    btnAll.classList.add('active');
+    countText.innerText = `Showing all ${visibleCount} inputs`;
+  } else if (type === 'positive') {
+    btnPos.classList.add('active-positive');
+    countText.innerText = `Showing ${visibleCount} positive year-gaining drivers`;
+  } else if (type === 'negative') {
+    btnNeg.classList.add('active-negative');
+    countText.innerText = `Showing ${visibleCount} negative year-losing risk drivers`;
   }
 }
 
-calculateAge();
+document.addEventListener('DOMContentLoaded', updateMetricsSummary);
 </script>
 </body>
 </html>

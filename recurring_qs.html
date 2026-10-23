@@ -98,7 +98,7 @@ const safeUrl=u=>/^https?:\/\//i.test(u)?u:'';
 const byCat=cats.map(c=>qs.filter(q=>q.c===c));
 const answeredIn=i=>byCat[i].filter(q=>ans[q.id]).length;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}}
-const Adherence_Factor=0.75;
+const Adherence_Factor=0.5;
 const fmt=x=>Number(x).toLocaleString('en-US',{maximumFractionDigits:1});
 const qmap={};qs.forEach(q=>qmap[q.id]=q);
 function info(q){const v=ans[q.id];if(!v||!q.o[v-1])return '';const k=v-1;

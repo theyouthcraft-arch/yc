@@ -14,6 +14,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
 .q-hero{background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:48px 0 30px;border-bottom:1px solid var(--yc-line)}
 .eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
 .q-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.08;color:var(--yc-ink);margin:12px 0;letter-spacing:-.045em}
+.q-hero h2{color:var(--yc-ink);margin:10px 0 0;letter-spacing:-.02em}
 .q-hero p{font-size:1.05rem;line-height:1.6;color:#466157;margin:0;max-width:760px}
 .content{padding-top:28px;padding-bottom:72px}
 .q-container{max-width:940px;margin:0 auto}
@@ -98,14 +99,16 @@ const safeUrl=u=>/^https?:\/\//i.test(u)?u:'';
 const byCat=cats.map(c=>qs.filter(q=>q.c===c));
 const answeredIn=i=>byCat[i].filter(q=>ans[q.id]).length;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}}
-const Adherence_Factor=0.5;
+const Adherence_Factor=0.50;
+const Max_Reclaimable_Days=9125;
 const fmt=x=>Number(x).toLocaleString('en-US',{maximumFractionDigits:1});
 const qmap={};qs.forEach(q=>qmap[q.id]=q);
 function info(q){const v=ans[q.id];if(!v||!q.o[v-1])return '';const k=v-1;
   if(/^not tested/i.test(q.o[k]))return '<div class="nt"><b>Get this tested.</b> Without a result we cannot tell how many Life-days you could reclaim here, so please take the relevant test and update your answer.</div>';
   const rc=q.r[k];if(!rc)return '';
-  return `<div class="reclaim"><span class="lbl">Potential loss of Lifedays: </span><b class="num">${fmt(q.l[k])}</b><span class="u">Life-days</span><span class="sep">|</span><span class="lbl">Reclaim upto</span><b class="num">${fmt(rc*Adherence_Factor)}</b><span class="u">Life-days</span></div>`+(q.a?`<div class="mission"><b>Mission:</b> ${esc(q.a)}</div>`:'');}
+  return `<div class="reclaim"><span class="lbl">Potential loss of Lifedays:</span><b class="num">${fmt(q.l[k])}</b><span class="u">Life-days</span><span class="sep">|</span><span class="lbl">Reclaim upto</span><b class="num">${fmt(rc*Adherence_Factor)}</b><span class="u">Life-days</span></div>`+(q.a?`<div class="mission"><b>Mission:</b> ${esc(q.a)}</div>`:'');}
 function renderTotal(){let n=0,t=0;qs.forEach(q=>{const v=ans[q.id];if(v&&q.r[v-1]){n++;t+=q.r[v-1]*Adherence_Factor}});
+  t=Math.min(t,Max_Reclaimable_Days);
   $('total').innerHTML=n?`You can reclaim a total of <b>${fmt(Math.round(t))} Life-days (${(t/365.25).toFixed(2)} years)</b>, just by taking remedial action.`:'Answer the questions below to see how many Life-days you can reclaim by taking remedial action.';}
 function renderTabs(){
   $('tabs').innerHTML=cats.map((c,i)=>{const a=answeredIn(i),t=byCat[i].length;

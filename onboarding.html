@@ -56,6 +56,14 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
 .nt{margin-top:12px;padding:10px 14px;background:#fff6e9;border:1px solid #f1d3a6;border-radius:12px;font-size:.88rem;color:#7a4a0c;max-width:640px;line-height:1.5}
 .total{background:linear-gradient(120deg,#fff6e9,#fdebd0);border:1px solid #f1d3a6;border-radius:16px;padding:14px 18px;margin-bottom:18px;color:var(--yc-ink);line-height:1.5}
 .total b{color:#e8730c;font-size:1.25rem}
+.commit{background:#e8f3ed;border:1px solid #bfdccf;border-radius:16px;padding:12px 18px;margin:-8px 0 18px;color:var(--yc-ink);line-height:1.5}
+.commit:empty{display:none}
+.commit b{color:#16794a;font-size:1.15rem}
+.imin{margin-top:12px;background:#2563eb;color:#fff;border:1px solid #2563eb;border-radius:999px;padding:9px 22px;font:inherit;font-size:.92rem;font-weight:800;cursor:pointer;transition:background .18s,border-color .18s}
+.imin:hover{background:#1d4fd0;border-color:#1d4fd0}
+.imin.on{background:#16a34a;border-color:#16a34a}
+.imin.on:hover{background:#12873d;border-color:#12873d}
+.imin:focus-visible{outline:3px solid var(--yc-gold);outline-offset:2px}
 .refwrap{display:block;margin-top:10px;font-size:.78rem;line-height:1.45;max-width:760px}.refpre{font-weight:800;color:var(--yc-muted)}.refwrap .ref{display:inline;margin-top:0}
 .ref{display:inline-block;margin-top:10px;font-size:.78rem;line-height:1.45;color:var(--yc-green);text-decoration:underline;text-underline-offset:2px;max-width:760px}
 .ref:hover{color:var(--yc-ink)}
@@ -83,6 +91,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
   <div class="overall"><span id="ovCount">0 of 200 answered</span><span id="ovPct">0%</span></div>
   <div class="bar" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="200" id="bar"><i id="barFill"></i></div>
   <div class="total" id="total" aria-live="polite"></div>
+  <div class="commit" id="commit" aria-live="polite"></div>
   <div class="tabs" role="tablist" id="tabs"></div>
   <div class="q-card" id="panel" role="tabpanel"></div>
 </div></main>
@@ -101,12 +110,21 @@ const answeredIn=i=>byCat[i].filter(q=>ans[q.id]).length;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}}
 const Adherence_Factor=0.50;
 const Max_Reclaimable_Days=9125;
+const CKEY=KEY+'_commit';let commit={};
+try{commit=JSON.parse(localStorage.getItem(CKEY)||'{}')||{}}catch(e){commit={}}
+function saveC(){try{localStorage.setItem(CKEY,JSON.stringify(commit))}catch(e){}}
+function renderCommit(){let n=0,t=0;qs.forEach(q=>{const v=ans[q.id];if(commit[q.id]&&v&&q.r[v-1]){n++;t+=q.r[v-1]*Adherence_Factor}});
+  t=Math.min(t,Max_Reclaimable_Days);
+  $('commit').innerHTML=n?`Yes, I am in <b>${n}</b> ${n===1?'mission':'missions'}, Committed to reclaim <b>${fmt(Math.round(t))}</b> Lifedays to be saved`:'';}
+$('panel').addEventListener('click',e=>{const b=e.target.closest('.imin');if(!b)return;const id=b.dataset.id;
+  if(commit[id])delete commit[id];else commit[id]=1;
+  const on=!!commit[id];b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'I’m in! ✓':'I’m in!';saveC();renderCommit();});
 const fmt=x=>Number(x).toLocaleString('en-US',{maximumFractionDigits:1});
 const qmap={};qs.forEach(q=>qmap[q.id]=q);
 function info(q){const v=ans[q.id];if(!v||!q.o[v-1])return '';const k=v-1;
   if(/^not tested/i.test(q.o[k]))return '<div class="nt"><b>Get this tested.</b> Without a result we cannot tell how many Life-days you could reclaim here, so please take the relevant test and update your answer.</div>';
   const rc=q.r[k];if(!rc)return '';
-  return `<div class="reclaim"><span class="lbl">Potential loss of Lifedays:</span><b class="num">${fmt(q.l[k])}</b><span class="u">Life-days</span><span class="sep">|</span><span class="lbl">Reclaim upto</span><b class="num">${fmt(rc*Adherence_Factor)}</b><span class="u">Life-days</span></div>`+(q.a?`<div class="mission"><b>Mission:</b> ${esc(q.a)}</div>`:'');}
+  return `<div class="reclaim"><span class="lbl">Potential loss of Lifedays:</span><b class="num">${fmt(q.l[k])}</b><span class="u">Life-days</span><span class="sep">|</span><span class="lbl">Reclaim upto</span><b class="num">${fmt(rc*Adherence_Factor)}</b><span class="u">Life-days</span></div>`+(q.a?`<div class="mission"><b>Remedial action:</b> ${esc(q.a)}</div>`:'')+`<button type="button" class="imin${commit[q.id]?' on':''}" data-id="${q.id}" aria-pressed="${commit[q.id]?'true':'false'}">${commit[q.id]?'I’m in! ✓':'I’m in!'}</button>`;}
 function renderTotal(){let n=0,t=0;qs.forEach(q=>{const v=ans[q.id];if(v&&q.r[v-1]){n++;t+=q.r[v-1]*Adherence_Factor}});
   t=Math.min(t,Max_Reclaimable_Days);
   $('total').innerHTML=n?`You can reclaim a total of <b>${fmt(Math.round(t))} Life-days (${(t/365.25).toFixed(2)} years)</b>, just by taking remedial action.`:'Answer the questions below to see how many Life-days you can reclaim by taking remedial action.';}
@@ -145,11 +163,11 @@ function submitAssessment(){
 $('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)go(+b.dataset.i)});
 $('panel').addEventListener('change',e=>{const s=e.target.closest('select[data-id]');if(!s)return;
   if(s.value)ans[s.dataset.id]=+s.value;else delete ans[s.dataset.id];
-  s.classList.toggle('has',!!s.value);const iv=$('info-'+s.dataset.id);if(iv)iv.innerHTML=info(qmap[s.dataset.id]);save();renderOverall();renderTotal();renderTabs();});
+  s.classList.toggle('has',!!s.value);const iv=$('info-'+s.dataset.id);const h=info(qmap[s.dataset.id]);if(iv)iv.innerHTML=h;if(h.indexOf('imin')<0)delete commit[s.dataset.id];save();saveC();renderOverall();renderTotal();renderCommit();renderTabs();});
 $('panel').addEventListener('click',e=>{
   if(e.target.id==='prev')go(cur-1);
   if(e.target.id==='next'){cur===cats.length-1?submitAssessment():go(cur+1)}});
-renderOverall();renderTotal();renderTabs();renderPanel();
+renderOverall();renderTotal();renderCommit();renderTabs();renderPanel();
 </script>
 </body>
 </html>

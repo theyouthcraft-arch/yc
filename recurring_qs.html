@@ -22,6 +22,10 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
 .bar{background:var(--yc-line);height:8px;border-radius:999px;overflow:hidden;margin-bottom:20px}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yc-green),#3d9a7c);border-radius:999px;transition:width .3s}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin-bottom:12px;scrollbar-width:thin;position:sticky;top:0;z-index:5;background:var(--yc-paper)}
+.tabs{min-width:0;max-width:100%;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.tabs.fr{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl.fr{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
 .tab{flex:none;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--yc-line);color:var(--yc-muted);padding:9px 16px;border-radius:999px;font:inherit;font-size:.86rem;font-weight:750;cursor:pointer;transition:all .18s;white-space:nowrap}
 .tab:hover{border-color:var(--yc-green);color:var(--yc-green)}
 .tab[aria-selected=true]{background:var(--yc-green);border-color:var(--yc-green);color:#fff}
@@ -128,9 +132,14 @@ function info(q){const v=ans[q.id];if(!v||!q.o[v-1])return '';const k=v-1;
 function renderTotal(){let n=0,t=0;qs.forEach(q=>{const v=ans[q.id];if(v&&q.r[v-1]){n++;t+=q.r[v-1]*Adherence_Factor}});
   t=Math.min(t,Max_Reclaimable_Days);
   $('total').innerHTML=n?`You can reclaim a total of <b>${fmt(Math.round(t))} Life-days (${(t/365.25).toFixed(2)} years)</b>, just by taking remedial action.`:'Answer the questions below to see how many Life-days you can reclaim by taking remedial action.';}
+function tabFade(el){el.classList.toggle('fl',el.scrollLeft>4);el.classList.toggle('fr',el.scrollLeft+el.clientWidth<el.scrollWidth-4)}
+function setTabs(id,html){const el=$(id),sl=el.scrollLeft;el.innerHTML=html;el.scrollLeft=sl;const s=el.querySelector('[aria-selected=true]');
+  if(s&&(s.offsetLeft<el.scrollLeft||s.offsetLeft+s.offsetWidth>el.scrollLeft+el.clientWidth))el.scrollLeft=Math.max(0,s.offsetLeft-(el.clientWidth-s.offsetWidth)/2);
+  if(!el.__f){el.addEventListener('scroll',()=>tabFade(el),{passive:true});el.__f=1}tabFade(el)}
+addEventListener('resize',()=>document.querySelectorAll('.tabs').forEach(tabFade));
 function renderTabs(){
-  $('tabs').innerHTML=cats.map((c,i)=>{const a=answeredIn(i),t=byCat[i].length;
-    return `<button type="button" role="tab" class="tab${a===t?' done':''}" aria-selected="${i===cur}" data-i="${i}">${esc(c)}<span class="n">${a}/${t}</span></button>`}).join('');
+  setTabs('tabs',cats.map((c,i)=>{const a=answeredIn(i),t=byCat[i].length;
+    return `<button type="button" role="tab" class="tab${a===t?' done':''}" aria-selected="${i===cur}" data-i="${i}">${esc(c)}<span class="n">${a}/${t}</span></button>`}).join(''));
 }
 function renderOverall(){
   const a=Object.keys(ans).filter(k=>ans[k]).length;

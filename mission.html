@@ -17,7 +17,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
 .hero h2{color:var(--yc-ink);margin:10px 0 0;letter-spacing:-.02em}
 .hero p{font-size:1.05rem;line-height:1.6;color:#466157;margin:0;max-width:760px}
 .content{padding-top:26px;padding-bottom:72px}
-.box{max-width:940px;margin:0 auto}
+.box{max-width:940px;margin:0 auto;min-width:0}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px}
 .stat{background:#fff;border:1px solid var(--yc-line);border-radius:16px;padding:14px 16px}
 .stat .n{font-size:1.6rem;font-weight:850;color:var(--yc-ink);line-height:1.1}
@@ -80,11 +80,15 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
 .na{background:none;border:0;color:#8a9690;font:inherit;font-size:.68rem;text-decoration:underline;cursor:pointer;padding:0}.na:hover{color:var(--yc-green)}
 .toast{display:none;background:#fff7e8;border:1px solid #f1d3a6;border-left:5px solid #e8730c;border-radius:14px;padding:12px 16px;margin:0 0 14px;font-size:.92rem;line-height:1.5;color:#5b3b0b}
 .toast.on{display:block;animation:pop .25s ease-out}.toast a{color:#b45309;font-weight:800}.toast .x{float:right;background:none;border:0;font-size:1.1rem;cursor:pointer;color:#8a5d1c}
+.tabs{min-width:0;max-width:100%;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.tabs.fr{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl.fr{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
 @keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .meta{font-size:.68rem;color:#8a9690;margin-top:12px}
 .empty{text-align:center;padding:40px 20px;color:var(--yc-muted);background:#fff;border:1px dashed var(--yc-line);border-radius:20px;line-height:1.6}
 .more{display:block;margin:6px auto 0;background:#fff;border:1px solid var(--yc-green);color:var(--yc-green);border-radius:999px;padding:11px 28px;font:inherit;font-weight:800;cursor:pointer}
-@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.card{padding:18px}.tabrow{flex-direction:column;align-items:flex-start;gap:0}.tabrow>.lab{width:auto}}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}.card{padding:18px}.tabrow{flex-direction:column;align-items:stretch;gap:0}.tabrow>.lab{width:auto}.tabrow>.tabs{width:100%}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -214,12 +218,17 @@ function stats(vis){
   let c=pct===0?'Start with one tap. Your first check-in is the hardest.':pct<25?'Great start. Every response builds your streak.':pct<50?"You're building momentum. Keep going!":pct<75?"More than halfway. You're doing brilliantly.":pct<100?'Almost there. Just a few check-ins left.':'All check-ins done. Outstanding work!';
   if(n)c+=' '+n+(n===1?' item needs':' items need')+' action: tackle one today.';
   $('cheer').textContent=vis.length?c:'';window.__nDone=nDone}
+function tabFade(el){el.classList.toggle('fl',el.scrollLeft>4);el.classList.toggle('fr',el.scrollLeft+el.clientWidth<el.scrollWidth-4)}
+function setTabs(id,html){const el=$(id),sl=el.scrollLeft;el.innerHTML=html;el.scrollLeft=sl;const s=el.querySelector('[aria-selected=true]');
+  if(s&&(s.offsetLeft<el.scrollLeft||s.offsetLeft+s.offsetWidth>el.scrollLeft+el.clientWidth))el.scrollLeft=Math.max(0,s.offsetLeft-(el.clientWidth-s.offsetWidth)/2);
+  if(!el.__f){el.addEventListener('scroll',()=>tabFade(el),{passive:true});el.__f=1}tabFade(el)}
+addEventListener('resize',()=>document.querySelectorAll('.tabs').forEach(tabFade));
 function tabsHTML(){
   const vis=rows.filter(visible);
   const inPer=r=>!perF||r.P===perF, inCat=r=>!catF||r.c===catF;
   const cnt=(f)=>{const a=vis.filter(f);return a.filter(r=>cur(r)!=null).length+'/'+a.length};
-  $('catTabs').innerHTML=[['','All']].concat(cats.map(c=>[c,c])).map(([v,l])=>`<button type="button" role="tab" class="tab" aria-selected="${catF===v}" data-cat="${esc(v)}">${esc(l)}<span class="n">${cnt(r=>inPer(r)&&(!v||r.c===v))}</span></button>`).join('');
-  $('perTabs').innerHTML=[['','All']].concat(pers.map(p=>[p.k,p.n])).map(([v,l])=>`<button type="button" role="tab" class="tab" aria-selected="${perF===v}" data-per="${v}">${esc(l)}<span class="n">${cnt(r=>inCat(r)&&(!v||r.P===v))}</span></button>`).join('');
+  setTabs('catTabs',[['','All']].concat(cats.map(c=>[c,c])).map(([v,l])=>`<button type="button" role="tab" class="tab" aria-selected="${catF===v}" data-cat="${esc(v)}">${esc(l)}<span class="n">${cnt(r=>inPer(r)&&(!v||r.c===v))}</span></button>`).join(''));
+  setTabs('perTabs',[['','All']].concat(pers.map(p=>[p.k,p.n])).map(([v,l])=>`<button type="button" role="tab" class="tab" aria-selected="${perF===v}" data-per="${v}">${esc(l)}<span class="n">${cnt(r=>inCat(r)&&(!v||r.P===v))}</span></button>`).join(''));
 }
 function render(focus){
   const vis=rows.filter(visible);stats(vis);tabsHTML();

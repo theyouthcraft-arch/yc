@@ -170,6 +170,20 @@
     .yc-note{max-width:900px;margin:30px auto 0}
     @media (max-width:850px){.yc-split,.yc-split.flip{grid-template-columns:1fr}.yc-split.flip>:first-child{order:0}.yc-calc{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.yc-calc{grid-template-columns:1fr}.yc-bar{grid-template-columns:90px 1fr 42px}}
+
+    .mk-tabs{display:flex;gap:6px;flex-wrap:nowrap;justify-content:center;margin:0 0 12px;gap:5px}
+    .mk-tab{border:1px solid var(--yc-line);background:#fff;color:var(--yc-muted);border-radius:99px;padding:7px 10px;font:inherit;font-size:.76rem;font-weight:800;white-space:nowrap;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+    .mk-tab:hover{border-color:var(--yc-green);color:var(--yc-green)}
+    .mk-tab[aria-selected="true"]{background:var(--yc-green);border-color:var(--yc-green);color:#fff}
+    .mk-tab:focus-visible{outline:3px solid #c48a39;outline-offset:2px}
+    .mk-panel[hidden]{display:none}
+    .mk-opts span.on.g{background:#d97706;border-color:#d97706}
+    .mk-opts span.on.n{background:#dc2626;border-color:#dc2626}
+    .mk-fb.g{border-left-color:#d97706;background:#fff4e0}.mk-fb.g b{color:#b45309}
+    .mk-fb.n{border-left-color:#dc2626;background:#fdecec}.mk-fb.n b{color:#b91c1c}
+    .mk-claim{margin-top:10px}
+    @media (min-width:851px){.mk-stage{min-height:480px}}
+    @media (max-width:520px){.mk-tabs{display:grid;grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -188,7 +202,14 @@
         <p class="yc-small-note">No account needed. Your answers stay in your browser, on your device.</p>
       </div>
       <div>
-        <div class="mk" aria-label="Illustrative mission card">
+        <div class="mk-tabs" role="tablist" aria-label="Example mission cards">
+  <button type="button" class="mk-tab" role="tab" id="mkt0" aria-controls="mkp0" aria-selected="true">On track</button>
+  <button type="button" class="mk-tab" role="tab" id="mkt1" aria-controls="mkp1" aria-selected="false" tabindex="-1">Getting close</button>
+  <button type="button" class="mk-tab" role="tab" id="mkt2" aria-controls="mkp2" aria-selected="false" tabindex="-1">Needs action</button>
+  <button type="button" class="mk-tab" role="tab" id="mkt3" aria-controls="mkp3" aria-selected="false" tabindex="-1">Ready to claim</button>
+</div>
+<div class="mk-stage">
+<div class="mk-panel" role="tabpanel" id="mkp0" aria-labelledby="mkt0"><div class="mk" aria-label="Illustrative mission card">
   <div class="mk-tags"><span class="mk-tag a">Liver / Brain</span><span class="mk-tag b">Alcohol drinks</span></div>
   <p class="mk-src">Q137 . How many alcoholic drinks do you have per week? <b>Reclaim up to 620.6 Life-days</b></p>
   <p class="mk-wt">This action carries 50% of the Life-days for this question.</p>
@@ -196,8 +217,37 @@
   <div class="mk-opts"><span class="on">None</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5+</span></div>
   <div class="mk-fb"><b>Excellent</b><br>You’re right on track. Keep it going!</div>
   <div class="mk-prog">Positive check-ins toward Done &amp; Dusted: <b>14 / 21</b> in the last 30 days<div class="mk-bar"><i></i></div></div>
+</div></div>
+<div class="mk-panel" role="tabpanel" id="mkp1" aria-labelledby="mkt1" hidden><div class="mk" aria-label="Illustrative weekly mission card">
+  <div class="mk-tags"><span class="mk-tag a">Cardiovascular</span><span class="mk-tag b">Exercise</span></div>
+  <p class="mk-src">Q001 . What is your usual systolic blood pressure (treated or not)? <b>Reclaim up to 125.1 Life-days</b></p>
+  <p class="mk-wt">This action carries 33% of the Life-days for this question (about 41.3 Life-days).</p>
+  <p class="mk-q">On how many days this week did you do 30+ minutes of brisk exercise?</p>
+  <div class="mk-opts"><span>0</span><span>1</span><span>2</span><span>3</span><span class="on g">4</span><span>5</span><span>6</span><span>7</span></div>
+  <div class="mk-fb g"><b>Good</b><br>You are close. One small step more gets you to Excellent.</div>
+  <div class="mk-prog">Positive check-ins toward Done &amp; Dusted: <b>2 / 3</b> in the last 4 weeks<div class="mk-bar"><i style="width:67%"></i></div></div>
+</div></div>
+<div class="mk-panel" role="tabpanel" id="mkp2" aria-labelledby="mkt2" hidden><div class="mk" aria-label="Illustrative needs-action mission card">
+  <div class="mk-tags"><span class="mk-tag a">Whole body</span><span class="mk-tag b">Sugary drinks</span></div>
+  <p class="mk-src">Q119 . How often do you drink sugary drinks (soda, juice, sweet coffee)? <b>Reclaim up to 82.8 Life-days</b></p>
+  <p class="mk-wt">This action carries 34% of the Life-days for this question (about 28.1 Life-days).</p>
+  <p class="mk-q">How many sugary drinks (soda, juice, sweet coffee or tea) did you have today?</p>
+  <div class="mk-opts"><span>0</span><span>1</span><span>2</span><span class="on n">3+</span></div>
+  <div class="mk-fb n"><b>Needs action</b><br>Aim for: 0. Pick one small change you can make today.</div>
+  <div class="mk-prog">Positive check-ins toward Done &amp; Dusted: <b>3 / 21</b> in the last 30 days<div class="mk-bar"><i style="width:14%"></i></div></div>
+</div></div>
+<div class="mk-panel" role="tabpanel" id="mkp3" aria-labelledby="mkt3" hidden><div class="mk" aria-label="Illustrative claim card">
+  <div class="mk-tags"><span class="mk-tag a">Cardiovascular</span><span class="mk-tag b">Cut salt</span></div>
+  <p class="mk-src">Q001 . What is your usual systolic blood pressure (treated or not)? <b>Reclaim up to 125.1 Life-days</b></p>
+  <p class="mk-wt">This action carries 34% of the Life-days for this question (about 42.5 Life-days).</p>
+  <p class="mk-q">How many salty items did you have today (pickles, papad, chips, instant noodles, packaged snacks, extra salt at the table)?</p>
+  <div class="mk-opts"><span class="on">0</span><span>1</span><span>2</span><span>3+</span></div>
+  <div class="mk-fb"><b>Excellent</b><br>Brilliant. Small wins like this add up.</div>
+  <div class="mk-prog"><b style="color:#b45309;font-size:.82rem">You have reached 21 positive check-ins in the last 30 days. You can claim 42.5 Life-days.</b></div>
+  <span class="mk-claim">I am over this, Claim my lost lifedays</span>
+</div></div>
 </div>
-        <p class="yc-small-note" style="text-align:center">Illustrative preview of a mission card.</p>
+        <p class="yc-small-note" style="text-align:center">Illustrative previews of mission cards. Tap a tab to see another.</p>
       </div>
     </div>
   </header>
@@ -312,6 +362,20 @@
       </div>
     </section>
   </main>
+
+  <script>
+  (function(){
+    var tabs=[].slice.call(document.querySelectorAll('.mk-tab')),panels=[].slice.call(document.querySelectorAll('.mk-panel'));
+    function sel(i,focus){tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i?'true':'false');t.tabIndex=j===i?0:-1});panels.forEach(function(p,j){p.hidden=j!==i});if(focus)tabs[i].focus()}
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){sel(i)});
+      t.addEventListener('keydown',function(e){
+        if(e.key==='ArrowRight'){e.preventDefault();sel((i+1)%tabs.length,true)}
+        else if(e.key==='ArrowLeft'){e.preventDefault();sel((i+tabs.length-1)%tabs.length,true)}
+      });
+    });
+  })();
+  </script>
 
   <div id="site-footer"></div>
   <script src="script.js"></script>

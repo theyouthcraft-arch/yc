@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phase 3 – Medical History & Diagnoses | YouthCraft</title>
+<meta name="description" content="YouthCraft Phase 3 – Medical History & Diagnoses – progressive baseline assessment.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--yc-paper);color:#243b33}
+.wrap{max-width:1160px;margin:auto;padding:0 22px}
+.q-hero{background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:48px 0 30px;border-bottom:1px solid var(--yc-line)}
+.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
+.q-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.08;color:var(--yc-ink);margin:12px 0;letter-spacing:-.045em}
+.q-hero h2{color:var(--yc-ink);margin:10px 0 0;letter-spacing:-.02em}
+.q-hero p{font-size:1.05rem;line-height:1.6;color:#466157;margin:0;max-width:760px}
+.content{padding-top:28px;padding-bottom:72px}
+.q-container{max-width:940px;margin:0 auto}
+.overall{display:flex;justify-content:space-between;font-size:.85rem;font-weight:800;color:var(--yc-muted);margin-bottom:8px}
+.bar{background:var(--yc-line);height:8px;border-radius:999px;overflow:hidden;margin-bottom:20px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yc-green),#3d9a7c);border-radius:999px;transition:width .3s}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin-bottom:12px;scrollbar-width:thin;position:sticky;top:0;z-index:5;background:var(--yc-paper)}
+.tabs{min-width:0;max-width:100%;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.tabs.fr{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl.fr{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
+.tab{flex:none;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--yc-line);color:var(--yc-muted);padding:9px 16px;border-radius:999px;font:inherit;font-size:.86rem;font-weight:750;cursor:pointer;transition:all .18s;white-space:nowrap}
+.tab:hover{border-color:var(--yc-green);color:var(--yc-green)}
+.tab[aria-selected=true]{background:var(--yc-green);border-color:var(--yc-green);color:#fff}
+.tab .n{font-size:.72rem;font-weight:800;background:var(--yc-mint);color:var(--yc-green);padding:2px 8px;border-radius:999px}
+.tab[aria-selected=true] .n{background:rgba(255,255,255,.2);color:#fff}
+.tab.done:not([aria-selected=true]) .n{background:var(--yc-green);color:#fff}
+.tab:focus-visible,.btn:focus-visible,select:focus-visible,.ref:focus-visible{outline:3px solid var(--yc-gold);outline-offset:2px}
+.q-card{background:#fff;border:1px solid var(--yc-line);border-radius:24px;padding:34px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
+.cat-head{margin-bottom:6px;padding-bottom:14px;border-bottom:2px solid var(--yc-mint)}
+.cat-head h2{color:var(--yc-ink);font-size:1.6rem;margin:0 0 4px;letter-spacing:-.02em}
+.cat-head p{color:var(--yc-muted);margin:0;font-size:.92rem}
+.q-item{padding:24px 0;border-bottom:1px solid var(--yc-line)}
+.q-item:last-child{border-bottom:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.tag{font-size:.66rem;line-height:1;font-weight:750;padding:4px 8px;border-radius:999px;letter-spacing:.02em}
+.tag.sys{background:var(--yc-mint);color:var(--yc-green)}
+.tag.clu{background:#f7ecd8;color:#8a5d1c}
+.q-text{font-size:1.06rem;font-weight:750;color:var(--yc-ink);line-height:1.45;margin:0}
+.daa{font-size:.68rem;color:var(--yc-muted);margin:4px 0 12px;line-height:1.4}
+.q-item select{width:100%;max-width:440px;padding:12px 40px 12px 16px;border-radius:12px;border:1px solid var(--yc-line);background:#fafcfb;color:var(--yc-ink);font:inherit;font-size:.98rem;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23176b55' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;cursor:pointer}
+.q-item select:focus{border-color:var(--yc-green);background-color:#fff}
+.q-item select.has{background-color:var(--yc-mint);border-color:var(--yc-green)}
+.tag.dd{background:var(--yc-lilac);color:#4b3d8f}
+.info:empty{display:none}
+.reclaim{margin-top:14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.reclaim .lbl{font-size:.68rem;color:var(--yc-muted)}
+.reclaim .num{font-size:1.7rem;line-height:1;font-weight:850;color:#e8730c;letter-spacing:-.02em}
+.reclaim .u{font-size:.8rem;font-weight:750;color:#e8730c}
+.reclaim .sep{color:#c9d6cf;margin:0 6px;font-size:1.4rem}
+.mission{margin-top:8px;font-size:.9rem;color:var(--yc-ink);line-height:1.5;max-width:760px}
+.mission b{color:var(--yc-green)}
+.nt{margin-top:12px;padding:10px 14px;background:#fff6e9;border:1px solid #f1d3a6;border-radius:12px;font-size:.88rem;color:#7a4a0c;max-width:640px;line-height:1.5}
+.total{background:linear-gradient(120deg,#fff6e9,#fdebd0);border:1px solid #f1d3a6;border-radius:16px;padding:14px 18px;margin-bottom:18px;color:var(--yc-ink);line-height:1.5}
+.total b{color:#e8730c;font-size:1.25rem}
+.commit{background:#e8f3ed;border:1px solid #bfdccf;border-radius:16px;padding:12px 18px;margin:-8px 0 18px;color:var(--yc-ink);line-height:1.5}
+.commit:empty{display:none}
+.commit b{color:#16794a;font-size:1.15rem}
+.imin{margin-top:12px;background:#2563eb;color:#fff;border:1px solid #2563eb;border-radius:999px;padding:9px 22px;font:inherit;font-size:.92rem;font-weight:800;cursor:pointer;transition:background .18s,border-color .18s}
+.imin:hover{background:#1d4fd0;border-color:#1d4fd0}
+.imin.on{background:#16a34a;border-color:#16a34a}
+.imin.on:hover{background:#12873d;border-color:#12873d}
+.imin:focus-visible{outline:3px solid var(--yc-gold);outline-offset:2px}
+.refwrap{display:block;margin-top:10px;font-size:.78rem;line-height:1.45;max-width:760px}.refpre{font-weight:800;color:var(--yc-muted)}.refwrap .ref{display:inline;margin-top:0}
+.ref{display:inline-block;margin-top:10px;font-size:.78rem;line-height:1.45;color:var(--yc-green);text-decoration:underline;text-underline-offset:2px;max-width:760px}
+.ref:hover{color:var(--yc-ink)}
+.refl{display:block;margin-top:10px;font-size:.72rem;color:var(--yc-muted)}
+.form-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:22px;border-top:1px solid var(--yc-line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 26px;font:inherit;font-size:.98rem;font-weight:800;cursor:pointer;transition:all .18s;border:1px solid transparent}
+.btn-secondary{background:#fff;border-color:var(--yc-line);color:var(--yc-muted)}
+.btn-secondary:hover:not(:disabled){border-color:var(--yc-green);color:var(--yc-green)}
+.btn-primary{background:var(--yc-green);color:#fff;border-color:var(--yc-green)}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 18px rgba(24,59,50,.15)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:640px){.q-card{padding:20px;border-radius:18px}.q-item select{max-width:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<header class="q-hero"><div class="wrap">
+  <div class="eyebrow">✦ Baseline Assessment</div>
+  <h2>Craft a Younger You! Add Years to your Life.</h2>
+  <h1>Phase 3 – Medical History & Diagnoses</h1>
+  <p>34 questions in this phase. Move between categories using the tabs, answer at your own pace, and your answers are saved on this device. Complete this phase for an updated Life-days estimate.</p>
+</div></header>
+<main class="wrap content"><div class="q-container">
+  <div class="overall"><span id="ovCount">0 of 34 answered</span><span id="ovPct">0%</span></div>
+  <div class="bar" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="34" id="bar"><i id="barFill"></i></div>
+  <div class="total" id="total" aria-live="polite"></div>
+  <div class="commit" id="commit" aria-live="polite"></div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="q-card" id="panel" role="tabpanel"></div>
+</div></main>
+<div id="site-footer"></div>
+<script src="script.js"></script>
+<script>
+const DATA={"cats":["Family & early-life history","Pathological","Psychological"],"qs":[{"id":"Q041","c":"Pathological","s":"Cardiovascular","k":"Pathological Diagnoses","q":"Coronary artery disease or heart attack?","d":"Atherosclerosis / coronary disease","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,367.5,735,1050],"r":[0,107.69,215.38,307.69],"a":"Statin/antiplatelet as advised, cardiac rehab, lifestyle","t":"Association of cardiometabolic multimorbidity with mortality (JAMA, 2015) + CAD-specific survival data","u":"https://doi.org/10.1001/jama.2015.7008"},{"id":"Q042","c":"Pathological","s":"Cardiovascular","k":"Pathological Diagnoses","q":"Hypertension?","d":"Hypertension","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,210,420,600],"r":[0,76.92,153.85,219.78],"a":"Take BP medicines, low salt, exercise, weight control","t":"Age-specific relevance of usual blood pressure... (Lancet, 2002) + hypertension treatment trial meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/12493255/"},{"id":"Q043","c":"Pathological","s":"Cardiovascular","k":"Pathological Diagnoses","q":"Heart failure?","d":"Heart failure","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,420,840,1200],"r":[0,92.31,184.62,263.74],"a":"Medication adherence, fluid/salt control, cardiac rehab","t":"Heart failure and mortality – large registry and trial meta-analyses (e.g. MAGGIC)","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q044","c":"Pathological","s":"Cardiovascular","k":"Pathological Diagnoses","q":"Atrial fibrillation?","d":"Atrial fibrillation","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,262.5,525,750],"r":[0,57.69,115.38,164.84],"a":"Anticoagulation, rate/rhythm control, limit alcohol","t":"Atrial fibrillation and mortality risk – systematic reviews and meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q045","c":"Pathological","s":"Cerebrovascular","k":"Pathological Diagnoses","q":"Stroke or TIA history?","d":"Stroke / TIA","m":"Tier 2: Manual Input (Detailed)","o":["No stroke or TIA","TIA only","Stroke with full recovery","Stroke with lasting disability"],"l":[0,480,780,1200],"r":[0,123.08,200,307.69],"a":"BP/lipid control, antithrombotics, rehabilitation","t":"Association of cardiometabolic multimorbidity with mortality (JAMA, 2015) + stroke survival data","u":"https://doi.org/10.1001/jama.2015.7008"},{"id":"Q046","c":"Pathological","s":"Endocrine","k":"Pathological Diagnoses","q":"Diabetes or pre-diabetes?","d":"Type 2 diabetes","m":"Tier 1: Manual Input (Simple)","o":["No diabetes","Pre-diabetes","Type 2 diabetes, well controlled","Diabetes, poorly controlled or with complications"],"l":[0,225,540,900],"r":[0,82.89,198.94,331.56],"a":"Glucose control, weight loss, medication adherence","t":"Sex differences in the association between diabetes and risk of cardiovascular disease, cancer, and all-cause mortality: a systematic review and meta-analysis (BMC Med, 2019)","u":"https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-019-1355-0"},{"id":"Q047","c":"Pathological","s":"Musculoskeletal","k":"Pathological Diagnoses","q":"Osteoporosis?","d":"Osteoporosis","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,210,420,600],"r":[0,61.89,123.78,176.83],"a":"Bone medicines if prescribed, weight-bearing exercise, calcium/vit D","t":"Osteoporosis / low bone density and mortality – systematic reviews","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q048","c":"Pathological","s":"Musculoskeletal","k":"Pathological Diagnoses","q":"Osteoarthritis?","d":"Osteoarthritis","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,126,252,360],"r":[0,13.93,27.85,39.79],"a":"Exercise, weight control, physiotherapy","t":"Osteoarthritis and mortality risk – systematic reviews and meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q049","c":"Pathological","s":"Respiratory","k":"Pathological Diagnoses","q":"COPD or chronic bronchitis?","d":"COPD","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,367.5,735,1050],"r":[0,81.23,162.46,232.09],"a":"Stop smoking, inhalers, pulmonary rehab, vaccines","t":"All-Cause and Cause-Specific Mortality in Chronic Obstructive Pulmonary Disease: A Systematic Review and Meta-Analysis (2025)","u":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12764237/"},{"id":"Q050","c":"Pathological","s":"Kidney","k":"Pathological Diagnoses","q":"Chronic kidney disease?","d":"Chronic kidney disease","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,315,630,900],"r":[0,69.63,139.26,198.94],"a":"BP/glucose control, avoid NSAIDs, nephrology follow-up","t":"Chronic kidney disease and all-cause mortality – large collaborative meta-analyses (CKD Prognosis Consortium)","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q051","c":"Pathological","s":"Oncology","k":"Pathological Diagnoses","q":"Cancer history?","d":"Cancer","m":"Tier 2: Manual Input (Detailed)","o":["No cancer history","In remission over 10 years","In remission under 10 years","Active cancer or on treatment"],"l":[0,157.5,525,1050],"r":[0,34.81,116.05,232.09],"a":"Follow-up and screening, healthy lifestyle","t":"Cancer survivors and long-term mortality – site-specific and overall survival data from SEER / CONCORD","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q052","c":"Pathological","s":"Eye","k":"Pathological Diagnoses","q":"Glaucoma?","d":"Glaucoma","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,52.5,105,150],"r":[0,19.34,38.68,55.26],"a":"Eye-drop adherence, regular eye pressure checks","t":"Glaucoma and mortality – limited independent effect after comorbidity adjustment","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q053","c":"Pathological","s":"Eye","k":"Pathological Diagnoses","q":"Macular degeneration?","d":"Macular degeneration","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,84,168,240],"r":[0,12.38,24.76,35.37],"a":"Stop smoking, AREDS-type nutrition, specialist follow-up","t":"Age-related macular degeneration and mortality risk – cohort studies and reviews","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q054","c":"Pathological","s":"Ear","k":"Pathological Diagnoses","q":"Clinically diagnosed hearing loss?","d":"Clinical hearing loss","m":"Tier 1: Manual Input (Simple)","o":["None","Mild, no aids","Moderate, using aids","Severe or untreated"],"l":[0,72,120,240],"r":[0,15.91,26.52,53.05],"a":"Hearing aids, audiology follow-up","t":"Associations of Hearing Loss and Dual Sensory Loss With Mortality... (JAMA Otolaryngol, 2022)","u":"https://doi.org/10.1001/jamaoto.2021.3767"},{"id":"Q055","c":"Pathological","s":"Brain","k":"Pathological Diagnoses","q":"Concern about memory impairment or dementia?","d":"Neurodegeneration","m":"Tier 1: Manual Input (Simple)","o":["No concerns","Self-noticed memory worries","Doctor-noted mild cognitive impairment","Diagnosed dementia"],"l":[0,270,810,1350],"r":[0,39.79,119.36,198.94],"a":"Vascular risk control, exercise, cognitive and social activity","t":"Mild cognitive impairment / dementia and mortality – systematic reviews","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q056","c":"Pathological","s":"Brain","k":"Pathological Diagnoses","q":"Parkinson's disease or similar?","d":"Parkinsonian signs","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,367.5,735,1050],"r":[0,40.62,81.23,116.05],"a":"Exercise, medication optimisation, neurology care","t":"Parkinson's disease and mortality – systematic reviews and meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q057","c":"Pathological","s":"Liver","k":"Pathological Diagnoses","q":"Fatty liver or raised liver enzymes?","d":"Fatty liver disease","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,126,252,360],"r":[0,55.7,111.4,159.15],"a":"Weight loss, cut alcohol and sugar","t":"Non-alcoholic fatty liver disease and mortality – systematic reviews and meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q058","c":"Pathological","s":"Blood","k":"Pathological Diagnoses","q":"Anaemia?","d":"Anaemia","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,105,210,300],"r":[0,46.42,92.84,132.62],"a":"Find and treat the cause (iron, B12, blood loss)","t":"Anaemia and mortality in older adults – systematic reviews","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q059","c":"Pathological","s":"Endocrine","k":"Pathological Diagnoses","q":"Thyroid disease?","d":"Thyroid disease","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,52.5,105,150],"r":[0,27.08,54.15,77.36],"a":"Regular TSH checks, medication adherence","t":"Thyroid dysfunction and mortality – meta-analyses of subclinical hypo/hyperthyroidism","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q060","c":"Pathological","s":"Oral","k":"Pathological Diagnoses","q":"Gum disease?","d":"Periodontitis","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,52.5,105,150],"r":[0,23.36,46.72,66.74],"a":"Professional cleaning, flossing, dental follow-up","t":"Periodontal disease / gum disease and mortality / CVD risk – systematic reviews","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q061","c":"Pathological","s":"Whole body","k":"Pathological Diagnoses","q":"How many of these apply: weakness, slow walking, exhaustion, weight loss, low activity?","d":"Frailty","m":"Tier 2: Manual Input (Detailed)","o":["None","1 to 2 (pre-frail)","3 or more (frail)"],"l":[0,480,1200],"r":[0,136.51,341.28],"a":"Strength + protein programme, treat contributing conditions","t":"Frailty index as a predictor of mortality: a systematic review and meta-analysis (Age Ageing, 2018)","u":"https://doi.org/10.1093/ageing/afx162"},{"id":"Q062","c":"Pathological","s":"Respiratory / Immune","k":"Pathological Diagnoses","q":"Hospitalised for pneumonia or sepsis in the past 5 years?","d":"Severe infection","m":"Tier 1: Manual Input (Simple)","o":["No","Once","Two or more times"],"l":[0,300,600],"r":[0,65.93,131.87],"a":"Pneumococcal/flu vaccines, early treatment","t":"Hospitalisation for pneumonia / sepsis and subsequent mortality risk – cohort studies","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q063","c":"Pathological","s":"Whole body","k":"Pathological Diagnoses","q":"How many hospital admissions in the past year?","d":"Healthcare burden","m":"Tier 2: Manual Input (Detailed)","o":["None","One","Two","Three or more"],"l":[0,180,390,600],"r":[0,31.64,68.56,105.48],"a":"Chronic disease management and follow-up","t":"Hospital admission frequency and mortality – administrative data studies","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q064","c":"Pathological","s":"Immune","k":"Pathological Diagnoses","q":"Autoimmune disease?","d":"Autoimmune disease","m":"Tier 1: Manual Input (Simple)","o":["No diagnosis","Diagnosed - well controlled","Diagnosed - partly controlled","Diagnosed - poorly controlled or with complications"],"l":[0,126,252,360],"r":[0,18.69,37.38,53.4],"a":"Specialist care, medication adherence","t":"Autoimmune disease and mortality – disease-specific (RA, SLE, etc.) meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q065","c":"Pathological","s":"Genetic","k":"Pathological Diagnoses","q":"Did a parent die of heart disease, stroke or cancer before age 65?","d":"Family longevity risk","m":"Tier 1: Manual Input (Simple)","o":["No","Yes"],"l":[0,300],"r":[0,18],"a":"Early screening and risk-factor control","t":"Parental longevity / early parental death and offspring mortality – family history studies","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q086","c":"Psychological","s":"Cognition","k":"Social / Mind","q":"Do you often forget recent conversations or events?","d":"Episodic memory decline","m":"Tier 1: Manual Input (Simple)","o":["Never","Rarely (a few times a year)","Sometimes (about monthly)","Often (weekly or more)"],"l":[0,112.5,270,450],"r":[0,30.38,72.9,121.5],"a":"Exercise, sleep, learning new skills","t":"[INDIRECT] Subjective memory complaints and mortality / dementia risk","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q098","c":"Psychological","s":"Function","k":"Social / Mind","q":"Do you need help with bathing, dressing or eating?","d":"ADL difficulty","m":"Tier 1: Manual Input (Simple)","o":["No help needed","Occasional help","Regular help","Fully dependent"],"l":[0,315,682.5,1050],"r":[0,57.02,123.55,190.07],"a":"Rehabilitation, strength training, aids","t":"Activities of daily living disability and mortality – classic geriatric literature","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q099","c":"Psychological","s":"Function","k":"Social / Mind","q":"Do you need help with shopping, finances or medications?","d":"IADL difficulty","m":"Tier 1: Manual Input (Simple)","o":["No help needed","Occasional help","Regular help","Fully dependent"],"l":[0,180,390,600],"r":[0,32.58,70.6,108.61],"a":"Cognitive and physical rehab, support services","t":"Instrumental ADL disability and mortality","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q194","c":"Family & early-life history","s":"Whole body","k":"Functional & Family","q":"How long did your parents live (or are living)?","d":"Heritable longevity (non-modifiable)","m":"Tier 1: Manual Input (Simple)","o":["Both lived to 85 or more","One lived to 85 or more","Neither reached 85","Both died before 70"],"l":[0,315,630,900],"r":[0,14.18,28.35,40.5],"a":"Use family history to prioritise screening","t":"Parental longevity and offspring survival – family history / twin studies","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q195","c":"Family & early-life history","s":"Brain","k":"Functional & Family","q":"Has a parent or sibling had dementia?","d":"Dementia risk (family)","m":"Tier 1: Manual Input (Simple)","o":["No","One older relative after 80","One relative before 80","Multiple relatives"],"l":[0,90,210,300],"r":[0,8.1,18.9,27],"a":"Control vascular risk factors; stay active","t":"Family history of dementia and personal risk / mortality pathways","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q196","c":"Family & early-life history","s":"Endocrine","k":"Functional & Family","q":"Has a parent or sibling had type 2 diabetes?","d":"Type 2 diabetes risk (family)","m":"Tier 1: Manual Input (Simple)","o":["No","One relative","Multiple relatives"],"l":[0,100,200],"r":[0,45,90],"a":"Weight control and exercise offset much of the risk","t":"Family history of type 2 diabetes and personal diabetes / mortality risk","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q197","c":"Family & early-life history","s":"Oncology","k":"Functional & Family","q":"Has a close relative had cancer before age 60?","d":"Cancer risk (family)","m":"Tier 1: Manual Input (Simple)","o":["No","One relative","Multiple relatives"],"l":[0,100,200],"r":[0,18,36],"a":"Earlier or more frequent screening","t":"Family history of early-onset cancer and personal cancer risk / mortality","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q198","c":"Family & early-life history","s":"Brain / Whole body","k":"Functional & Family","q":"How many adverse childhood experiences (abuse, neglect, household dysfunction) did you have?","d":"Early-life adversity (non-modifiable)","m":"Tier 2: Manual Input (Detailed)","o":["None","1 to 2","3 to 4","5 or more"],"l":[0,210,420,600],"r":[0,18.9,37.8,54],"a":"Trauma-informed counselling and strong social support","t":"Adverse childhood experiences (ACEs) and adult mortality – large cohort and meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q199","c":"Family & early-life history","s":"Whole body","k":"Functional & Family","q":"How often do you struggle to afford food, housing or healthcare?","d":"Socioeconomic stress (driver)","m":"Tier 2: Manual Input (Detailed)","o":["Never","Rarely (a few times a year)","Sometimes (about monthly)","Often (weekly or more)"],"l":[0,150,360,600],"r":[0,27,64.8,108],"a":"Use benefits, community supports and financial counselling","t":"Socioeconomic disadvantage / food insecurity and mortality – social determinants literature","u":"https://pubmed.ncbi.nlm.nih.gov/"}]};
+const cats=DATA.cats, qs=DATA.qs, KEY='yc_baseline_answers_v1';
+let ans={}, cur=0;
+try{ans=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){ans={}}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const safeUrl=u=>/^https?:\/\//i.test(u)?u:'';
+const byCat=cats.map(c=>qs.filter(q=>q.c===c));
+const answeredIn=i=>byCat[i].filter(q=>ans[q.id]).length;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}}
+const Adherence_Factor=0.50;
+const Max_Reclaimable_Days=9125;
+const CKEY=KEY+'_commit';let commit={};
+try{commit=JSON.parse(localStorage.getItem(CKEY)||'{}')||{}}catch(e){commit={}}
+function saveC(){try{localStorage.setItem(CKEY,JSON.stringify(commit))}catch(e){}}
+function renderCommit(){let n=0,t=0;qs.forEach(q=>{const v=ans[q.id];if(commit[q.id]&&v&&q.r[v-1]){n++;t+=q.r[v-1]*Adherence_Factor}});
+  t=Math.min(t,Max_Reclaimable_Days);
+  $('commit').innerHTML=n?`Yes, I am in <b>${n}</b> ${n===1?'mission':'missions'}, Committed to reclaim <b>${fmt(Math.round(t))}</b> Lifedays to be saved`:'';}
+$('panel').addEventListener('click',e=>{const b=e.target.closest('.imin');if(!b)return;const id=b.dataset.id;
+  if(commit[id])delete commit[id];else commit[id]=1;
+  const on=!!commit[id];b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'I’m in! ✓':'I’m in!';saveC();renderCommit();});
+const fmt=x=>Number(x).toLocaleString('en-US',{maximumFractionDigits:1});
+const qmap={};qs.forEach(q=>qmap[q.id]=q);
+function info(q){const v=ans[q.id];if(!v||!q.o[v-1])return '';const k=v-1;
+  if(/^not tested/i.test(q.o[k]))return '<div class="nt"><b>Get this tested.</b> Without a result we cannot tell how many Life-days you could reclaim here, so please take the relevant test and update your answer.</div>';
+  const rc=q.r[k];if(!rc)return '';
+  return `<div class="reclaim"><span class="lbl">Potential loss of Lifedays:</span><b class="num">${fmt(q.l[k])}</b><span class="u">Life-days</span><span class="sep">|</span><span class="lbl">Reclaim upto</span><b class="num">${fmt(rc*Adherence_Factor)}</b><span class="u">Life-days</span></div>`+(q.a?`<div class="mission"><b>Remedial action:</b> ${esc(q.a)}</div>`:'')+`<button type="button" class="imin${commit[q.id]?' on':''}" data-id="${q.id}" aria-pressed="${commit[q.id]?'true':'false'}">${commit[q.id]?'I’m in! ✓':'I’m in!'}</button>`;}
+function renderTotal(){let n=0,t=0;qs.forEach(q=>{const v=ans[q.id];if(v&&q.r[v-1]){n++;t+=q.r[v-1]*Adherence_Factor}});
+  t=Math.min(t,Max_Reclaimable_Days);
+  $('total').innerHTML=n?`You can reclaim a total of <b>${fmt(Math.round(t))} Life-days (${(t/365.25).toFixed(2)} years)</b>, just by taking remedial action.`:'Answer the questions below to see how many Life-days you can reclaim by taking remedial action.';}
+function tabFade(el){el.classList.toggle('fl',el.scrollLeft>4);el.classList.toggle('fr',el.scrollLeft+el.clientWidth<el.scrollWidth-4)}
+function setTabs(id,html){const el=$(id),sl=el.scrollLeft;el.innerHTML=html;el.scrollLeft=sl;const s=el.querySelector('[aria-selected=true]');
+  if(s&&(s.offsetLeft<el.scrollLeft||s.offsetLeft+s.offsetWidth>el.scrollLeft+el.clientWidth))el.scrollLeft=Math.max(0,s.offsetLeft-(el.clientWidth-s.offsetWidth)/2);
+  if(!el.__f){el.addEventListener('scroll',()=>tabFade(el),{passive:true});el.__f=1}tabFade(el)}
+addEventListener('resize',()=>document.querySelectorAll('.tabs').forEach(tabFade));
+function renderTabs(){
+  setTabs('tabs',cats.map((c,i)=>{const a=answeredIn(i),t=byCat[i].length;
+    return `<button type="button" role="tab" class="tab${a===t?' done':''}" aria-selected="${i===cur}" data-i="${i}">${esc(c)}<span class="n">${a}/${t}</span></button>`}).join(''));
+}
+function renderOverall(){
+  const a=Object.keys(ans).filter(k=>ans[k]).length;
+  $('ovCount').textContent=a+' of '+qs.length+' answered';
+  $('ovPct').textContent=Math.round(a/qs.length*100)+'%';
+  $('barFill').style.width=(a/qs.length*100)+'%';
+  $('bar').setAttribute('aria-valuenow',a);
+}
+function renderPanel(){
+  const list=byCat[cur];
+  $('panel').innerHTML=`<div class="cat-head"><h2>${esc(cats[cur])}</h2><p>Category ${cur+1} of ${cats.length} · ${list.length} questions</p></div>`+
+  list.map((q,n)=>{
+    const opts=q.o.map((t,k)=>`<option value="${k+1}"${ans[q.id]==k+1?' selected':''}>${esc(t)}</option>`).join('');
+    const u=safeUrl(q.u);
+    const ref=q.t?(u?`<span class="refwrap"><span class="refpre">Refer:</span> <a class="ref" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(q.t)}</a></span>`:`<span class="refl"><span class="refpre">Refer:</span> ${esc(q.t)}</span>`):'';
+    return `<div class="q-item"><div class="tags"><span class="tag sys">${esc(q.s)}</span><span class="tag clu">${esc(q.k)}</span>${q.d?`<span class="tag dd">${esc(q.d)}</span>`:''}</div>
+<div class="q-text">${esc(q.id)} . ${esc(q.q)}</div>
+<select data-id="${q.id}" aria-label="${esc(q.q)}" class="${ans[q.id]?'has':''}"><option value="">Select an answer</option>${opts}</select><div class="info" id="info-${q.id}">${info(q)}</div>${ref}</div>`}).join('')+
+  `<div class="form-actions"><button type="button" class="btn btn-secondary" id="prev"${cur===0?' disabled':''}>← Previous</button>
+<button type="button" class="btn btn-primary" id="next">${cur===cats.length-1?'Complete Assessment ✓':'Next: '+esc(cats[cur+1])+' →'}</button></div>`;
+}
+function go(i){cur=Math.max(0,Math.min(cats.length-1,i));renderTabs();renderPanel();
+  const t=document.querySelector('.tab[aria-selected=true]');if(t)t.scrollIntoView({inline:'center',block:'nearest'});
+  window.scrollTo({top:$('tabs').offsetTop-8,behavior:'smooth'});}
+function submitAssessment(){
+  const left=qs.length-Object.keys(ans).filter(k=>ans[k]).length;
+  if(left&&!confirm(left+' question(s) are still unanswered. Submit anyway?'))return;
+  window.location.href='mission.html';
+}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)go(+b.dataset.i)});
+$('panel').addEventListener('change',e=>{const s=e.target.closest('select[data-id]');if(!s)return;
+  if(s.value)ans[s.dataset.id]=+s.value;else delete ans[s.dataset.id];
+  s.classList.toggle('has',!!s.value);const iv=$('info-'+s.dataset.id);const h=info(qmap[s.dataset.id]);if(iv)iv.innerHTML=h;if(h.indexOf('imin')<0)delete commit[s.dataset.id];save();saveC();renderOverall();renderTotal();renderCommit();renderTabs();});
+$('panel').addEventListener('click',e=>{
+  if(e.target.id==='prev')go(cur-1);
+  if(e.target.id==='next'){cur===cats.length-1?submitAssessment():go(cur+1)}});
+renderOverall();renderTotal();renderCommit();renderTabs();renderPanel();
+</script>
+</body>
+</html>

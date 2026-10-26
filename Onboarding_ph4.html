@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phase 4 – Biomarkers & Deep Dive | YouthCraft</title>
+<meta name="description" content="YouthCraft Phase 4 – Biomarkers & Deep Dive – progressive baseline assessment.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--yc-paper);color:#243b33}
+.wrap{max-width:1160px;margin:auto;padding:0 22px}
+.q-hero{background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:48px 0 30px;border-bottom:1px solid var(--yc-line)}
+.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
+.q-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.08;color:var(--yc-ink);margin:12px 0;letter-spacing:-.045em}
+.q-hero h2{color:var(--yc-ink);margin:10px 0 0;letter-spacing:-.02em}
+.q-hero p{font-size:1.05rem;line-height:1.6;color:#466157;margin:0;max-width:760px}
+.content{padding-top:28px;padding-bottom:72px}
+.q-container{max-width:940px;margin:0 auto}
+.overall{display:flex;justify-content:space-between;font-size:.85rem;font-weight:800;color:var(--yc-muted);margin-bottom:8px}
+.bar{background:var(--yc-line);height:8px;border-radius:999px;overflow:hidden;margin-bottom:20px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yc-green),#3d9a7c);border-radius:999px;transition:width .3s}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin-bottom:12px;scrollbar-width:thin;position:sticky;top:0;z-index:5;background:var(--yc-paper)}
+.tabs{min-width:0;max-width:100%;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.tabs.fr{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl.fr{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
+.tab{flex:none;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--yc-line);color:var(--yc-muted);padding:9px 16px;border-radius:999px;font:inherit;font-size:.86rem;font-weight:750;cursor:pointer;transition:all .18s;white-space:nowrap}
+.tab:hover{border-color:var(--yc-green);color:var(--yc-green)}
+.tab[aria-selected=true]{background:var(--yc-green);border-color:var(--yc-green);color:#fff}
+.tab .n{font-size:.72rem;font-weight:800;background:var(--yc-mint);color:var(--yc-green);padding:2px 8px;border-radius:999px}
+.tab[aria-selected=true] .n{background:rgba(255,255,255,.2);color:#fff}
+.tab.done:not([aria-selected=true]) .n{background:var(--yc-green);color:#fff}
+.tab:focus-visible,.btn:focus-visible,select:focus-visible,.ref:focus-visible{outline:3px solid var(--yc-gold);outline-offset:2px}
+.q-card{background:#fff;border:1px solid var(--yc-line);border-radius:24px;padding:34px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
+.cat-head{margin-bottom:6px;padding-bottom:14px;border-bottom:2px solid var(--yc-mint)}
+.cat-head h2{color:var(--yc-ink);font-size:1.6rem;margin:0 0 4px;letter-spacing:-.02em}
+.cat-head p{color:var(--yc-muted);margin:0;font-size:.92rem}
+.q-item{padding:24px 0;border-bottom:1px solid var(--yc-line)}
+.q-item:last-child{border-bottom:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.tag{font-size:.66rem;line-height:1;font-weight:750;padding:4px 8px;border-radius:999px;letter-spacing:.02em}
+.tag.sys{background:var(--yc-mint);color:var(--yc-green)}
+.tag.clu{background:#f7ecd8;color:#8a5d1c}
+.q-text{font-size:1.06rem;font-weight:750;color:var(--yc-ink);line-height:1.45;margin:0}
+.daa{font-size:.68rem;color:var(--yc-muted);margin:4px 0 12px;line-height:1.4}
+.q-item select{width:100%;max-width:440px;padding:12px 40px 12px 16px;border-radius:12px;border:1px solid var(--yc-line);background:#fafcfb;color:var(--yc-ink);font:inherit;font-size:.98rem;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23176b55' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;cursor:pointer}
+.q-item select:focus{border-color:var(--yc-green);background-color:#fff}
+.q-item select.has{background-color:var(--yc-mint);border-color:var(--yc-green)}
+.tag.dd{background:var(--yc-lilac);color:#4b3d8f}
+.info:empty{display:none}
+.reclaim{margin-top:14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.reclaim .lbl{font-size:.68rem;color:var(--yc-muted)}
+.reclaim .num{font-size:1.7rem;line-height:1;font-weight:850;color:#e8730c;letter-spacing:-.02em}
+.reclaim .u{font-size:.8rem;font-weight:750;color:#e8730c}
+.reclaim .sep{color:#c9d6cf;margin:0 6px;font-size:1.4rem}
+.mission{margin-top:8px;font-size:.9rem;color:var(--yc-ink);line-height:1.5;max-width:760px}
+.mission b{color:var(--yc-green)}
+.nt{margin-top:12px;padding:10px 14px;background:#fff6e9;border:1px solid #f1d3a6;border-radius:12px;font-size:.88rem;color:#7a4a0c;max-width:640px;line-height:1.5}
+.total{background:linear-gradient(120deg,#fff6e9,#fdebd0);border:1px solid #f1d3a6;border-radius:16px;padding:14px 18px;margin-bottom:18px;color:var(--yc-ink);line-height:1.5}
+.total b{color:#e8730c;font-size:1.25rem}
+.commit{background:#e8f3ed;border:1px solid #bfdccf;border-radius:16px;padding:12px 18px;margin:-8px 0 18px;color:var(--yc-ink);line-height:1.5}
+.commit:empty{display:none}
+.commit b{color:#16794a;font-size:1.15rem}
+.imin{margin-top:12px;background:#2563eb;color:#fff;border:1px solid #2563eb;border-radius:999px;padding:9px 22px;font:inherit;font-size:.92rem;font-weight:800;cursor:pointer;transition:background .18s,border-color .18s}
+.imin:hover{background:#1d4fd0;border-color:#1d4fd0}
+.imin.on{background:#16a34a;border-color:#16a34a}
+.imin.on:hover{background:#12873d;border-color:#12873d}
+.imin:focus-visible{outline:3px solid var(--yc-gold);outline-offset:2px}
+.refwrap{display:block;margin-top:10px;font-size:.78rem;line-height:1.45;max-width:760px}.refpre{font-weight:800;color:var(--yc-muted)}.refwrap .ref{display:inline;margin-top:0}
+.ref{display:inline-block;margin-top:10px;font-size:.78rem;line-height:1.45;color:var(--yc-green);text-decoration:underline;text-underline-offset:2px;max-width:760px}
+.ref:hover{color:var(--yc-ink)}
+.refl{display:block;margin-top:10px;font-size:.72rem;color:var(--yc-muted)}
+.form-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:22px;border-top:1px solid var(--yc-line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 26px;font:inherit;font-size:.98rem;font-weight:800;cursor:pointer;transition:all .18s;border:1px solid transparent}
+.btn-secondary{background:#fff;border-color:var(--yc-line);color:var(--yc-muted)}
+.btn-secondary:hover:not(:disabled){border-color:var(--yc-green);color:var(--yc-green)}
+.btn-primary{background:var(--yc-green);color:#fff;border-color:var(--yc-green)}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 18px rgba(24,59,50,.15)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:640px){.q-card{padding:20px;border-radius:18px}.q-item select{max-width:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+<header class="q-hero"><div class="wrap">
+  <div class="eyebrow">✦ Baseline Assessment</div>
+  <h2>Craft a Younger You! Add Years to your Life.</h2>
+  <h1>Phase 4 – Biomarkers & Deep Dive</h1>
+  <p>31 questions in this phase. Move between categories using the tabs, answer at your own pace, and your answers are saved on this device. Complete this phase for an updated Life-days estimate.</p>
+</div></header>
+<main class="wrap content"><div class="q-container">
+  <div class="overall"><span id="ovCount">0 of 31 answered</span><span id="ovPct">0%</span></div>
+  <div class="bar" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="31" id="bar"><i id="barFill"></i></div>
+  <div class="total" id="total" aria-live="polite"></div>
+  <div class="commit" id="commit" aria-live="polite"></div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="q-card" id="panel" role="tabpanel"></div>
+</div></main>
+<div id="site-footer"></div>
+<script src="script.js"></script>
+<script>
+const DATA={"cats":["Environment & preventive care","Molecular / Biomarker"],"qs":[{"id":"Q066","c":"Molecular / Biomarker","s":"Chromosome","k":"Metabolic & Biomarkers","q":"Telomere length compared with age norms?","d":"Telomere shortening","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,225,450],"r":[0,0,31.29,62.57],"a":"Exercise, sleep, stress reduction, no smoking","t":"Telomere length and mortality – systematic reviews and meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q067","c":"Molecular / Biomarker","s":"Epigenome","k":"Metabolic & Biomarkers","q":"Epigenetic age compared with chronological age?","d":"DNA methylation clock acceleration","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,450,900],"r":[0,0,97.34,194.67],"a":"Exercise, diet quality, sleep, no smoking","t":"Epigenetic age acceleration and mortality – large cohort studies (Horvath, Levine clocks)","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q068","c":"Molecular / Biomarker","s":"Inflammation","k":"Metabolic & Biomarkers","q":"hs-CRP (target below 3 mg/L)?","d":"Raised CRP","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,180,360],"r":[0,0,55.62,111.24],"a":"Lose body fat, exercise, treat infections/gum disease","t":"Hs-CRP and all-cause, cardiovascular, and cancer mortality risk: A meta-analysis (Atherosclerosis, 2017)","u":"https://doi.org/10.1016/j.atherosclerosis.2017.02.003"},{"id":"Q069","c":"Molecular / Biomarker","s":"Inflammation","k":"Metabolic & Biomarkers","q":"IL-6 compared with age reference?","d":"Raised IL-6","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,180,360],"r":[0,0,44.5,88.99],"a":"Exercise, weight loss, anti-inflammatory diet","t":"IL-6 and mortality – inflammatory biomarker meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q070","c":"Molecular / Biomarker","s":"Inflammation","k":"Metabolic & Biomarkers","q":"Neutrophil-to-lymphocyte ratio (target below 3)?","d":"Raised neutrophil-lymphocyte ratio","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,90,180],"r":[0,0,16.69,33.37],"a":"Reduce inflammation, sleep, stress management","t":"Neutrophil-to-lymphocyte ratio and mortality – systematic reviews in general and disease populations","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q071","c":"Molecular / Biomarker","s":"Metabolism","k":"Metabolic & Biomarkers","q":"HbA1c?","d":"Raised HbA1c","m":"Tier 4: Diagnostic Report Extract","o":["Not tested / don't know","Below 5.7%","5.7% to 6.4%","6.5% or above"],"l":[0,0,180,450],"r":[0,0,99.47,248.67],"a":"Diet, exercise, medication adherence","t":"Sex differences in the association between diabetes and risk of... mortality (BMC Med, 2019) + HbA1c-specific data","u":"https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-019-1355-0"},{"id":"Q072","c":"Molecular / Biomarker","s":"Metabolism","k":"Metabolic & Biomarkers","q":"Fasting glucose (target below 100 mg/dL)?","d":"Raised fasting glucose","m":"Tier 4: Diagnostic Report Extract","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,120,240],"r":[0,0,44.21,88.42],"a":"Diet, exercise, weight control","t":"Fasting glucose and mortality – Emerging Risk Factors Collaboration and similar","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q073","c":"Molecular / Biomarker","s":"Metabolism","k":"Metabolic & Biomarkers","q":"Fasting insulin compared with reference range?","d":"Raised fasting insulin","m":"Tier 4: Diagnostic Report Extract","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,90,180],"r":[0,0,33.37,66.74],"a":"Weight loss, resistance training, lower refined carbs","t":"Hyperinsulinaemia / insulin resistance and mortality – cohort meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q074","c":"Molecular / Biomarker","s":"Lipids","k":"Metabolic & Biomarkers","q":"LDL cholesterol (target below 130 mg/dL, lower if high risk)?","d":"Raised LDL cholesterol","m":"Tier 4: Diagnostic Report Extract","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,150,300],"r":[0,0,55.62,111.24],"a":"Diet, statin if indicated","t":"LDL cholesterol and mortality – Cholesterol Treatment Trialists' Collaboration + observational data","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q075","c":"Molecular / Biomarker","s":"Lipids","k":"Metabolic & Biomarkers","q":"HDL cholesterol (target 40+ M / 50+ F mg/dL)?","d":"Low HDL cholesterol","m":"Tier 4: Diagnostic Report Extract","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,120,240],"r":[0,0,29.66,59.33],"a":"Exercise, stop smoking, healthy fats","t":"HDL cholesterol and mortality – Emerging Risk Factors Collaboration","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q076","c":"Molecular / Biomarker","s":"Lipids","k":"Metabolic & Biomarkers","q":"Triglycerides (target below 150 mg/dL)?","d":"Raised triglycerides","m":"Tier 4: Diagnostic Report Extract","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,90,180],"r":[0,0,33.37,66.74],"a":"Cut sugar and alcohol, exercise","t":"Triglycerides and mortality – Emerging Risk Factors Collaboration","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q077","c":"Molecular / Biomarker","s":"Kidney","k":"Metabolic & Biomarkers","q":"What is your eGFR?","d":"Reduced eGFR / raised cystatin C","m":"Tier 4: Diagnostic Report Extract","o":["90 or above","Not tested / don't know","60 to 89","Below 60"],"l":[0,0,144,360],"r":[0,0,26.52,66.31],"a":"BP/glucose control, avoid NSAIDs","t":"eGFR and mortality – CKD Prognosis Consortium meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q078","c":"Molecular / Biomarker","s":"Nutrition","k":"Metabolic & Biomarkers","q":"Serum albumin (target 4.0 g/dL or above)?","d":"Low albumin","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,150,300],"r":[0,0,37.32,74.64],"a":"Adequate protein, treat underlying illness","t":"Serum albumin and mortality – systematic reviews in general and clinical populations","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q079","c":"Molecular / Biomarker","s":"Endocrine","k":"Metabolic & Biomarkers","q":"DHEA-S compared with age reference?","d":"Low DHEA-S","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,60,120],"r":[0,0,5.6,11.2],"a":"Sleep, exercise, stress reduction","t":"DHEA-S and mortality – cohort studies in older adults","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q080","c":"Molecular / Biomarker","s":"Endocrine","k":"Metabolic & Biomarkers","q":"IGF-1 compared with age reference?","d":"Low IGF-1","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,60,120],"r":[0,0,7.46,14.93],"a":"Sleep, resistance training, protein adequacy","t":"IGF-1 and mortality – U-shaped association meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q081","c":"Molecular / Biomarker","s":"Endocrine","k":"Metabolic & Biomarkers","q":"Cortisol (diurnal or hair) compared with reference?","d":"Raised cortisol","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,75,150],"r":[0,0,18.54,37.08],"a":"Stress management, sleep regularity","t":"Cortisol (hair / diurnal) and mortality – stress biomarker studies","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q082","c":"Molecular / Biomarker","s":"Nutrition","k":"Metabolic & Biomarkers","q":"25-OH vitamin D (target 20 ng/mL or above)?","d":"Low vitamin D","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,60,120],"r":[0,0,29.86,59.71],"a":"Sunlight and vitamin D supplementation","t":"Vitamin D status and mortality – large Mendelian randomisation and observational meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q083","c":"Molecular / Biomarker","s":"One-carbon metabolism","k":"Metabolic & Biomarkers","q":"Homocysteine (target below 15 umol/L)?","d":"Raised homocysteine","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,90,180],"r":[0,0,33.37,66.74],"a":"B12, B6 and folate adequacy","t":"Homocysteine and mortality – meta-analyses (and treatment trial data)","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q084","c":"Molecular / Biomarker","s":"Blood","k":"Metabolic & Biomarkers","q":"Haemoglobin compared with reference range?","d":"Low haemoglobin","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,120,240],"r":[0,0,44.78,89.57],"a":"Treat cause (iron, B12, blood loss)","t":"Haemoglobin / anaemia and mortality – systematic reviews","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q085","c":"Molecular / Biomarker","s":"Oxidative damage","k":"Metabolic & Biomarkers","q":"Skin autofluorescence (AGEs) or 8-OHdG compared with age norms?","d":"Raised oxidative stress / AGEs","m":"Tier 1: Manual Input (Simple)","o":["Within target range","Not tested / don't know","Mildly outside range","Clearly outside range"],"l":[0,0,90,180],"r":[0,0,16.69,33.37],"a":"Less ultra-processed/charred food, glucose control","t":"Skin autofluorescence (AGEs) and mortality – cohort studies in diabetes and general populations","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q170","c":"Environment & preventive care","s":"Ear","k":"Preventive & Environment","q":"How often are you exposed to loud noise?","d":"Presbycusis (driver)","m":"Tier 2: Manual Input (Detailed)","o":["Never","Rarely (a few times a year)","Sometimes (about monthly)","Often (weekly or more)"],"l":[0,25,60,100],"r":[0,14.65,35.17,58.62],"a":"Use ear protection; reduce headphone volume","t":"Noise exposure and cardiovascular / mortality risk – systematic reviews","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q171","c":"Environment & preventive care","s":"Skin","k":"Preventive & Environment","q":"How many sunburns have you had in the past 5 years?","d":"Skin ageing and cancer (driver)","m":"Tier 2: Manual Input (Detailed)","o":["None","One","Two to three","Four or more"],"l":[0,45,97.5,150],"r":[0,27.15,58.83,90.51],"a":"Shade, clothing, SPF 30+ and avoid peak sun","t":"Sunburn history / UV exposure and skin cancer / mortality","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q172","c":"Environment & preventive care","s":"Skin","k":"Preventive & Environment","q":"Do you use sunscreen or protective clothing when outdoors?","d":"Skin ageing (driver)","m":"Tier 1: Manual Input (Simple)","o":["Always","Usually","Sometimes","Never"],"l":[0,30,65,100],"r":[0,19.78,42.86,65.94],"a":"Daily SPF 30+ on exposed skin","t":"Sunscreen / sun protection and skin cancer risk reduction","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q175","c":"Environment & preventive care","s":"Head / Injury","k":"Preventive & Environment","q":"Do you wear a helmet when cycling or riding a motorbike?","d":"Injury (driver)","m":"Tier 1: Manual Input (Simple)","o":["Not applicable","Always","Usually","Sometimes","Never"],"l":[0,0,45,97.5,150],"r":[0,0,36.85,79.84,122.84],"a":"Always wear a certified helmet","t":"Helmet use and head injury / mortality in cycling / motorcycling","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q176","c":"Environment & preventive care","s":"Musculoskeletal","k":"Preventive & Environment","q":"How many fall hazards are in your home (loose rugs, poor lighting, clutter)?","d":"Fall-related fractures (driver)","m":"Tier 2: Manual Input (Detailed)","o":["None","One","Two to three","Four or more"],"l":[0,30,65,100],"r":[0,19.78,42.86,65.94],"a":"Remove hazards, add lighting and handrails","t":"Home fall hazards and fall-related mortality / injury","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q179","c":"Environment & preventive care","s":"Cardiovascular","k":"Preventive & Environment","q":"When was your blood pressure last checked?","d":"Hypertension detection (driver)","m":"Tier 4: Diagnostic Report Extract","o":["Within the past year","1 to 2 years ago","2 to 5 years ago","More than 5 years ago or never"],"l":[0,45,97.5,150],"r":[0,26.38,57.15,87.92],"a":"Check BP at least yearly","t":"Blood pressure screening / awareness and treatment uptake – related to BP meta-analyses","u":"https://pubmed.ncbi.nlm.nih.gov/12493255/"},{"id":"Q180","c":"Environment & preventive care","s":"Metabolism","k":"Preventive & Environment","q":"When were your cholesterol and blood glucose last checked?","d":"Diabetes/lipid detection (driver)","m":"Tier 4: Diagnostic Report Extract","o":["Within the past year","1 to 3 years ago","3 to 5 years ago","More than 5 years ago or never"],"l":[0,45,97.5,150],"r":[0,26.38,57.15,87.92],"a":"Get a blood panel every 1-3 years","t":"Cholesterol / glucose screening and treatment – statin and diabetes trial evidence","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q181","c":"Environment & preventive care","s":"Oral","k":"Preventive & Environment","q":"When did you last see a dentist?","d":"Periodontitis (driver)","m":"Tier 1: Manual Input (Simple)","o":["Within the past year","1 to 2 years ago","2 to 5 years ago","More than 5 years ago or never"],"l":[0,30,65,100],"r":[0,23.38,50.65,77.93],"a":"Dental check-up and cleaning every 6-12 months","t":"Dental care frequency and oral / systemic health / mortality – related to periodontal literature","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q182","c":"Environment & preventive care","s":"Eye","k":"Preventive & Environment","q":"When was your last eye examination?","d":"Glaucoma / macular degeneration detection (driver)","m":"Tier 1: Manual Input (Simple)","o":["Within the past 2 years","2 to 5 years ago","More than 5 years ago","Never"],"l":[0,39,45,60],"r":[0,30.39,35.07,46.76],"a":"Eye exam every 1-2 years (more often if over 60)","t":"Eye examination frequency and vision preservation / accident risk","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q185","c":"Environment & preventive care","s":"Whole body","k":"Preventive & Environment","q":"Do you have a regular doctor and an annual health review?","d":"Care continuity (driver)","m":"Tier 1: Manual Input (Simple)","o":["Yes","Seen but irregularly","Only when ill","No regular doctor"],"l":[0,60,112.5,150],"r":[0,47.29,88.66,118.22],"a":"Register with a GP and book an annual review","t":"Regular primary care / annual review and mortality – continuity of care literature","u":"https://pubmed.ncbi.nlm.nih.gov/"},{"id":"Q186","c":"Environment & preventive care","s":"Liver / Immune","k":"Preventive & Environment","q":"Have you been screened for hepatitis B/C and HIV where recommended?","d":"Chronic viral infection (driver)","m":"Tier 1: Manual Input (Simple)","o":["Yes, screened","Not recommended for me","Not sure","No"],"l":[0,0,97.5,22.5],"r":[0,0,76.84,17.73],"a":"Ask your doctor about one-off screening","t":"Hepatitis B/C and HIV screening / treatment and mortality reduction – antiviral trial data","u":"https://pubmed.ncbi.nlm.nih.gov/"}]};
+const cats=DATA.cats, qs=DATA.qs, KEY='yc_baseline_answers_v1';
+let ans={}, cur=0;
+try{ans=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){ans={}}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const safeUrl=u=>/^https?:\/\//i.test(u)?u:'';
+const byCat=cats.map(c=>qs.filter(q=>q.c===c));
+const answeredIn=i=>byCat[i].filter(q=>ans[q.id]).length;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(ans))}catch(e){}}
+const Adherence_Factor=0.50;
+const Max_Reclaimable_Days=9125;
+const CKEY=KEY+'_commit';let commit={};
+try{commit=JSON.parse(localStorage.getItem(CKEY)||'{}')||{}}catch(e){commit={}}
+function saveC(){try{localStorage.setItem(CKEY,JSON.stringify(commit))}catch(e){}}
+function renderCommit(){let n=0,t=0;qs.forEach(q=>{const v=ans[q.id];if(commit[q.id]&&v&&q.r[v-1]){n++;t+=q.r[v-1]*Adherence_Factor}});
+  t=Math.min(t,Max_Reclaimable_Days);
+  $('commit').innerHTML=n?`Yes, I am in <b>${n}</b> ${n===1?'mission':'missions'}, Committed to reclaim <b>${fmt(Math.round(t))}</b> Lifedays to be saved`:'';}
+$('panel').addEventListener('click',e=>{const b=e.target.closest('.imin');if(!b)return;const id=b.dataset.id;
+  if(commit[id])delete commit[id];else commit[id]=1;
+  const on=!!commit[id];b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'I’m in! ✓':'I’m in!';saveC();renderCommit();});
+const fmt=x=>Number(x).toLocaleString('en-US',{maximumFractionDigits:1});
+const qmap={};qs.forEach(q=>qmap[q.id]=q);
+function info(q){const v=ans[q.id];if(!v||!q.o[v-1])return '';const k=v-1;
+  if(/^not tested/i.test(q.o[k]))return '<div class="nt"><b>Get this tested.</b> Without a result we cannot tell how many Life-days you could reclaim here, so please take the relevant test and update your answer.</div>';
+  const rc=q.r[k];if(!rc)return '';
+  return `<div class="reclaim"><span class="lbl">Potential loss of Lifedays:</span><b class="num">${fmt(q.l[k])}</b><span class="u">Life-days</span><span class="sep">|</span><span class="lbl">Reclaim upto</span><b class="num">${fmt(rc*Adherence_Factor)}</b><span class="u">Life-days</span></div>`+(q.a?`<div class="mission"><b>Remedial action:</b> ${esc(q.a)}</div>`:'')+`<button type="button" class="imin${commit[q.id]?' on':''}" data-id="${q.id}" aria-pressed="${commit[q.id]?'true':'false'}">${commit[q.id]?'I’m in! ✓':'I’m in!'}</button>`;}
+function renderTotal(){let n=0,t=0;qs.forEach(q=>{const v=ans[q.id];if(v&&q.r[v-1]){n++;t+=q.r[v-1]*Adherence_Factor}});
+  t=Math.min(t,Max_Reclaimable_Days);
+  $('total').innerHTML=n?`You can reclaim a total of <b>${fmt(Math.round(t))} Life-days (${(t/365.25).toFixed(2)} years)</b>, just by taking remedial action.`:'Answer the questions below to see how many Life-days you can reclaim by taking remedial action.';}
+function tabFade(el){el.classList.toggle('fl',el.scrollLeft>4);el.classList.toggle('fr',el.scrollLeft+el.clientWidth<el.scrollWidth-4)}
+function setTabs(id,html){const el=$(id),sl=el.scrollLeft;el.innerHTML=html;el.scrollLeft=sl;const s=el.querySelector('[aria-selected=true]');
+  if(s&&(s.offsetLeft<el.scrollLeft||s.offsetLeft+s.offsetWidth>el.scrollLeft+el.clientWidth))el.scrollLeft=Math.max(0,s.offsetLeft-(el.clientWidth-s.offsetWidth)/2);
+  if(!el.__f){el.addEventListener('scroll',()=>tabFade(el),{passive:true});el.__f=1}tabFade(el)}
+addEventListener('resize',()=>document.querySelectorAll('.tabs').forEach(tabFade));
+function renderTabs(){
+  setTabs('tabs',cats.map((c,i)=>{const a=answeredIn(i),t=byCat[i].length;
+    return `<button type="button" role="tab" class="tab${a===t?' done':''}" aria-selected="${i===cur}" data-i="${i}">${esc(c)}<span class="n">${a}/${t}</span></button>`}).join(''));
+}
+function renderOverall(){
+  const a=Object.keys(ans).filter(k=>ans[k]).length;
+  $('ovCount').textContent=a+' of '+qs.length+' answered';
+  $('ovPct').textContent=Math.round(a/qs.length*100)+'%';
+  $('barFill').style.width=(a/qs.length*100)+'%';
+  $('bar').setAttribute('aria-valuenow',a);
+}
+function renderPanel(){
+  const list=byCat[cur];
+  $('panel').innerHTML=`<div class="cat-head"><h2>${esc(cats[cur])}</h2><p>Category ${cur+1} of ${cats.length} · ${list.length} questions</p></div>`+
+  list.map((q,n)=>{
+    const opts=q.o.map((t,k)=>`<option value="${k+1}"${ans[q.id]==k+1?' selected':''}>${esc(t)}</option>`).join('');
+    const u=safeUrl(q.u);
+    const ref=q.t?(u?`<span class="refwrap"><span class="refpre">Refer:</span> <a class="ref" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(q.t)}</a></span>`:`<span class="refl"><span class="refpre">Refer:</span> ${esc(q.t)}</span>`):'';
+    return `<div class="q-item"><div class="tags"><span class="tag sys">${esc(q.s)}</span><span class="tag clu">${esc(q.k)}</span>${q.d?`<span class="tag dd">${esc(q.d)}</span>`:''}</div>
+<div class="q-text">${esc(q.id)} . ${esc(q.q)}</div>
+<select data-id="${q.id}" aria-label="${esc(q.q)}" class="${ans[q.id]?'has':''}"><option value="">Select an answer</option>${opts}</select><div class="info" id="info-${q.id}">${info(q)}</div>${ref}</div>`}).join('')+
+  `<div class="form-actions"><button type="button" class="btn btn-secondary" id="prev"${cur===0?' disabled':''}>← Previous</button>
+<button type="button" class="btn btn-primary" id="next">${cur===cats.length-1?'Complete Assessment ✓':'Next: '+esc(cats[cur+1])+' →'}</button></div>`;
+}
+function go(i){cur=Math.max(0,Math.min(cats.length-1,i));renderTabs();renderPanel();
+  const t=document.querySelector('.tab[aria-selected=true]');if(t)t.scrollIntoView({inline:'center',block:'nearest'});
+  window.scrollTo({top:$('tabs').offsetTop-8,behavior:'smooth'});}
+function submitAssessment(){
+  const left=qs.length-Object.keys(ans).filter(k=>ans[k]).length;
+  if(left&&!confirm(left+' question(s) are still unanswered. Submit anyway?'))return;
+  window.location.href='mission.html';
+}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)go(+b.dataset.i)});
+$('panel').addEventListener('change',e=>{const s=e.target.closest('select[data-id]');if(!s)return;
+  if(s.value)ans[s.dataset.id]=+s.value;else delete ans[s.dataset.id];
+  s.classList.toggle('has',!!s.value);const iv=$('info-'+s.dataset.id);const h=info(qmap[s.dataset.id]);if(iv)iv.innerHTML=h;if(h.indexOf('imin')<0)delete commit[s.dataset.id];save();saveC();renderOverall();renderTotal();renderCommit();renderTabs();});
+$('panel').addEventListener('click',e=>{
+  if(e.target.id==='prev')go(cur-1);
+  if(e.target.id==='next'){cur===cats.length-1?submitAssessment():go(cur+1)}});
+renderOverall();renderTotal();renderCommit();renderTabs();renderPanel();
+</script>
+</body>
+</html>

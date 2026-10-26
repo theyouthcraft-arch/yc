@@ -21,6 +21,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
 .stat{background:#fff;border:1px solid var(--yc-line);border-radius:16px;padding:14px 16px}
 .stat .n{font-size:1.6rem;font-weight:850;color:var(--yc-ink);line-height:1.1}.stat .l{font-size:.74rem;color:var(--yc-muted);margin-top:4px}
 .stat.claimed .n{color:var(--ok)}
+.stat .yr{font-size:.78rem;font-weight:700;color:var(--yc-muted);white-space:nowrap}
 .chip{display:inline-block;border:1px solid var(--yc-line);background:#fff;color:var(--yc-green);border-radius:999px;padding:6px 14px;font:inherit;font-size:.82rem;font-weight:800;cursor:pointer;text-decoration:none;margin-bottom:14px}
 .chip:hover{border-color:var(--yc-green)}
 .toast{display:none;background:#e8f7ee;border:1px solid #b9e3c8;border-left:5px solid var(--ok);border-radius:14px;padding:12px 16px;margin:0 0 14px;font-size:.92rem;line-height:1.5;color:#14532d}
@@ -101,7 +102,7 @@ function render(){
   const all=items();
   let claimed=0,na=0;all.forEach(k=>{if(done[k].t==='claimed')claimed+=done[k].days||0;else na++});
   claimed=Math.min(claimed,Max_Reclaimable_Days);
-  $('sItems').textContent=all.length;$('sClaimed').textContent=fmt(Math.round(claimed*10)/10);$('sNA').textContent=na;
+  $('sItems').textContent=all.length;$('sClaimed').innerHTML=fmt(Math.round(claimed*10)/10)+'<span class="yr"> ('+(claimed/365.25).toFixed(2)+' yrs)</span>';$('sNA').textContent=na;
   const inSt=k=>!stF||done[k].t===stF,inCat=k=>!catF||byId[k].c===catF;
   setTabs('catTabs',[['','All']].concat(cats.map(c=>[c,c])).map(([v,l])=>`<button type="button" role="tab" class="tab" aria-selected="${catF===v}" data-cat="${esc(v)}">${esc(l)}<span class="n">${all.filter(k=>inSt(k)&&(!v||byId[k].c===v)).length}</span></button>`).join(''));
   setTabs('stTabs',[['','All'],['claimed','Claimed'],['na','Not applicable']].map(([v,l])=>`<button type="button" role="tab" class="tab" aria-selected="${stF===v}" data-st="${v}">${l}<span class="n">${all.filter(k=>inCat(k)&&(!v||done[k].t===v)).length}</span></button>`).join(''));

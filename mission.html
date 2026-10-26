@@ -70,6 +70,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
 .fb .s{font-size:.78rem;font-weight:800;color:var(--yc-green);margin-top:6px}
 .prog{height:6px;background:rgba(0,0,0,.08);border-radius:999px;margin-top:8px;overflow:hidden}.prog i{display:block;height:100%;background:var(--ok)}
 .stat.claimed .n{color:var(--ok)}
+.stat .yr{font-size:.78rem;font-weight:700;color:var(--yc-muted);white-space:nowrap}
 .wt{font-size:.74rem;font-weight:700;color:#e8730c;margin:-4px 0 10px}.wt.none{color:#8a9690;font-weight:600}
 .meter{margin-top:14px;font-size:.8rem;color:var(--yc-muted)}.meter b{color:var(--yc-ink)}
 .meter .bar{height:6px;margin:6px 0 0}.meter .bar i{background:linear-gradient(90deg,#e8730c,#16a34a)}
@@ -213,7 +214,7 @@ function stats(vis){
   let pend=0;scope.forEach(r=>{if(r.w)pend+=claimDays(r)});pend=Math.max(0,Math.min(pend,Max_Reclaimable_Days-claimed));
   const pct=vis.length?Math.round(done_.length/vis.length*100):0;
   $('sDone').textContent=done_.length+'/'+vis.length;$('sE').textContent=e;$('sG').textContent=g;$('sN').textContent=n;
-  $('sLife').textContent=fmt(Math.round(pend));$('sClaimed').textContent=fmt(Math.round(claimed*10)/10);$('sMis').textContent=qs.size;
+  $('sLife').innerHTML=fmt(Math.round(pend))+'<span class="yr"> ('+(pend/365.25).toFixed(2)+' yrs)</span>';$('sClaimed').innerHTML=fmt(Math.round(claimed*10)/10)+'<span class="yr"> ('+(claimed/365.25).toFixed(2)+' yrs)</span>';$('sMis').textContent=qs.size;
   $('barFill').style.width=pct+'%';$('bar').setAttribute('aria-valuenow',pct);
   let c=pct===0?'Start with one tap. Your first check-in is the hardest.':pct<25?'Great start. Every response builds your streak.':pct<50?"You're building momentum. Keep going!":pct<75?"More than halfway. You're doing brilliantly.":pct<100?'Almost there. Just a few check-ins left.':'All check-ins done. Outstanding work!';
   if(n)c+=' '+n+(n===1?' item needs':' items need')+' action: tackle one today.';

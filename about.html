@@ -1,47 +1,256 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About YouthCraft | Craft a Younger You</title>
-<meta name="description" content="Discover YouthCraft's vision: science-informed preventive wellness, everyday habits, playful motivation, and active years.">
-<link rel="stylesheet" href="styles.css">
-<style>
-:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb}
-*{box-sizing:border-box}body{margin:0;background:var(--yc-paper);color:#243b33}.wrap{max-width:1160px;margin:auto;padding:0 22px}.about-hero{position:relative;overflow:hidden;background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:82px 0 68px;border-bottom:1px solid var(--yc-line)}.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}.about-hero h1{font-size:clamp(2.7rem,6vw,5rem);line-height:1.01;max-width:850px;color:var(--yc-ink);margin:16px 0 20px;letter-spacing:-.055em}.about-hero h1 span{color:var(--yc-green)}.about-hero p{font-size:1.16rem;line-height:1.8;max-width:780px;color:#466157;margin:0}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:999px;padding:13px 20px;font-weight:800;background:var(--yc-green);color:white;border:1px solid var(--yc-green);transition:transform .18s,box-shadow .18s}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #183b321a}.btn.alt{background:white;color:var(--yc-green);border-color:#bfd6c9}.content{padding-top:42px;padding-bottom:72px}.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-bottom:44px}.story,.quote-card,.goal-card,.principle,.vision-card{background:white;border:1px solid var(--yc-line);border-radius:22px;padding:26px;box-shadow:0 8px 24px rgba(24,59,50,.035)}.story h2,.section-head h2{color:var(--yc-ink);font-size:clamp(1.8rem,3vw,2.65rem);line-height:1.15;letter-spacing:-.03em;margin:9px 0 14px}.story p,.section-head p,.goal-card p,.principle p,.vision-card p{color:var(--yc-muted);line-height:1.75;margin:0}.quote-card{display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(145deg,#183b32,#245e4d);color:white;min-height:250px}.quote-card .quote-icon{font-size:2rem;color:#d5e9dd}.quote-card blockquote{font-size:1.45rem;line-height:1.5;font-weight:750;letter-spacing:-.02em;margin:18px 0}.quote-card .small{color:#d1e2d8;font-size:.9rem}.section-head{margin:48px 0 22px}.section-head .eyebrow{margin-bottom:8px}.section-head p{max-width:790px}.vision-card{display:grid;grid-template-columns:64px 1fr;align-items:start;gap:18px;background:#f1f7f1}.icon-tile{width:56px;height:56px;display:grid;place-items:center;border-radius:17px;background:var(--yc-mint);font-size:1.7rem;flex-shrink:0}.vision-card h3,.goal-card h3,.principle h3{margin:0 0 9px;color:var(--yc-ink);font-size:1.14rem}.goals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.goal-card{padding:23px;transition:transform .18s,border-color .18s}.goal-card:hover{transform:translateY(-3px);border-color:#b8d4c5}.goal-card .icon-tile{margin-bottom:17px}.goal-card .num{font-size:.75rem;letter-spacing:.12em;font-weight:850;color:var(--yc-green);margin-bottom:9px}.goal-card p{font-size:.96rem}.gamify{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.principle{text-align:center;padding:23px 18px}.principle .icon-tile{margin:0 auto 15px}.principle p{font-size:.92rem}.principle h3{font-size:1.03rem}.principle:nth-child(2) .icon-tile{background:#fff3df}.principle:nth-child(3) .icon-tile{background:var(--yc-lilac)}.principle:nth-child(4) .icon-tile{background:#e8efff}.ethics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.ethic{background:white;border:1px solid var(--yc-line);border-radius:16px;padding:18px 15px;text-align:center}.ethic .emoji{font-size:1.55rem;display:block;margin-bottom:10px}.ethic strong{font-size:.92rem;line-height:1.45;color:var(--yc-ink);display:block}.closing{margin-top:44px;background:linear-gradient(120deg,#183b32,#24644f);border-radius:24px;padding:34px;color:white;display:flex;align-items:center;justify-content:space-between;gap:24px}.closing h2{font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.15;margin:0 0 10px;letter-spacing:-.03em}.closing p{margin:0;color:#d4e4dc;line-height:1.65;max-width:650px}.closing .btn{background:white;color:var(--yc-ink);border-color:white;flex-shrink:0}.note{font-size:.85rem;color:#6b7d73;line-height:1.6;margin-top:22px}.btn:focus-visible{outline:3px solid #e3b45e;outline-offset:3px}
-@media(max-width:850px){.goals{grid-template-columns:repeat(2,minmax(0,1fr))}.gamify{grid-template-columns:repeat(2,minmax(0,1fr))}.ethics{grid-template-columns:repeat(3,minmax(0,1fr))}.intro-grid{grid-template-columns:1fr}.closing{align-items:flex-start;flex-direction:column}}
-@media(max-width:560px){.about-hero{padding:54px 0 45px}.goals,.gamify,.ethics{grid-template-columns:1fr}.vision-card{grid-template-columns:1fr}.story,.quote-card,.goal-card,.principle,.vision-card{padding:21px}.content{padding-top:28px}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About YouthCraft | Craft a Younger You</title>
+  <meta name="description" content="YouthCraft is a science-informed health companion that turns a 200-question baseline into small missions, feedback and Life-years gained.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --yc-ink: #17332d;
+      --yc-muted: #5b706a;
+      --yc-green: #176b55;
+      --yc-green-dark: #104c3e;
+      --yc-mint: #e8f5ee;
+      --yc-lime: #d9f36a;
+      --yc-cream: #fbfaf5;
+      --yc-line: #dce8e1;
+      --yc-card: #ffffff;
+      --yc-shadow: 0 18px 48px rgba(21, 67, 53, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { color: var(--yc-ink); background: var(--yc-cream); }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+    .yc-hero { position: relative; overflow: hidden; padding: 82px 0 76px; background: radial-gradient(circle at 82% 20%, rgba(217,243,106,.3), transparent 27%), linear-gradient(135deg,#eff8f1 0%,#fbfaf5 62%,#e8f5ee 100%); }
+    .yc-hero:after { content: ""; position: absolute; width: 360px; height: 360px; right: -110px; bottom: -210px; border: 1px solid rgba(23,107,85,.14); border-radius: 50%; box-shadow: 0 0 0 35px rgba(23,107,85,.035),0 0 0 70px rgba(23,107,85,.025); pointer-events: none; }
+    .yc-hero-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(300px,.85fr); gap: 56px; align-items: center; position: relative; z-index: 1; }
+    .yc-eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--yc-green); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .yc-eyebrow:before { content: ""; width: 26px; height: 2px; background: var(--yc-green); }
+    .yc-hero h1 { max-width: 720px; margin: 18px 0; font-size: clamp(2.7rem,6vw,5.2rem); line-height: .99; letter-spacing: -.055em; }
+    .yc-hero h1 em { color: var(--yc-green); font-style: normal; }
+    .yc-hero-copy { max-width: 630px; color: var(--yc-muted); font-size: clamp(1.05rem,2vw,1.2rem); line-height: 1.75; }
+    .yc-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .yc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 50px; padding: 13px 22px; border: 1px solid var(--yc-green); border-radius: 999px; background: var(--yc-green); color: #fff !important; text-decoration: none; font-weight: 750; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+    .yc-btn:hover { transform: translateY(-2px); background: var(--yc-green-dark); box-shadow: 0 10px 24px rgba(23,107,85,.2); }
+    .yc-btn.secondary { background: transparent; color: var(--yc-green) !important; }
+    .yc-btn.secondary:hover { background: var(--yc-mint); box-shadow: none; }
+    .yc-small-note { margin-top: 14px; color: var(--yc-muted); font-size: .86rem; }
+    .yc-visual { padding: 20px; border: 1px solid rgba(255,255,255,.9); border-radius: 30px; background: rgba(255,255,255,.72); box-shadow: var(--yc-shadow); backdrop-filter: blur(8px); }
+    .yc-visual-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; }
+    .yc-mini-brand { font-weight: 850; letter-spacing: -.02em; }
+    .yc-status { padding: 6px 10px; border-radius: 99px; background: var(--yc-mint); color: var(--yc-green); font-size: .75rem; font-weight: 750; }
+    .yc-score-card { padding: 22px; border-radius: 22px; color: white; background: linear-gradient(140deg,#174f40,#1e8063); }
+    .yc-score-label { color: rgba(255,255,255,.75); font-size: .8rem; }
+    .yc-score-number { display: flex; align-items: baseline; gap: 7px; margin: 7px 0 15px; }
+    .yc-score-number strong { font-size: 3.4rem; line-height: 1; letter-spacing: -.06em; }
+    .yc-score-number span { color: rgba(255,255,255,.7); }
+    .yc-progress { height: 7px; overflow: hidden; border-radius: 10px; background: rgba(255,255,255,.2); }
+    .yc-progress span { display: block; width: 78%; height: 100%; border-radius: inherit; background: var(--yc-lime); }
+    .yc-domain-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+    .yc-domain { padding: 13px; border: 1px solid var(--yc-line); border-radius: 15px; background: #fff; }
+    .yc-domain small { display: block; color: var(--yc-muted); font-size: .76rem; }
+    .yc-domain strong { display: block; margin-top: 3px; font-size: 1.05rem; }
+    .yc-life-days { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 15px; border-radius: 15px; background: #f3f8dc; }
+    .yc-life-days strong { font-size: 1.1rem; }
+    .yc-life-days span { color: var(--yc-muted); font-size: .78rem; }
+    .yc-section { padding: 76px 0; }
+    .yc-section.alt { background: #f0f7f1; }
+    .yc-section.dark { color: #fff; background: #153f35; }
+    .yc-section-head { max-width: 740px; margin: 0 auto 38px; text-align: center; }
+    .yc-kicker { color: var(--yc-green); font-size: .77rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .yc-section.dark .yc-kicker { color: var(--yc-lime); }
+    .yc-section h2 { margin: 10px 0 14px; font-size: clamp(2rem,4vw,3.15rem); line-height: 1.08; letter-spacing: -.04em; }
+    .yc-section-head p { margin: 0; color: var(--yc-muted); font-size: 1.04rem; line-height: 1.75; }
+    .yc-section.dark .yc-section-head p { color: #d0e3d9; }
+    .yc-grid-3 { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+    .yc-grid-2 { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+    .yc-card { padding: 26px; border: 1px solid var(--yc-line); border-radius: 22px; background: var(--yc-card); box-shadow: 0 8px 24px rgba(21,67,53,.035); }
+    .yc-card h3 { margin: 13px 0 9px; font-size: 1.22rem; letter-spacing: -.02em; }
+    .yc-card p { margin: 0; color: var(--yc-muted); line-height: 1.7; }
+    .yc-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--yc-mint); color: var(--yc-green); font-size: 1.25rem; }
+    .yc-stat-row { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 30px; }
+    .yc-stat { padding: 24px; border: 1px solid rgba(255,255,255,.17); border-radius: 20px; background: rgba(255,255,255,.06); }
+    .yc-stat strong { display: block; color: var(--yc-lime); font-size: clamp(2rem,4vw,3rem); line-height: 1.1; letter-spacing: -.05em; }
+    .yc-stat span { display: block; margin-top: 8px; color: #d0e3d9; line-height: 1.5; }
+    .yc-journey { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; counter-reset: journey; }
+    .yc-step { position: relative; padding: 24px; border-top: 3px solid var(--yc-green); border-radius: 0 0 18px 18px; background: white; }
+    .yc-step:before { counter-increment: journey; content: "0" counter(journey); display: block; margin-bottom: 18px; color: var(--yc-green); font-size: .82rem; font-weight: 850; letter-spacing: .1em; }
+    .yc-step h3 { margin: 0 0 8px; }
+    .yc-step p { margin: 0; color: var(--yc-muted); line-height: 1.65; }
+    .yc-domain-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+    .yc-tag { padding: 10px 14px; border: 1px solid var(--yc-line); border-radius: 99px; background: #fff; color: var(--yc-ink); font-size: .9rem; }
+    .yc-horizon { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; }
+    .yc-horizon-item { padding: 19px 16px; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: rgba(255,255,255,.055); }
+    .yc-horizon-item strong { display: block; color: var(--yc-lime); font-size: 1.05rem; }
+    .yc-horizon-item span { display: block; margin-top: 8px; color: #d0e3d9; font-size: .88rem; line-height: 1.55; }
+    .yc-check-list { list-style: none; padding: 0; margin: 18px 0 0; }
+    .yc-check-list li { position: relative; margin: 11px 0; padding-left: 27px; color: var(--yc-muted); line-height: 1.65; }
+    .yc-check-list li:before { content: "✓"; position: absolute; left: 0; top: 1px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--yc-mint); color: var(--yc-green); font-size: .75rem; font-weight: 900; }
+    .yc-cta { padding: 64px 0; background: linear-gradient(120deg,#dff2e6,#f4f8d9); }
+    .yc-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .yc-cta h2 { max-width: 660px; margin: 0 0 10px; font-size: clamp(2rem,4vw,3rem); line-height: 1.08; letter-spacing: -.04em; }
+    .yc-cta p { max-width: 650px; margin: 0; color: var(--yc-muted); line-height: 1.7; }
+    .yc-notice { margin-top: 24px; padding: 17px 20px; border-left: 4px solid #d5b65d; border-radius: 0 12px 12px 0; background: #fff9e9; color: #635b43; font-size: .9rem; line-height: 1.65; }
+    .yc-footer-line { margin-top: 18px; color: var(--yc-muted); font-size: .83rem; }
+    @media (max-width: 850px) {
+      .yc-hero-grid, .yc-grid-2 { grid-template-columns: 1fr; }
+      .yc-hero-grid { gap: 34px; }
+      .yc-grid-3 { grid-template-columns: 1fr 1fr; }
+      .yc-journey { grid-template-columns: 1fr 1fr; }
+      .yc-horizon { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .yc-cta-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px,1160px); }
+      .yc-hero { padding: 56px 0 52px; }
+      .yc-section { padding: 54px 0; }
+      .yc-grid-3, .yc-stat-row, .yc-journey { grid-template-columns: 1fr; }
+      .yc-horizon { grid-template-columns: 1fr 1fr; }
+      .yc-visual { padding: 12px; border-radius: 22px; }
+      .yc-card { padding: 22px; }
+      .yc-actions .yc-btn { width: 100%; }
+    }
+  
+    .yc-hero.compact{padding:64px 0 54px}
+    .yc-hero.compact h1{font-size:clamp(2.2rem,5vw,3.8rem);max-width:820px}
+    .yc-hero.solo .yc-hero-grid{grid-template-columns:1fr}
+    a.yc-step{display:block;color:inherit;text-decoration:none;transition:transform .18s,box-shadow .18s}
+    a.yc-step:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(21,67,53,.1)}
+    .yc-step .more{display:inline-block;margin-top:12px;color:var(--yc-green);font-weight:800;font-size:.9rem}
+    .yc-split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin:0 0 56px}
+    .yc-split.flip>:first-child{order:2}
+    .yc-split h3{margin:6px 0 10px;font-size:1.7rem;letter-spacing:-.03em}
+    .yc-split p{color:var(--yc-muted);line-height:1.75;margin:0 0 12px}
+    .yc-num{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--yc-green);color:#fff;font-weight:850}
+    .yc-table-wrap{overflow-x:auto;border:1px solid var(--yc-line);border-radius:18px;background:#fff}
+    .yc-table{width:100%;border-collapse:collapse;min-width:560px}
+    .yc-table th,.yc-table td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--yc-line);vertical-align:top;line-height:1.55}
+    .yc-table th{background:#f0f7f1;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--yc-green)}
+    .yc-table tr:last-child td{border-bottom:0}
+    .yc-table td small{color:var(--yc-muted)}
+    .yc-faq{border:1px solid var(--yc-line);border-radius:16px;background:#fff;margin:0 0 12px;padding:0 20px}
+    .yc-faq summary{cursor:pointer;padding:17px 0;font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:14px}
+    .yc-faq summary:after{content:"+";color:var(--yc-green);font-size:1.3rem;line-height:1}
+    .yc-faq[open] summary:after{content:"–"}
+    .yc-faq p{margin:0 0 18px;color:var(--yc-muted);line-height:1.75}
+    .rate{display:inline-block;padding:6px 12px;border-radius:10px;color:#fff;font-weight:800;font-size:.85rem}
+    .rate.e{background:#16a34a}.rate.g{background:#d97706}.rate.n{background:#dc2626}
+    .yc-flowline{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;margin:0 0 6px}
+    .yc-flowline span.s{padding:9px 16px;border-radius:99px;background:#fff;border:1px solid var(--yc-line);font-weight:800}
+    .yc-flowline span.a{color:var(--yc-green);font-weight:900}
+    .yc-bars{display:grid;gap:12px;max-width:640px;margin:0 auto}
+    .yc-bar{display:grid;grid-template-columns:110px 1fr 50px;gap:12px;align-items:center;font-size:.95rem}
+    .yc-bar i{display:block;height:14px;border-radius:99px;background:var(--yc-green)}
+    .yc-bar i.m{background:#c48a39}.yc-bar i.l{background:#9db3a9}
+    .yc-bar .t{background:#e3ece6;border-radius:99px;overflow:hidden}
+    .yc-calc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:c}
+    .yc-calc div{background:#fff;border:1px solid var(--yc-line);border-radius:18px;padding:18px}
+    .yc-calc b{display:block;font-size:1.5rem;letter-spacing:-.03em;color:var(--yc-green)}
+    .yc-calc b.o{color:#e8730c}
+    .yc-calc span{display:block;margin-top:6px;color:var(--yc-muted);font-size:.88rem;line-height:1.5}
+    .mk{padding:20px;border-radius:22px;background:#fff;border:1px solid var(--yc-line);box-shadow:var(--yc-shadow)}
+    .mk-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+    .mk-tag{font-size:.68rem;font-weight:750;padding:4px 9px;border-radius:99px}
+    .mk-tag.a{background:var(--yc-mint);color:var(--yc-green)}.mk-tag.b{background:#f7ecd8;color:#8a5d1c}
+    .mk-src{margin:0 0 6px;font-size:.72rem;color:#8a9690;line-height:1.5}.mk-src b{color:#e8730c}
+    .mk-wt{margin:0 0 10px;font-size:.74rem;font-weight:700;color:#e8730c}
+    .mk-q{margin:0 0 12px;font-weight:800;font-size:1.05rem;line-height:1.4}
+    .mk-opts{display:flex;flex-wrap:wrap;gap:7px}
+    .mk-opts span{padding:8px 14px;border-radius:11px;background:#f1f4f2;border:1.5px solid #d9e1dd;color:#4a5a54;font-weight:700;font-size:.88rem}
+    .mk-opts span.on{background:#16a34a;border-color:#16a34a;color:#fff}
+    .mk-fb{margin-top:12px;padding:11px 14px;border-radius:12px;border-left:5px solid #16a34a;background:#e8f7ee;font-size:.88rem;line-height:1.5}
+    .mk-fb b{color:#12803c}
+    .mk-prog{margin-top:12px;font-size:.78rem;color:var(--yc-muted)}.mk-prog b{color:var(--yc-ink)}
+    .mk-bar{height:6px;border-radius:99px;background:#dce8e1;margin-top:6px;overflow:hidden}.mk-bar i{display:block;height:100%;width:67%;background:linear-gradient(90deg,#e8730c,#16a34a)}
+    .mk-claim{margin-top:12px;display:inline-block;padding:10px 18px;border-radius:99px;background:linear-gradient(90deg,#e8730c,#d9480f);color:#fff;font-weight:850;font-size:.85rem}
+    .yc-split .mk p{line-height:1.5;margin:0 0 6px}.yc-split .mk .mk-q{color:var(--yc-ink);margin:0 0 12px}.yc-split .mk .mk-wt{color:#e8730c;margin:0 0 10px}.yc-split .mk .mk-src{color:#8a9690}.yc-split .mk .mk-prog{color:var(--yc-muted);margin:12px 0 0}
+    .yc-pill-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+    .yc-note{max-width:900px;margin:30px auto 0}
+    @media (max-width:850px){.yc-split,.yc-split.flip{grid-template-columns:1fr}.yc-split.flip>:first-child{order:0}.yc-calc{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.yc-calc{grid-template-columns:1fr}.yc-bar{grid-template-columns:90px 1fr 42px}}
 </style>
 </head>
 <body>
-<div id="site-header"></div>
-<header class="about-hero"><div class="wrap"><div class="eyebrow">✦ About YouthCraft</div><h1>Craft a <span>Younger You.</span><br>Build active years.</h1><p>A science-informed personal health companion that makes everyday choices easier to understand—and healthy routines more rewarding. YouthCraft brings preventive wellness, behavioural science and gentle gamification together, one small step at a time.</p><div class="hero-actions"><a class="btn" href="onboarding.html">✦ Begin Your Journey</a><a class="btn alt" href="how-it-works.html">⌁ How It Works <span aria-hidden="true">→</span></a></div></div></header>
-<main class="wrap content">
-<section class="intro-grid" aria-labelledby="about-title"><article class="story"><div class="eyebrow">01 / Who we are</div><h2 id="about-title">Make the long game of health feel personal.</h2><p>YouthCraft is designed for people who want to stay healthier and more active for longer—not through extreme measures or medical fatigue, but through small, measurable habits that can build over time. We translate complex health and lifestyle information into clear signals, practical next steps and a daily experience people can return to.</p><p style="margin-top:13px">Lifespan and healthspan are not the same: living longer does not automatically mean spending more years feeling well, capable and independent. YouthCraft is built around the idea that prevention should feel approachable, understandable and part of everyday life.</p></article><aside class="quote-card"><div class="quote-icon" aria-hidden="true">❝</div><blockquote>“Small, sustainable choices. A clearer view of your health journey.”</blockquote><div class="small">YouthCraft's guiding idea: turn awareness into action, without judgement.</div></aside></section>
-<section aria-labelledby="vision-title"><div class="section-head"><div class="eyebrow">02 / Our vision</div><h2 id="vision-title">A world where prevention feels empowering.</h2><p>We want every person to better understand how daily routines may shape their long-term health—and to have practical ways to improve those routines over time.</p></div><div class="vision-card"><div class="icon-tile" aria-hidden="true">🧭</div><div><h3>Clear, encouraging and actionable</h3><p>Rather than intimidating dashboards or clinical lectures, YouthCraft aims to use intuitive language, playful identities, achievable missions and supportive social experiences. The goal is to help people build sustainable wellness habits while keeping the limits of health estimates clear.</p></div></div></section>
-<section aria-labelledby="goals-title"><div class="section-head"><div class="eyebrow">03 / What we're here to do</div><h2 id="goals-title">Five goals. One everyday experience.</h2><p>YouthCraft turns broad preventive-health ambitions into smaller, more approachable actions.</p></div><div class="goals">
-<article class="goal-card"><div class="icon-tile" aria-hidden="true">📈</div><div class="num">GOAL 01</div><h3>Visualise long-term impact</h3><p>Bring sleep, movement, nutrition and daily habits into an understandable Youth Score and biological-age view, with transparent context about what the measures can—and cannot—tell you.</p></article>
-<article class="goal-card"><div class="icon-tile" aria-hidden="true">🎯</div><div class="num">GOAL 02</div><h3>Simplify daily action</h3><p>Reduce overload by turning broad wellness goals into one clear, achievable daily mission at a time.</p></article>
-<article class="goal-card"><div class="icon-tile" aria-hidden="true">🔥</div><div class="num">GOAL 03</div><h3>Make consistency rewarding</h3><p>Use points, streaks, milestones and positive feedback to encourage repeatable habits—not perfection.</p></article>
-<article class="goal-card"><div class="icon-tile" aria-hidden="true">🤝</div><div class="num">GOAL 04</div><h3>Connect through community</h3><p>Support privacy-aware challenges and shared goals with friends, family and colleagues, so encouragement can become part of the journey.</p></article>
-<article class="goal-card"><div class="icon-tile" aria-hidden="true">🩺</div><div class="num">GOAL 05</div><h3>Make support easier to find</h3><p>Where relevant risk factors cluster, the intended model can connect users with specialised health partners—for example, sleep support, cessation coaching or cardiology telehealth—using appropriate safeguards.</p></article>
-<article class="goal-card"><div class="icon-tile" aria-hidden="true">🌱</div><div class="num">THE APPROACH</div><h3>Progress over perfection</h3><p>Build a rhythm that can survive real life. Missed days are expected; the focus is on learning, returning and making the next useful choice.</p></article>
-</div></section>
-<section aria-labelledby="life-title"><div class="section-head"><div class="eyebrow">04 / Motivation that adds up</div><h2 id="life-title">Make progress visible—with LIFE DAYS.</h2><p>YouthCraft's proposed gamification experience is designed to turn everyday consistency into feedback users can understand and celebrate.</p></div><div class="gamify">
-<article class="principle"><div class="icon-tile" aria-hidden="true">🌙</div><h3>Everyday micro-missions</h3><p>Small actions around sleep consistency, movement, nutrition and stress management.</p></article>
-<article class="principle"><div class="icon-tile" aria-hidden="true">🌟</div><h3>Celebrate consistency</h3><p>Streaks and milestones recognise a reliable rhythm, not flawless performance.</p></article>
-<article class="principle"><div class="icon-tile" aria-hidden="true">🏅</div><h3>Personal milestones</h3><p>Health Personality badges and annual “Health Wrapped” summaries make progress easier to reflect on.</p></article>
-<article class="principle"><div class="icon-tile" aria-hidden="true">👥</div><h3>Friendly social loops</h3><p>Optional challenges and shared achievements can make healthy routines more engaging.</p></article>
-</div><div class="note">LIFE DAYS and LIFE YEARS are intended as motivational model outputs, not literal days or years added to an individual's life. Any numerical scoring, weights and thresholds must be transparently specified and appropriately validated before being presented as calibrated estimates.</div></section>
-<section aria-labelledby="principles-title"><div class="section-head"><div class="eyebrow">05 / Our commitments</div><h2 id="principles-title">Designed around trust.</h2><p>Health is personal. YouthCraft's operating principles put respectful support, evidence awareness and user control at the centre of the experience.</p></div><div class="ethics">
-<div class="ethic"><span class="emoji" aria-hidden="true">💚</span><strong>Partner, not judge</strong></div>
-<div class="ethic"><span class="emoji" aria-hidden="true">🔬</span><strong>Science-first scoring</strong></div>
-<div class="ethic"><span class="emoji" aria-hidden="true">🔐</span><strong>User control and privacy</strong></div>
-<div class="ethic"><span class="emoji" aria-hidden="true">🌍</span><strong>Age-aware design</strong></div>
-<div class="ethic"><span class="emoji" aria-hidden="true">🛡️</span><strong>Clear wellness boundaries</strong></div>
-</div></section>
-<section class="closing"><div><h2>Your health journey is built one step at a time.</h2><p>Start with your baseline, understand the signals, and explore small actions that fit your life. YouthCraft is designed to support reflection and healthier routines—not to diagnose or replace professional medical care.</p></div><a class="btn" href="onboarding.html">Explore Your Baseline <span aria-hidden="true">→</span></a></section>
-</main>
-<div id="site-footer"></div>
-<script src="script.js"></script>
+  <div id="site-header"></div>
+
+  <header class="yc-hero compact solo">
+    <div class="wrap yc-hero-grid"><div>
+      <div class="yc-eyebrow">About YouthCraft</div>
+      <h1>Craft a Younger You. <em>Build active years.</em></h1>
+      <p class="yc-hero-copy">A science-informed health companion that makes everyday choices easier to understand, and healthy routines more rewarding. We combine preventive wellness, behavioural science and gentle gamification, one small step at a time.</p>
+      <div class="yc-actions"><a class="yc-btn" href="onboarding.html">Begin your journey <span aria-hidden="true">→</span></a><a class="yc-btn secondary" href="how-it-works.html">How it works</a></div>
+    </div></div>
+  </header>
+  <main>
+    <section class="yc-section">
+      <div class="wrap" style="max-width:900px">
+        <div class="yc-section-head"><div class="yc-kicker">01 · Who we are</div><h2>Make the long game of health feel personal.</h2></div>
+        <p style="font-size:1.08rem;line-height:1.85;color:var(--yc-muted)">YouthCraft is for people who want to stay healthier and more active for longer, not through extreme measures or medical fatigue, but through small, measurable habits that build over time. We turn complex health information into clear signals, practical next steps and a daily experience people can return to.</p>
+        <p style="font-size:1.08rem;line-height:1.85;color:var(--yc-muted)">Lifespan and healthspan are not the same. Living longer does not automatically mean more years feeling well, capable and independent. YouthCraft is built on the idea that prevention should feel approachable, understandable and part of everyday life.</p>
+        <div class="yc-notice">“Small, sustainable choices. A clearer view of your health journey.” That is our guiding idea: turn awareness into action, without judgement.</div>
+      </div>
+    </section>
+
+    <section class="yc-section alt">
+      <div class="wrap">
+        <div class="yc-section-head"><div class="yc-kicker">02 · What it does today</div><h2>Five things, one everyday experience.</h2><p>YouthCraft turns broad preventive-health ambitions into steps you can actually take.</p></div>
+        <div class="yc-grid-3">
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">◉</div><h3>See what’s at stake</h3><p>A 200-question baseline across 12 areas shows, in Life-days, what each answer puts at stake and how much you could win back.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">↗</div><h3>Turn goals into small steps</h3><p>Tap <b>I’m in!</b> and a broad goal becomes clear, trackable steps you check in on daily, weekly, monthly, quarterly or when it happens.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">✦</div><h3>Make consistency rewarding</h3><p>Instant feedback, streaks and Life-days you claim when a habit sticks. The reward is for the rhythm, not for being perfect.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">↺</div><h3>Keep it flexible</h3><p>Move out what does not apply to you. Start tracking again when you want to follow up. Nothing is locked in.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">⌁</div><h3>Show our working</h3><p>Every number traces back to a documented parameter and a referenced question, and we label what is still an assumption.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">♡</div><h3>Progress over perfection</h3><p>Missed days are expected. Claimed Life-days stay claimed, and the next good day is always available.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="yc-section">
+      <div class="wrap">
+        <div class="yc-section-head"><div class="yc-kicker">03 · The journey</div><h2>From a baseline to Life-years gained.</h2></div>
+        <div class="yc-journey">
+          <a class="yc-step" href="onboarding.html"><h3>Onboard</h3><p>Answer the questions that describe you today.</p><span class="more">Onboarding →</span></a>
+          <a class="yc-step" href="mission.html"><h3>Missions</h3><p>Commit to actions and check in with a tap.</p><span class="more">Missions →</span></a>
+          <a class="yc-step" href="doneanddusted.html"><h3>Done &amp; Dusted</h3><p>Claim the Life-days for habits that stuck.</p><span class="more">Done &amp; Dusted →</span></a>
+          <a class="yc-step" href="youth-score.html"><h3>Life-years gained</h3><p>Watch the total grow on your scorecard.</p><span class="more">Scorecard →</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="yc-section dark">
+      <div class="wrap">
+        <div class="yc-section-head"><div class="yc-kicker">04 · Our commitments</div><h2>Designed around trust.</h2></div>
+        <div class="yc-horizon" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+          <div class="yc-horizon-item"><strong>Partner, not judge</strong><span>Gentle, encouraging language. No shame for a missed day.</span></div>
+          <div class="yc-horizon-item"><strong>Show our working</strong><span>Parameters, evidence ratings and limits are published.</span></div>
+          <div class="yc-horizon-item"><strong>Your data stays yours</strong><span>Today it lives in your own browser, not on our servers.</span></div>
+          <div class="yc-horizon-item"><strong>Clear boundaries</strong><span>A wellness tool, not a diagnosis or medical advice.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="yc-section alt">
+      <div class="wrap" style="max-width:900px">
+        <div class="yc-section-head"><div class="yc-kicker">05 · Ideas we are exploring</div><h2>Not part of today’s version.</h2><p>These are directions, not features you can use now.</p></div>
+        <ul class="yc-check-list">
+          <li>Private, time-limited challenges with friends, family or colleagues.</li>
+          <li>Optional pathways to specialist support (for example sleep support, cessation coaching or telehealth) with clear consent at each step.</li>
+          <li>Yearly summaries of your progress.</li>
+          <li>Accounts and syncing across devices.</li>
+        </ul>
+        <div class="yc-notice">Life-days and Life-years are motivational model outputs, not literal days or years added to an individual’s life. Any scoring, weights and thresholds are published on the <a href="model-registry.html">Model Registry</a>, with their status.</div>
+      </div>
+    </section>
+
+    <section class="yc-cta"><div class="wrap yc-cta-inner">
+      <div><h2>Your health journey is built one step at a time.</h2><p>Start with your baseline and explore small actions that fit your life. YouthCraft supports reflection and healthier routines. It does not diagnose or replace professional medical care.</p></div>
+      <a class="yc-btn" href="onboarding.html">Explore your baseline <span aria-hidden="true">→</span></a>
+    </div></section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
 </body>
 </html>

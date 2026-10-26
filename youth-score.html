@@ -1,69 +1,259 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>YouthCraft Scorecard & LIFE DAYS | YouthCraft</title>
-<meta name="description" content="Explore the YouthCraft scorecard concept, proposed scoring architecture, LIFE DAYS gamification, domain measures and clinical safety triggers.">
-<link rel="stylesheet" href="styles.css">
-<style>
-:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-blue:#eaf2f8}
-body{background:var(--yc-paper);color:#243b33}.wrap{max-width:1160px;margin:auto;padding-left:22px;padding-right:22px}
-.score-hero{background:radial-gradient(circle at 85% 18%,#d8eee2 0,transparent 28%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:76px 0 58px;border-bottom:1px solid var(--yc-line)}
-.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:800;color:var(--yc-green)}.score-hero h1{font-size:clamp(2.5rem,5vw,4.3rem);line-height:1.04;max-width:900px;color:#000;margin:15px 0 20px;letter-spacing:-.04em}.score-hero h1 span{color:var(--yc-green)}.score-hero p{font-size:1.15rem;line-height:1.75;max-width:820px;color:#466157}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:999px;padding:13px 20px;font-weight:750;background:var(--yc-green);color:white;border:1px solid var(--yc-green)}.btn.alt{background:white;color:var(--yc-green);border-color:#bfd6c9}
-.main{padding-top:34px;padding-bottom:72px}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}.card,.panel,.domain-card{background:white;border:1px solid var(--yc-line);border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(24,59,50,.035)}.ico{width:44px;height:44px;display:grid;place-items:center;background:var(--yc-mint);border-radius:14px;font-size:1.35rem;margin-bottom:13px}.card h3,.panel h3,.domain-card h3{color:var(--yc-ink);margin:0 0 9px}.card p,.panel p,.domain-card p{color:var(--yc-muted);line-height:1.68;margin:0}.section-head{margin:14px 0 22px}.section-head h2{font-size:clamp(1.8rem,3vw,2.55rem);line-height:1.15;color:var(--yc-ink);letter-spacing:-.025em;margin:8px 0 10px}.section-head p{max-width:850px;line-height:1.7;color:var(--yc-muted)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.tag{display:inline-block;font-size:.76rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--yc-green);background:var(--yc-mint);border-radius:999px;padding:6px 9px;margin-bottom:10px}.metric{font-size:1.8rem;font-weight:850;color:var(--yc-green);letter-spacing:-.03em}.small{font-size:.88rem;color:var(--yc-muted);line-height:1.65}.callout{border-left:4px solid var(--yc-gold);background:#fff7e9;border-radius:0 14px 14px 0;padding:17px 19px;color:#624b2d;line-height:1.7;margin:18px 0}.good-callout{border-left:4px solid var(--yc-green);background:#edf6ef;border-radius:0 14px 14px 0;padding:17px 19px;color:#315748;line-height:1.7;margin:18px 0}.blue-callout{border-left:4px solid #5486aa;background:#edf5fa;border-radius:0 14px 14px 0;padding:17px 19px;color:#31546a;line-height:1.7;margin:18px 0}
-.table-scroll{overflow-x:auto;border:1px solid var(--yc-line);border-radius:14px;margin:18px 0;background:white}.domain-table{width:100%;border-collapse:collapse;font-size:.94rem}.domain-table th,.domain-table td{padding:13px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--yc-line)}.domain-table th{background:#f0f6f1;color:var(--yc-ink)}.domain-table td{color:#50665d;line-height:1.55}.domain-table tr:last-child td{border-bottom:0}
-.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin:20px 0}.flow-step{border:1px solid var(--yc-line);border-radius:14px;background:white;padding:16px;text-align:center;font-weight:750;color:var(--yc-ink);line-height:1.45}.flow-step span{display:block;font-size:.8rem;font-weight:500;color:var(--yc-muted);margin-top:6px}.arrow{font-size:1.5rem;color:var(--yc-green);font-weight:800}.formula{background:#183b32;color:white;border-radius:18px;padding:22px;overflow-x:auto}.formula p{color:#d8e8df;line-height:1.6;margin:0 0 10px}.equation{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:clamp(.9rem,2vw,1.1rem);font-weight:700;white-space:normal;overflow-wrap:anywhere;color:#fff}.life-bar{height:14px;background:#e6eee8;border-radius:999px;overflow:hidden;margin:14px 0 8px}.life-bar span{display:block;height:100%;width:58%;background:linear-gradient(90deg,#176b55,#9bc9a9);border-radius:999px}.trigger{display:flex;gap:14px;align-items:flex-start}.trigger .ico{flex:0 0 44px}.trigger h3{margin:2px 0 7px}.footer-cta{background:var(--yc-ink);color:white;border-radius:22px;padding:30px;margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:20px}.footer-cta h2{margin:0 0 8px}.footer-cta p{margin:0;color:#d4e4dc;line-height:1.6}.footer-cta .btn{background:#fff;color:var(--yc-ink);border-color:#fff;flex-shrink:0}
-@media(max-width:760px){.principles,.grid2,.grid3{grid-template-columns:1fr}.score-hero{padding:52px 0 42px}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);text-align:center}.footer-cta{align-items:flex-start;flex-direction:column}.domain-table{min-width:650px}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Scorecard | YouthCraft</title>
+  <meta name="description" content="Your Life-days claimed and Life-years gained from the actions you have made into habits.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --yc-ink: #17332d;
+      --yc-muted: #5b706a;
+      --yc-green: #176b55;
+      --yc-green-dark: #104c3e;
+      --yc-mint: #e8f5ee;
+      --yc-lime: #d9f36a;
+      --yc-cream: #fbfaf5;
+      --yc-line: #dce8e1;
+      --yc-card: #ffffff;
+      --yc-shadow: 0 18px 48px rgba(21, 67, 53, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { color: var(--yc-ink); background: var(--yc-cream); }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+    .yc-hero { position: relative; overflow: hidden; padding: 82px 0 76px; background: radial-gradient(circle at 82% 20%, rgba(217,243,106,.3), transparent 27%), linear-gradient(135deg,#eff8f1 0%,#fbfaf5 62%,#e8f5ee 100%); }
+    .yc-hero:after { content: ""; position: absolute; width: 360px; height: 360px; right: -110px; bottom: -210px; border: 1px solid rgba(23,107,85,.14); border-radius: 50%; box-shadow: 0 0 0 35px rgba(23,107,85,.035),0 0 0 70px rgba(23,107,85,.025); pointer-events: none; }
+    .yc-hero-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(300px,.85fr); gap: 56px; align-items: center; position: relative; z-index: 1; }
+    .yc-eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--yc-green); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .yc-eyebrow:before { content: ""; width: 26px; height: 2px; background: var(--yc-green); }
+    .yc-hero h1 { max-width: 720px; margin: 18px 0; font-size: clamp(2.7rem,6vw,5.2rem); line-height: .99; letter-spacing: -.055em; }
+    .yc-hero h1 em { color: var(--yc-green); font-style: normal; }
+    .yc-hero-copy { max-width: 630px; color: var(--yc-muted); font-size: clamp(1.05rem,2vw,1.2rem); line-height: 1.75; }
+    .yc-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .yc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 50px; padding: 13px 22px; border: 1px solid var(--yc-green); border-radius: 999px; background: var(--yc-green); color: #fff !important; text-decoration: none; font-weight: 750; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+    .yc-btn:hover { transform: translateY(-2px); background: var(--yc-green-dark); box-shadow: 0 10px 24px rgba(23,107,85,.2); }
+    .yc-btn.secondary { background: transparent; color: var(--yc-green) !important; }
+    .yc-btn.secondary:hover { background: var(--yc-mint); box-shadow: none; }
+    .yc-small-note { margin-top: 14px; color: var(--yc-muted); font-size: .86rem; }
+    .yc-visual { padding: 20px; border: 1px solid rgba(255,255,255,.9); border-radius: 30px; background: rgba(255,255,255,.72); box-shadow: var(--yc-shadow); backdrop-filter: blur(8px); }
+    .yc-visual-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; }
+    .yc-mini-brand { font-weight: 850; letter-spacing: -.02em; }
+    .yc-status { padding: 6px 10px; border-radius: 99px; background: var(--yc-mint); color: var(--yc-green); font-size: .75rem; font-weight: 750; }
+    .yc-score-card { padding: 22px; border-radius: 22px; color: white; background: linear-gradient(140deg,#174f40,#1e8063); }
+    .yc-score-label { color: rgba(255,255,255,.75); font-size: .8rem; }
+    .yc-score-number { display: flex; align-items: baseline; gap: 7px; margin: 7px 0 15px; }
+    .yc-score-number strong { font-size: 3.4rem; line-height: 1; letter-spacing: -.06em; }
+    .yc-score-number span { color: rgba(255,255,255,.7); }
+    .yc-progress { height: 7px; overflow: hidden; border-radius: 10px; background: rgba(255,255,255,.2); }
+    .yc-progress span { display: block; width: 78%; height: 100%; border-radius: inherit; background: var(--yc-lime); }
+    .yc-domain-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+    .yc-domain { padding: 13px; border: 1px solid var(--yc-line); border-radius: 15px; background: #fff; }
+    .yc-domain small { display: block; color: var(--yc-muted); font-size: .76rem; }
+    .yc-domain strong { display: block; margin-top: 3px; font-size: 1.05rem; }
+    .yc-life-days { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 15px; border-radius: 15px; background: #f3f8dc; }
+    .yc-life-days strong { font-size: 1.1rem; }
+    .yc-life-days span { color: var(--yc-muted); font-size: .78rem; }
+    .yc-section { padding: 76px 0; }
+    .yc-section.alt { background: #f0f7f1; }
+    .yc-section.dark { color: #fff; background: #153f35; }
+    .yc-section-head { max-width: 740px; margin: 0 auto 38px; text-align: center; }
+    .yc-kicker { color: var(--yc-green); font-size: .77rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .yc-section.dark .yc-kicker { color: var(--yc-lime); }
+    .yc-section h2 { margin: 10px 0 14px; font-size: clamp(2rem,4vw,3.15rem); line-height: 1.08; letter-spacing: -.04em; }
+    .yc-section-head p { margin: 0; color: var(--yc-muted); font-size: 1.04rem; line-height: 1.75; }
+    .yc-section.dark .yc-section-head p { color: #d0e3d9; }
+    .yc-grid-3 { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+    .yc-grid-2 { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+    .yc-card { padding: 26px; border: 1px solid var(--yc-line); border-radius: 22px; background: var(--yc-card); box-shadow: 0 8px 24px rgba(21,67,53,.035); }
+    .yc-card h3 { margin: 13px 0 9px; font-size: 1.22rem; letter-spacing: -.02em; }
+    .yc-card p { margin: 0; color: var(--yc-muted); line-height: 1.7; }
+    .yc-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--yc-mint); color: var(--yc-green); font-size: 1.25rem; }
+    .yc-stat-row { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 30px; }
+    .yc-stat { padding: 24px; border: 1px solid rgba(255,255,255,.17); border-radius: 20px; background: rgba(255,255,255,.06); }
+    .yc-stat strong { display: block; color: var(--yc-lime); font-size: clamp(2rem,4vw,3rem); line-height: 1.1; letter-spacing: -.05em; }
+    .yc-stat span { display: block; margin-top: 8px; color: #d0e3d9; line-height: 1.5; }
+    .yc-journey { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; counter-reset: journey; }
+    .yc-step { position: relative; padding: 24px; border-top: 3px solid var(--yc-green); border-radius: 0 0 18px 18px; background: white; }
+    .yc-step:before { counter-increment: journey; content: "0" counter(journey); display: block; margin-bottom: 18px; color: var(--yc-green); font-size: .82rem; font-weight: 850; letter-spacing: .1em; }
+    .yc-step h3 { margin: 0 0 8px; }
+    .yc-step p { margin: 0; color: var(--yc-muted); line-height: 1.65; }
+    .yc-domain-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+    .yc-tag { padding: 10px 14px; border: 1px solid var(--yc-line); border-radius: 99px; background: #fff; color: var(--yc-ink); font-size: .9rem; }
+    .yc-horizon { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; }
+    .yc-horizon-item { padding: 19px 16px; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: rgba(255,255,255,.055); }
+    .yc-horizon-item strong { display: block; color: var(--yc-lime); font-size: 1.05rem; }
+    .yc-horizon-item span { display: block; margin-top: 8px; color: #d0e3d9; font-size: .88rem; line-height: 1.55; }
+    .yc-check-list { list-style: none; padding: 0; margin: 18px 0 0; }
+    .yc-check-list li { position: relative; margin: 11px 0; padding-left: 27px; color: var(--yc-muted); line-height: 1.65; }
+    .yc-check-list li:before { content: "✓"; position: absolute; left: 0; top: 1px; display: grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--yc-mint); color: var(--yc-green); font-size: .75rem; font-weight: 900; }
+    .yc-cta { padding: 64px 0; background: linear-gradient(120deg,#dff2e6,#f4f8d9); }
+    .yc-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .yc-cta h2 { max-width: 660px; margin: 0 0 10px; font-size: clamp(2rem,4vw,3rem); line-height: 1.08; letter-spacing: -.04em; }
+    .yc-cta p { max-width: 650px; margin: 0; color: var(--yc-muted); line-height: 1.7; }
+    .yc-notice { margin-top: 24px; padding: 17px 20px; border-left: 4px solid #d5b65d; border-radius: 0 12px 12px 0; background: #fff9e9; color: #635b43; font-size: .9rem; line-height: 1.65; }
+    .yc-footer-line { margin-top: 18px; color: var(--yc-muted); font-size: .83rem; }
+    @media (max-width: 850px) {
+      .yc-hero-grid, .yc-grid-2 { grid-template-columns: 1fr; }
+      .yc-hero-grid { gap: 34px; }
+      .yc-grid-3 { grid-template-columns: 1fr 1fr; }
+      .yc-journey { grid-template-columns: 1fr 1fr; }
+      .yc-horizon { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .yc-cta-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px,1160px); }
+      .yc-hero { padding: 56px 0 52px; }
+      .yc-section { padding: 54px 0; }
+      .yc-grid-3, .yc-stat-row, .yc-journey { grid-template-columns: 1fr; }
+      .yc-horizon { grid-template-columns: 1fr 1fr; }
+      .yc-visual { padding: 12px; border-radius: 22px; }
+      .yc-card { padding: 22px; }
+      .yc-actions .yc-btn { width: 100%; }
+    }
+  
+    .yc-hero.compact{padding:64px 0 54px}
+    .yc-hero.compact h1{font-size:clamp(2.2rem,5vw,3.8rem);max-width:820px}
+    .yc-hero.solo .yc-hero-grid{grid-template-columns:1fr}
+    a.yc-step{display:block;color:inherit;text-decoration:none;transition:transform .18s,box-shadow .18s}
+    a.yc-step:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(21,67,53,.1)}
+    .yc-step .more{display:inline-block;margin-top:12px;color:var(--yc-green);font-weight:800;font-size:.9rem}
+    .yc-split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin:0 0 56px}
+    .yc-split.flip>:first-child{order:2}
+    .yc-split h3{margin:6px 0 10px;font-size:1.7rem;letter-spacing:-.03em}
+    .yc-split p{color:var(--yc-muted);line-height:1.75;margin:0 0 12px}
+    .yc-num{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--yc-green);color:#fff;font-weight:850}
+    .yc-table-wrap{overflow-x:auto;border:1px solid var(--yc-line);border-radius:18px;background:#fff}
+    .yc-table{width:100%;border-collapse:collapse;min-width:560px}
+    .yc-table th,.yc-table td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--yc-line);vertical-align:top;line-height:1.55}
+    .yc-table th{background:#f0f7f1;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--yc-green)}
+    .yc-table tr:last-child td{border-bottom:0}
+    .yc-table td small{color:var(--yc-muted)}
+    .yc-faq{border:1px solid var(--yc-line);border-radius:16px;background:#fff;margin:0 0 12px;padding:0 20px}
+    .yc-faq summary{cursor:pointer;padding:17px 0;font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:14px}
+    .yc-faq summary:after{content:"+";color:var(--yc-green);font-size:1.3rem;line-height:1}
+    .yc-faq[open] summary:after{content:"–"}
+    .yc-faq p{margin:0 0 18px;color:var(--yc-muted);line-height:1.75}
+    .rate{display:inline-block;padding:6px 12px;border-radius:10px;color:#fff;font-weight:800;font-size:.85rem}
+    .rate.e{background:#16a34a}.rate.g{background:#d97706}.rate.n{background:#dc2626}
+    .yc-flowline{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;margin:0 0 6px}
+    .yc-flowline span.s{padding:9px 16px;border-radius:99px;background:#fff;border:1px solid var(--yc-line);font-weight:800}
+    .yc-flowline span.a{color:var(--yc-green);font-weight:900}
+    .yc-bars{display:grid;gap:12px;max-width:640px;margin:0 auto}
+    .yc-bar{display:grid;grid-template-columns:110px 1fr 50px;gap:12px;align-items:center;font-size:.95rem}
+    .yc-bar i{display:block;height:14px;border-radius:99px;background:var(--yc-green)}
+    .yc-bar i.m{background:#c48a39}.yc-bar i.l{background:#9db3a9}
+    .yc-bar .t{background:#e3ece6;border-radius:99px;overflow:hidden}
+    .yc-calc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:c}
+    .yc-calc div{background:#fff;border:1px solid var(--yc-line);border-radius:18px;padding:18px}
+    .yc-calc b{display:block;font-size:1.5rem;letter-spacing:-.03em;color:var(--yc-green)}
+    .yc-calc b.o{color:#e8730c}
+    .yc-calc span{display:block;margin-top:6px;color:var(--yc-muted);font-size:.88rem;line-height:1.5}
+    .mk{padding:20px;border-radius:22px;background:#fff;border:1px solid var(--yc-line);box-shadow:var(--yc-shadow)}
+    .mk-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+    .mk-tag{font-size:.68rem;font-weight:750;padding:4px 9px;border-radius:99px}
+    .mk-tag.a{background:var(--yc-mint);color:var(--yc-green)}.mk-tag.b{background:#f7ecd8;color:#8a5d1c}
+    .mk-src{margin:0 0 6px;font-size:.72rem;color:#8a9690;line-height:1.5}.mk-src b{color:#e8730c}
+    .mk-wt{margin:0 0 10px;font-size:.74rem;font-weight:700;color:#e8730c}
+    .mk-q{margin:0 0 12px;font-weight:800;font-size:1.05rem;line-height:1.4}
+    .mk-opts{display:flex;flex-wrap:wrap;gap:7px}
+    .mk-opts span{padding:8px 14px;border-radius:11px;background:#f1f4f2;border:1.5px solid #d9e1dd;color:#4a5a54;font-weight:700;font-size:.88rem}
+    .mk-opts span.on{background:#16a34a;border-color:#16a34a;color:#fff}
+    .mk-fb{margin-top:12px;padding:11px 14px;border-radius:12px;border-left:5px solid #16a34a;background:#e8f7ee;font-size:.88rem;line-height:1.5}
+    .mk-fb b{color:#12803c}
+    .mk-prog{margin-top:12px;font-size:.78rem;color:var(--yc-muted)}.mk-prog b{color:var(--yc-ink)}
+    .mk-bar{height:6px;border-radius:99px;background:#dce8e1;margin-top:6px;overflow:hidden}.mk-bar i{display:block;height:100%;width:67%;background:linear-gradient(90deg,#e8730c,#16a34a)}
+    .mk-claim{margin-top:12px;display:inline-block;padding:10px 18px;border-radius:99px;background:linear-gradient(90deg,#e8730c,#d9480f);color:#fff;font-weight:850;font-size:.85rem}
+    .yc-split .mk p{line-height:1.5;margin:0 0 6px}.yc-split .mk .mk-q{color:var(--yc-ink);margin:0 0 12px}.yc-split .mk .mk-wt{color:#e8730c;margin:0 0 10px}.yc-split .mk .mk-src{color:#8a9690}.yc-split .mk .mk-prog{color:var(--yc-muted);margin:12px 0 0}
+    .yc-pill-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+    .yc-note{max-width:900px;margin:30px auto 0}
+    @media (max-width:850px){.yc-split,.yc-split.flip{grid-template-columns:1fr}.yc-split.flip>:first-child{order:0}.yc-calc{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.yc-calc{grid-template-columns:1fr}.yc-bar{grid-template-columns:90px 1fr 42px}}
+
+.sc-card{padding:30px;border-radius:26px;color:#fff;background:linear-gradient(140deg,#174f40,#1e8063);box-shadow:var(--yc-shadow)}
+.sc-label{color:rgba(255,255,255,.78);font-size:.85rem;font-weight:700;letter-spacing:.04em}
+.sc-big{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:8px 0 4px}
+.sc-big strong{font-size:clamp(2.8rem,8vw,4.6rem);line-height:1;letter-spacing:-.06em}
+.sc-big span{color:rgba(255,255,255,.8);font-size:1.1rem}
+.sc-years{font-size:1.3rem;font-weight:800;color:var(--yc-lime)}
+.sc-bar{height:9px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden;margin:18px 0 8px}
+.sc-bar i{display:block;height:100%;width:0;border-radius:inherit;background:var(--yc-lime);transition:width .5s}
+.sc-msg{margin:12px 0 0;color:#e6f4ec;line-height:1.6}
+.sc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.sc-grid div{background:rgba(255,255,255,.1);border-radius:16px;padding:14px 16px}
+.sc-grid b{display:block;font-size:1.5rem;letter-spacing:-.03em}
+.sc-grid span{font-size:.8rem;color:rgba(255,255,255,.78)}
+@media(max-width:560px){.sc-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div id="site-header"></div>
-<header class="score-hero"><div class="wrap"><div class="eyebrow">YouthCraft · Scorecard & Gamified Progress</div><h1>YouthCraft Scorecard<br><span>& LIFE DAYS Recapture</span></h1><p>The YouthCraft scorecard concept translates health-related measures, habits and risk factors into understandable progress signals. The proposed model uses Biological Year Deltas (Δ) and LIFE DAYS as motivational representations, connecting awareness to practical daily actions and appropriate clinical follow-up.</p><div class="hero-actions"><a class="btn" href="how-it-works.html">Explore How It Works →</a><a class="btn alt" href="science.html">Read the Science & Limitations</a></div></div></header>
-<main class="wrap main">
-<div class="principles">
-<div class="card"><div class="ico">🧭</div><h3>Understand your signals</h3><p>Bring questionnaire responses, selected health measures and habits into a structured scorecard that can highlight areas for reflection.</p></div>
-<div class="card"><div class="ico">🌱</div><h3>Turn insight into action</h3><p>Translate goals into small, repeatable daily or weekly missions and celebrate consistent participation.</p></div>
-<div class="card"><div class="ico">🛡️</div><h3>Keep safety in view</h3><p>Clinical triggers should guide users toward appropriate professional assessment—not diagnose, promise extra lifespan or replace medical care.</p></div>
-</div>
-<section><div class="section-head"><div class="eyebrow">01 / Executive summary</div><h2>From health information to an actionable scorecard</h2><p>The framework describes three connected data components: a question bank, an option lookup table and a scoring engine. Together, these are intended to organise answers, map specified options to model impacts, and present progress in an accessible way.</p></div>
-<div class="grid3"><div class="panel"><div class="metric">Question Bank</div><h3>Question_Bank_Full</h3><p>Stores questions identified in the framework and links them to relevant measures or screening instruments where specified.</p></div><div class="panel"><div class="metric">Option Lookup</div><h3>Option_Lookup</h3><p>Maps a question response to its configured impact fields, such as Year_Delta and Life_Days, where values are actually defined.</p></div><div class="panel"><div class="metric">Scoring Core</div><h3>Scoring_Engine</h3><p>Evaluates answer selections keyed by QID and option, then aggregates the configured results for scorecard display.</p></div></div>
-<div class="callout"><strong>Important:</strong> examples of Year_Delta values in the supplied concept are illustrative, not evidence of validated individual life-expectancy changes. The framework's combined scoring algorithm, coefficients and outputs require specification and validation before being presented as calibrated biological-age or lifespan estimates.</div></section>
-<section><div class="section-head"><div class="eyebrow">02 / Technical architecture</div><h2>How the proposed score calculation is organised</h2><p>The supplied description uses the following conventions. The formulas are presented here as framework logic, not as a clinically validated prediction model.</p></div>
-<div class="formula"><p>Proposed net biological-age calculation</p><div class="equation">Net Biological Age = Chronological Age − Σ(Year_Delta values)</div><p style="margin-top:16px">Proposed conversion convention</p><div class="equation">LIFE DAYS Balance = Total Year_Delta × 365</div></div>
-<div class="grid2" style="margin-top:16px"><div class="panel"><span class="tag">Year_Delta (ΔY)</span><h3>Model impact expressed in years</h3><p>Each configured response may carry a positive or negative delta under the proposed lookup design. The meaning and sign convention must be defined consistently in the implementation, including how beneficial and risk-associated factors are handled.</p></div><div class="panel"><span class="tag">Life_Days</span><h3>A presentation currency</h3><p>The source framework defines 1 model-derived year as 365 LIFE DAYS. This is a gamification conversion convention; it does not mean the system can measure literal days gained or lost for an individual.</p></div></div>
-<div class="good-callout"><strong>Implementation rule:</strong> calculate only from explicit, versioned values and documented formulas. Do not fill missing coefficients, thresholds, confidence intervals or option deltas with invented numbers. Explain which inputs contributed to any displayed result.</div></section>
-<section><div class="section-head"><div class="eyebrow">03 / Gamifying recapture</div><h2>Make progress visible—without promising lifespan gains</h2><p>The gamification concept reframes a potentially modifiable risk factor as an opportunity to work on a supportive habit or seek care. Rewards should recognise actions and consistency rather than imply a verified biological or survival outcome.</p></div>
-<div class="flow"><div class="flow-step">Identified risk or habit opportunity<span>Questionnaire response or health measure</span></div><div class="arrow">→</div><div class="flow-step">Safety and context check<span>Medical trigger, where appropriate</span></div><div class="arrow">→</div><div class="flow-step">Targeted action<span>Micro-habit, education or clinical follow-up</span></div></div>
-<div class="grid3"><div class="panel"><div class="ico">✨</div><h3>LIFE DAYS currency</h3><p>Use the 365-day conversion as a display convention for model values, while clearly labelling it as motivational rather than literal lifespan accounting.</p></div><div class="panel"><div class="ico">📈</div><h3>Life Recapture Bar</h3><p>Visualise progress toward a user-selected habit goal or a clearly labelled model target. Avoid presenting a filled bar as proof that years have been regained.</p><div class="life-bar" aria-label="Illustrative progress bar"><span></span></div><p class="small">Illustrative visual only—not calculated from user data.</p></div><div class="panel"><div class="ico">🏅</div><h3>Streaks and levels</h3><p>Recognise repeated healthy actions, learning milestones and follow-through. Avoid punishing users for missed days or implying that a streak changes medical risk by a fixed amount.</p></div></div>
-</section>
-<section><div class="section-head"><div class="eyebrow">04 / Domains & intervention examples</div><h2>Risk signals, measures and possible next steps</h2><p>The examples below reflect the supplied concept. They are illustrative domain-level mappings, not a complete scoring table, and they do not assign new Year_Delta values.</p></div>
-<div class="table-scroll"><table class="domain-table"><thead><tr><th>Domain</th><th>Instruments named in the concept</th><th>Example risk or concern</th><th>Example action pathway</th></tr></thead><tbody>
-<tr><td><strong>Demographics & Social</strong></td><td>UCLA Loneliness, OPAQ</td><td>Social isolation or high allostatic load</td><td>Community integration, social connection and stress-reduction routines.</td></tr>
-<tr><td><strong>Lifestyle & Habits</strong></td><td>PSQI, IPAQ, HEI, PSS-4</td><td>Short sleep, prolonged sedentary time or high ultra-processed food intake</td><td>Sleep-hygiene routine, gradual activity goals and dietary changes suited to the individual.</td></tr>
-<tr><td><strong>Substance Use</strong></td><td>FTND, AUDIT-C, TTM</td><td>Tobacco exposure or potentially hazardous alcohol use</td><td>Smoking-cessation support, behavioural coaching and alcohol-reduction resources.</td></tr>
-<tr><td><strong>Clinical Markers</strong></td><td>ACC/AHA, ADA, KDIGO, CCI</td><td>Elevated blood pressure, glucose-related concerns or other clinical risk markers</td><td>Appropriate clinical review, repeat measurement and care pathways based on reviewed protocols.</td></tr>
-<tr><td><strong>Age-Specific Function</strong></td><td>Fried Phenotype, SARC-F, Mini-Cog, GDS-5</td><td>Possible low muscle function, cognitive concerns or frailty indicators</td><td>Qualified assessment, physical therapy or rehabilitation and appropriate memory or mood support.</td></tr>
-</tbody></table></div>
-<div class="callout"><strong>Threshold caution:</strong> thresholds and actions depend on the specific instrument, units, population, guideline version and clinical context. Screening results are not diagnoses; use reviewed protocols and qualified clinical oversight before activating a referral or escalation.</div></section>
-<section><div class="section-head"><div class="eyebrow">05 / Medical trigger circuit breakers</div><h2>Safety pathways before gamified rewards</h2><p>The supplied concept proposes medical triggers that can interrupt the normal gamification flow when a response or measurement may need professional attention. A trigger should provide proportionate, clinically reviewed guidance.</p></div>
-<div class="grid2">
-<div class="panel trigger"><div class="ico">🌙</div><div><h3>MT-SLEEP</h3><p>Frequent sleep or insomnia concerns may prompt information about further sleep assessment or a sleep-clinic pathway, depending on the reviewed rules.</p></div></div>
-<div class="panel trigger"><div class="ico">🚭</div><div><h3>MT-TOBACCO</h3><p>Current tobacco use may prompt cessation resources and behavioural coaching options.</p></div></div>
-<div class="panel trigger"><div class="ico">🩸</div><div><h3>MT-GLU</h3><p>Glucose or HbA1c results meeting configured clinical criteria may prompt confirmatory review and an appropriate healthcare pathway. Units, measurement conditions and escalation logic must be explicit.</p></div></div>
-<div class="panel trigger"><div class="ico">🦵</div><div><h3>MT-FRAIL</h3><p>A SARC-F or frailty-screen result meeting configured criteria may prompt assessment for muscle function, mobility and rehabilitation needs.</p></div></div>
-</div>
-<div class="blue-callout"><strong>Clinical governance requirement:</strong> before launch, each trigger should have a clinical owner, defined input mapping and units, reviewed threshold and severity logic, user-facing copy, referral destination, consent/privacy rules, false-positive and missed-case handling, and emergency instructions where relevant. Do not automate clinical escalation solely from an unvalidated composite score.</div></section>
-<section><div class="section-head"><div class="eyebrow">06 / Progress tracking</div><h2>What the scorecard can communicate</h2><p>A responsible scorecard can separate three different things: measured data, model-derived estimates and actions completed by the user.</p></div>
-<div class="table-scroll"><table class="domain-table"><thead><tr><th>Scorecard element</th><th>What it represents</th><th>Suggested communication</th></tr></thead><tbody>
-<tr><td>Measured values</td><td>Inputs such as reported habits, questionnaire responses or clinical measurements.</td><td>Show the value, date, source and units where applicable.</td></tr>
-<tr><td>Model-derived deltas</td><td>Calculated outputs based on configured scoring logic.</td><td>Show only when formulas and coefficients are defined; label model status, uncertainty and limitations.</td></tr>
-<tr><td>Habit progress</td><td>Completion of a user-selected daily or weekly action.</td><td>Celebrate participation and consistency without translating each action into a guaranteed lifespan gain.</td></tr>
-<tr><td>Clinical triggers</td><td>A reviewed rule indicating that follow-up may be appropriate.</td><td>Explain the reason for the prompt and the next step; do not present it as a diagnosis.</td></tr>
-</tbody></table></div>
-<div class="good-callout"><strong>Recommended product principle:</strong> reward what the user can control—learning, habit practice, check-ins and appropriate follow-through—while keeping medical interpretation transparent and appropriately qualified.</div></section>
-<div class="footer-cta"><div><h2>Explore the framework in context</h2><p>Read the methodology and the onboarding-to-recurring-measures journey before interpreting scorecard outputs.</p></div><a class="btn" href="science.html">Explore the Science →</a></div>
-</main>
-<div id="site-footer"></div>
-<script src="script.js"></script>
+  <div id="site-header"></div>
+
+  <header class="yc-hero compact solo">
+    <div class="wrap yc-hero-grid"><div>
+      <div class="yc-eyebrow">Step 4 · Scorecard</div>
+      <h1>Your Life-years <em>gained.</em></h1>
+      <p class="yc-hero-copy">Every action you finish in Done &amp; Dusted adds to this total. It is the simplest way to see what your small habits are adding up to.</p>
+    </div></div>
+  </header>
+  <main>
+    <section class="yc-section" style="padding-top:44px">
+      <div class="wrap" style="max-width:900px">
+        <div class="sc-card" aria-live="polite">
+          <div class="sc-label">LIFE-DAYS CLAIMED ON THIS DEVICE</div>
+          <div class="sc-big"><strong id="scDays">0</strong><span>Life-days</span></div>
+          <div class="sc-years" id="scYears">(0.00 Life-years gained)</div>
+          <div class="sc-bar" role="progressbar" aria-label="Share of the 25-year cap" aria-valuemin="0" aria-valuemax="100" id="scBar"><i id="scFill"></i></div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.75)">Cap: 9,125 Life-days (25 years)</div>
+          <p class="sc-msg" id="scMsg"></p>
+          <div class="sc-grid">
+            <div><b id="scN">0</b><span>actions claimed</span></div>
+            <div><b id="scNA">0</b><span>moved out as not applicable</span></div>
+            <div><b id="scLast">–</b><span>latest claim</span></div>
+          </div>
+        </div>
+        <div class="yc-actions" style="justify-content:center"><a class="yc-btn" href="mission.html">Back to my missions <span aria-hidden="true">→</span></a><a class="yc-btn secondary" href="doneanddusted.html">See Done &amp; Dusted</a></div>
+        <p class="yc-small-note" style="text-align:center">Totals come from the actions you have claimed in this browser. They are not sent anywhere and do not sync between devices.</p>
+      </div>
+    </section>
+
+    <section class="yc-section alt">
+      <div class="wrap">
+        <div class="yc-section-head"><div class="yc-kicker">Three numbers, one story</div><h2>How the scorecard works.</h2></div>
+        <div class="yc-grid-3">
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">−</div><h3>Potential loss</h3><p>Shown in onboarding: what an answer puts at stake in the model, in Life-days.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">↗</div><h3>Still to claim</h3><p>Shown on your missions page: the Life-days you could reclaim from the actions still in your list, with years in brackets.</p></article>
+          <article class="yc-card"><div class="yc-icon" aria-hidden="true">✦</div><h3>Claimed</h3><p>Shown here and on Done &amp; Dusted: Life-days earned by sticking with an action. Life-years gained = Life-days ÷ 365.25.</p></article>
+        </div>
+        <div class="yc-notice yc-note"><b>Read this as motivation, not measurement.</b> Life-days are model-based estimates. They are not a diagnosis, a clinical marker or a prediction of how long you will live. Claims reflect your own entries. If you start tracking an action again, its Life-days return to “still to claim” until you earn them again. See the <a href="model-registry.html">Model Registry</a> for the parameters.</div>
+      </div>
+    </section>
+
+    <section class="yc-cta"><div class="wrap yc-cta-inner">
+      <div><h2>Keep the streak going.</h2><p>Small, steady actions are what add up.</p></div>
+      <a class="yc-btn" href="mission.html">Open my missions <span aria-hidden="true">→</span></a>
+    </div></section>
+  </main>
+  <script>
+  (function(){
+    var CAP=9125,done={};
+    try{done=JSON.parse(localStorage.getItem('yc_mission_done_v1')||'{}')||{}}catch(e){done={}}
+    var days=0,n=0,na=0,last='';
+    Object.keys(done).forEach(function(k){var e=done[k];if(!e)return;if(e.t==='claimed'){days+=e.days||0;n++;if((e.d||'')>last)last=e.d||''}else na++});
+    days=Math.min(days,CAP);var yrs=days/365.25;
+    function f(x,d){return Number(x).toLocaleString('en-US',{maximumFractionDigits:d})}
+    document.getElementById('scDays').textContent=f(Math.round(days*10)/10,1);
+    document.getElementById('scYears').textContent='('+yrs.toFixed(2)+' Life-years gained)';
+    document.getElementById('scFill').style.width=(days/CAP*100)+'%';
+    document.getElementById('scBar').setAttribute('aria-valuenow',Math.round(days/CAP*100));
+    document.getElementById('scN').textContent=n;document.getElementById('scNA').textContent=na;document.getElementById('scLast').textContent=last||'–';
+    var m=n===0?'Your Life-years start here. Finish your first action in Done & Dusted to see this number grow.':days<100?'A great start. Every claimed action is a habit that has stuck.':yrs<1?'Building momentum. Keep going, one habit at a time.':'You have gained more than a Life-year in this model. That is a lot of habits that stuck.';
+    document.getElementById('scMsg').textContent=m;
+  })();
+  </script>
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
 </body>
 </html>

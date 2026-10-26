@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Full Baseline Questionnaire | YouthCraft</title>
+<meta name="description" content="Complete YouthCraft's science-backed 200-question baseline assessment to discover your Youth Score and Biological Age delta.">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{--yc-ink:#183b32;--yc-green:#176b55;--yc-mint:#e8f3ed;--yc-paper:#fbfaf6;--yc-line:#dce7df;--yc-muted:#5b7068;--yc-gold:#c48a39;--yc-lilac:#eeeafb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--yc-paper);color:#243b33}
+.wrap{max-width:1160px;margin:auto;padding:0 22px}
+.q-hero{background:radial-gradient(circle at 84% 12%,#d9eee2 0,transparent 27%),radial-gradient(circle at 8% 92%,#f7e9ce 0,transparent 24%),linear-gradient(130deg,#f5f8f1,#e8f3ed);padding:48px 0 30px;border-bottom:1px solid var(--yc-line)}
+.eyebrow{letter-spacing:.15em;text-transform:uppercase;font-size:.76rem;font-weight:850;color:var(--yc-green)}
+.q-hero h1{font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.08;color:var(--yc-ink);margin:12px 0;letter-spacing:-.045em}
+.q-hero h2{color:var(--yc-ink);margin:10px 0 0;letter-spacing:-.02em}
+.q-hero p{font-size:1.05rem;line-height:1.6;color:#466157;margin:0;max-width:760px}
+.content{padding-top:28px;padding-bottom:72px}
+.q-container{max-width:940px;margin:0 auto}
+.overall{display:flex;justify-content:space-between;font-size:.85rem;font-weight:800;color:var(--yc-muted);margin-bottom:8px}
+.bar{background:var(--yc-line);height:8px;border-radius:999px;overflow:hidden;margin-bottom:20px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yc-green),#3d9a7c);border-radius:999px;transition:width .3s}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin-bottom:12px;scrollbar-width:thin;position:sticky;top:0;z-index:5;background:var(--yc-paper)}
+.tabs{min-width:0;max-width:100%;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.tabs.fr{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl{-webkit-mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(270deg,#000 calc(100% - 40px),transparent)}
+.tabs.fl.fr{-webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent)}
+.tab{flex:none;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--yc-line);color:var(--yc-muted);padding:9px 16px;border-radius:999px;font:inherit;font-size:.86rem;font-weight:750;cursor:pointer;transition:all .18s;white-space:nowrap}
+.tab:hover{border-color:var(--yc-green);color:var(--yc-green)}
+.tab[aria-selected=true]{background:var(--yc-green);border-color:var(--yc-green);color:#fff}
+.tab .n{font-size:.72rem;font-weight:800;background:var(--yc-mint);color:var(--yc-green);padding:2px 8px;border-radius:999px}
+.tab[aria-selected=true] .n{background:rgba(255,255,255,.2);color:#fff}
+.tab.done:not([aria-selected=true]) .n{background:var(--yc-green);color:#fff}
+.tab:focus-visible,.btn:focus-visible,select:focus-visible,.ref:focus-visible{outline:3px solid var(--yc-gold);outline-offset:2px}
+.q-card{background:#fff;border:1px solid var(--yc-line);border-radius:24px;padding:34px;box-shadow:0 8px 24px rgba(24,59,50,.035)}
+.cat-head{margin-bottom:6px;padding-bottom:14px;border-bottom:2px solid var(--yc-mint)}
+.cat-head h2{color:var(--yc-ink);font-size:1.6rem;margin:0 0 4px;letter-spacing:-.02em}
+.cat-head p{color:var(--yc-muted);margin:0;font-size:.92rem}
+.q-item{padding:24px 0;border-bottom:1px solid var(--yc-line)}
+.q-item:last-child{border-bottom:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.tag{font-size:.66rem;line-height:1;font-weight:750;padding:4px 8px;border-radius:999px;letter-spacing:.02em}
+.tag.sys{background:var(--yc-mint);color:var(--yc-green)}
+.tag.clu{background:#f7ecd8;color:#8a5d1c}
+.q-text{font-size:1.06rem;font-weight:750;color:var(--yc-ink);line-height:1.45;margin:0}
+.daa{font-size:.68rem;color:var(--yc-muted);margin:4px 0 12px;line-height:1.4}
+.q-item select{width:100%;max-width:440px;padding:12px 40px 12px 16px;border-radius:12px;border:1px solid var(--yc-line);background:#fafcfb;color:var(--yc-ink);font:inherit;font-size:.98rem;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23176b55' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;cursor:pointer}
+.q-item select:focus{border-color:var(--yc-green);background-color:#fff}
+.q-item select.has{background-color:var(--yc-mint);border-color:var(--yc-green)}
+.tag.dd{background:var(--yc-lilac);color:#4b3d8f}
+.info:empty{display:none}
+.reclaim{margin-top:14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.reclaim .lbl{font-size:.68rem;color:var(--yc-muted)}
+.reclaim .num{font-size:1.7rem;line-height:1;font-weight:850;color:#e8730c;letter-spacing:-.02em}
+.reclaim .u{font-size:.8rem;font-weight:750;color:#e8730c}
+.reclaim .sep{color:#c9d6cf;margin:0 6px;font-size:1.4rem}
+.mission{margin-top:8px;font-size:.9rem;color:var(--yc-ink);line-height:1.5;max-width:760px}
+.mission b{color:var(--yc-green)}
+.nt{margin-top:12px;padding:10px 14px;background:#fff6e9;border:1px solid #f1d3a6;border-radius:12px;font-size:.88rem;color:#7a4a0c;max-width:640px;line-height:1.5}
+.total{background:linear-gradient(120deg,#fff6e9,#fdebd0);border:1px solid #f1d3a6;border-radius:16px;padding:14px 18px;margin-bottom:18px;color:var(--yc-ink);line-height:1.5}
+.total b{color:#e8730c;font-size:1.25rem}
+.commit{background:#e8f3ed;border:1px solid #bfdccf;border-radius:16px;padding:12px 18px;margin:-8px 0 18px;color:var(--yc-ink);line-height:1.5}
+.commit:empty{display:none}
+.commit b{color:#16794a;font-size:1.15rem}
+.imin{margin-top:12px;background:#2563eb;color:#fff;border:1px solid #2563eb;border-radius:999px;padding:9px 22px;font:inherit;font-size:.92rem;font-weight:800;cursor:pointer;transition:background .18s,border-color .18s}
+.imin:hover{background:#1d4fd0;border-color:#1d4fd0}
+.imin.on{background:#16a34a;border-color:#16a34a}
+.imin.on:hover{background:#12873d;border-color:#12873d}
+.imin:focus-visible{outline:3px solid var(--yc-gold);outline-offset:2px}
+.refwrap{display:block;margin-top:10px;font-size:.78rem;line-height:1.45;max-width:760px}.refpre{font-weight:800;color:var(--yc-muted)}.refwrap .ref{display:inline;margin-top:0}
+.ref{display:inline-block;margin-top:10px;font-size:.78rem;line-height:1.45;color:var(--yc-green);text-decoration:underline;text-underline-offset:2px;max-width:760px}
+.ref:hover{color:var(--yc-ink)}
+.refl{display:block;margin-top:10px;font-size:.72rem;color:var(--yc-muted)}
+.form-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:28px;padding-top:22px;border-top:1px solid var(--yc-line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 26px;font:inherit;font-size:.98rem;font-weight:800;cursor:pointer;transition:all .18s;border:1px solid transparent}
+.btn-secondary{background:#fff;border-color:var(--yc-line);color:var(--yc-muted)}
+.btn-secondary:hover:not(:disabled){border-color:var(--yc-green);color:var(--yc-green)}
+.btn-primary{background:var(--yc-green);color:#fff;border-color:var(--yc-green)}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 18px rgba(24,59,50,.15)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+@media(max-width:640px){.q-card{padding:20px;border-radius:18px}.q-item select{max-width:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="site-header"></div>
+
+
+
+
+
+<header class="q-hero">
+  <div class="wrap">
+    <div class="eyebrow">✦ Progressive Baseline</div>
+    <h2>Craft a Younger You! Add Years to your Life.</h2>
+    <h1>Scientific Health Questionnaire</h1>
+    <p>
+      The full 200-question baseline is powerful — but long. We have split it into five progressive phases so you get real value quickly and can go deeper when you are ready. Your answers are saved on this device.
+    </p>
+  </div>
+</header>
+
+<main class="wrap content">
+  <div class="q-container">
+
+    <div class="total" style="margin-bottom:28px">
+      <b>How the progressive baseline works</b><br>
+      Start with the Quick Screen (Phase 0) for an immediate Life-days estimate. Each later phase refines your score and unlocks more precise missions. You can stop after any phase and still have a usable, science-backed result.
+    </div>
+
+    <!-- Phase cards -->
+    <div style="display:grid; gap:18px; margin-bottom:40px">
+
+      <!-- Phase 0 -->
+      <div class="q-card" style="padding:28px">
+        <div class="tags">
+          <span class="tag sys">Phase 0</span>
+          <span class="tag clu">12 questions · ~3–5 min</span>
+        </div>
+        <h2 style="margin:8px 0 6px; color:var(--yc-ink); font-size:1.45rem">Quick Screen – Immediate Value</h2>
+        <p style="color:var(--yc-muted); margin:0 0 16px; line-height:1.55">
+          Highest-impact questions only (exercise, smoking, alcohol, sleep, BMI, key functional & mood items). You receive a partial Life-days estimate and your first recommended missions right away.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px">
+          <a class="btn btn-primary" href="https://theyouthcraft-arch.github.io/yc/Onboarding_ph0.html">Start Quick Screen →</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/Mission_ph0.html">View Phase 0 Missions</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/DoneAndDusted_ph0.html">Done & Dusted (Phase 0)</a>
+        </div>
+      </div>
+
+      <!-- Phase 1 -->
+      <div class="q-card" style="padding:28px">
+        <div class="tags">
+          <span class="tag sys">Phase 1</span>
+          <span class="tag clu">71 questions</span>
+        </div>
+        <h2 style="margin:8px 0 6px; color:var(--yc-ink); font-size:1.45rem">Core Lifestyle Foundations</h2>
+        <p style="color:var(--yc-muted); margin:0 0 16px; line-height:1.55">
+          Exercise, nutrition, sleep, substance use, key social and preventive items — the highest-recoverability actions that feed the mission engine.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px">
+          <a class="btn btn-primary" href="https://theyouthcraft-arch.github.io/yc/Onboarding_ph1.html">Start Phase 1 →</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/Mission_ph1.html">View Phase 1 Missions</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/DoneAndDusted_ph1.html">Done & Dusted (Phase 1)</a>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="q-card" style="padding:28px">
+        <div class="tags">
+          <span class="tag sys">Phase 2</span>
+          <span class="tag clu">52 questions</span>
+        </div>
+        <h2 style="margin:8px 0 6px; color:var(--yc-ink); font-size:1.45rem">Body Signals & Functional Capacity</h2>
+        <p style="color:var(--yc-muted); margin:0 0 16px; line-height:1.55">
+          Physiological symptoms and simple self-tests (chair stands, gait, balance, etc.). Builds a clearer picture of current capacity.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px">
+          <a class="btn btn-primary" href="https://theyouthcraft-arch.github.io/yc/Onboarding_ph2.html">Start Phase 2 →</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/Mission_ph2.html">View Phase 2 Missions</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/DoneAndDusted_ph2.html">Done & Dusted (Phase 2)</a>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="q-card" style="padding:28px">
+        <div class="tags">
+          <span class="tag sys">Phase 3</span>
+          <span class="tag clu">34 questions</span>
+        </div>
+        <h2 style="margin:8px 0 6px; color:var(--yc-ink); font-size:1.45rem">Medical History & Diagnoses</h2>
+        <p style="color:var(--yc-muted); margin:0 0 16px; line-height:1.55">
+          Clinical diagnoses, family history and deeper psychological items. Higher sensitivity — best completed after trust and early value have been established.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px">
+          <a class="btn btn-primary" href="https://theyouthcraft-arch.github.io/yc/Onboarding_ph3.html">Start Phase 3 →</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/Mission_ph3.html">View Phase 3 Missions</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/DoneAndDusted_ph3.html">Done & Dusted (Phase 3)</a>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="q-card" style="padding:28px">
+        <div class="tags">
+          <span class="tag sys">Phase 4</span>
+          <span class="tag clu">31 questions · Optional precision</span>
+        </div>
+        <h2 style="margin:8px 0 6px; color:var(--yc-ink); font-size:1.45rem">Biomarkers & Deep Dive</h2>
+        <p style="color:var(--yc-muted); margin:0 0 16px; line-height:1.55">
+          Lab values and remaining environment items. Positioned as an optional precision upgrade for users who want the fullest model.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px">
+          <a class="btn btn-primary" href="https://theyouthcraft-arch.github.io/yc/Onboarding_ph4.html">Start Phase 4 →</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/Mission_ph4.html">View Phase 4 Missions</a>
+          <a class="btn btn-secondary" href="https://theyouthcraft-arch.github.io/yc/DoneAndDusted_ph4.html">Done & Dusted (Phase 4)</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="total">
+      Prefer the classic single long questionnaire? You can still complete the original full baseline if you wish — the progressive path simply makes the same science more accessible.
+    </div>
+
+  </div>
+</main>
+
+
+<div id="site-footer"></div>
+<script src="script.js"></script>
+</body>
+</html>

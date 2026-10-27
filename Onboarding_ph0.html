@@ -92,7 +92,7 @@ body{margin:0;background:var(--yc-paper);color:#243b33}
   <p>12 questions in this phase. Move between categories using the tabs, answer at your own pace, and your answers are saved on this device. Complete this phase for an updated Life-days estimate.</p>
 </div></header>
 <main class="wrap content"><div class="q-container">
-  <div class="overall"><span id="ovCount">0 of 12 answered</span><span id="ovPct">0%</span></div>
+  <div class="overall"><span id="ovCount">0 of 12 answered</span><span id="ovPct">Phase 0 · 0%</span></div>
   <div class="bar" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="12" id="bar"><i id="barFill"></i></div>
   <div class="total" id="total" aria-live="polite"></div>
   <div class="commit" id="commit" aria-live="polite"></div>
@@ -144,7 +144,7 @@ function renderTabs(){
 function renderOverall(){
   const a=Object.keys(ans).filter(k=>ans[k]).length;
   $('ovCount').textContent=a+' of '+qs.length+' answered';
-  $('ovPct').textContent=Math.round(a/qs.length*100)+'%';
+  $('ovPct').textContent='Phase 0 · '+Math.round(a/qs.length*100)+'%';
   $('barFill').style.width=(a/qs.length*100)+'%';
   $('bar').setAttribute('aria-valuenow',a);
 }
@@ -159,7 +159,7 @@ function renderPanel(){
 <div class="q-text">${esc(q.id)} . ${esc(q.q)}</div>
 <select data-id="${q.id}" aria-label="${esc(q.q)}" class="${ans[q.id]?'has':''}"><option value="">Select an answer</option>${opts}</select><div class="info" id="info-${q.id}">${info(q)}</div>${ref}</div>`}).join('')+
   `<div class="form-actions"><button type="button" class="btn btn-secondary" id="prev"${cur===0?' disabled':''}>← Previous</button>
-<button type="button" class="btn btn-primary" id="next">${cur===cats.length-1?'Complete Assessment ✓':'Next: '+esc(cats[cur+1])+' →'}</button></div>`;
+<button type="button" class="btn btn-primary" id="next">${cur===cats.length-1?'See my Life-days result ✓':'Next: '+esc(cats[cur+1])+' →'}</button></div>`;
 }
 function go(i){cur=Math.max(0,Math.min(cats.length-1,i));renderTabs();renderPanel();
   const t=document.querySelector('.tab[aria-selected=true]');if(t)t.scrollIntoView({inline:'center',block:'nearest'});
@@ -167,7 +167,85 @@ function go(i){cur=Math.max(0,Math.min(cats.length-1,i));renderTabs();renderPane
 function submitAssessment(){
   const left=qs.length-Object.keys(ans).filter(k=>ans[k]).length;
   if(left&&!confirm(left+' question(s) are still unanswered. Submit anyway?'))return;
-  window.location.href='mission.html';
+  showPhase0Results();
+}
+
+function showPhase0Results(){
+  // Calculate totals from answered questions in this phase
+  let reclaim=0, loss=0, n=0;
+  qs.forEach(q=>{
+    const v=ans[q.id];
+    if(v && q.r[v-1]){
+      n++;
+      reclaim += q.r[v-1]*Adherence_Factor;
+      loss += q.l[v-1]||0;
+    }
+  });
+  reclaim = Math.min(reclaim, Max_Reclaimable_Days);
+  const years = (reclaim/365.25).toFixed(2);
+
+  // Build committed missions list
+  let committed = [];
+  qs.forEach(q=>{
+    if(commit[q.id] && ans[q.id]){
+      committed.push(q);
+    }
+  });
+
+  const shareText = encodeURIComponent(
+    `I just found I can reclaim ${Math.round(reclaim)} Life-days (~${years} years) with a few small changes.\n\nTry the free YouthCraft Quick Screen → https://theyouthcraft-arch.github.io/yc/Onboarding_ph0.html`
+  );
+
+  const resultsHTML = `
+  <div class="q-card" style="padding:32px; text-align:center">
+    <div class="eyebrow" style="justify-content:center; margin-bottom:8px">✦ Quick Screen complete</div>
+    <h2 style="color:var(--yc-ink); font-size:1.8rem; margin:0 0 12px; letter-spacing:-.03em">Your first Life-days estimate</h2>
+    <p style="color:var(--yc-muted); margin:0 0 24px; line-height:1.6">Based on the ${n} answers you gave in this phase.</p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-bottom:28px">
+      <div style="background:linear-gradient(120deg,#fff6e9,#fdebd0); border:1px solid #f1d3a6; border-radius:18px; padding:20px 28px; min-width:160px">
+        <div style="font-size:.72rem; color:var(--yc-muted); font-weight:700; text-transform:uppercase; letter-spacing:.06em">You can reclaim up to</div>
+        <div style="font-size:2.4rem; font-weight:850; color:#e8730c; line-height:1.1; margin:6px 0">${Math.round(reclaim).toLocaleString()}</div>
+        <div style="font-size:.9rem; color:#e8730c; font-weight:700">Life-days (~${years} years)</div>
+      </div>
+    </div>
+
+    <p style="color:var(--yc-muted); font-size:.95rem; max-width:520px; margin:0 auto 28px; line-height:1.6">
+      This is a motivational estimate from the model, not a medical prediction. The more phases you complete, the more precise it becomes.
+    </p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:32px">
+      <a class="btn btn-primary" href="Mission_ph0.html" style="text-decoration:none">Start tracking these missions →</a>
+      <a class="btn btn-secondary" href="onboarding.html" style="text-decoration:none">Continue to next phases</a>
+    </div>
+
+    <!-- Share card -->
+    <div style="background:#f0f7f1; border:1px solid var(--yc-line); border-radius:18px; padding:22px; max-width:480px; margin:0 auto 24px; text-align:left">
+      <div style="font-weight:800; color:var(--yc-ink); margin-bottom:8px">Share your result</div>
+      <p style="margin:0 0 14px; color:var(--yc-muted); font-size:.92rem; line-height:1.55">
+        “I just found I can reclaim <b>${Math.round(reclaim)} Life-days</b> (~${years} years) with a few small changes. Try the free YouthCraft Quick Screen.”
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:8px">
+        <a class="btn btn-secondary" style="padding:9px 16px; font-size:.85rem; text-decoration:none"
+           href="https://wa.me/?text=${shareText}" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-secondary" style="padding:9px 16px; font-size:.85rem; text-decoration:none"
+           href="https://twitter.com/intent/tweet?text=${shareText}" target="_blank" rel="noopener">X / Twitter</a>
+        <button type="button" class="btn btn-secondary" style="padding:9px 16px; font-size:.85rem"
+                onclick="navigator.clipboard.writeText(decodeURIComponent('${shareText.replace(/'/g,"\\'")}').replace(/\\n/g,'\n')); this.textContent='Copied!';">Copy text</button>
+      </div>
+    </div>
+
+    <p style="font-size:.82rem; color:var(--yc-muted); margin:0">
+      You can return any time — your answers are saved on this device.
+    </p>
+  </div>`;
+
+  // Hide the normal questionnaire UI and show results
+  const container = document.querySelector('.q-container');
+  if(container){
+    container.innerHTML = resultsHTML;
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
 }
 $('tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)go(+b.dataset.i)});
 $('panel').addEventListener('change',e=>{const s=e.target.closest('select[data-id]');if(!s)return;
